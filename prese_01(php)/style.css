@@ -1,0 +1,37 @@
+h1 {
+    margin-top: 60px;
+    text-align: center;
+}
+
+form {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.err_msg {
+    color: #ff838b;
+    font-size: 1.5em;
+}
+
+label {
+    height: 60px;
+    display: block;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+label span {
+    box-sizing: border-box;
+    height: 50px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    display: block;
+    float: left;
+}
+
+label input {
+    display: block;
+    float: right;
+    height: 30px;
+    margin-top: 20px;
+}
