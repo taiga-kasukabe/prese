@@ -53,7 +53,7 @@ if (!empty($_POST)) {
 
 // if validation is OK
 if (empty($err_msg)) {
-  if (($data['password'] === $password) and ($data['email'] === $email)) {
+  if (($data['password'] === $password) && ($data['email'] === $email)) {
     // insert email into SESSION
     $_SESSION['email'] = $email;
     //go to my page

@@ -1,20 +1,4 @@
 <?php
-session_start();
-
-// 変数定義
-include("./conf/variable.php");
-// DB定義
-include("./conf/db_conf.php");
-
-// for error
-try {
-    // DBに接続
-    $dbh = new PDO($dsn, $db_username, $db_password);
-} catch (PDOException $e) {
-    // output error message
-    $msg = $e->getMessage();
-}
-
 // check mail address
 $sql = "SELECT * FROM users WHERE mail = :mail";
 $stmt = $dbh->prepare($sql); // 'stmt' = statement, 'prepare' is just prepare sql
@@ -38,10 +22,3 @@ if (!isset($member['mail'])) {
     $link = '<a href="./index.php" class="err_msg">戻る</a>';
 }
 ?>
-
-<!--メッセージの出力-->
-<div class="err_msg">
-    <?php echo $msg; ?>
-</div>
-
-<?php echo $link; ?>

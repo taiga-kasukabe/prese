@@ -1,7 +1,13 @@
 <h1>新規会員登録</h1>
-
-<!-- 実行プログラムはregister.php -->
-<form action="register.php" method="post">
+<h2>
+    <font color="red">
+        <?php
+        foreach()
+        ?>
+    </font>
+</h2>
+<!-- 実行プログラムはvalidation.php -->
+<form action="./validation.php" method="post">
     <div>
         <label>姓名：</label>
         <!-- 入力必須 -->

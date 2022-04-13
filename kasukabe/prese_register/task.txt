@@ -1,0 +1,2 @@
+・どうやってerr_msgを表示させるか
+・register.phpを完成させる
