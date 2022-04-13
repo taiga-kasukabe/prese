@@ -1,17 +1,15 @@
 <?php
 session_start();
-// define variable
-$name = $_POST['name'];
-$mail = $_POST['mail'];
-$pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-$dsn = "mysql:charset=UTF8;dbname=presedb;host=localhost";
-$username = "root";
-$password = "root";
+
+// 変数定義
+include("./conf/variable.php");
+// DB定義
+include("./conf/db_conf.php");
 
 // for error
 try {
-    // PD0 is module for connecting DB
-    $dbh = new PDO($dsn, $username, $password);
+    // DBに接続
+    $dbh = new PDO($dsn, $db_username, $db_password);
 } catch (PDOException $e) {
     // output error message
     $msg = $e->getMessage();
