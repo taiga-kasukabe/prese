@@ -58,7 +58,7 @@ if(!empty($_POST)){
 
 <body>
 <h1>新規会員登録</h1>
-<form action="signup_confirm.php" method="POST">
+<form action="" method="POST">
     
     <!-- エラーメッセージを出力するPHPをグループ化しerr_msgという識別名を付ける -->
     <div class="err_msg"> 
