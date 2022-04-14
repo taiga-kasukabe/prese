@@ -63,9 +63,11 @@ if(!empty($_POST)){
     <!-- エラーメッセージを出力するPHPをグループ化しerr_msgという識別名を付ける -->
     <div class="err_msg"> 
         <?php 
-            foreach($err_msg as $value)
-            echo $value;
-            echo "\n";
+            if(!isset($err_msg)){
+                foreach($err_msg as $value)
+                echo $value;
+                echo "\n";
+            }
         ?> 
     </div>
 
