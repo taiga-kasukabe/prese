@@ -22,22 +22,32 @@ try{
 
 //メールアドレスの重複がないか確認
 //これもsignup.phpのバリデーションチェックと一緒の方がいい？？
-$sql = "SELECT * FROM users WHERE mail = :mail";
+$sql = "SELECT * FROM users_table WHERE mail = :mail";
 $stmt = $dbh -> prepare($sql);
 $stmt -> bindValue(':mail', $mail);
 $stmt -> execute();
 $member = $stmt -> fetch();
 
-if($member = false){
+if(!isset($member['mail'])){
     $msg = '同じメールアドレスが存在します。';
     $link = '<a href="signup.php">戻る</a>';
 } else {
 
-    $sql = "INSERT INTO users(name, mail, pass) VALUES (:name, :mail, :pass)";
+    $sql = "INSERT INTO users_tabel(username, username_kana, mail, mail_confirm, tel, school, depertment1, depertment2, student_year, id, pass, pass_confirm)
+     VALUES (:username, :username_kana, :mail, :mail_confirm, :tel, :school, :depertment1, :depertment2, :student_year, :id, :pass, :pass_confirm)";
     $stmt = $dbh -> prepare($sql);
-    $stmt -> bindValue(':name', $name);
+    $stmt -> bindValue(':username', $username);
+    $stmt -> bindValue(':username_kana', $username_kana);
     $stmt -> bindValue(':mail', $mail);
+    $stmt -> bindValue(':mail_confirm', $mail_confirm);
+    $stmt -> bindValue(':tel', $tel);
+    $stmt -> bindValue(':school', $school);
+    $stmt -> bindValue(':depertment1', $depertment1);
+    $stmt -> bindValue(':depertment2', $depertment2);
+    $stmt -> bindValue(':student_year', $student_year);
+    $stmt -> bindValue(':id', $id);
     $stmt -> bindValue(':pass', $pass);
+    $stmt -> bindValue(':pass_confirm', $pass_confirm);
     $stmt -> execute();
 
     $msg = '会員登録が完了しました。';
