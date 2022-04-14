@@ -19,7 +19,7 @@ if(!empty($_POST)){
     }
 
     // telが0から始まり10or11文字か
-    if (!preg_match($tel_pattern, $tel) || strlen($tel) != 10 || strlen($tel) != 11) {
+    if (!preg_match($tel_pattern, $tel) && (strlen($tel) != 10 || strlen($tel) != 11)) {
         $err_msg['tel_confirm'] = '正しい電話番号を入力してください';
     }
 
