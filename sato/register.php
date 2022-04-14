@@ -28,7 +28,7 @@ $stmt -> bindValue(':mail', $mail);
 $stmt -> execute();
 $member = $stmt -> fetch();
 
-if(!isset($member['mail'])){
+if(isset($member['mail'])){
     $msg = '同じメールアドレスが存在します。';
     $link = '<a href="signup.php">戻る</a>';
 } else {
