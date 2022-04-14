@@ -11,6 +11,9 @@ use PHPMailer\PHPMailer\Exception;
 // Composer のオートローダーの読み込み（ファイルの位置によりパスを適宜変更）
 require '/Applications/MAMP/htdocs/php_mailer/vendor/autoload.php';
 
+// ユーザ情報読み込み
+require './conf/mail_pass.php';
+
 //mbstring の日本語設定
 mb_language("japanese");
 mb_internal_encoding("UTF-8");
@@ -28,8 +31,8 @@ try {
     $gmail->isSMTP();   // SMTP を使用
     $gmail->Host       = 'smtp.gmail.com';  // ★★★ Gmail SMTP サーバーを指定
     $gmail->SMTPAuth   = true;   // SMTP authentication を有効に
-    $gmail->Username   = 'taiga.kasukabe@gmail.com';  // ★★★ Gmail ユーザ名
-    $gmail->Password   = 'mffjkyfejmlkdcdx';  // ★★★ Gmail パスワード
+    $gmail->Username   = $user_mail;  // ★★★ Gmail ユーザ名
+    $gmail->Password   = $user_pass;  // ★★★ Gmail パスワード
     $gmail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // ★★★ 暗号化（TLS)を有効に
     $gmail->Port = 587;  //★★★ ポートは 587
 
