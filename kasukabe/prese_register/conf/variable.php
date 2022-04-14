@@ -14,8 +14,7 @@ $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $password_confirm = password_hash($_POST['password_confirm'], PASSWORD_DEFAULT);
 
 // 正規表現
-$mail_pattern = "</^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/>"; //半角英数字，＠がある
-$tel_pattern = "<^0>"; //0から始まる
+$tel_pattern = '/^0[0-9]{9,10}\z/'; //
 
 // エラーメッセージ
 $err_msg = array();

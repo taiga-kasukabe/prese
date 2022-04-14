@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION = array();
 
 // 変数定義
 include("./conf/variable.php");
@@ -21,7 +22,7 @@ if(!preg_match("/^[ァ-ヾ]+$/u", $username_kana)){
 }
 
 // Email正規表現
-if (!preg_match($mail_pattern, $mail)) {
+if(!filter_var($mail, FILTER_VALIDATE_EMAIL)){
     $err_msg['mail_expression'] = '正しいメールアドレスを入力してください';
 }
 
@@ -32,7 +33,8 @@ $stmt->bindValue(':mail', $mail); // :mailに$mailを代入
 $stmt->execute(); // sql文実行
 $member = $stmt->fetch(); // sql文の結果をfetch
 // DBにEmailが重複していないか確認
-if (isset($member)) {
+// !↓↓↓ここがおかしい
+if (!empty($member)) {
     $err_msg['mail_duplicate'] = 'このメールアドレスは既に登録されています';
 }
 
@@ -42,7 +44,8 @@ if ($mail != $mail_confirm) {
 }
 
 // telが0から始まり10or11文字か
-if (!preg_match($tel_pattern, $tel) || strlen($tel) != 10 || strlen($tel) != 11) {
+// !ここがおかしい
+if (!preg_match($tel_pattern, $tel)) {
     $err_msg['tel_confirm'] = '正しい電話番号を入力してください';
 }
 
@@ -55,16 +58,44 @@ $member = $stmt->fetch();
 // idが4文字以上半角英数字か
 if (!preg_match("/^[a-zA-Z0-9]+$/", $id) || strlen($id) < 4) {
     $err_msg['id_confirm'] = 'idは4文字以上の半角英数字を入力してください';
-} elseif (isset($member)) {
+} elseif (!empty($member)) {
     $err_msg['id_duplicate'] = 'このIDは既に登録されています';
 }
 
 // パスワードの文字数を確認
-if (strlen($password) < 8 || !preg_match("/^[a-zA-Z0-9]+$/", $password)) {
-    $err_msg['pass_length'] = '8文字以上の半角英数字を入力してください';
+if (strlen($_POST['password']) < 8 || !preg_match("/^[a-zA-Z0-9]+$/", $_POST['password'])) {
+    $err_msg['pass_length'] = 'パスワードは8文字以上の半角英数字を入力してください';
 }
 
-// SESSIONにエラーメッセージ(配列)を代入して，register_form.phpに引き継ぐ
-$_SESSION = $_SESSION + $err_msg;
+// パスワード(確認)が一致するか
+if ($_POST['password'] != $_POST['password_confirm']){
+    $err_msg['pass_confirm'] = 'パスワード(確認)が一致しません';
+}
 
+// SESSIONにerr_msgとuser情報を代入して，register_form.phpに引き継ぐ
+$_SESSION['err'] = array();
+$_SESSION['err'] = $_SESSION['err'] + $err_msg;
+
+$_SESSION['user'] = array();
+$_SESSION['user']['username'] = $username;
+$_SESSION['user']['username_kana'] = $username_kana;
+$_SESSION['user']['mail'] = $mail;
+$_SESSION['user']['mail_confirm'] = $mail_confirm;
+$_SESSION['user']['tel'] = $tel;
+$_SESSION['user']['school'] = $school;
+$_SESSION['user']['department1'] = $department1;
+$_SESSION['user']['department2'] = $department2;
+$_SESSION['user']['student_year'] = $student_year;
+$_SESSION['user']['id'] = $id;
+
+if(empty($_SESSION)){
+    // mypageにIDを引き継ぐ
+    $_SESSION['user']['id'] = $id;
+    // mypageへ
+    header('Location: ./mypage.php');
+    exit;
+} else {
+    // 新規登録やり直し
+    header('Location: ./register_form.php');
+}
 ?>
