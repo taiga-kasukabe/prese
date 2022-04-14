@@ -77,6 +77,19 @@
     <input type="submit" value="登録">
     <p><a href="signup.php">修正する</a></p>
 
+    <input type="hidden" name="username" value="$_POST['username']">
+    <input type="hidden" name="username_kana" value="$_POST['username_kana']">
+    <input type="hidden" name="mail" value="$_POST['mail']">
+    <input type="hidden" name="mail_confirm" value="$_POST['mail_confirm']">
+    <input type="hidden" name="tel" value="$_POST['tel']">
+    <input type="hidden" name="school" value="$_POST['school']">
+    <input type="hidden" name="depertment1" value="$_POST['depertment1']">
+    <input type="hidden" name="depertment2" value="$_POST['depertment2']">
+    <input type="hidden" name="student_year" value="$_POST['student_year']">
+    <input type="hidden" name="id" value="$_POST['id']">
+    <input type="hidden" name="pass" value="$_POST['pass']">
+    <input type="hidden" name="pass_confirm" value="$_POST['confirm']">
+
 </form>
 
 </body>
