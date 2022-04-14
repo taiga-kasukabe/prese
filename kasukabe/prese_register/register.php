@@ -29,14 +29,13 @@ $stmt->bindValue(':id', $id);
 $stmt->bindValue(':password', $password);
 $stmt->bindValue(':password_confirm', $password_confirm);
 $stmt->execute();
-// mail送信
-mail($mail, $subject, $message, $headers);
-$err = "メール送信完了";
+
+// メール送信
+include("./send_mail.php");
 ?>
 
 <h1>登録しました</h1>
 <p>登録ID名：<?php echo $id;?></p>
 <p>登録完了しました．<br>先ほど登録完了メールを送りました．<br>ご確認ください</p>
 <p>こちらのリンクからログインしてください</p>
-<p><?php echo $err;?></p>
 <a href="./login_form.php">ログインページへ</a>
