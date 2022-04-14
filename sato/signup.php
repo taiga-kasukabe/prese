@@ -44,12 +44,12 @@
 
     <div>
         <label>学部（研究科）</label>
-        <input type="text" name="depertment1" required>
+        <input type="text" name="department1" required>
     </div>
 
     <div>
         <label>学科（専攻）</label>
-        <input type="text" name="depertment2" required>
+        <input type="text" name="department2" required>
     </div>
 
     <div>
@@ -65,12 +65,12 @@
 
     <div>
         <label>パスワード</label>
-        <input type="password" name="pass" required>
+        <input type="password" name="password" required>
     </div>
 
     <div>
         <label>パスワード（再入力）</label>
-        <input type="password" name="pass_confirm" required>
+        <input type="password" name="password_confirm" required>
     </div>
 
     <input type="submit" value="確認">

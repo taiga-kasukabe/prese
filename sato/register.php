@@ -10,12 +10,12 @@ include("./conf/variable.php");
 //データベース情報
 //あとで分ける
 $dsn = "mysql:host=localhost; dbname=presedb; charset=utf8;";
-$username = "root";
+$username1 = "root";
 $password = "";
 
 //データベース接続
 try{
-    $dbh = new PDO($dsn, $username, $password);
+    $dbh = new PDO($dsn, $username1, $password);
 } catch (PDOException $e) {
     $msg = $e -> getMessage();
 }
@@ -33,8 +33,7 @@ if(isset($member['mail'])){
     $link = '<a href="signup.php">戻る</a>';
 } else {
 
-    $sql = "INSERT INTO users_tabel(username, username_kana, mail, mail_confirm, tel, school, depertment1, depertment2, student_year, id, pass, pass_confirm)
-     VALUES (:username, :username_kana, :mail, :mail_confirm, :tel, :school, :depertment1, :depertment2, :student_year, :id, :pass, :pass_confirm)";
+    $sql = "INSERT INTO users_table(username, username_kana, mail, mail_confirm, tel, school, department1, department2, student_year, id, password, password_confirm) VALUES (:username, :username_kana, :mail, :mail_confirm, :tel, :school, :department1, :department2, :student_year, :id, :password, :password_confirm)";
     $stmt = $dbh -> prepare($sql);
     $stmt -> bindValue(':username', $username);
     $stmt -> bindValue(':username_kana', $username_kana);
@@ -42,12 +41,12 @@ if(isset($member['mail'])){
     $stmt -> bindValue(':mail_confirm', $mail_confirm);
     $stmt -> bindValue(':tel', $tel);
     $stmt -> bindValue(':school', $school);
-    $stmt -> bindValue(':depertment1', $depertment1);
-    $stmt -> bindValue(':depertment2', $depertment2);
+    $stmt -> bindValue(':department1', $department1);
+    $stmt -> bindValue(':department2', $department2);
     $stmt -> bindValue(':student_year', $student_year);
     $stmt -> bindValue(':id', $id);
-    $stmt -> bindValue(':pass', $pass);
-    $stmt -> bindValue(':pass_confirm', $pass_confirm);
+    $stmt -> bindValue(':password', $password);
+    $stmt -> bindValue(':password_confirm', $password_confirm);
     $stmt -> execute();
 
     $msg = '会員登録が完了しました。';

@@ -1,3 +1,9 @@
+<?php
+//変数定義
+//各種入力情報，正規表現，エラーメッセージ配列
+include("./conf/variable.php");
+?>
+
 <!DOCTYPE html> 
 <html lang="ja"> 
 
@@ -45,12 +51,12 @@
 
     <div>
         <label>学部（研究科）</label>
-        <?php echo $_POST['depertment1']; ?><br>
+        <?php echo $_POST['department1']; ?><br>
     </div>
 
     <div>
         <label>学科（専攻）</label>
-        <?php echo $_POST['depertment2']; ?><br>
+        <?php echo $_POST['department2']; ?><br>
     </div>
 
     <div>
@@ -66,29 +72,30 @@
 
     <div>
         <label>パスワード</label>
-        <?php echo $_POST['pass']; ?><br>
+        <?php echo $_POST['password']; ?><br>
     </div>
 
     <div>
         <label>パスワード（再入力）</label>
-        <?php echo $_POST['pass_confirm']; ?><br>
+        <?php echo $_POST['password_confirm']; ?><br>
     </div>
 
     <input type="submit" value="登録">
     <p><a href="signup.php">修正する</a></p>
 
-    <input type="hidden" name="username" value="$_POST['username']">
-    <input type="hidden" name="username_kana" value="$_POST['username_kana']">
-    <input type="hidden" name="mail" value="$_POST['mail']">
-    <input type="hidden" name="mail_confirm" value="$_POST['mail_confirm']">
-    <input type="hidden" name="tel" value="$_POST['tel']">
-    <input type="hidden" name="school" value="$_POST['school']">
-    <input type="hidden" name="depertment1" value="$_POST['depertment1']">
-    <input type="hidden" name="depertment2" value="$_POST['depertment2']">
-    <input type="hidden" name="student_year" value="$_POST['student_year']">
-    <input type="hidden" name="id" value="$_POST['id']">
-    <input type="hidden" name="pass" value="$_POST['pass']">
-    <input type="hidden" name="pass_confirm" value="$_POST['confirm']">
+    <!-- 受け渡し方法，hiddenとcookieとsessionどれがいいか -->
+    <input type="hidden" name="username" value="<?php echo $username ?>">
+    <input type="hidden" name="username_kana" value="<?php echo $username_kana ?>">
+    <input type="hidden" name="mail" value="<?php echo $mail ?>">
+    <input type="hidden" name="mail_confirm" value="<?php echo $mail_confirm ?>">
+    <input type="hidden" name="tel" value="<?php echo $tel ?>">
+    <input type="hidden" name="school" value="<?php echo $school ?>">
+    <input type="hidden" name="department1" value="<?php echo $department1 ?>">
+    <input type="hidden" name="department2" value="<?php echo $department2 ?>">
+    <input type="hidden" name="student_year" value="<?php echo $student_year ?>">
+    <input type="hidden" name="id" value="<?php echo $id ?>">
+    <input type="hidden" name="password" value="<?php echo $password ?>">
+    <input type="hidden" name="password_confirm" value="<?php echo $password_confirm ?>">
 
 </form>
 
