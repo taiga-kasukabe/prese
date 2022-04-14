@@ -34,7 +34,7 @@ if(!empty($_POST)){
     }
 
     // エラーメッセージが空の時（バリデーションチェックが問題なかった時）以下の処理を行う
-    if(!isset($err_msg)){
+    if(isset($err_msg)){
 
           //マイページへ遷移
           //URLの書き方！！
@@ -63,7 +63,7 @@ if(!empty($_POST)){
     <!-- エラーメッセージを出力するPHPをグループ化しerr_msgという識別名を付ける -->
     <div class="err_msg"> 
         <?php 
-            if(isset($err_msg)){
+            if(!isset($err_msg)){
                 foreach($err_msg as $value){
                     echo $value;
                     echo "\n";
