@@ -83,7 +83,7 @@ include("./conf/variable.php");
     <input type="submit" value="登録">
     <p><a href="signup.php">修正する</a></p>
 
-    <!-- 受け渡し方法，hiddenとcookieとsessionどれがいいか -->
+    <!-- 受け渡し方法検討する．hiddenとcookieとsessionどれがいいか -->
     <input type="hidden" name="username" value="<?php echo $username ?>">
     <input type="hidden" name="username_kana" value="<?php echo $username_kana ?>">
     <input type="hidden" name="mail" value="<?php echo $mail ?>">
