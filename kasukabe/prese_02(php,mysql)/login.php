@@ -22,7 +22,7 @@ $stmt->bindValue(':mail', $mail);
 $stmt->execute();
 $member = $stmt->fetch();
 // if password or mail is mismatch
-if (!isset($member['mail']) or !password_verify($_POST['pass'], $member['pass'])) {
+if (!isset($member['mail']) || !password_verify($_POST['pass'], $member['pass'])) {
     $msg = 'メールアドレスもしくはパスワードが間違っています。';
     $link = '<a href="./login_form.php" class="err_msg">戻る</a>';
 } else if (password_verify($_POST['pass'], $member['pass'])) {

@@ -15,6 +15,10 @@ try {
     $err_msg['db_error'] = $e->getMessage();
 }
 
+// username_kanaがカナのみか
+if(!preg_match("/^[ァ-ヾ]+$/u", $username_kana)){
+    $err_msg['username_kana'] = '姓名(カナ)にはカタカナを入力してください';
+}
 
 // Email正規表現
 if (!preg_match($mail_pattern, $mail)) {
@@ -60,13 +64,7 @@ if (strlen($password) < 8 || !preg_match("/^[a-zA-Z0-9]+$/", $password)) {
     $err_msg['pass_length'] = '8文字以上の半角英数字を入力してください';
 }
 
+// SESSIONにエラーメッセージ(配列)を代入して，register_form.phpに引き継ぐ
+$_SESSION = $_SESSION + $err_msg;
+
 ?>
-
-<!--メッセージの出力-->
-<div class="err_msg">
-    <?php 
-    foreach($err_msg)
-    echo $msg; ?>
-</div>
-
-<?php echo $link; ?>
