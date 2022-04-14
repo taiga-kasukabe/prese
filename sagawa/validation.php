@@ -69,6 +69,9 @@ if ($_POST['password'] != $_POST['password_confirm']){
     $err_msg['pass_confirm'] = 'パスワード(確認)が一致しません';
 }
 
-
+//session情報の保存
+//errの持ち越し
+$_SESSION['err'] = array();
+$_SESSION['err'] = $_SESSION['err'] + $err_msg;
 
 ?>
