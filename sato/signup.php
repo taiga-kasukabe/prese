@@ -1,16 +1,44 @@
 <?php
 
-// POST送信が～じゃなかったとき（送信があったとき）以下の処理を実行する
+// POST送信が空じゃなかったとき（送信があったとき）以下の処理を実行する
 if(!empty($_POST)){
-    
+
+    //データベース情報
+    //あとで分ける
+    $dsn = "mysql:host=localhost; dbname=presedb; charset=utf8;";
+    $username1 = "root";
+    $password = "";
+
+    //データベース接続
+    try{
+        $dbh = new PDO($dsn, $username1, $password);
+    } catch (PDOException $e) {
+        $msg = $e -> getMessage();
+    }
+        
     // 変数定義
     //各種入力情報，正規表現，エラーメッセージ配列
     include("./conf/variable.php");
 
     // バリデーションチェックを行う
+    // username_kanaがカナのみか
+    if(!preg_match("/^[ァ-ヾ]+$/u", $username_kana)){
+        $err_msg['username_kana'] = '姓名(カナ)にはカタカナを入力してください';
+    }
+
     // Email正規表現
-    if (!preg_match($mail_pattern, $mail)) {
+    if(!filter_var($mail, FILTER_VALIDATE_EMAIL)){
         $err_msg['mail_expression'] = '正しいメールアドレスを入力してください';
+    }
+
+    // DBにEmailが重複していないか確認
+    $sql_mail = "SELECT * FROM users_table WHERE mail = :mail";
+    $stmt = $dbh->prepare($sql_mail); // spl文を準備
+    $stmt->bindValue(':mail', $mail); // :mailに$mailを代入
+    $stmt->execute(); // sql文実行
+    $member = $stmt->fetch(); // sql文の結果をfetch
+    if (!empty($member)) {
+        $err_msg['mail_duplicate'] = 'このメールアドレスは既に登録されています';
     }
 
     // Email(再)が一致するか
@@ -18,23 +46,46 @@ if(!empty($_POST)){
         $err_msg['mail_confirm'] = 'メールアドレス(再入力)が一致しません';
     }
 
-    // telが0から始まり10or11文字か
-    if (!preg_match($tel_pattern, $tel) && (strlen($tel) != 10 || strlen($tel) != 11)) {
+    // telバリデーション
+    if (!preg_match($tel_pattern, $tel)) {
         $err_msg['tel_confirm'] = '正しい電話番号を入力してください';
     }
 
-    // パスワードは6文字以上255文字以内か
-    if(strlen($password) > 255 || strlen($password) < 5){
-        $err_msg['password'] = '6文字以上255文字以内で入力してください';
+    // tel重複確認
+    $sql_tel = "SELECT * FROM users_table WHERE tel = :tel";
+    $stmt = $dbh->prepare($sql_tel);
+    $stmt->bindValue(':tel', $tel);
+    $stmt->execute();
+    $member = $stmt->fetch();
+    if (!empty($member)){
+        $err_msg['tel_duplicate'] = 'この電話番号は既に登録されています';
     }
 
-    // パスワードの文字数を確認
-    if (strlen($password) < 8 || !preg_match("/^[a-zA-Z0-9]+$/", $password)) {
-        $err_msg['pass_length'] = '8文字以上の半角英数字を入力してください';
+    // DBに接続
+    $sql_id = "SELECT * FROM users_table WHERE id = :id";
+    $stmt = $dbh->prepare($sql_id);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    $member = $stmt->fetch();
+    // idが4文字以上半角英数字か
+    if (!preg_match("/^[a-zA-Z0-9]+$/", $id) || strlen($id) < 4) {
+        $err_msg['id_confirm'] = 'idは4文字以上の半角英数字を入力してください';
+    } elseif (!empty($member)) {
+        $err_msg['id_duplicate'] = 'このIDは既に登録されています';
+    }
+
+    // パスワード文字数正規表現
+    if (strlen($_POST['password']) < 8 || !preg_match("/^[a-zA-Z0-9]+$/", $_POST['password'])) {
+        $err_msg['pass_length'] = 'パスワードは8文字以上の半角英数字を入力してください';
+    }
+
+    // パスワード(確認)が一致するか
+    if ($_POST['password'] != $_POST['password_confirm']){
+        $err_msg['pass_confirm'] = 'パスワード(確認)が一致しません';
     }
 
     // エラーメッセージが空の時（バリデーションチェックが問題なかった時）以下の処理を行う
-    if(!isset($err_msg)){
+    if(empty($err_msg)){
 
           //マイページへ遷移
           //URLの書き方！！
@@ -65,7 +116,7 @@ if(!empty($_POST)){
         <?php 
             foreach($err_msg as $value){
                 echo $value;
-                echo "\n";
+                echo "<br>";
             }
         ?> 
     </div>

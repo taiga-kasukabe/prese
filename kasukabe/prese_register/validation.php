@@ -26,13 +26,12 @@ if(!filter_var($mail, FILTER_VALIDATE_EMAIL)){
     $err_msg['mail_expression'] = '正しいメールアドレスを入力してください';
 }
 
-// DBに接続
+// DBにEmailが重複していないか確認
 $sql_mail = "SELECT * FROM users_table WHERE mail = :mail";
 $stmt = $dbh->prepare($sql_mail); // spl文を準備
 $stmt->bindValue(':mail', $mail); // :mailに$mailを代入
 $stmt->execute(); // sql文実行
 $member = $stmt->fetch(); // sql文の結果をfetch
-// DBにEmailが重複していないか確認
 if (!empty($member)) {
     $err_msg['mail_duplicate'] = 'このメールアドレスは既に登録されています';
 }
@@ -45,6 +44,16 @@ if ($mail != $mail_confirm) {
 // telバリデーション
 if (!preg_match($tel_pattern, $tel)) {
     $err_msg['tel_confirm'] = '正しい電話番号を入力してください';
+}
+
+// tel重複確認
+$sql_tel = "SELECT * FROM users_table WHERE tel = :tel";
+$stmt = $dbh->prepare($sql_tel);
+$stmt->bindValue(':tel', $tel);
+$stmt->execute();
+$member = $stmt->fetch();
+if (!empty($member)){
+    $err_msg['tel_duplicate'] = 'この電話番号は既に登録されています';
 }
 
 // DBに接続
@@ -85,10 +94,14 @@ $_SESSION['user']['department1'] = $department1;
 $_SESSION['user']['department2'] = $department2;
 $_SESSION['user']['student_year'] = $student_year;
 $_SESSION['user']['id'] = $id;
+$_SESSION['user']['password'] = $password;
+$_SESSION['user']['password_confirm'] = $password_confirm;
+$_SESSION['user']['password_row'] = $_POST['password'];
+$_SESSION['user']['password_confirm_row'] = $_POST["password_confirm"];
 
-if(empty($_SESSION)){
-    // 新規登録登録実行
-    include("./register.php");
+if(empty($_SESSION['err'])){
+    // 確認ページへ
+    header('Location: ./register_confirm.php');
 } else {
     // 新規登録やり直し
     header('Location: ./register_form.php');
