@@ -71,7 +71,7 @@
     </div>
     <div>
         <label>パスワード：</label>
-        <input type="password" name="password"  required>
+        <input type="password" name="password" required>
     </div>
     <div>
         <label>パスワード（確認）：</label>

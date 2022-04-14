@@ -1,24 +1,42 @@
 <?php
-// check mail address
-$sql = "SELECT * FROM users WHERE mail = :mail";
-$stmt = $dbh->prepare($sql); // 'stmt' = statement, 'prepare' is just prepare sql
-$stmt->bindValue(':mail', $mail); //substitute $mail for :mail
-$stmt->execute(); //execute the sql sentence
-$member = $stmt->fetch(); //fetch results about sql sentence
-if (!isset($member['mail'])) {
-    // if not exist, insert(registration)
-    // "isset()" is checking NULL or not
-    // var_dump($member['mail']);
-    $sql = "INSERT INTO users (username, mail, pass) VALUES (:name, :mail, :pass)";
-    $stmt = $dbh->prepare($sql);
-    $stmt->bindValue(':name', $name);
-    $stmt->bindValue(':mail', $mail);
-    $stmt->bindValue(':pass', $pass);
-    $stmt->execute();
-    $msg = '会員登録が完了しました';
-    $link = '<a href="./login_form.php">ログインページ</a>';
-} else if ($member['mail'] === $mail) {
-    $msg = '同じメールアドレスが存在します．';
-    $link = '<a href="./index.php" class="err_msg">戻る</a>';
+session_start();
+
+// 読み込み
+include("./conf/variable_session.php");
+include("./conf/db_conf.php");
+include("./conf/mail_conf.php");
+
+// DBに接続
+try {
+    $dbh = new PDO($dsn, $db_username, $db_password);
+} catch (PDOException $e) {
+    // エラーログ出力
+    $err_msg['db_error'] = $e->getMessage();
 }
+
+$sql = "INSERT INTO users_table (id, username, username_kana, mail, mail_confirm, tel, school, department1, department2, student_year, password, password_confirm) VALUES (:id, :username, :username_kana, :mail, :mail_confirm, :tel, :school, :department1, :department2, :student_year, :password, :password_confirm)";
+$stmt = $dbh->prepare($sql);
+$stmt->bindValue(':username', $username);
+$stmt->bindValue(':username_kana', $username_kana);
+$stmt->bindValue(':mail', $mail);
+$stmt->bindValue(':mail_confirm', $mail_confirm);
+$stmt->bindValue(':tel', $tel);
+$stmt->bindValue(':school', $school);
+$stmt->bindValue(':department1', $department1);
+$stmt->bindValue(':department2', $department2);
+$stmt->bindValue(':student_year', $student_year);
+$stmt->bindValue(':id', $id);
+$stmt->bindValue(':password', $password);
+$stmt->bindValue(':password_confirm', $password_confirm);
+$stmt->execute();
+// mail送信
+mail($mail, $subject, $message, $headers);
+$err = "メール送信完了";
 ?>
+
+<h1>登録しました</h1>
+<p>登録ID名：<?php echo $id;?></p>
+<p>登録完了しました．<br>先ほど登録完了メールを送りました．<br>ご確認ください</p>
+<p>こちらのリンクからログインしてください</p>
+<p><?php echo $err;?></p>
+<a href="./login_form.php">ログインページへ</a>
