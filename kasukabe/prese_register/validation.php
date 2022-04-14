@@ -33,7 +33,6 @@ $stmt->bindValue(':mail', $mail); // :mailに$mailを代入
 $stmt->execute(); // sql文実行
 $member = $stmt->fetch(); // sql文の結果をfetch
 // DBにEmailが重複していないか確認
-// !↓↓↓ここがおかしい
 if (!empty($member)) {
     $err_msg['mail_duplicate'] = 'このメールアドレスは既に登録されています';
 }
@@ -43,8 +42,7 @@ if ($mail != $mail_confirm) {
     $err_msg['mail_confirm'] = 'メールアドレス(再入力)が一致しません';
 }
 
-// telが0から始まり10or11文字か
-// !ここがおかしい
+// telバリデーション
 if (!preg_match($tel_pattern, $tel)) {
     $err_msg['tel_confirm'] = '正しい電話番号を入力してください';
 }
@@ -62,7 +60,7 @@ if (!preg_match("/^[a-zA-Z0-9]+$/", $id) || strlen($id) < 4) {
     $err_msg['id_duplicate'] = 'このIDは既に登録されています';
 }
 
-// パスワードの文字数を確認
+// パスワード文字数正規表現
 if (strlen($_POST['password']) < 8 || !preg_match("/^[a-zA-Z0-9]+$/", $_POST['password'])) {
     $err_msg['pass_length'] = 'パスワードは8文字以上の半角英数字を入力してください';
 }
@@ -89,11 +87,8 @@ $_SESSION['user']['student_year'] = $student_year;
 $_SESSION['user']['id'] = $id;
 
 if(empty($_SESSION)){
-    // mypageにIDを引き継ぐ
-    $_SESSION['user']['id'] = $id;
-    // mypageへ
-    header('Location: ./mypage.php');
-    exit;
+    // 新規登録登録実行
+    include("./register.php");
 } else {
     // 新規登録やり直し
     header('Location: ./register_form.php');
