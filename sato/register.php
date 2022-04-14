@@ -9,7 +9,7 @@ include("./conf/variable.php");
 
 //データベース情報
 //あとで分ける
-$dsn = "mysql:host=localhost; dbname=user_table; charset=utf8;";
+$dsn = "mysql:host=localhost; dbname=presedb; charset=utf8;";
 $username = "root";
 $password = "";
 
