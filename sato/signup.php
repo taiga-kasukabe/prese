@@ -84,10 +84,30 @@ if(!empty($_POST)){
         $err_msg['pass_confirm'] = 'パスワード(確認)が一致しません';
     }
 
-    // エラーメッセージが空の時（バリデーションチェックが問題なかった時）以下の処理を行う
-    if(empty($err_msg)){
+    // SESSIONにerr_msgとuser情報を代入して，signup_conform.phpに引き継ぐ
+    $_SESSION['err'] = array();
+    $_SESSION['err'] = $_SESSION['err'] + $err_msg;
 
-          //マイページへ遷移
+    $_SESSION['user'] = array();
+    $_SESSION['user']['username'] = $username;
+    $_SESSION['user']['username_kana'] = $username_kana;
+    $_SESSION['user']['mail'] = $mail;
+    $_SESSION['user']['mail_confirm'] = $mail_confirm;
+    $_SESSION['user']['tel'] = $tel;
+    $_SESSION['user']['school'] = $school;
+    $_SESSION['user']['department1'] = $department1;
+    $_SESSION['user']['department2'] = $department2;
+    $_SESSION['user']['student_year'] = $student_year;
+    $_SESSION['user']['id'] = $id;
+    $_SESSION['user']['password'] = $password;
+    $_SESSION['user']['password_confirm'] = $password_confirm;
+    $_SESSION['user']['password_row'] = $_POST['password'];
+    $_SESSION['user']['password_confirm_row'] = $_POST["password_confirm"];
+
+    // エラーメッセージが空の時（バリデーションチェックが問題なかった時）以下の処理を行う
+    if(empty($_SESSION['err'])){
+
+          //確認ページへ遷移
           //URLの書き方！！
           header('Location:http://localhost/pre/prese/sato/signup_confirm.php');
 
