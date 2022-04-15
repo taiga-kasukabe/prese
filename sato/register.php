@@ -5,17 +5,14 @@ session_start();
 
 // 変数定義
 //各種入力情報，正規表現，エラーメッセージ配列
-include("./conf/variable.php");
+include("./conf/variable_session.php");
 
 //データベース情報
-//あとで分ける
-$dsn = "mysql:host=localhost; dbname=presedb; charset=utf8;";
-$username1 = "root";
-$password = "";
+include('./conf/db_conf.php');
 
 //データベース接続
 try{
-    $dbh = new PDO($dsn, $username1, $password);
+    $dbh = new PDO($dsn, $db_username, $db_password);
 } catch (PDOException $e) {
     $msg = $e -> getMessage();
 }
