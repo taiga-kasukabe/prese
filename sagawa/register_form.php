@@ -27,7 +27,7 @@
     </div>
     <div>
         <label>電話：</label>
-        <input type="tel" name="tel" value="<?php if(!empty($tel)){echo $tel;} ?>" required>
+        <input type="tel" name="tel" value="<?php if(!empty($tel)){echo $tel;} ?>" required>＊ハイフンを含めず１０文字or１１文字
     </div>
     <div>
         <label>学校名：</label>
@@ -47,15 +47,15 @@
     </div>
     <div>
         <label>ID：</label>
-        <input type="text" name="id" value="<?php if(!empty($id)){echo $id;} ?>" required>
+        <input type="text" name="id" value="<?php if(!empty($id)){echo $id;} ?>" required>＊４文字以上の半角英数字
     </div>
     <div>
         <label>パスワード：</label>
-        <input type="password" name="password"  required>
+        <input type="password" name="password"  required>＊８文字以上の半角英数字
     </div>
     <div>
         <label>パスワード（再入力）：</label>
-        <input type="password" name="password_confirm" required>
+        <input type="password" name="password_confirm" required>＊８文字以上の半角英数字
     </div>
 
     <!--確認-->
