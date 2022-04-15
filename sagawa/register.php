@@ -48,9 +48,8 @@ if(isset($member['mail'])){
   $stmt -> bindValue(':password', $password);
   $stmt -> bindValue(':password_confirm', $password_confirm);
   $stmt -> execute();
-  $msg = '登録完了';
-  $link = '<a href="top.php">戻る</a>';
 }
 ?>
-<h1><?php echo $msg; ?></h1>
-<?php echo $link; ?>
+
+<h1>登録しました</h1>
+<p>登録ID名：<?php echo $id;?></p>
