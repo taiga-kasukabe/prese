@@ -86,12 +86,12 @@ session_destroy();
 
     <div>
         <label>パスワード</label>
-        <input type="password" name="password" value="<?php if(!empty($password)){echo $password;} ?>" required>
+        <input type="password" name="password" value="" required>
     </div>
 
     <div>
         <label>パスワード（再入力）</label>
-        <input type="password" name="password_confirm" value="<?php if(!empty($password_confirm)){echo $password_confirm;} ?>" required>
+        <input type="password" name="password_confirm" value="" required>
     </div>
 
     <input type="submit" value="確認">
