@@ -2,7 +2,7 @@
 session_start();
 $_SESSION = array();
 //DB接続用
-require_once('config.php');
+include("./conf/config.php");
 
 //変数定義
 include("./conf/variable.php");
