@@ -5,7 +5,7 @@ session_start();
 
 // 変数定義
 //各種入力情報，正規表現，エラーメッセージ配列
-include("./conf/variable.php");
+include("./conf/variable_session.php");
 
 //データベース情報
 //あとで分ける
