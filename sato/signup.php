@@ -4,7 +4,7 @@
 if(!empty($_POST)){
 
     //データベース情報
-    //あとで分ける
+    //あとでわける
     $dsn = "mysql:host=localhost; dbname=presedb; charset=utf8;";
     $username1 = "root";
     $password = "";
