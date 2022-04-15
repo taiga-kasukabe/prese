@@ -8,7 +8,7 @@
 
 <body>
 <h1>新規会員登録</h1>
-<form action="register.php" method="post" class="form_log"> 
+<form action="validation.php" method="post" class="form_log"> 
     <div>
         <label>姓名：</label>
         <input type="text" name="username" value="<?php if (!empty($username)) {echo $username;} ?>" required>
@@ -60,7 +60,7 @@
 
     <!--確認-->
     <input type="submit" value="確認">
-    <p>既に登録済みの方は<a href="./login.php">こちら</a></p>
+    <p>既に登録済みの方は<a href="./top.php">こちら</a></p>
     <p><a href="./terms/tos.php">利用規約</a></p>
     <p><a href="./terms/privacypolicy.php">プライバシー規約</a></p>
 </form>    
