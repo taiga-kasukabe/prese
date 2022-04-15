@@ -3,14 +3,11 @@
 session_start();
 
     //データベース情報
-    //あとでわける
-    $dsn = "mysql:host=localhost; dbname=presedb; charset=utf8;";
-    $username1 = "root";
-    $password = "";
+    include('./conf/db_conf.php');
 
     //データベース接続
     try{
-        $dbh = new PDO($dsn, $username1, $password);
+        $dbh = new PDO($dsn, $db_username, $db_password);
     } catch (PDOException $e) {
         $msg = $e -> getMessage();
     }

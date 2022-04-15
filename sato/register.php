@@ -8,10 +8,7 @@ session_start();
 include("./conf/variable_session.php");
 
 //データベース情報
-//あとで分ける
-$dsn = "mysql:host=localhost; dbname=presedb; charset=utf8;";
-$username1 = "root";
-$password = "";
+include('./conf/db_conf.php');
 
 //データベース接続
 try{
