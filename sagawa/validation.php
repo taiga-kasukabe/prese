@@ -74,4 +74,29 @@ if ($_POST['password'] != $_POST['password_confirm']){
 $_SESSION['err'] = array();
 $_SESSION['err'] = $_SESSION['err'] + $err_msg;
 
+$_SESSION['user'] = array();
+$_SESSION['user']['username'] = $username;
+$_SESSION['user']['username_kana'] = $username_kana;
+$_SESSION['user']['mail'] = $mail;
+$_SESSION['user']['mail_confirm'] = $mail_confirm;
+$_SESSION['user']['tel'] = $tel;
+$_SESSION['user']['school'] = $school;
+$_SESSION['user']['department1'] = $department1;
+$_SESSION['user']['department2'] = $department2;
+$_SESSION['user']['student_year'] = $student_year;
+$_SESSION['user']['id'] = $id;
+$_SESSION['user']['password'] = $password;
+$_SESSION['user']['password_confirm'] = $password_confirm;
+$_SESSION['user']['password_row'] = $_POST['password'];
+$_SESSION['user']['password_confirm_row'] = $_POST["password_confirm"];
+
+//条件により確認or再登録
+if(empty($_SESSION['err'])){
+    // 確認ページへ
+    header('Location: ./register_conf.php');
+} else {
+    // 新規登録やり直し
+    header('Location: ./register_form.php');
+}
+
 ?>
