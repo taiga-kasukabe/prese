@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 // POST送信が空じゃなかったとき（送信があったとき）以下の処理を実行する
 if(!empty($_POST)){
 
