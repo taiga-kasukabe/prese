@@ -2,10 +2,6 @@
 
 session_start();
 
-//変数定義
-//各種入力情報，正規表現，エラーメッセージ配列
-include("./conf/variable.php");
-
 $username = $_SESSION['user']['username'];
 $username_kana = $_SESSION['user']['username_kana'];
 $mail = $_SESSION['user']['mail'];
