@@ -109,7 +109,7 @@ if(!empty($_POST)){
 
           //確認ページへ遷移
           //URLの書き方！！
-          header('Location:http://localhost/pre/prese/sato/signup_confirm.php');
+          header('Location:http://localhost/prese/sato/signup_confirm.php');
 
     }
 }
