@@ -106,6 +106,8 @@ if(!empty($_POST)){
     $_SESSION['user']['password_row'] = $_POST['password'];
     $_SESSION['user']['password_confirm_row'] = $_POST["password_confirm"];
 
+    include("./conf/variable_session.php");
+
     // エラーメッセージが空の時（バリデーションチェックが問題なかった時）以下の処理を行う
     if(empty($_SESSION['err'])){
 
@@ -136,72 +138,73 @@ if(!empty($_POST)){
     <!-- エラーメッセージを出力するPHPをグループ化しerr_msgという識別名を付ける -->
     <div class="err_msg"> 
         <?php 
-            foreach($err_msg as $value){
-                echo $value;
-                echo "<br>";
+            if (!empty($_SESSION['err'])) {
+                foreach ($_SESSION['err'] as $value) {
+                    echo $value . "<br>"; //hタグ内の改行はbr
+                }
             }
         ?> 
     </div>
 
     <div>
         <label>姓名</label>
-        <input type="text" name="username" required>
+        <input type="text" name="username" value="<?php if(!empty($username)){echo $username;} ?>" required>
     </div>
 
     <div>
         <label>姓名（カナ）</label>
-        <input type="text" name="username_kana" required>
+        <input type="text" name="username_kana" value="<?php if(!empty($username_kana)){echo $username_kana;} ?>" required>
     </div>
 
     <div>
         <label>メールアドレス</label>
-        <input type="text" name="mail" required>
+        <input type="text" name="mail" value="<?php if(!empty($mail)){echo $mail;} ?>" required>
     </div>
 
     <div>
         <label>メールアドレス（再入力）</label>
-        <input type="text" name="mail_confirm" required>
+        <input type="text" name="mail_confirm" value="<?php if(!empty($mail_confirm)){echo $mail_confirm;} ?>" required>
     </div>
 
     <div>
         <label>電話番号</label>
-        <input type="text" name="tel" required>
+        <input type="text" name="tel" value="<?php if(!empty($tel)){echo $tel;} ?>" required>
     </div>
 
     <div>
         <label>学校名</label>
-        <input type="text" name="school" required>
+        <input type="text" name="school" value="<?php if(!empty($school)){echo $school;} ?>" required>
     </div>
 
     <div>
         <label>学部（研究科）</label>
-        <input type="text" name="department1" required>
+        <input type="text" name="department1" value="<?php if(!empty($department1)){echo $department1;} ?>" required>
     </div>
 
     <div>
         <label>学科（専攻）</label>
-        <input type="text" name="department2" required>
+        <input type="text" name="department2" value="<?php if(!empty($department2)){echo $department2;} ?>" required>
     </div>
 
     <div>
         <!-- プルダウン？が良さそう。選ぶやつ。 -->
         <label>学年</label>
-        <input type="text" name="student_year" required>
+        <input type="text" name="student_year" value="<?php if(!empty($student_year)){echo $student_year;} ?>" required>
     </div>
 
     <div>
         <label>ID</label>
-        <input type="text" name="id" required>
+        <input type="text" name="id" value="<?php if(!empty($id)){echo $id;} ?>" required>
     </div>
 
     <div>
         <label>パスワード</label>
-        <input type="password" name="password" required>
+        <input type="password" name="password" value="<?php if(!empty($password)){echo $password;} ?>" required>
     </div>
 
     <div>
         <label>パスワード（再入力）</label>
-        <input type="password" name="password_confirm" required>
+        <input type="password" name="password_confirm" value="<?php if(!empty($password_confirm)){echo $password_confirm;} ?>" required>
     </div>
 
     <input type="submit" value="確認">
