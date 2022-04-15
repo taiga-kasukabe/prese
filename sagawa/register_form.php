@@ -58,10 +58,11 @@
         <input type="password" name="password_confirm" required>
     </div>
 
+    <!--確認-->
     <input type="submit" value="確認">
     <p>既に登録済みの方は<a href="./login.php">こちら</a></p>
-    <p><a href="./terms/terms_service.php">利用規約</a></p>
-    <p><a href="./terms/terms_privacy.php">プライバシー規約</a></p>
+    <p><a href="./terms/tos.php">利用規約</a></p>
+    <p><a href="./terms/privacypolicy.php">プライバシー規約</a></p>
 </form>    
 </body>
 </html>
