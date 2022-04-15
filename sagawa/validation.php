@@ -28,8 +28,8 @@ if(!filter_var($mail, FILTER_VALIDATE_EMAIL)){
 
 //メールアドレスの重複チェック
 //データベース内のメールアドレスを取得
-$sql = "SELECT * FROM users_table WHERE mail = :mail";
-$stmt = $dbh -> prepare($sql_mail);
+$sql_mail = "SELECT * FROM users_table WHERE mail = :mail";
+$stmt = $pdo -> prepare($sql_mail);
 $stmt -> bindValue(':mail', $mail);
 $stmt -> execute();
 $member = $stmt -> fetch();
@@ -49,9 +49,9 @@ if (!preg_match($tel_pattern, $tel)) {
 }
 
 //telの重複チェック
-$sql = "SELECT * FROM users_table WHERE tel = :tel";
-$stmt = $dbh -> prepare($sql_tel);
-$stmt -> bindValue(':mail', $tel);
+$sql_tel = "SELECT * FROM users_table WHERE tel = :tel";
+$stmt = $pdo -> prepare($sql_tel);
+$stmt -> bindValue(':tel', $tel);
 $stmt -> execute();
 $member = $stmt -> fetch();
 
