@@ -13,7 +13,7 @@
 
 <body>
 <h1>新規会員登録</h1>
-<form action="" method="POST">
+<form action="./validation.php" method="POST">
 
 <?php
 session_start();
