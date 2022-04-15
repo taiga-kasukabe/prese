@@ -32,17 +32,6 @@ session_destroy();
 
 }
 ?>
-    
-    <!-- エラーメッセージを出力するPHPをグループ化しerr_msgという識別名を付ける -->
-    <div class="err_msg"> 
-        <?php 
-            if (!empty($_SESSION['err'])) {
-                foreach ($_SESSION['err'] as $value) {
-                    echo $value . "<br>"; //hタグ内の改行はbr
-                }
-            }
-        ?> 
-    </div>
 
     <div>
         <label>姓名</label>
