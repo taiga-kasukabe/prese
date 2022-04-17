@@ -85,7 +85,20 @@ session_start();
     $_SESSION['err'] = $_SESSION['err'] + $err_msg;
 
     $_SESSION['user'] = array();
-    include("./conf/variable_session.php");
+    $_SESSION['user']['username'] = $username;
+    $_SESSION['user']['username_kana'] = $username_kana;
+    $_SESSION['user']['mail'] = $mail;
+    $_SESSION['user']['mail_confirm'] = $mail_confirm;
+    $_SESSION['user']['tel'] = $tel;
+    $_SESSION['user']['school'] = $school;
+    $_SESSION['user']['department1'] = $department1;
+    $_SESSION['user']['department2'] = $department2;
+    $_SESSION['user']['student_year'] = $student_year;
+    $_SESSION['user']['id'] = $id;
+    $_SESSION['user']['password'] = $password;
+    $_SESSION['user']['password_confirm'] = $password_confirm;
+    $_SESSION['user']['password_row'] = $_POST['password'];
+    $_SESSION['user']['password_confirm_row'] = $_POST["password_confirm"];
 
     // エラーメッセージが空の時（バリデーションチェックが問題なかった時）以下の処理を行う
     if(empty($_SESSION['err'])){
