@@ -12,4 +12,7 @@ $headers = "From:yu.sato.fortest@gmail.com";
 
 mb_send_mail($to, $subject, $message, $headers);
 
+//参考
+//https://miya-system-works.com/blog/detail/107
+
 ?>
