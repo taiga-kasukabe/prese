@@ -8,7 +8,7 @@
 
 <body>
 <h1>新規会員登録</h1>
-<form action="register.php" method="post" class="form_log"> 
+<form action="validation.php" method="post" class="form_log"> 
     <div>
         <label>姓名：</label>
         <input type="text" name="username" value="<?php if (!empty($username)) {echo $username;} ?>" required>
@@ -27,7 +27,7 @@
     </div>
     <div>
         <label>電話：</label>
-        <input type="tel" name="tel" value="<?php if(!empty($tel)){echo $tel;} ?>" required>
+        <input type="tel" name="tel" value="<?php if(!empty($tel)){echo $tel;} ?>" required>＊ハイフンを含めず１０文字or１１文字
     </div>
     <div>
         <label>学校名：</label>
@@ -47,21 +47,22 @@
     </div>
     <div>
         <label>ID：</label>
-        <input type="text" name="id" value="<?php if(!empty($id)){echo $id;} ?>" required>
+        <input type="text" name="id" value="<?php if(!empty($id)){echo $id;} ?>" required>＊４文字以上の半角英数字
     </div>
     <div>
         <label>パスワード：</label>
-        <input type="password" name="password"  required>
+        <input type="password" name="password"  required>＊８文字以上の半角英数字
     </div>
     <div>
         <label>パスワード（再入力）：</label>
-        <input type="password" name="password_confirm" required>
+        <input type="password" name="password_confirm" required>＊８文字以上の半角英数字
     </div>
 
+    <!--確認-->
     <input type="submit" value="確認">
-    <p>既に登録済みの方は<a href="./login.php">こちら</a></p>
-    <p><a href="./terms/terms_service.php">利用規約</a></p>
-    <p><a href="./terms/terms_privacy.php">プライバシー規約</a></p>
+    <p>既に登録済みの方は<a href="./top.php">こちら</a></p>
+    <p><a href="./terms/tos.php">利用規約</a></p>
+    <p><a href="./terms/privacypolicy.php">プライバシー規約</a></p>
 </form>    
 </body>
 </html>

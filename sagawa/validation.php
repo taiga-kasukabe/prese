@@ -2,7 +2,7 @@
 session_start();
 $_SESSION = array();
 //DB接続用
-require_once('config.php');
+include("./conf/config.php");
 
 //変数定義
 include("./conf/variable.php");
@@ -28,8 +28,8 @@ if(!filter_var($mail, FILTER_VALIDATE_EMAIL)){
 
 //メールアドレスの重複チェック
 //データベース内のメールアドレスを取得
-$sql = "SELECT * FROM users_table WHERE mail = :mail";
-$stmt = $dbh -> prepare($sql_mail);
+$sql_mail = "SELECT * FROM users_table WHERE mail = :mail";
+$stmt = $pdo -> prepare($sql_mail);
 $stmt -> bindValue(':mail', $mail);
 $stmt -> execute();
 $member = $stmt -> fetch();
@@ -49,9 +49,9 @@ if (!preg_match($tel_pattern, $tel)) {
 }
 
 //telの重複チェック
-$sql = "SELECT * FROM users_table WHERE tel = :tel";
-$stmt = $dbh -> prepare($sql_tel);
-$stmt -> bindValue(':mail', $tel);
+$sql_tel = "SELECT * FROM users_table WHERE tel = :tel";
+$stmt = $pdo -> prepare($sql_tel);
+$stmt -> bindValue(':tel', $tel);
 $stmt -> execute();
 $member = $stmt -> fetch();
 
@@ -73,5 +73,30 @@ if ($_POST['password'] != $_POST['password_confirm']){
 //errの持ち越し
 $_SESSION['err'] = array();
 $_SESSION['err'] = $_SESSION['err'] + $err_msg;
+
+$_SESSION['user'] = array();
+$_SESSION['user']['username'] = $username;
+$_SESSION['user']['username_kana'] = $username_kana;
+$_SESSION['user']['mail'] = $mail;
+$_SESSION['user']['mail_confirm'] = $mail_confirm;
+$_SESSION['user']['tel'] = $tel;
+$_SESSION['user']['school'] = $school;
+$_SESSION['user']['department1'] = $department1;
+$_SESSION['user']['department2'] = $department2;
+$_SESSION['user']['student_year'] = $student_year;
+$_SESSION['user']['id'] = $id;
+$_SESSION['user']['password'] = $password;
+$_SESSION['user']['password_confirm'] = $password_confirm;
+$_SESSION['user']['password_row'] = $_POST['password'];
+$_SESSION['user']['password_confirm_row'] = $_POST["password_confirm"];
+
+//条件により確認or再登録
+if(empty($_SESSION['err'])){
+    // 確認ページへ
+    header('Location: ./register_conf.php');
+} else {
+    // 新規登録やり直し
+    header('Location: ./register_form.php');
+}
 
 ?>
