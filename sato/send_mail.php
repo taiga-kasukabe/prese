@@ -27,7 +27,7 @@ $sendmail->SMTPSecure = 'tls';
 $sendmail->Port = 587;
 
 $sendmail->setFrom('yu.sato.fortest@gmail.com');
-$sendmail->addAddress('yu.sato.r6@dc.tohoku.ac.jp');
+$sendmail->addAddress($mail);
 
 $sendmail->Subject = mb_encode_mimeheader('【NTT東日本】登録完了');
 $sendmail->Body = mb_convert_encoding('登録が完了しました．', "JIS", "UTF-8");
