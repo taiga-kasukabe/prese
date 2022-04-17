@@ -45,6 +45,9 @@ if(isset($member['mail'])){
     $stmt -> bindValue(':password_confirm', $password_confirm);
     $stmt -> execute();
 
+    //メール送信
+    include("./send_mail.php");
+
     $msg = '会員登録が完了しました。';
     $link = '<a href="login_form.php">ログインページ</a>';
 }
