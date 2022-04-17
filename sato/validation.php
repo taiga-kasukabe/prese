@@ -63,6 +63,7 @@ session_start();
     $stmt->bindValue(':id', $id);
     $stmt->execute();
     $member = $stmt->fetch();
+    
     // idが4文字以上半角英数字か
     if (!preg_match("/^[a-zA-Z0-9]+$/", $id) || strlen($id) < 4) {
         $err_msg['id_confirm'] = 'idは4文字以上の半角英数字を入力してください';

@@ -19,7 +19,7 @@ include("./conf/variable_session.php");
 
 <body>
 <h1>登録情報確認</h1>
-<form action="register.php" method="POST">
+
     <div>
         <label for=""> 姓名：<?php echo $username; ?></label><br>
     </div>
@@ -62,8 +62,6 @@ include("./conf/variable_session.php");
 
     <p><a href="./register.php">登録</a></p>
     <p><a href="./signup.php">修正</a></p>
-
-</form>
 
 </body>
 

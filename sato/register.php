@@ -16,19 +16,6 @@ try{
     $msg = $e -> getMessage();
 }
 
-//メールアドレスの重複がないか確認
-//これもsignup.phpのバリデーションチェックと一緒の方がいい？？
-$sql = "SELECT * FROM users_table WHERE mail = :mail";
-$stmt = $dbh -> prepare($sql);
-$stmt -> bindValue(':mail', $mail);
-$stmt -> execute();
-$member = $stmt -> fetch();
-
-if(isset($member['mail'])){
-    $msg = '同じメールアドレスが存在します。';
-    $link = '<a href="signup.php">戻る</a>';
-} else {
-
     $sql = "INSERT INTO users_table(username, username_kana, mail, mail_confirm, tel, school, department1, department2, student_year, id, password, password_confirm) VALUES (:username, :username_kana, :mail, :mail_confirm, :tel, :school, :department1, :department2, :student_year, :id, :password, :password_confirm)";
     $stmt = $dbh -> prepare($sql);
     $stmt -> bindValue(':username', $username);
@@ -50,7 +37,7 @@ if(isset($member['mail'])){
 
     $msg = '会員登録が完了しました。';
     $link = '<a href="login_form.php">ログインページ</a>';
-}
+
 
 ?>
 
