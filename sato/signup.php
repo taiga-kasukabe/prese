@@ -98,7 +98,6 @@ session_destroy();
     <p><a href="./terms/privacypolicy.php">プライバシー規約</a></p>
 
     <input type="submit" value="確認">
-</form>
 </body>
 
 </html>
