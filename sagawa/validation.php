@@ -61,7 +61,7 @@ if (!empty($member)) {
 
 // DBに接続
 $sql_id = "SELECT * FROM users_table WHERE id = :id";
-$stmt = $dbh->prepare($sql_id);
+$stmt = $pdo->prepare($sql_id);
 $stmt->bindValue(':id', $id);
 $stmt->execute();
 $member = $stmt->fetch();
