@@ -23,12 +23,12 @@ try{
 $sendmail->isSMTP();
 $sendmail->Host = 'smtp.gmail.com';
 $sendmail->SMTPAuth = true;
-$sendmail->Username = 'yu.sato.fortest@gmail.com';
-$sendmail->Password = 'prese_ysato';
+$sendmail->Username = $user_name;
+$sendmail->Password = $user_pass;
 $sendmail->SMTPSecure = 'tls';
 $sendmail->Port = 587;
 
-$sendmail->setFrom('yu.sato.fortest@gmail.com');
+$sendmail->setFrom($user_name);
 $sendmail->addAddress($mail);
 
 $sendmail->Subject = mb_encode_mimeheader('【NTT東日本】登録完了');
