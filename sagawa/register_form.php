@@ -1,4 +1,5 @@
 <!--新規会員登録-->
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -8,6 +9,32 @@
 
 <body>
 <h1>新規会員登録</h1>
+<!-- エラーメッセージ出力 -->
+<h3>
+    <font color="#c7243a">
+        <?php
+        session_start();
+        if (!empty($_SESSION['err'])) {
+            foreach ($_SESSION['err'] as $value) {
+                echo $value . "<br>"; //hタグ内の改行はbr
+            }
+        }
+        if (!empty($_SESSION['user'])) {
+            $username = $_SESSION['user']['username'];
+            $username_kana = $_SESSION['user']['username_kana'];
+            $mail = $_SESSION['user']['mail'];
+            $mail_confirm = $_SESSION['user']['mail_confirm'];
+            $tel = $_SESSION['user']['tel'];
+            $school = $_SESSION['user']['school'];
+            $department1 = $_SESSION['user']['department1'];
+            $department2 = $_SESSION['user']['department2'];
+            $student_year = $_SESSION['user']['student_year'];
+            $id = $_SESSION['user']['id'];
+        }
+        session_destroy();
+        ?>
+    </font>
+</h3>
 <form action="validation.php" method="post" class="form_log"> 
     <div>
         <label>姓名：</label>
