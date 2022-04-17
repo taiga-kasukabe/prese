@@ -8,6 +8,8 @@ require('/xampp/htdocs/PHPMailer/src/PHPMailer.php');
 require('/xampp/htdocs/PHPMailer/src/Exception.php');
 require('/xampp/htdocs/PHPMailer/src/SMTP.php');
 
+include("./conf/mail_pass.php");
+
 mb_language("japanese");
 mb_internal_encoding("UTF-8");
 
