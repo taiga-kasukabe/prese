@@ -3,8 +3,7 @@
 // セッションを開始する
 session_start();
 
-// 変数定義
-//各種入力情報，正規表現，エラーメッセージ配列
+// セッション情報の引継ぎ
 include("./conf/variable_session.php");
 
 //データベース情報
