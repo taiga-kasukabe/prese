@@ -94,6 +94,9 @@ session_destroy();
         <input type="password" name="password_confirm" value="" required>
     </div>
 
+    <p><a href="./terms/tos.php">利用規約</a></p>
+    <p><a href="./terms/privacypolicy.php">プライバシー規約</a></p>
+
     <input type="submit" value="確認">
 </form>
 </body>
