@@ -53,7 +53,7 @@ session_start();
     $stmt->bindValue(':tel', $tel);
     $stmt->execute();
     $member = $stmt->fetch();
-    if (!empty($member)){
+    if (!empty($member)){ //存在しないか変数の値がfalseに等しい場合空とみなされる
         $err_msg['tel_duplicate'] = 'この電話番号は既に登録されています';
     }
 
