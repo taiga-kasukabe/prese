@@ -59,6 +59,19 @@ if (!empty($member)) {
     $err_msg['tel_duplicate'] = 'この電話番号は既に登録されています';
 }
 
+// DBに接続
+$sql_id = "SELECT * FROM users_table WHERE id = :id";
+$stmt = $pdo->prepare($sql_id);
+$stmt->bindValue(':id', $id);
+$stmt->execute();
+$member = $stmt->fetch();
+// idが4文字以上半角英数字か
+if (!preg_match("/^[a-zA-Z0-9]+$/", $id) || strlen($id) < 4) {
+    $err_msg['id_confirm'] = 'idは4文字以上の半角英数字を入力してください';
+} elseif (!empty($member)) {
+    $err_msg['id_duplicate'] = 'このIDは既に登録されています';
+}
+
 //正規表現でパスワードをバリデーション
 if (strlen($_POST['password']) < 8 || !preg_match("/^[a-zA-Z0-9]+$/", $_POST['password'])) {
     $err_msg['pass_length'] = 'パスワードは8文字以上の半角英数字を入力してください';
