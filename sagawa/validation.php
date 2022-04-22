@@ -2,7 +2,7 @@
 session_start();
 $_SESSION = array();
 //DB接続用
-require_once('config.php');
+include("./conf/config.php");
 
 //変数定義
 include("./conf/variable.php");
@@ -28,8 +28,8 @@ if(!filter_var($mail, FILTER_VALIDATE_EMAIL)){
 
 //メールアドレスの重複チェック
 //データベース内のメールアドレスを取得
-$sql = "SELECT * FROM users_table WHERE mail = :mail";
-$stmt = $dbh -> prepare($sql_mail);
+$sql_mail = "SELECT * FROM users_table WHERE mail = :mail";
+$stmt = $pdo -> prepare($sql_mail);
 $stmt -> bindValue(':mail', $mail);
 $stmt -> execute();
 $member = $stmt -> fetch();
@@ -49,14 +49,27 @@ if (!preg_match($tel_pattern, $tel)) {
 }
 
 //telの重複チェック
-$sql = "SELECT * FROM users_table WHERE tel = :tel";
-$stmt = $dbh -> prepare($sql_tel);
-$stmt -> bindValue(':mail', $tel);
+$sql_tel = "SELECT * FROM users_table WHERE tel = :tel";
+$stmt = $pdo -> prepare($sql_tel);
+$stmt -> bindValue(':tel', $tel);
 $stmt -> execute();
 $member = $stmt -> fetch();
 
 if (!empty($member)) {
     $err_msg['tel_duplicate'] = 'この電話番号は既に登録されています';
+}
+
+// DBに接続
+$sql_id = "SELECT * FROM users_table WHERE id = :id";
+$stmt = $pdo->prepare($sql_id);
+$stmt->bindValue(':id', $id);
+$stmt->execute();
+$member = $stmt->fetch();
+// idが4文字以上半角英数字か
+if (!preg_match("/^[a-zA-Z0-9]+$/", $id) || strlen($id) < 4) {
+    $err_msg['id_confirm'] = 'idは4文字以上の半角英数字を入力してください';
+} elseif (!empty($member)) {
+    $err_msg['id_duplicate'] = 'このIDは既に登録されています';
 }
 
 //正規表現でパスワードをバリデーション

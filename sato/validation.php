@@ -53,7 +53,7 @@ session_start();
     $stmt->bindValue(':tel', $tel);
     $stmt->execute();
     $member = $stmt->fetch();
-    if (!empty($member)){
+    if (!empty($member)){ //存在しないか変数の値がfalseに等しい場合空とみなされる
         $err_msg['tel_duplicate'] = 'この電話番号は既に登録されています';
     }
 
@@ -63,6 +63,7 @@ session_start();
     $stmt->bindValue(':id', $id);
     $stmt->execute();
     $member = $stmt->fetch();
+    
     // idが4文字以上半角英数字か
     if (!preg_match("/^[a-zA-Z0-9]+$/", $id) || strlen($id) < 4) {
         $err_msg['id_confirm'] = 'idは4文字以上の半角英数字を入力してください';
@@ -99,7 +100,6 @@ session_start();
     $_SESSION['user']['password_confirm'] = $password_confirm;
     $_SESSION['user']['password_row'] = $_POST['password'];
     $_SESSION['user']['password_confirm_row'] = $_POST["password_confirm"];
-
 
     // エラーメッセージが空の時（バリデーションチェックが問題なかった時）以下の処理を行う
     if(empty($_SESSION['err'])){
