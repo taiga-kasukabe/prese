@@ -16,6 +16,9 @@ $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':id', $id);
 $stmt->execute();
 $member = $stmt->fetch();
+
+// session_destroy();
 ?>
 <p>こんにちは，<?php echo $member['username'];?>さん</p>
-<p><a href="./mypage.php">マイページ</a>へ</p>
+<a href="./mypage.php">マイページへ</a><br>
+<a href="./diagnose_form.php">簡易診断へ</a>
