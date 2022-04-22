@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("./conf/variable_session.php");
+include("../conf/variable_session.php");
 ?>
 
 <h1>入力確認確認</h1>

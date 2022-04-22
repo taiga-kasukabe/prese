@@ -3,7 +3,7 @@ session_start();
 
 // define variable
 $id = $_POST['id'];
-include('./conf/db_conf.php');
+include('../conf/db_conf.php');
 
 // for error
 try {
@@ -27,7 +27,7 @@ if (!isset($member['id']) || !password_verify($_POST['pass'], $member['password'
     //save the user's data in DB on SESSION
     $_SESSION['id'] = $member['id'];
     $msg = 'ログインしました。';
-    $link = '<a href="./mypage.php">ホーム</a>';
+    $link = '<a href="./home.php">ホーム</a>';
 }
 ?>
 

@@ -2,9 +2,9 @@
 session_start();
 
 // 読み込み
-include("./conf/variable_session.php");
-include("./conf/db_conf.php");
-include("./conf/mail_conf.php");
+include("../conf/variable_session.php");
+include("../conf/db_conf.php");
+include("../conf/mail_conf.php");
 
 // DBに接続
 try {
@@ -31,7 +31,7 @@ $stmt->bindValue(':password_confirm', $password_confirm);
 $stmt->execute();
 
 // メール送信
-include("./send_mail.php");
+include("./mail_send.php");
 ?>
 
 <h1>登録しました</h1>
