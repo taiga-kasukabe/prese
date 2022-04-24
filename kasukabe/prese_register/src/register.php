@@ -32,6 +32,8 @@ $stmt->execute();
 
 // メール送信
 include("./mail_send.php");
+
+session_destroy();
 ?>
 
 <h1>登録しました</h1>

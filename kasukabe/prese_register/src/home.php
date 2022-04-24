@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="./css/popup.css">
+
 <?php
 session_start();
 
@@ -33,6 +35,20 @@ $stmt->execute();
 $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<!-- popup -->
+<script type="text/javascript">
+    function modal_onclick_open() {
+        document.getElementById('modal-content').style.display = "block";
+        document.getElementById('modal-overlay').style.display = "block";
+        return false;
+    }
+
+    function modal_onclick_close() {
+        document.getElementById("modal-content").style.display = "none";
+        document.getElementById("modal-overlay").style.display = "none";
+    }
+</script>
+
 <!-- ここからページ表示 -->
 <p>こんにちは，<?php echo $member['username']; ?>さん</p>
 
@@ -45,15 +61,31 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div>
     <!-- 社員数だけループ -->
-    <?php for($n = 0; $n < count($employee); $n++){ ?>
-
-    <h3><?php echo $employee[$n]['empname']; ?></h3>
-    <img src="../images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
-    <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
-    <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
-    <p>職種：<?php echo $employee[$n]['empcareer']; ?></p><br><br>
-    <!-- 社員同士の区切りは改行2つ -->
-
+    <?php for ($n = 0; $n < count($employee); $n++) { ?>
+        <h3><?php echo $employee[$n]['empname']; ?></h3>
+        <img src="../images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
+        <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
+        <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
+        <p>職種：<?php echo $employee[$n]['empcareer']; ?></p>
+        <input type="button" value="詳細はこちら" onclick="return modal_onclick_open()">
+        <!-- 社員同士の区切りは改行2つ -->
     <?php } ?>
 </div>
 <h2>社員リストはここまで</h2>
+
+<!-- モーダルウィンドウここから -->
+<!-- 一番上に表示されるモーダルウィンドウ -->
+<div id="modal-content">
+    <p>「閉じる」をクリックすると、モーダルウィンドウを終了します。</p>
+    <h3><?php echo $employee[$emp_num]['empname']; ?></h3>
+    <img src="../images/<?php echo $employee[$emp_num]['empimg_id']; ?>" alt="社員画像" height="300">
+    <p>年次：<?php echo $employee[$emp_num]['empyear']; ?>年目</p>
+    <p>役職：<?php echo $employee[$emp_num]['empjob']; ?></p>
+    <p>職種：<?php echo $employee[$emp_num]['empcareer']; ?></p>
+    <p>趣味：<?php echo $employee[$emp_num]['emphobby']; ?></p>
+    <!-- 社員同士の区切りは改行2つ -->
+    <input type="button" value="閉じる" onclick="modal_onclick_close()">
+</div>
+<!-- 2番目に表示されるモーダル（オーバーウェイ）半透明な膜 -->
+<div id="modal-overlay"></div>
+<!-- モーダルウィンドウここまで -->
