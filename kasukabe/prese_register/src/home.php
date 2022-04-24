@@ -33,20 +33,27 @@ $stmt->execute();
 $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<!-- ここからページ表示 -->
 <p>こんにちは，<?php echo $member['username']; ?>さん</p>
+
 <a href="./mypage.php">マイページへ</a><br>
 <a href="./diagnose_form.php">簡易診断へ</a>
+
 <h2>
     社員リスト
 </h2>
+
 <div>
     <!-- 社員数だけループ -->
     <?php for($n = 0; $n < count($employee); $n++){ ?>
+
     <h3><?php echo $employee[$n]['empname']; ?></h3>
     <img src="../images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
     <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
     <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
     <p>職種：<?php echo $employee[$n]['empcareer']; ?></p><br><br>
     <!-- 社員同士の区切りは改行2つ -->
+
     <?php } ?>
 </div>
+<h2>社員リストはここまで</h2>
