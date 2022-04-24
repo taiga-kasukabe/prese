@@ -3,9 +3,19 @@ session_start();
 
 // 変数定義
 include('../conf/db_conf.php');
+$employee = array();
 
 try {
-    $dbh = new PDO($dsn, $db_username, $db_password);
+    $options = array(
+        // SQL実行失敗時には例外をスローしてくれる
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        // カラム名をキーとする連想配列で取得する．これが一番ポピュラーな設定
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        // バッファードクエリを使う(一度に結果セットをすべて取得し、サーバー負荷を軽減)
+        // SELECTで得た結果に対してもrowCountメソッドを使えるようにする
+        PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
+    );
+    $dbh = new PDO($dsn, $db_username, $db_password, $options);
 } catch (PDOException $e) {
     $msg = $e->getMessage();
 }
@@ -17,8 +27,26 @@ $stmt->bindValue(':id', $id);
 $stmt->execute();
 $member = $stmt->fetch();
 
-// session_destroy();
+$sql = "SELECT * FROM empDB";
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
+$employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<p>こんにちは，<?php echo $member['username'];?>さん</p>
+
+<p>こんにちは，<?php echo $member['username']; ?>さん</p>
 <a href="./mypage.php">マイページへ</a><br>
 <a href="./diagnose_form.php">簡易診断へ</a>
+<h2>
+    社員リスト
+</h2>
+<div>
+    <!-- 社員数だけループ -->
+    <?php for($n = 0; $n < count($employee); $n++){ ?>
+    <h3><?php echo $employee[$n]['empname']; ?></h3>
+    <img src="../images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
+    <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
+    <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
+    <p>職種：<?php echo $employee[$n]['empcareer']; ?></p><br><br>
+    <!-- 社員同士の区切りは改行2つ -->
+    <?php } ?>
+</div>
