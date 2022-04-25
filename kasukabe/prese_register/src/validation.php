@@ -3,9 +3,9 @@ session_start();
 $_SESSION = array();
 
 // 変数定義
-include("./conf/variable.php");
+include("../conf/variable.php");
 // DB定義
-include("./conf/db_conf.php");
+include("../conf/db_conf.php");
 
 // エラー対処
 try {

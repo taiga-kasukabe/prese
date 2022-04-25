@@ -7,7 +7,7 @@
         session_start();
         if (!empty($_SESSION['err'])) {
             foreach ($_SESSION['err'] as $value) {
-                echo $value . "<br>"; //hタグ内の改行はbr
+                echo $value . "<br>";
             }
         }
         if (!empty($_SESSION['user'])) {
@@ -71,7 +71,8 @@
     </div>
     <div>
         <label>パスワード：</label>
-        <input type="password" name="password" required>
+            <input type="password" name="password" required>
+            <p>半角英数字8文字以上で設定してください</p>
     </div>
     <div>
         <label>パスワード（確認）：</label>
@@ -81,6 +82,6 @@
 
     <input type="submit" value="確認">
     <p>既に登録済みの方は<a href="./login_form.php">こちら</a></p>
-    <p><a href="./terms/terms_service.php">利用規約</a></p>
-    <p><a href="./terms/terms_privacy.php">プライバシー規約</a></p>
+    <p><a href="../terms/terms_service.php">利用規約</a></p>
+    <p><a href="../terms/terms_privacy.php">プライバシー規約</a></p>
 </form>

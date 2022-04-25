@@ -2,9 +2,9 @@
 session_start();
 
 // 読み込み
-include("./conf/variable_session.php");
-include("./conf/db_conf.php");
-include("./conf/mail_conf.php");
+include("../conf/variable_session.php");
+include("../conf/db_conf.php");
+include("../conf/mail_conf.php");
 
 // DBに接続
 try {
@@ -31,11 +31,13 @@ $stmt->bindValue(':password_confirm', $password_confirm);
 $stmt->execute();
 
 // メール送信
-include("./send_mail.php");
+include("./mail_send.php");
+
+session_destroy();
 ?>
 
 <h1>登録しました</h1>
-<p>登録ID名：<?php echo $id;?></p>
-<p>登録完了しました．<br>先ほど登録完了メールを送りました．<br>ご確認ください</p>
+<p>登録ID名：<?php echo $id;?></p><br>
+<p>登録完了しました．<br>先ほど登録完了メールを送りました．<br>ご確認ください</p><br>
 <p>こちらのリンクからログインしてください</p>
 <a href="./login_form.php">ログインページへ</a>
