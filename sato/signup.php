@@ -18,7 +18,7 @@
 <?php
 session_start();
 
-// エラーメッセージが空の時（バリデーションチェックが問題なかった時）以下の処理を行う
+// エラーメッセージが空じゃないの時（バリデーションチェックが問題なかった時）以下の処理を行う
 if(!empty($_SESSION['err'])){
     foreach ($_SESSION['err'] as $value) {
         echo $value . "<br>"; //hタグ内の改行はbr
