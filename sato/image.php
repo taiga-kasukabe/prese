@@ -21,5 +21,5 @@ $image = $stmt->fetch();
 ?>
 
 <h1>画像表示</h1>
-<img src="imges/<?php echo $image['empimg_id']; ?>" width="300" height="300">
+<img src="images/<?php echo $image['empimg_id']; ?>">
 <a href="upload_form.php">画像アップロード</a>
