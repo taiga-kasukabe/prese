@@ -1,35 +1,36 @@
 <?php
-//ファイルの読み込み
-require_once('config.php');
+
 
 session_start();
-//メールアドレスのバリデーション
-if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-  echo '入力された値が不正です。';
-  return false;
-}
+
+$id = $_POST['id'];
+include('./conf/config.php');
+
 //DB内でPOSTされたメールアドレスを検索
 try {
-  $pdo = new PDO(DSN, DB_USER, DB_PASS);
-  $stmt = $pdo->prepare('select * from userDeta where email = ?');
-  $stmt->execute([$_POST['email']]);
-  $row = $stmt->fetch(PDO::FETCH_ASSOC);
-} catch (\Exception $e) {
-  echo $e->getMessage() . PHP_EOL;
-}
-//emailがDB内に存在しているか確認
-if (!isset($row['email'])) {
-  echo 'メールアドレス又はパスワードが間違っています。';
-  return false;
-}
-//パスワード確認後sessionにメールアドレスを渡す
-if (password_verify($_POST['password'], $row['password'])) {
-  session_regenerate_id(true); //session_idを新しく生成し、置き換える
-  $_SESSION['EMAIL'] = $row['email'];
-?>
+  //インスタンス化（"データベースの種類:host=接続先アドレス, dbname=データベース名,charset=文字エンコード" "ユーザー名", "パスワード", opt)
+    $pdo = new PDO(DSN, DB_USER, DB_PASS);
+  //エラー処理
+  } catch (Exception $e) {
+    echo $e->getMessage() . PHP_EOL;
+  }
 
-<?php
-} else {
-  echo 'メールアドレス又はパスワードが間違っています。';
-  return false;
-}
+  $sql = "SELECT * FROM users_table WHERE id = :id";
+  $stmt = $pdo->prepare($sql);
+  $stmt->bindValue(':id', $id);
+  $stmt->execute();
+  $member = $stmt->fetch();
+  // if password or mail is mismatch
+  if (!isset($member['id']) || !password_verify($_POST['pass'], $member['password'])) {
+      $msg = 'メールアドレスもしくはパスワードが間違っています。';
+      $link = '<a href="./login_form.php" class="err_msg">戻る</a>';
+  } else if (password_verify($_POST['pass'], $member['password'])) {
+      //save the user's data in DB on SESSION
+      $_SESSION['id'] = $member['id'];
+      $msg = 'ログインしました。';
+      $link = '<a href="./home.php">ホームへ</a>';
+  }
+  ?>
+  
+  <div class="err_msg"><?php echo $msg; ?></div>
+  <?php echo $link; ?>
