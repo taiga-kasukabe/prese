@@ -3,7 +3,7 @@
 session_start();
 
 //データベース情報の読み込み
-include('./conf/db_conf.php');
+include('../conf/db_conf.php');
 
 //データベース接続
 try{
@@ -24,7 +24,7 @@ if(!empty($member)){
     $image = uniqid(mt_rand(), true);
     //アップロードされたファイルの拡張子を取得
     $image .= '.' . substr(strrchr($_FILES['image']['name'], '.'), 1);
-    $file = "images/$image";
+    $file = "../images/$image";
 
     $sql = "UPDATE emp_table SET empimg_id = :image WHERE empid = :id";
     $stmt = $dbh->prepare($sql);
@@ -32,7 +32,7 @@ if(!empty($member)){
     $stmt->bindValue(':image', $image, PDO::PARAM_STR);
 
     if(!empty($_FILES['image']['name'])){
-        move_uploaded_file($_FILES['image']['tmp_name'], './images/' . $image);
+        move_uploaded_file($_FILES['image']['tmp_name'], '../images/' . $image);
         if(exif_imagetype($file)){
             $message = '画像をアップロードしました';
             $stmt->execute();

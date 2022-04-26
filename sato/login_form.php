@@ -11,6 +11,15 @@
 
 <h1>ログインページ</h1>
 
+<?php
+
+if(!empty($_SESSION['err_msg'])){
+    echo $_SESSION['err_msg'];
+}
+
+
+?>
+
 <form action="login.php" method="POST">
 <div>
     <label>ログインID：</label>
