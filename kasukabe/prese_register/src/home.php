@@ -61,7 +61,7 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
         <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
         <p>職種：<?php echo $employee[$n]['empcareer']; ?></p>
-        <form name="myForm" method="POST">
+        <form name="myForm<?php echo $n; ?>" method="POST">
             <input type="hidden" name="emp_num" value="<?php echo $n; ?>">
             <input type="submit" value="詳細はこちこち">
         </form>
@@ -71,6 +71,21 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 <h2>社員リストはここまで</h2>
 
+<!-- モーダルウィンドウここから -->
+<!-- 一番上に表示されるモーダルウィンドウ -->
+<div id="modal-content">
+    <h3><?php echo $employee[$temp]['empname']; ?></h3>
+    <img src="../images/<?php echo $employee[$temp]['empimg_id']; ?>" alt="社員画像" height="300">
+    <p>年次：<?php echo $employee[$temp]['empyear']; ?>年目</p>
+    <p>役職：<?php echo $employee[$temp]['empjob']; ?></p>
+    <p>職種：<?php echo $employee[$temp]['empcareer']; ?></p>
+    <p>趣味：<?php echo $employee[$temp]['emphobby']; ?></p>
+    <!-- 社員同士の区切りは改行2つ -->
+    <input type="button" value="閉じる" onclick="modal_onclick_close()">
+</div>
+<!-- 2番目に表示されるモーダル（オーバーウェイ）半透明な膜 -->
+<div id="modal-overlay"></div>
+<!-- モーダルウィンドウここまで -->
 
 <!-- popup -->
 <script type="text/javascript">
@@ -88,7 +103,7 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
         document.getElementById("modal-overlay").style.display = "none";
     }
 
-    const myFormElm = document.forms.myForm; // フォーム要素を取得
+    const myFormElm = document.forms.myForm3; // フォーム要素を取得
 
     myFormElm.addEventListener('submit', (e) => { // 送信ボタンが押されたら実行
         e.preventDefault();
@@ -96,7 +111,7 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
         console.log("ウインドウON");
         const formData = new FormData(myFormElm); // フォームオブジェクト作成
 
-        fetch('home.php', { // 第1引数に送り先
+        fetch('', { // 第1引数に送り先
                 method: 'POST', // メソッド指定
                 // Content-Typeは指定しない
                 body: formData // bodyにそのまま添付
@@ -104,25 +119,10 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
             .then(response => response.json()) // 返ってきたレスポンスをjsonで受け取って次のthenへ渡す
             .then(res => {
                 console.log(res); // やりたい処理
+                // res.text();
             })
             .catch(error => {
                 console.log(error); // エラー表示
             });
     });
 </script>
-
-<!-- モーダルウィンドウここから -->
-<!-- 一番上に表示されるモーダルウィンドウ -->
-<div id="modal-content">
-    <h3><?php echo $employee[$temp]['empname']; ?></h3>
-    <img src="../images/<?php echo $employee[$temp]['empimg_id']; ?>" alt="社員画像" height="300">
-    <p>年次：<?php echo $employee[$temp]['empyear']; ?>年目</p>
-    <p>役職：<?php echo $employee[$temp]['empjob']; ?></p>
-    <p>職種：<?php echo $employee[$temp]['empcareer']; ?></p>
-    <p>趣味：<?php echo $employee[$temp]['emphobby']; ?></p>
-    <!-- 社員同士の区切りは改行2つ -->
-    <input type="button" value="閉じる" onclick="modal_onclick_close()">
-</div>
-<!-- 2番目に表示されるモーダル（オーバーウェイ）半透明な膜 -->
-<div id="modal-overlay"></div>
-<!-- モーダルウィンドウここまで -->
