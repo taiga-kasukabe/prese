@@ -70,6 +70,7 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
 <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p><br><br><br>
 
+
 <!-- モーダルウインドウここから -->
 <div class="works_modal_wrapper" data-modal="modal-<?php echo $num; ?>">
     <div class="works_modal_mask"></div>

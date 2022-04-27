@@ -1,8 +1,7 @@
 .works_modal_open {
     position: relative;
-    height: 50px;
-    width: 200px;
     border-radius: 2px;
+    width: 200px;
     cursor: pointer;
     color: rgb(0, 0, 0);
 }
