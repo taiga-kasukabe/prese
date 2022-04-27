@@ -7,6 +7,10 @@
     color: rgb(0, 0, 0);
 }
 
+.works_modal_open:hover {
+    color: #76d4ff;
+}
+
 .works_modal_content{
     text-align: center;
 }
