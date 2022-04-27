@@ -35,4 +35,4 @@ try {
 <h1>登録しました</h1>
 <p>登録ID名：<?php echo $id;?></p>
 <p>こちらのリンクからログインしてください</p>
-<a href="./top.php">ログインページへ</a>
+<a href="./login_form.php">ログインページへ</a>
