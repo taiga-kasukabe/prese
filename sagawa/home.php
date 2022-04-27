@@ -28,6 +28,7 @@ $stmt = $pdo -> prepare($sql_user);
 $stmt -> bindValue(':id', $id);
 $stmt -> execute();
 $member = $stmt -> fetch();
+
 //empDB接続
 $sql_emp = "SELECT * FROM empdb_";
 $stmt = $pdo->prepare($sql_emp);
@@ -44,9 +45,12 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <a href="./mypage.php">マイページ</a>
 <a href="./diagnose.php">簡易診断はこちら</a>
 
+<h2>社員リスト</h2>
+
+
 <?php  for ($num = 0; $num < count($employee); $num++) { ?>
     
-    <h2><?php echo $employee[$num]['empname']; ?></h2>
+    <h3><?php echo $employee[$num]['empname']; ?></h3>
     <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="300">
     <p>年次：<?php echo $employee[$num]['empyear']; ?>年目</p>
     <p>役職：<?php echo $employee[$num]['empjob']; ?></p>
