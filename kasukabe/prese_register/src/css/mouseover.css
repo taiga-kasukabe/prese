@@ -1,6 +1,7 @@
 .mouseoverParent {
     position: relative;
     /* 指定した分だけ相対的に移動 */
+    width: 50%;
 }
 
 .mouseoverParent:hover .mouseoverChild {
@@ -15,7 +16,7 @@
     /* 要素を非表示 */
     padding: 2px;
     /* テキストの前後の余白 */
-    background-color: rgba(102, 102, 255, 0.50);
+    background-color: rgba(102, 102, 255, 0.9);
     /* 背景色（透明度） */
     width: 50%;
     /* 吹き出し全体の幅 */
