@@ -76,7 +76,7 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="works_modal_window">
         <div class="works_modal_content">
             <h1><?php echo $employee[$num]['empname']; ?></h1>
-            <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="300">
+            <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="150">
             <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
             <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
             <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
