@@ -1,21 +1,20 @@
 <!DOCTYPE html> 
 <html lang="ja"> 
 
-<link rel="stylesheet" href="./css/popup.css">
-
 <!-- ヘッダ情報 -->
 <head>
     <!-- 文字コードをUTF-8に設定 -->
     <meta charset="UTF-8">     
     <!-- ページのタイトルをtestに設定 -->
     <title>ホーム</title>
+    <link rel="stylesheet" href="./css/popup.css">
 </head>
 
 <?php
 
 session_start();
 
-if(!$_SESSION['user']['id']){
+if(!$_SESSION['id']){
     echo 'ログインが必要です';
     exit;
 }
@@ -57,59 +56,28 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <a href="./diagnose.php">簡易診断はこちら</a><br><br>
 
 <?php for ($num = 0; $num < count($employee); $num++) { ?>
-    <!-- <label class="open" for="pop-up"> -->
     <h2><?php echo $employee[$num]['empname']; ?></h2>
-    <!-- </label>
-    <input type="checkbox" id="pop-up">
-
-    <div class="overlay">
-        <div class="window">
-            <label class="close" for="pop-up">×</label>
-            <p class="text">年次：<?php echo $employee[$num]['empyear']; ?></p>
-        </div>
-    </div> -->
-
     <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="300">
     <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
     <p>役職：<?php echo $employee[$num]['empjob']; ?></p>
     <p>職歴：<?php echo $employee[$num]['empcareer']; ?></p><br><br><br>
 <?php } ?>
 
-<button id="modalOpen" class="button">モーダルを表示</button>
-    <div id="easyModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-body">
-            <span class="modalClose">×</span>
-                <p>ここにコンテンツが入る</p>
-            </div>
-        </div>
+<div id="open">
+    詳細を見る
+</div>
+
+<!-- #maskにhiddenクラスを命名しCSSで隠す -->
+<div id="mask" class="hidden"></div> 
+    
+<!-- #modalにもhiddenクラスを命名しCSSで隠す -->
+ <section id="modal" class="hidden">
+    <p>モーダルの中身！</p>
+    <div id="close">
+         閉じる
     </div>
+</section>
 
+<script src="script.js"></script>
 
-<script>
-const buttonOpen = document.getElementById('modalOpen');
-const modal = document.getElementById('easyModal');
-const buttonClose = document.getElementsByClassName('modalClose')[0];
-
-//ボタンがクリックされた時
-buttonOpen.addEventListener('click', modalOpen);
-function modalOpen() {
-    modal.style.display = 'block';
-};
-
-//バツ印がクリックされた時
-buttonClose.addEventListener('click', modalClose);
-function modalClose() {
-    modal.style.display = 'none';
-};
-
-//モーダルコンテンツ以外がクリックされた時
-addEventListener('click', outsideClose);
-function outsideClose(e) {
-    if (e.target == modal) {
-    modal.style.display = 'none';
-    };
-};
-
-</script>
-
+</body>
