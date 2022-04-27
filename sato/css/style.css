@@ -1,0 +1,120 @@
+.works_modal_open {
+    position: relative;
+    height: 50px;
+    width: 200px;
+    border-radius: 2px;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+}
+
+.works_modal_content{
+    text-align: center;
+}
+
+/* ------works_modal css------ */
+.works_modal_wrapper {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: none;
+    opacity: 0;
+    z-index: -1;
+}
+.works_modal_window {
+    width: 650px;
+    height: 800px;
+    margin: auto;
+    padding: 15px;
+    background: #fff;
+    z-index: 1;
+    overflow-y: hidden;
+}
+.works_modal_content {
+    margin: 0 auto;
+    width: 80%;
+    height: 80%;
+}
+.works_modal_mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+.works_modal_close {
+    z-index: 300;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    color: #808080;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.works_modal_close:hover {
+    color: #000;
+    transition: all .5s;
+}
+html.is_open, body.is_open {
+    overflow: hidden;
+}
+.works_modal_wrapper.is_open {
+    animation: works_modal_wrapper_open .5s ease forwards;
+}
+.works_modal_wrapper.is_open .works_modal_window {
+    animation: works_modal_window_open .5s ease forwards;
+}
+.works_modal_wrapper.is_close {
+    animation: works_modal_wrapper_close .5s ease forwards;
+}
+.works_modal_wrapper.is_close .works_modal_window {
+    animation: works_modal_window_close .5s ease forwards;
+}
+
+@keyframes works_modal_wrapper_open {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      z-index: 300;
+    }
+  }
+  @keyframes works_modal_window_open {
+    0% {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes works_modal_wrapper_close {
+    0% {
+      z-index: 300;
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes works_modal_window_close {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+  }
