@@ -27,7 +27,7 @@ if (!isset($member['id']) || !password_verify($_POST['pass'], $member['password'
     //save the user's data in DB on SESSION
     $_SESSION['id'] = $member['id'];
     $msg = 'ログインしました。';
-    $link = '<a href="./home_mouseover.php">ホームへ</a>';
+    $link = '<a href="./home.php">ホームへ</a>';
 }
 ?>
 
