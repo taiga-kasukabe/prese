@@ -11,6 +11,7 @@
 session_start();
 //データベース情報の読み込み
 include('./conf/config.php');
+
 //データベースへ接続、テーブルがない場合は作成
 try {
     //インスタンス化（"データベースの種類:host=接続先アドレス, dbname=データベース名,charset=文字エンコード" "ユーザー名", "パスワード", opt)
@@ -30,7 +31,7 @@ $stmt -> execute();
 $member = $stmt -> fetch();
 
 //empDB接続
-$sql_emp = "SELECT * FROM empdb_";
+$sql_emp = "SELECT * FROM emp_table";
 $stmt = $pdo->prepare($sql_emp);
 $stmt->execute();
 $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -49,8 +50,10 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 <?php  for ($num = 0; $num < count($employee); $num++) { ?>
-    
-    <h3><?php echo $employee[$num]['empname']; ?></h3>
+<div class="balloonoya">
+    <?php echo $employee[$num]['empname']; ?>
+    <span class="balloon">吹き出しが表示される</span>
+</div>    
     <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="300">
     <p>年次：<?php echo $employee[$num]['empyear']; ?>年目</p>
     <p>役職：<?php echo $employee[$num]['empjob']; ?></p>
