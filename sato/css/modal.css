@@ -1,13 +1,11 @@
 .works_modal_open {
-    position: relative;
-    border-radius: 2px;
-    width: 200px;
+    position: relative; /*positionの基準にする*/
     cursor: pointer;
+    width: 600px;
+    padding-left: 20px;
+    border: 4px solid rgb(119, 119, 119);
+    border-radius: 5%;
     color: rgb(0, 0, 0);
-}
-
-.works_modal_open:hover {
-    color: #76d4ff;
 }
 
 .works_modal_content{
@@ -31,8 +29,7 @@
     z-index: -1;
 }
 .works_modal_window {
-    width: 650px;
-    height: 500px;
+    width: 80vh;
     margin: auto;
     padding: 15px;
     background: #fff;
