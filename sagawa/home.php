@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="./css/mouseover.css">
 <!--ホーム-->
 <!DOCTYPE html>
 <html lang="ja">
@@ -11,6 +12,8 @@
 session_start();
 //データベース情報の読み込み
 include('./conf/config.php');
+$employee = array();
+$temp = 0;
 
 //データベースへ接続、テーブルがない場合は作成
 try {

@@ -30,7 +30,7 @@ if(!empty($member)){
     $file = "../images/$image";
 
     $sql = "UPDATE emp_table SET empimg_id = :image WHERE empid = :id";
-    $stmt = $dbh->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':id', $_POST['empid']);
     $stmt->bindValue(':image', $image, PDO::PARAM_STR);
 
