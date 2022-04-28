@@ -64,12 +64,13 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!-- リストの名前部分をモーダル表示のボタンに -->
 <div class="works_modal_open" data-modal-open="modal-<?php echo $num; ?>">
     <h2><?php echo $employee[$num]['empname']; ?></h2>
+    <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="200">
+    <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
+    <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
+    <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
 </div>
-<img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="300">
-<p>年次：<?php echo $employee[$num]['empyear']; ?></p>
-<p>職種：<?php echo $employee[$num]['empjob']; ?></p>
-<p>経歴：<?php echo $employee[$num]['empcareer']; ?></p><br><br><br>
 
+<br><br><br>
 
 <!-- モーダルウインドウここから -->
 <div class="works_modal_wrapper" data-modal="modal-<?php echo $num; ?>">
