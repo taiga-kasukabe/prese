@@ -70,6 +70,7 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
 <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p><br><br><br>
 
+
 <!-- モーダルウインドウここから -->
 <div class="works_modal_wrapper" data-modal="modal-<?php echo $num; ?>">
     <div class="works_modal_mask"></div>
@@ -82,7 +83,7 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
             <p>趣味：<?php echo $employee[$num]['emphobby']; ?></p>
             <p>コメント：<?php echo $employee[$num]['empcomment']; ?></p><br>
-            <a href="./reservation.php">面談予約はこちら</a>
+            <a href="./reservation.php">面談予約はこちら</a><br><br>
         </div>
         <div class="works_modal_close">✖</div>
     </div>

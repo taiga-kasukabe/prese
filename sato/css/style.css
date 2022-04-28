@@ -1,8 +1,7 @@
 .works_modal_open {
     position: relative;
-    height: 50px;
-    width: 200px;
     border-radius: 2px;
+    width: 200px;
     cursor: pointer;
     color: rgb(0, 0, 0);
 }
@@ -38,7 +37,8 @@
     padding: 15px;
     background: #fff;
     z-index: 1;
-    overflow-y: hidden;
+    overflow-y: auto;
+    overflow-y: scroll;
 }
 .works_modal_content {
     margin: 0 auto;
