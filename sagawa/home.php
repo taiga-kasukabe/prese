@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="./css/mouseover.css">
 <!--ホーム-->
 <!DOCTYPE html>
 <html lang="ja">
@@ -11,6 +12,8 @@
 session_start();
 //データベース情報の読み込み
 include('./conf/config.php');
+$employee = array();
+$temp = 0;
 
 //データベースへ接続、テーブルがない場合は作成
 try {
@@ -48,15 +51,24 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <h2>社員リスト</h2>
 
-
-<?php  for ($num = 0; $num < count($employee); $num++) { ?>
-<div class="balloonoya">
-    <?php echo $employee[$num]['empname']; ?>
-    <span class="balloon">吹き出しが表示される</span>
-</div>    
-    <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="300">
-    <p>年次：<?php echo $employee[$num]['empyear']; ?>年目</p>
-    <p>役職：<?php echo $employee[$num]['empjob']; ?></p>
-    <p>職種：<?php echo $employee[$num]['empcareer']; ?></p><br><br>
-
-<?php } ?>
+<div>
+    <?php for ($n = 0; $n < count($employee); $n++) { ?>
+        <div class="mouseoverParent">
+            <p><?php echo $employee[$n]['empname']; ?></p>
+            <img src="../images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
+            <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
+            <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
+            <p>職種：<?php echo $employee[$n]['empcareer']; ?></p><br><br>
+            <div class="mouseoverChild">
+                <?php echo $employee[$n]['empname']; ?>
+                <img src="../images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
+                <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
+                <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
+                <p>職種：<?php echo $employee[$n]['empcareer']; ?></p>
+                <p>趣味：<?php echo $employee[$n]['emphobby']; ?></p>
+            </div>
+        </div>
+        <br><br>
+    <?php } ?>
+</div>
+<h2>社員リストはここまで</h2>
