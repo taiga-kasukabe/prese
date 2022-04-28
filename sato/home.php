@@ -15,7 +15,7 @@
 
 session_start();
 
-if(!$_SESSION['id']){
+if(!isset($_SESSION['id'])){
     echo 'ログインが必要です';
     exit;
 }
