@@ -8,14 +8,14 @@
     <!-- ページのタイトルをtestに設定 -->
     <title>ホーム</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/modal.css">
 </head>
 
 <?php
 
 session_start();
 
-if(!$_SESSION['id']){
+if(!isset($_SESSION['id'])){
     echo 'ログインが必要です';
     exit;
 }
@@ -64,11 +64,13 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!-- リストの名前部分をモーダル表示のボタンに -->
 <div class="works_modal_open" data-modal-open="modal-<?php echo $num; ?>">
     <h2><?php echo $employee[$num]['empname']; ?></h2>
+    <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="200">
+    <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
+    <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
+    <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
 </div>
-<img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="300">
-<p>年次：<?php echo $employee[$num]['empyear']; ?></p>
-<p>職種：<?php echo $employee[$num]['empjob']; ?></p>
-<p>経歴：<?php echo $employee[$num]['empcareer']; ?></p><br><br><br>
+
+<br><br><br>
 
 <!-- モーダルウインドウここから -->
 <div class="works_modal_wrapper" data-modal="modal-<?php echo $num; ?>">
@@ -82,7 +84,7 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
             <p>趣味：<?php echo $employee[$num]['emphobby']; ?></p>
             <p>コメント：<?php echo $employee[$num]['empcomment']; ?></p><br>
-            <a href="./reservation.php">面談予約はこちら</a>
+            <a href="./reservation.php">面談予約はこちら</a><br><br>
         </div>
         <div class="works_modal_close">✖</div>
     </div>
