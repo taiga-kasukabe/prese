@@ -53,6 +53,7 @@ if(!empty($_POST)) {
         <input type="checkbox" name="job" value="nwp" <?php if (isset($_POST['job']) && $_POST['job'] == "nwp") { echo 'checked'; } ?>>NWP
         <input type="checkbox" name="job" value="se" <?php if (isset($_POST['job']) && $_POST['job'] == "se") { echo 'checked'; } ?>>SE
         <input type="checkbox" name="job" value="service" <?php if (isset($_POST['job']) && $_POST['job'] == "service") { echo 'checked'; } ?>>サービス開発
+        <input type="checkbox" name="job" value="collab" <?php if (isset($_POST['job']) && $_POST['job'] == "collab") { echo 'checked'; } ?>>協業ビジネス
     </div>
     <div id="year">
         <select name="year_from" size="1">
