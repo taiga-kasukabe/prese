@@ -1,18 +1,12 @@
-<link rel="stylesheet" href="./css/popup.css">
+<link rel="stylesheet" href="./css/mouseover.css">
 
 <?php
 session_start();
 
 // 変数定義
 include('../conf/db_conf.php');
-$employee = array();
-$temp = 0;
+$err_msg = array();
 
-if (!empty($_POST)) {
-    $temp = $_POST['emp_num'];
-}
-$_POST = array(); //初期化
-var_dump($temp);
 
 try {
     $options = array(
@@ -28,18 +22,51 @@ try {
 } catch (PDOException $e) {
     $msg = $e->getMessage();
 }
-$id = $_SESSION['id'];
 
+// ユーザ情報取得
+$id = $_SESSION['id'];
 $sql = "SELECT * FROM users_table WHERE id = :id";
 $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':id', $id);
 $stmt->execute();
 $member = $stmt->fetch();
 
+// 社員リスト取得
 $sql = "SELECT * FROM empDB";
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// 社員最大年次取得
+$sql = "SELECT * FROM empDB WHERE empyear = (SELECT MAX(empyear) FROM empDB)";
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
+$employeeYear = $stmt->fetch();
+$empyearMax = $employeeYear['empyear'];
+
+// 社員検索
+if (!empty($_POST)) {
+    // バリデーション
+    $err_msg['flag'] = true;
+    if ($_POST['empyearB4'] > $_POST['empyearAft']) {
+        $err_msg['empyear'] = "正しい範囲を選択してください";
+        $err_msg['flag'] = false;
+    }
+    if (empty($_POST['job'])) {
+        $err_msg['empjob'] = "どれか一つ選択してください";
+        $err_msg['flag'] = false;
+    }
+    if ($err_msg['flag'] === true) {
+        $sql = "SELECT * FROM empDB WHERE emptag1=:gender AND emptag3 >= :empyearMin AND emptag3 <= :empyearMax AND emptag2 = :empjob";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(':gender', $_POST['gender']);
+        $stmt->bindValue(':empyearMin', $_POST['empyearB4']);
+        $stmt->bindValue(':empyearMax', $_POST['empyearAft']);
+        $stmt->bindValue(':empjob', $_POST['job']);
+        $stmt->execute();
+        $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+}
 ?>
 
 
@@ -49,80 +76,53 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <a href="./mypage.php">マイページへ</a><br>
 <a href="./diagnose_form.php">簡易診断へ</a>
 
-<h2>
-    社員リスト
-</h2>
+<h2>社員検索</h2>
+<form action="" method="POST">
+    <input type="radio" name="gender" value="女性" required>女性
+    <input type="radio" name="gender" value="男性" required>男性
+    <br>
+    <input type="checkbox" name="job" value="NWP">NWP
+    <input type="checkbox" name="job" value="SE">SE
+    <input type="checkbox" name="job" value="サービス開発">サービス開発
+    <span style="color:#c7243a"><?php if (!empty($err_msg['empjob'])) echo $err_msg['empjob']; ?></span>
+    <br>
+    <select name="empyearB4" required>
+        <?php for ($i = 3; $i <= $empyearMax; $i++) { ?>
+            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+        <?php } ?>
+    </select>
+    年目〜
+    <select name="empyearAft" required>
+        <?php for ($i = 3; $i <= $empyearMax; $i++) { ?>
+            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+        <?php } ?>
+    </select>年目<span style="color: #c7243a;"> <?php if (!empty($err_msg['empyear'])) echo $err_msg['empyear']; ?></span>
+    <br>
+    <input type="submit" value="検索">
+</form>
 
+<h2>社員リスト</h2>
 <div>
-    <!-- 社員数だけループ -->
+    <?php if (empty($employee)) {
+        echo "該当する社員はいませんでした．";
+    } ?>
     <?php for ($n = 0; $n < count($employee); $n++) { ?>
-        <h3><?php echo $employee[$n]['empname']; ?></h3>
-        <img src="../images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
-        <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
-        <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
-        <p>職種：<?php echo $employee[$n]['empcareer']; ?></p>
-        <form name="myForm<?php echo $n; ?>" method="POST">
-            <input type="hidden" name="emp_num" value="<?php echo $n; ?>">
-            <input type="submit" value="詳細はこちこち">
-        </form>
-
-        <!-- <input type="button" value="詳細はこちら" onclick="return modal_onclick_open()"> -->
+        <div class="mouseoverParent">
+            <p><?php echo $employee[$n]['empname']; ?></p>
+            <img src="../images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
+            <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
+            <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
+            <p>職種：<?php echo $employee[$n]['empcareer']; ?></p><br><br>
+            <div class="mouseoverChild">
+                <?php echo $employee[$n]['empname']; ?>
+                <img src="../images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
+                <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
+                <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
+                <p>職種：<?php echo $employee[$n]['empcareer']; ?></p>
+                <p>趣味：<?php echo $employee[$n]['emphobby']; ?></p>
+            </div>
+        </div>
+        <br><br>
     <?php } ?>
 </div>
 <h2>社員リストはここまで</h2>
-
-<!-- モーダルウィンドウここから -->
-<!-- 一番上に表示されるモーダルウィンドウ -->
-<div id="modal-content">
-    <h3><?php echo $employee[$temp]['empname']; ?></h3>
-    <img src="../images/<?php echo $employee[$temp]['empimg_id']; ?>" alt="社員画像" height="300">
-    <p>年次：<?php echo $employee[$temp]['empyear']; ?>年目</p>
-    <p>役職：<?php echo $employee[$temp]['empjob']; ?></p>
-    <p>職種：<?php echo $employee[$temp]['empcareer']; ?></p>
-    <p>趣味：<?php echo $employee[$temp]['emphobby']; ?></p>
-    <!-- 社員同士の区切りは改行2つ -->
-    <input type="button" value="閉じる" onclick="modal_onclick_close()">
-</div>
-<!-- 2番目に表示されるモーダル（オーバーウェイ）半透明な膜 -->
-<div id="modal-overlay"></div>
-<!-- モーダルウィンドウここまで -->
-
-<!-- popup -->
-<script type="text/javascript">
-    function modal_onclick_open() {
-
-        // ポップアップ表示
-        document.getElementById('modal-content').style.display = "block";
-        document.getElementById('modal-overlay').style.display = "block";
-
-        return false;
-    }
-
-    function modal_onclick_close() {
-        document.getElementById("modal-content").style.display = "none";
-        document.getElementById("modal-overlay").style.display = "none";
-    }
-
-    const myFormElm = document.forms.myForm3; // フォーム要素を取得
-
-    myFormElm.addEventListener('submit', (e) => { // 送信ボタンが押されたら実行
-        e.preventDefault();
-        modal_onclick_open(); //popupウインドウ表示
-        console.log("ウインドウON");
-        const formData = new FormData(myFormElm); // フォームオブジェクト作成
-
-        fetch('', { // 第1引数に送り先
-                method: 'POST', // メソッド指定
-                // Content-Typeは指定しない
-                body: formData // bodyにそのまま添付
-            })
-            .then(response => response.json()) // 返ってきたレスポンスをjsonで受け取って次のthenへ渡す
-            .then(res => {
-                console.log(res); // やりたい処理
-                // res.text();
-            })
-            .catch(error => {
-                console.log(error); // エラー表示
-            });
-    });
-</script>
