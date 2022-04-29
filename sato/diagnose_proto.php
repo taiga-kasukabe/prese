@@ -25,13 +25,12 @@ try{
 }
 
 if(!empty($_POST)) {
-
     $gender = $_POST['gender'];
     $job = $_POST['job'];
     $year_from = $_POST['year_from'];
     $year_to = $_POST['year_to'];
 
-    $sql_emp = "SELECT * FROM emp_table WHERE emptag1 = :gender AND emptag2 = :job AND :year_from <= empyear <= :year_to";
+    $sql_emp = "SELECT * FROM emp_table WHERE emptag1 = :gender AND emptag2 = :job AND (empyear >= :year_from AND empyear <= :year_to)";
     $stmt = $dbh->prepare($sql_emp);
     $stmt->bindValue(':gender', $gender);
     $stmt->bindValue(':job', $job);
@@ -39,9 +38,7 @@ if(!empty($_POST)) {
     $stmt->bindValue(':year_to', $year_to);
     $stmt->execute();
     $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 }
-
 ?>
 
 <body>
@@ -49,46 +46,49 @@ if(!empty($_POST)) {
 
 <form method="POST" action="">
     <div id="gender">
-        <input type="radio" name="gender" value="male">男性
-        <input type="radio" name="gender" value="female">女性
+        <input type="radio" name="gender" value="m" <?php if (isset($_POST['gender']) && $_POST['gender'] == "m") { echo 'checked'; } ?>>男性
+        <input type="radio" name="gender" value="f" <?php if (isset($_POST['gender']) && $_POST['gender'] == "f") { echo 'checked'; } ?>>女性
     </div>
     <div id="job">
-        <input type="checkbox" name="job" value="nwp">NWP
-        <input type="checkbox" name="job" value="se">SE
-        <input type="checkbox" name="job" value="service">サービス開発
+        <input type="checkbox" name="job" value="nwp" <?php if (isset($_POST['job']) && $_POST['job'] == "nwp") { echo 'checked'; } ?>>NWP
+        <input type="checkbox" name="job" value="se" <?php if (isset($_POST['job']) && $_POST['job'] == "se") { echo 'checked'; } ?>>SE
+        <input type="checkbox" name="job" value="service" <?php if (isset($_POST['job']) && $_POST['job'] == "service") { echo 'checked'; } ?>>サービス開発
     </div>
     <div id="year">
         <select name="year_from" size="1">
             <option value="">---</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
+
+            <?php
+            for($i=1; $i <= 10; $i++) {
+                if($i == $_POST['year_from']) {    
+                    echo '<option value='.$i.' selected>'.$i.'</option>'; 
+                } else {
+                    echo '<option value='.$i.'>'.$i.'</option>';
+                }
+            }
+            ?>
+
         </select>
         年目～
         <select name="year_to" size="1">
             <option value="">---</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
+
+            <?php
+            for($i=1; $i <= 10; $i++) { 
+                if($i == $_POST['year_to']) {    
+                    echo '<option value='.$i.' selected>'.$i.'</option>'; 
+                } else {
+                    echo '<option value='.$i.'>'.$i.'</option>';
+                }
+            }
+            ?>
+
         </select>
         年目
     </div><br>
     <input type="submit" value="検索"><br><br>
 </form>
+
 
 <!-- ループで取得した社員情報を全て表示 -->
 <?php if(!empty($_POST)) { ?>
