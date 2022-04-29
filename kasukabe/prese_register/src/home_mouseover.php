@@ -34,6 +34,12 @@ $sql = "SELECT * FROM empDB";
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$sql = "SELECT * FROM `empDB` WHERE empyear = (SELECT MAX(empyear) FROM empDB)";
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
+$employeeYear = $stmt->fetch();
+$empyearMax = $employeeYear['empyear'];
 ?>
 
 
@@ -42,6 +48,29 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <a href="./mypage.php">マイページへ</a><br>
 <a href="./diagnose_form.php">簡易診断へ</a>
+
+<h2>社員検索</h2>
+<form action="" method="POST">
+    <input type="radio" name="gender" value="woman">女性
+    <input type="radio" name="gender" value="man">男性
+    <br>
+    <input type="checkbox" name="job" value="nwp">NWP
+    <input type="checkbox" name="job" value="se">SE
+    <input type="checkbox" name="job" value="serviceDev">サービス開発
+    <br>
+    <select name="empyearB4">
+        <?php for ($i = 3; $i <= $empyearMax; $i++) { ?>
+            <option value="<?php echo $i; ?>year"><?php echo $i; ?></option>
+        <?php } ?>
+    </select>
+    年目〜
+    <select name="empyearAft">
+        <?php for ($i = 3; $i <= $empyearMax; $i++) { ?>
+            <option value="<?php echo $i; ?>year"><?php echo $i; ?></option>
+        <?php } ?>
+    </select>年目
+    <input type="submit" value="検索">
+</form>
 
 <h2>
     社員リスト

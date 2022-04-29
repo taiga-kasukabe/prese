@@ -1,8 +1,10 @@
 <h1>画像アップロード</h1>
-
-<!-- 実行はupload.php -->
-<form action="./upload.php" method="post" enctype="multipart/form-data">
+<form action="upload.php" method="POST" enctype="multipart/form-data">
+    <div>
+        <label>社員id：</label>
+        <input type="text" name="empid" value="" required>
+    </div>
     <p>アップロード画像</p>
     <input type="file" name="image">
-    <input type="submit" name="upload" value="送信">
+    <button><input type="submit" name="upload" value="送信"></button>
 </form>
