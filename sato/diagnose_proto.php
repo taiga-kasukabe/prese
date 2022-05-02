@@ -40,8 +40,11 @@ if(!empty($_POST)) {
         $year_from = $_POST['year_from'];
         $year_to = $_POST['year_to'];
 
+        // 複数選択で配列で受け取ったjobを文字列として結合
         $job_str = "'".implode("','", $job)."'";
 
+        // データベース検索
+        // （1）emptag2かemptag3に選択されたjobが含まれている（2）emptag1の性別と一致（3）年次が選択された範囲内
         $sql_emp = "SELECT * FROM emp_table WHERE ((emptag2 IN ($job_str)) OR (emptag3 IN ($job_str))) AND (emptag1 = :gender) AND (empyear >= :year_from AND empyear <= :year_to)";
         $stmt = $dbh->prepare($sql_emp);
         $stmt->bindValue(':gender', $gender);
@@ -58,18 +61,18 @@ if(!empty($_POST)) {
 <h1>簡易診断</h1>
 
 <form method="POST" action="">
-    <div id="gender">
+    <div id="gender">性別：
         <input type="radio" name="gender" value="m" required <?php if (isset($_POST['gender']) && $_POST['gender'] == "m") { echo 'checked'; } ?>>男性
         <input type="radio" name="gender" value="f" required <?php if (isset($_POST['gender']) && $_POST['gender'] == "f") { echo 'checked'; } ?>>女性
     </div>
-    <div id="job">
+    <div id="job">職種：
         <input type="checkbox" name="job[]" value="nwp" <?php if (isset($_POST['job']) && in_array("nwp", $_POST['job'])) { echo 'checked'; } ?>>NWP
         <input type="checkbox" name="job[]" value="se" <?php if (isset($_POST['job']) && in_array("se", $_POST['job'])) { echo 'checked'; } ?>>SE
         <input type="checkbox" name="job[]" value="service" <?php if (isset($_POST['job']) && in_array("service", $_POST['job'])) { echo 'checked'; } ?>>サービス開発
         <input type="checkbox" name="job[]" value="collab" <?php if (isset($_POST['job']) && in_array("collab", $_POST['job'])) { echo 'checked'; } ?>>協業ビジネス
     </div>
     <span style="color:#c7243a"><?php if (!empty($err_msg['empjob'])) echo $err_msg['empjob']; ?></span>
-    <div id="year">
+    <div id="year">年次：
         <select name="year_from" size="1">
             <option value="">---</option>
 
