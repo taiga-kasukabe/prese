@@ -93,39 +93,39 @@ if(!empty($_POST)) {
 
 <!-- ループで取得した社員情報を全て表示 -->
 <?php if(!empty($_POST)) { ?>
-<?php for ($num = 0; $num < count($employee); $num++) { ?>
+    <?php for ($num = 0; $num < count($employee); $num++) { ?>
 
-<!-- リストの名前部分をモーダル表示のボタンに -->
-<div class="works_modal_open" data-modal-open="modal-<?php echo $num; ?>">
-    <h2><?php echo $employee[$num]['empname']; ?></h2>
-    <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="200">
-    <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
-    <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
-    <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
-</div>
-
-<br><br><br>
-
-<!-- モーダルウインドウここから -->
-<div class="works_modal_wrapper" data-modal="modal-<?php echo $num; ?>">
-    <div class="works_modal_mask"></div>
-    <div class="works_modal_window">
-        <div class="works_modal_content">
-            <h1><?php echo $employee[$num]['empname']; ?></h1>
-            <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="150">
-            <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
-            <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
-            <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
-            <p>趣味：<?php echo $employee[$num]['emphobby']; ?></p>
-            <p>コメント：<?php echo $employee[$num]['empcomment']; ?></p><br>
-            <a href="./reservation.php">面談予約はこちら</a><br><br>
-        </div>
-        <div class="works_modal_close">✖</div>
+    <!-- リストの名前部分をモーダル表示のボタンに -->
+    <div class="works_modal_open" data-modal-open="modal-<?php echo $num; ?>">
+        <h2><?php echo $employee[$num]['empname']; ?></h2>
+        <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="200">
+        <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
+        <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
+        <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
     </div>
-</div>
-<!-- モーダルウインドウここまで -->
 
-<?php } ?>
+    <br><br><br>
+
+    <!-- モーダルウインドウここから -->
+    <div class="works_modal_wrapper" data-modal="modal-<?php echo $num; ?>">
+        <div class="works_modal_mask"></div>
+        <div class="works_modal_window">
+            <div class="works_modal_content">
+                <h1><?php echo $employee[$num]['empname']; ?></h1>
+                <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="150">
+                <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
+                <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
+                <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
+                <p>趣味：<?php echo $employee[$num]['emphobby']; ?></p>
+                <p>コメント：<?php echo $employee[$num]['empcomment']; ?></p><br>
+                <a href="./reservation.php">面談予約はこちら</a><br><br>
+            </div>
+            <div class="works_modal_close">✖</div>
+        </div>
+    </div>
+    <!-- モーダルウインドウここまで -->
+
+    <?php } ?>
 <?php } ?>
 
 <script src="./js/script.js"></script>
