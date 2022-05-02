@@ -25,19 +25,30 @@ try{
 }
 
 if(!empty($_POST)) {
-    $gender = $_POST['gender'];
-    $job = $_POST['job'];
-    $year_from = $_POST['year_from'];
-    $year_to = $_POST['year_to'];
+    // バリデーションチェック
+    if ($_POST['year_from'] > $_POST['year_to']) {
+        $err_msg['empyear'] = "正しい範囲を選択してください";
+    }
 
-    $sql_emp = "SELECT * FROM emp_table WHERE emptag1 = :gender AND emptag2 = :job AND (empyear >= :year_from AND empyear <= :year_to)";
-    $stmt = $dbh->prepare($sql_emp);
-    $stmt->bindValue(':gender', $gender);
-    $stmt->bindValue(':job', $job);
-    $stmt->bindValue(':year_from', $year_from);
-    $stmt->bindValue(':year_to', $year_to);
-    $stmt->execute();
-    $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if (empty($_POST['job'])) {
+        $err_msg['empjob'] = "どれか一つを選択してください";
+    }
+
+    if(!isset($err_msg)) {
+        $gender = $_POST['gender'];
+        $job = $_POST['job'];
+        $year_from = $_POST['year_from'];
+        $year_to = $_POST['year_to'];
+
+        $sql_emp = "SELECT * FROM emp_table WHERE emptag1 = :gender AND emptag2 = :job AND (empyear >= :year_from AND empyear <= :year_to)";
+        $stmt = $dbh->prepare($sql_emp);
+        $stmt->bindValue(':gender', $gender);
+        $stmt->bindValue(':job', $job);
+        $stmt->bindValue(':year_from', $year_from);
+        $stmt->bindValue(':year_to', $year_to);
+        $stmt->execute();
+        $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>
 
@@ -46,8 +57,8 @@ if(!empty($_POST)) {
 
 <form method="POST" action="">
     <div id="gender">
-        <input type="radio" name="gender" value="m" <?php if (isset($_POST['gender']) && $_POST['gender'] == "m") { echo 'checked'; } ?>>男性
-        <input type="radio" name="gender" value="f" <?php if (isset($_POST['gender']) && $_POST['gender'] == "f") { echo 'checked'; } ?>>女性
+        <input type="radio" name="gender" value="m" required <?php if (isset($_POST['gender']) && $_POST['gender'] == "m") { echo 'checked'; } ?>>男性
+        <input type="radio" name="gender" value="f" required <?php if (isset($_POST['gender']) && $_POST['gender'] == "f") { echo 'checked'; } ?>>女性
     </div>
     <div id="job">
         <input type="checkbox" name="job" value="nwp" <?php if (isset($_POST['job']) && $_POST['job'] == "nwp") { echo 'checked'; } ?>>NWP
@@ -55,6 +66,7 @@ if(!empty($_POST)) {
         <input type="checkbox" name="job" value="service" <?php if (isset($_POST['job']) && $_POST['job'] == "service") { echo 'checked'; } ?>>サービス開発
         <input type="checkbox" name="job" value="collab" <?php if (isset($_POST['job']) && $_POST['job'] == "collab") { echo 'checked'; } ?>>協業ビジネス
     </div>
+    <span style="color:#c7243a"><?php if (!empty($err_msg['empjob'])) echo $err_msg['empjob']; ?></span>
     <div id="year">
         <select name="year_from" size="1">
             <option value="">---</option>
@@ -86,13 +98,16 @@ if(!empty($_POST)) {
 
         </select>
         年目
-    </div><br>
+    </div>
+    </select><span style="color: #c7243a;"> <?php if (!empty($err_msg['empyear'])) echo $err_msg['empyear']; ?></span><br>
     <input type="submit" value="検索"><br><br>
 </form>
 
 
 <!-- ループで取得した社員情報を全て表示 -->
-<?php if(!empty($_POST)) { ?>
+<?php if(empty($employee)) { 
+    echo "該当する社員はいませんでした．";
+} else { ?>
     <?php for ($num = 0; $num < count($employee); $num++) { ?>
 
     <!-- リストの名前部分をモーダル表示のボタンに -->
