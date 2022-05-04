@@ -25,106 +25,129 @@ try{
 }
 
 if(!empty($_POST)) {
+    // バリデーションチェック
+    if ($_POST['year_from'] > $_POST['year_to']) {
+        $err_msg['empyear'] = "正しい範囲を選択してください";
+    }
 
-    $gender = $_POST['gender'];
-    $job = $_POST['job'];
-    $year_from = $_POST['year_from'];
-    $year_to = $_POST['year_to'];
+    if (empty($_POST['job'])) {
+        $err_msg['empjob'] = "どれか一つを選択してください";
+    }
 
-    $sql_emp = "SELECT * FROM emp_table WHERE emptag1 = :gender AND emptag2 = :job AND :year_from <= empyear <= :year_to";
-    $stmt = $dbh->prepare($sql_emp);
-    $stmt->bindValue(':gender', $gender);
-    $stmt->bindValue(':job', $job);
-    $stmt->bindValue(':year_from', $year_from);
-    $stmt->bindValue(':year_to', $year_to);
-    $stmt->execute();
-    $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if(!isset($err_msg)) {
+        $gender = $_POST['gender'];
+        $job = $_POST['job'];
+        $year_from = $_POST['year_from'];
+        $year_to = $_POST['year_to'];
 
+        // 複数選択で配列で受け取ったjobを文字列として結合
+        $job_str = "'".implode("','", $job)."'";
+
+        // データベース検索
+        // （1）emptag2かemptag3に選択されたjobが含まれている（2）emptag1の性別と一致（3）年次が選択された範囲内
+        $sql_emp = "SELECT * FROM emp_table WHERE ((emptag2 IN ($job_str)) OR (emptag3 IN ($job_str))) AND (emptag1 = :gender) AND (empyear >= :year_from AND empyear <= :year_to)";
+        $stmt = $dbh->prepare($sql_emp);
+        $stmt->bindValue(':gender', $gender);
+        // $stmt->bindValue(':job_str', $job_str);
+        $stmt->bindValue(':year_from', $year_from);
+        $stmt->bindValue(':year_to', $year_to);
+        $stmt->execute();
+        $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
-
 ?>
 
 <body>
 <h1>簡易診断</h1>
 
 <form method="POST" action="">
-    <div id="gender">
-        <input type="radio" name="gender" value="male">男性
-        <input type="radio" name="gender" value="female">女性
+    <div id="gender">性別：
+        <input type="radio" name="gender" value="m" required <?php if (isset($_POST['gender']) && $_POST['gender'] == "m") { echo 'checked'; } ?>>男性
+        <input type="radio" name="gender" value="f" required <?php if (isset($_POST['gender']) && $_POST['gender'] == "f") { echo 'checked'; } ?>>女性
     </div>
-    <div id="job">
-        <input type="checkbox" name="job" value="nwp">NWP
-        <input type="checkbox" name="job" value="se">SE
-        <input type="checkbox" name="job" value="service">サービス開発
+    <div id="job">職種：
+        <input type="checkbox" name="job[]" value="nwp" <?php if (isset($_POST['job']) && in_array("nwp", $_POST['job'])) { echo 'checked'; } ?>>NWP
+        <input type="checkbox" name="job[]" value="se" <?php if (isset($_POST['job']) && in_array("se", $_POST['job'])) { echo 'checked'; } ?>>SE
+        <input type="checkbox" name="job[]" value="service" <?php if (isset($_POST['job']) && in_array("service", $_POST['job'])) { echo 'checked'; } ?>>サービス開発
+        <input type="checkbox" name="job[]" value="collab" <?php if (isset($_POST['job']) && in_array("collab", $_POST['job'])) { echo 'checked'; } ?>>協業ビジネス
     </div>
-    <div id="year">
+    <span style="color:#c7243a"><?php if (!empty($err_msg['empjob'])) echo $err_msg['empjob']; ?></span>
+    <div id="year">年次：
         <select name="year_from" size="1">
             <option value="">---</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
+
+            <?php
+            for($i=1; $i <= 10; $i++) {
+                if($i == $_POST['year_from']) {    
+                    echo '<option value='.$i.' selected>'.$i.'</option>'; 
+                } else {
+                    echo '<option value='.$i.'>'.$i.'</option>';
+                }
+            }
+            ?>
+
         </select>
         年目～
         <select name="year_to" size="1">
             <option value="">---</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
+
+            <?php
+            for($i=1; $i <= 10; $i++) { 
+                if($i == $_POST['year_to']) {    
+                    echo '<option value='.$i.' selected>'.$i.'</option>'; 
+                } else {
+                    echo '<option value='.$i.'>'.$i.'</option>';
+                }
+            }
+            ?>
+
         </select>
         年目
-    </div><br>
+    </div>
+    </select><span style="color: #c7243a;"> <?php if (!empty($err_msg['empyear'])) echo $err_msg['empyear']; ?></span><br>
     <input type="submit" value="検索"><br><br>
 </form>
 
+
 <!-- ループで取得した社員情報を全て表示 -->
-<?php if(!empty($_POST)) { ?>
-<?php for ($num = 0; $num < count($employee); $num++) { ?>
+<?php if(!empty($_POST)) {
+    if(empty($employee)) { 
+    echo "該当する社員はいませんでした．";
+    } else { ?>
+        <?php for ($num = 0; $num < count($employee); $num++) { ?>
 
-<!-- リストの名前部分をモーダル表示のボタンに -->
-<div class="works_modal_open" data-modal-open="modal-<?php echo $num; ?>">
-    <h2><?php echo $employee[$num]['empname']; ?></h2>
-    <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="200">
-    <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
-    <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
-    <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
-</div>
-
-<br><br><br>
-
-<!-- モーダルウインドウここから -->
-<div class="works_modal_wrapper" data-modal="modal-<?php echo $num; ?>">
-    <div class="works_modal_mask"></div>
-    <div class="works_modal_window">
-        <div class="works_modal_content">
-            <h1><?php echo $employee[$num]['empname']; ?></h1>
-            <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="150">
+        <!-- リストの名前部分をモーダル表示のボタンに -->
+        <div class="works_modal_open" data-modal-open="modal-<?php echo $num; ?>">
+            <h2><?php echo $employee[$num]['empname']; ?></h2>
+            <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="200">
             <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
             <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
             <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
-            <p>趣味：<?php echo $employee[$num]['emphobby']; ?></p>
-            <p>コメント：<?php echo $employee[$num]['empcomment']; ?></p><br>
-            <a href="./reservation.php">面談予約はこちら</a><br><br>
         </div>
-        <div class="works_modal_close">✖</div>
-    </div>
-</div>
-<!-- モーダルウインドウここまで -->
 
-<?php } ?>
+        <br><br><br>
+
+        <!-- モーダルウインドウここから -->
+        <div class="works_modal_wrapper" data-modal="modal-<?php echo $num; ?>">
+            <div class="works_modal_mask"></div>
+            <div class="works_modal_window">
+                <div class="works_modal_content">
+                    <h1><?php echo $employee[$num]['empname']; ?></h1>
+                    <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="150">
+                    <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
+                    <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
+                    <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
+                    <p>趣味：<?php echo $employee[$num]['emphobby']; ?></p>
+                    <p>コメント：<?php echo $employee[$num]['empcomment']; ?></p><br>
+                    <a href="./reservation.php">面談予約はこちら</a><br><br>
+                </div>
+                <div class="works_modal_close">✖</div>
+            </div>
+        </div>
+        <!-- モーダルウインドウここまで -->
+
+        <?php } ?>
+    <?php } ?>
 <?php } ?>
 
 <script src="./js/script.js"></script>
