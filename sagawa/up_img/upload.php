@@ -1,4 +1,3 @@
-
 <?php
 
 session_start();
@@ -6,7 +5,7 @@ session_start();
 //データベース情報の読み込み
 include('../conf/config.php');
 
-//データベース接続
+//データベースへ接続、テーブルがない場合は作成
 try {
     //インスタンス化（"データベースの種類:host=接続先アドレス, dbname=データベース名,charset=文字エンコード" "ユーザー名", "パスワード", opt)
       $pdo = new PDO(DSN, DB_USER, DB_PASS);
@@ -14,6 +13,7 @@ try {
 } catch (Exception $e) {
       echo $e->getMessage() . PHP_EOL;
 }
+
 
 $sql_id = "SELECT * FROM emp_table WHERE empid = :empid";
 $stmt = $pdo->prepare($sql_id);

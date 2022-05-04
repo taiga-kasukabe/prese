@@ -55,13 +55,13 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php for ($n = 0; $n < count($employee); $n++) { ?>
         <div class="mouseoverParent">
             <p><?php echo $employee[$n]['empname']; ?></p>
-            <img src="../images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
+            <img src="./images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
             <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
             <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
             <p>職種：<?php echo $employee[$n]['empcareer']; ?></p><br><br>
             <div class="mouseoverChild">
                 <?php echo $employee[$n]['empname']; ?>
-                <img src="../images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
+                <img src="./images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
                 <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
                 <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
                 <p>職種：<?php echo $employee[$n]['empcareer']; ?></p>
