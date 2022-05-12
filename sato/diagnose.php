@@ -59,22 +59,19 @@ if(!empty($_POST['year_from'])) {
 <body>
     <h1>簡易診断</h1>
     <p>面談相手におすすめの社員を診断します！</p>
-    <br><br>
+    <br>
     <div id="main">
-        <div id="mienai" class="mienai">
-            みえちゃだめ
-        </div>
         <div id="question_area">
             <form method="POST" action="">
-                <div id="q1" class="txt_display">
+                <div id="q1" class="question">
                     Q.性別は？
                     <div id="gender">
                         <input type="radio" name="gender" value="m" required <?php if (isset($_POST['gender']) && $_POST['gender'] == "m") { echo 'checked'; } ?>>男性
                         <input type="radio" name="gender" value="f" required <?php if (isset($_POST['gender']) && $_POST['gender'] == "f") { echo 'checked'; } ?>>女性
                     </div>
-                    <input type="submit" value="次へ"><br><br>
-                </div>
-                <div id="q2" class="txt_hide">
+                    <input type="submit" value="次へ">
+                </div><br><br>
+                <div id="q2" class="question">
                     Q.職種は？
                     <div id="job">
                         <input type="checkbox" name="job[]" value="nwp" <?php if (isset($_POST['job']) && in_array("nwp", $_POST['job'])) { echo 'checked'; } ?>>NWP
@@ -82,9 +79,9 @@ if(!empty($_POST['year_from'])) {
                         <input type="checkbox" name="job[]" value="service" <?php if (isset($_POST['job']) && in_array("service", $_POST['job'])) { echo 'checked'; } ?>>サービス開発
                         <input type="checkbox" name="job[]" value="collab" <?php if (isset($_POST['job']) && in_array("collab", $_POST['job'])) { echo 'checked'; } ?>>協業ビジネス
                     </div>
-                    <input type="submit" value="次へ"><br><br>
-                </div>
-                <div id="q3" class="txt_hide">
+                    <input type="submit" value="次へ">
+                </div><br><br>
+                <div id="q3" class="question">
                     Q.年次は？
                     <div id="year">年次：
                         <select name="year_from" size="1">
@@ -118,55 +115,58 @@ if(!empty($_POST['year_from'])) {
                         </select>
                         年目<br>
                     </div>
-                    <input type="submit" value="診断する"><br><br>
+                    <input type="submit" value="診断する">
                 </form>
             </div>
         </div><br><br>
-        <div id="result_area" class="txt_hide">
-            <p>診断結果は、、、</p>
-        </div>
-    </div>
+        
+        <div id="result_area" class="result">
+            <p>あなたにおすすめの社員はこちら</p>
+        
+    
 
-    <!-- ループで取得した社員情報を全て表示 -->
-    <?php if(!empty($_POST)) {
-        if(empty($employee)) { 
-        echo "該当する社員はいませんでした．";
-        } else { ?>
-            <?php for ($num = 0; $num < count($employee); $num++) { ?>
+            <!-- ループで取得した社員情報を全て表示 -->
+            <?php if(!empty($_POST)) {
+                if(empty($employee)) { 
+                echo "該当する社員はいませんでした．";
+                } else { ?>
+                    <?php for ($num = 0; $num < count($employee); $num++) { ?>
 
-            <!-- リストの名前部分をモーダル表示のボタンに -->
-            <div class="works_modal_open" data-modal-open="modal-<?php echo $num; ?>">
-                <h2><?php echo $employee[$num]['empname']; ?></h2>
-                <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="200">
-                <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
-                <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
-                <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
-            </div>
-
-            <br><br><br>
-
-            <!-- モーダルウインドウここから -->
-            <div class="works_modal_wrapper" data-modal="modal-<?php echo $num; ?>">
-                <div class="works_modal_mask"></div>
-                <div class="works_modal_window">
-                    <div class="works_modal_content">
-                        <h1><?php echo $employee[$num]['empname']; ?></h1>
-                        <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="150">
+                    <!-- リストの名前部分をモーダル表示のボタンに -->
+                    <div class="works_modal_open" data-modal-open="modal-<?php echo $num; ?>">
+                        <h2><?php echo $employee[$num]['empname']; ?></h2>
+                        <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="200">
                         <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
                         <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
                         <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
-                        <p>趣味：<?php echo $employee[$num]['emphobby']; ?></p>
-                        <p>コメント：<?php echo $employee[$num]['empcomment']; ?></p><br>
-                        <a href="./reservation.php">面談予約はこちら</a><br><br>
                     </div>
-                    <div class="works_modal_close">✖</div>
-                </div>
-            </div>
-            <!-- モーダルウインドウここまで -->
 
+                    <br><br><br>
+
+                    <!-- モーダルウインドウここから -->
+                    <div class="works_modal_wrapper" data-modal="modal-<?php echo $num; ?>">
+                        <div class="works_modal_mask"></div>
+                        <div class="works_modal_window">
+                            <div class="works_modal_content">
+                                <h1><?php echo $employee[$num]['empname']; ?></h1>
+                                <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="150">
+                                <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
+                                <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
+                                <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
+                                <p>趣味：<?php echo $employee[$num]['emphobby']; ?></p>
+                                <p>コメント：<?php echo $employee[$num]['empcomment']; ?></p><br>
+                                <a href="./reservation.php">面談予約はこちら</a><br><br>
+                            </div>
+                            <div class="works_modal_close">✖</div>
+                        </div>
+                    </div>
+                    <!-- モーダルウインドウここまで -->
+
+                    <?php } ?>
+                <?php } ?>
             <?php } ?>
-        <?php } ?>
-    <?php } ?>
-    <script src="./js/script.js"></script>
+            <script src="./js/script.js"></script>
+        </div>
+    </div>
 </body>
 <html>
