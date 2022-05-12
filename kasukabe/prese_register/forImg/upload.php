@@ -26,7 +26,7 @@ if (!empty($member)) {
     $image = uniqid(mt_rand(), true);
     //アップロードされたファイルの拡張子を取得
     $image .= '.' . substr(strrchr($_FILES['image']['name'], '.'), 1);
-    $file = "../images/$image";
+    $file = "../src/images/$image";
 
     $sql = "UPDATE empDB SET empimg_id = :image WHERE empid = :id";
     $stmt = $pdo->prepare($sql);
@@ -34,7 +34,7 @@ if (!empty($member)) {
     $stmt->bindValue(':image', $image, PDO::PARAM_STR);
 
     if (!empty($_FILES['image']['name'])) {
-        move_uploaded_file($_FILES['image']['tmp_name'], '../images/' . $image);
+        move_uploaded_file($_FILES['image']['tmp_name'], '../src/images/' . $image);
         if (exif_imagetype($file)) {
             $message = '画像をアップロードしました';
             $stmt->execute();
