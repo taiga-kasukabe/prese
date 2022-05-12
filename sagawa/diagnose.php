@@ -41,7 +41,7 @@ if(!empty($_POST)) {
     }
 
     if(!isset($err_msg)) {
-        $gender = $_POST['gender'];
+        $gender = $_POST['gen'];
         $job = $_POST['job'];
         $year_mi = $_POST['year_mi'];
         $year_mx = $_POST['year_mx'];
@@ -50,7 +50,7 @@ if(!empty($_POST)) {
         $job_str = "'".implode("','", $job)."'";
 
         $sql_emp = "SELECT * FROM emp_table WHERE ((emptag2 IN ($job_str)) OR (emptag3 IN ($job_str))) AND (emptag1 = :gender) AND (empyear >= :year_mi AND empyear <= :year_mx)";
-        $stmt = $pdo->prepare($sql_emp);
+        $stmt = $pdo->prepare($sql_emp); 
         $stmt->bindValue(':gender', $gender);
         $stmt->bindValue(':year_mi', $year_mi);
         $stmt->bindValue(':year_mx', $year_mx);
@@ -102,7 +102,7 @@ if(!empty($_POST)) {
     </div>
 <input type="submit" value="検索">
 </p>
-
+<body>
 <h2>社員リスト</h2>
 
 <div>
@@ -128,3 +128,5 @@ if(!empty($_POST)) {
         <br><br>
     <?php } ?>
 </div>
+<h2>社員リスト</h2>
+</body>
