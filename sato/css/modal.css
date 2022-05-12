@@ -12,6 +12,23 @@
     text-align: center;
 }
 
+.txt_hide{
+  display: none;
+}
+
+.txt_display{
+  display: none;
+}
+
+.mienai{
+  display: none;
+  color: red;
+}
+
+#mienai{
+  color: rebeccapurple;
+}
+
 /* ------works_modal css------ */
 .works_modal_wrapper {
     position: fixed;
