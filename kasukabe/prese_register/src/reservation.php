@@ -64,3 +64,7 @@ $date_1 = date('m/d', strtotime('1 day'));
         <th>1600</th><?php for ($i = 0; $i < 10; $i++) print '<td></td>'; ?>
     </tr>
 </table>
+
+<button type="button" id="btn"><span>a</span></button>
+
+<script src="./js/script.js"></script>
