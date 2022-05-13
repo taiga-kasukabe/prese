@@ -3,7 +3,7 @@
     cursor: pointer;
     width: 600px;
     padding-left: 20px;
-    border: 4px solid rgb(119, 119, 119);
+    border: 2px solid rgb(119, 119, 119);
     border-radius: 5%;
     color: rgb(0, 0, 0);
 }
@@ -11,6 +11,21 @@
 .works_modal_content{
     text-align: center;
 }
+
+.txt_hide{
+  display: none;
+}
+
+.txt_display{
+  display: block;
+}
+
+#q1,#q2,#q3{
+  border: 2px solid #000;
+  width: 400px;
+  padding: 20px;
+}
+
 
 /* ------works_modal css------ */
 .works_modal_wrapper {
