@@ -9,10 +9,10 @@
 <h1>パスワードを再登録します。</h1>
 <h2>登録したメールアドレスを入力してください</h2>
 <h3>
-<form action="vari_mail.php" method="post" class="form_log">
+<form action="reset_email.php" method="post" class="form_log">
     <div>
         <label>メールアドレス：</label>
-        <input type="text" name="remail" ?>" required>
+        <input type="text" name="mail" value="<?php if(!empty($mail)){echo $mail;} ?>"  required>
     </div>
 </h3>
 <input type="submit" value="確認">

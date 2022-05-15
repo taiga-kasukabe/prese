@@ -1,6 +1,4 @@
 <?php
-$repassword = $_SESSION['user']['repassword'];
-$repassword_confirm = $_SESSION['user']['repassword_confirm'];
-$repassword_row = $_SESSION['user']['repassword_row'];
-$repassword_confirm_row = $_SESSION['user']['repassword_confirm_row'];
+$password = $_SESSION['user']['password'];
+$password_confirm = $_SESSION['user']['password_confirm'];
 ?>

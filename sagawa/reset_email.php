@@ -4,9 +4,7 @@ session_start();
 $_SESSION = array();
 //DB接続用
 include("./conf/config.php");
-//変数定義
-include("./conf/vari_mail.php");
-
+$mail = $_POST['mail'];
 
 //データベースへ接続、テーブルがない場合は作成
 try {

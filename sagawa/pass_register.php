@@ -2,10 +2,10 @@
 session_start();
 
 //変数定義
+
 include("./conf/vari_session_pass.php");
 include("./conf/config.php");
 
-$id = $_SESSION['id'];
 
 //データベースへ接続、テーブルがない場合は作成
 try {
@@ -16,19 +16,13 @@ try {
     echo $e->getMessage() . PHP_EOL;
   }
 
-//users_table接続
-$sql_user = "SELECT * FROM users_table WHERE id = :id";
-$stmt = $pdo -> prepare($sql_user);
-$stmt -> bindValue(':id', $id);
-$stmt -> execute();
-$member = $stmt -> fetch();
 
-
-$sql =   "UPDATE users_table SET password = :password WHERE id=:id";
+$sql =  "UPDATE users_table SET password = :password, password_confirm = :password_confirm WHERE mail=:mail";
 $stmt = $pdo -> prepare($sql);
-$stmt -> bindValue(':repassword', $repassword);
-$stmt -> bindValue(':repassword_confirm', $repassword_confirm);
-$stmt -> execute();
+//$stmt -> bindValue(':password', $password);
+//$stmt -> bindValue(':password_confirm', $password_confirm);
+$params = array(':password' => $password, ':password_confirm' => $password_confirm);
+$stmt -> execute($params);
 
 ?>
 <h1>再登録しました</h1>

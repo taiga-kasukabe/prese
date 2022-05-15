@@ -1,37 +1,27 @@
 <?php
 session_start();
+$_SESSION = array();
 
-//変数定義
-include("./conf/config.php");
 //変数定義
 include("./conf/vari_reset.php");
 
-//データベースへ接続、テーブルがない場合は作成
-try {
-  //インスタンス化（"データベースの種類:host=接続先アドレス, dbname=データベース名,charset=文字エンコード" "ユーザー名", "パスワード", opt)
-    $pdo = new PDO(DSN, DB_USER, DB_PASS);
-  //エラー処理
-  } catch (Exception $e) {
-    echo $e->getMessage() . PHP_EOL;
-  }
-
 //正規表現でパスワードをバリデーション
-if (strlen($_POST['repassword']) < 8 || !preg_match("/^[a-zA-Z0-9]+$/", $_POST['repassword'])) {
+if (strlen($_POST['password']) < 8 || !preg_match("/^[a-zA-Z0-9]+$/", $_POST['password'])) {
     $err_msg['pass_length'] = 'パスワードは8文字以上の半角英数字を入力してください';
 }
 
 //パスワード再入力のチェック
-if ($_POST['repassword'] != $_POST['repassword_confirm']){
+if ($_POST['password'] != $_POST['password_confirm']){
     $err_msg['pass_confirm'] = 'パスワード(確認)が一致しません';
 }
 
 $_SESSION['err'] = array();
 $_SESSION['err'] = $_SESSION['err'] + $err_msg;
 
-$_SESSION['user']['repassword'] = $repassword;
-$_SESSION['user']['repassword_confirm'] = $repassword_confirm;
-$_SESSION['user']['repassword_row'] = $_POST['repassword'];
-$_SESSION['user']['repassword_confirm_row'] = $_POST["repassword_confirm"];
+$_SESSION['user']['password'] = $password;
+$_SESSION['user']['password_confirm'] = $password_confirm;
+$_SESSION['user']['password_row'] = $_POST['password'];
+$_SESSION['user']['password_confirm_row'] = $_POST["password_confirm"];
 
 //条件により確認or再登録
 if(empty($_SESSION['err'])){
@@ -39,7 +29,10 @@ if(empty($_SESSION['err'])){
     header('Location: ./pass_register.php');
 } else {
     // パスワード再登録やり直し
-    header('Location: ./reset_pass_form.php');
+    $msg = "再入力と一致していません";
+    $link = '<a href="./reset_pass_form.php">戻る</a>';
 }
 
 ?>
+<?php echo $msg; ?>
+<?php echo $link; ?>
