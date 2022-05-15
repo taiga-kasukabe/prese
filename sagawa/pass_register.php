@@ -2,7 +2,7 @@
 session_start();
 
 //変数定義
-include("./conf/variable_session.php");
+include("./conf/vari_session_pass.php");
 include("./conf/config.php");
 
 $id = $_SESSION['id'];
@@ -32,5 +32,6 @@ $stmt -> execute();
 
 ?>
 <h1>再登録しました</h1>
+<p>登録ID名：<?php echo $id;?></p>
 <p>こちらのリンクからログインしてください</p>
 <a href="./login_form.php">ログインページへ</a>

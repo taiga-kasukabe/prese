@@ -2,10 +2,9 @@
 session_start();
 
 //変数定義
-include("./conf/variable_session.php");
 include("./conf/config.php");
 //変数定義
-include("./conf/variable.php");
+include("./conf/vari_reset.php");
 
 //データベースへ接続、テーブルがない場合は作成
 try {
