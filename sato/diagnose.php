@@ -71,7 +71,7 @@ if(!empty($_POST['year_from'])) {
                         <input type="radio" name="gender" value="f" required <?php if (isset($_POST['gender']) && $_POST['gender'] == "f") { echo 'checked'; } ?>>女性
                     </div>
                     <input type="button" value="次へ" class="next">
-                </div><br><br>
+                </div>
                 
                 <div id="q2" class="question">
                     Q.職種は？
@@ -82,7 +82,7 @@ if(!empty($_POST['year_from'])) {
                         <input type="checkbox" name="job[]" value="collab" <?php if (isset($_POST['job']) && in_array("collab", $_POST['job'])) { echo 'checked'; } ?>>協業ビジネス
                     </div>
                     <input type="button" value="次へ" class="next">
-                </div><br><br>
+                </div>
 
                 <div id="q3" class="question">
                     Q.年次は？
@@ -121,7 +121,7 @@ if(!empty($_POST['year_from'])) {
                     <input type="button" value="診断する" class="next">
                 </div>
             </form>
-        </div><br><br>
+        </div>
         
         <div id="result_area" class="result">
             <p>あなたにおすすめの社員はこちら</p>
