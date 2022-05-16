@@ -5,6 +5,7 @@ session_start();
 
 // 変数定義
 include('../conf/db_conf.php');
+$empid = $_POST['empid'];
 
 //DB接続
 try {
@@ -25,12 +26,20 @@ try {
 // 社員リスト取得
 $sql = "SELECT * FROM empDB WHERE empid = :empid";
 $stmt = $dbh->prepare($sql);
-$stmt->bindValue(':empid', $_POST['empid']);
+$stmt->bindValue(':empid', $empid);
 $stmt->execute();
 $employee = $stmt->fetch();
 
 $date = date('m/d');
 $date_1 = date('m/d', strtotime('1 day'));
+
+// ユーザ情報取得
+$id = $_SESSION['id'];
+$sql = "SELECT * FROM users_table WHERE id = :id";
+$stmt = $dbh->prepare($sql);
+$stmt->bindValue(':id', $id);
+$stmt->execute();
+$member = $stmt->fetch();
 ?>
 
 <!-- 表示画面 -->
@@ -50,7 +59,8 @@ $date_1 = date('m/d', strtotime('1 day'));
         <th>1000</th><?php for ($i = 1; $i <= 10; $i++) print '<td class="choice"></td>'; ?>
     </tr>
     <tr>
-        <th>1100</th><div class="underline"><?php for ($i = 1; $i <= 10; $i++) print '<td><a href="./reservation_confirm.php?time=1100&date=' . date('md', strtotime($i . 'day')) . '">◉</td>'; ?></div>
+        <th>1100</th>
+        <?php for ($i = 1; $i <= 10; $i++) print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1100&date=' . date('md', strtotime($i . 'day')) . '">◉</td>'; ?>
     </tr>
     <tr>
         <th>1300</th><?php for ($i = 1; $i <= 10; $i++) print '<td></td>'; ?>
