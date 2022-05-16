@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="./css/table.css">
+<link rel="stylesheet" href="css/table.css">
 
 <?php
 session_start();
@@ -33,6 +33,7 @@ $date = date('m/d');
 $date_1 = date('m/d', strtotime('1 day'));
 ?>
 
+<!-- 表示画面 -->
 <h1>予約画面</h1>
 <p><?php echo $employee['empname']; ?></p>
 <img src="./images/<?php echo $employee['empimg_id']; ?>" alt="社員画像" height="300">
@@ -46,7 +47,7 @@ $date_1 = date('m/d', strtotime('1 day'));
         <th>時間(時)</th><?php for ($i = 1; $i <= 10; $i++) print '<th>' . date('m/d', strtotime($i . 'day')) . '</th>'; ?>
     </tr>
     <tr>
-        <th>1000</th><?php for ($i = 0; $i < 10; $i++) print '<td></td>'; ?>
+        <th>1000</th><?php for ($i = 0; $i < 10; $i++) print '<td class="choice"></td>'; ?>
     </tr>
     <tr>
         <th>1100</th><?php for ($i = 0; $i < 10; $i++) print '<td></td>'; ?>
@@ -65,6 +66,8 @@ $date_1 = date('m/d', strtotime('1 day'));
     </tr>
 </table>
 
+<br>
 <button type="button" id="btn"><span>a</span></button>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="./js/script.js"></script>

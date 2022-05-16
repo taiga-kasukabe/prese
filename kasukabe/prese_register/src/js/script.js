@@ -18,3 +18,10 @@ window.addEventListener('DOMContentLoaded', function (e) {
     });
 });
 
+//jQuery
+$(function() {
+    $('.choice').on('click', function() {
+        var $selected = $(this);
+        $selected.toggleClass('selected');
+    })
+})

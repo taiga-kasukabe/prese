@@ -12,5 +12,9 @@ th {
 }
 
 th {
-    background: silver;
+    background-color: silver;
+}
+
+.selected {
+    background-color: red;
 }
