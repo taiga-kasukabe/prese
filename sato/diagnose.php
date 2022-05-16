@@ -25,13 +25,13 @@ try{
 
 if(!empty($_POST['year_from'])) {
     // バリデーションチェック
-    if ($_POST['year_from'] > $_POST['year_to']) {
-        $err_msg['empyear'] = "正しい範囲を選択してください";
-    }
+    // if ($_POST['year_from'] > $_POST['year_to']) {
+    //     $err_msg['empyear'] = "正しい範囲を選択してください";
+    // }
 
-    if (empty($_POST['job'])) {
-        $err_msg['empjob'] = "どれか一つを選択してください";
-    }
+    // if (empty($_POST['job'])) {
+    //     $err_msg['empjob'] = "どれか一つを選択してください";
+    // }
 
     if(!isset($err_msg)) {
         $gender = $_POST['gender'];
@@ -63,14 +63,16 @@ if(!empty($_POST['year_from'])) {
     <div id="main">
         <div id="question_area">
             <form method="POST" action="">
-                <div id="q1" class="question">
+
+                <div id="q1" class="question is_open">
                     Q.性別は？
                     <div id="gender">
                         <input type="radio" name="gender" value="m" required <?php if (isset($_POST['gender']) && $_POST['gender'] == "m") { echo 'checked'; } ?>>男性
                         <input type="radio" name="gender" value="f" required <?php if (isset($_POST['gender']) && $_POST['gender'] == "f") { echo 'checked'; } ?>>女性
                     </div>
-                    <input type="submit" value="次へ">
+                    <input type="button" value="次へ" class="next">
                 </div><br><br>
+                
                 <div id="q2" class="question">
                     Q.職種は？
                     <div id="job">
@@ -79,8 +81,9 @@ if(!empty($_POST['year_from'])) {
                         <input type="checkbox" name="job[]" value="service" <?php if (isset($_POST['job']) && in_array("service", $_POST['job'])) { echo 'checked'; } ?>>サービス開発
                         <input type="checkbox" name="job[]" value="collab" <?php if (isset($_POST['job']) && in_array("collab", $_POST['job'])) { echo 'checked'; } ?>>協業ビジネス
                     </div>
-                    <input type="submit" value="次へ">
+                    <input type="button" value="次へ" class="next">
                 </div><br><br>
+
                 <div id="q3" class="question">
                     Q.年次は？
                     <div id="year">年次：
@@ -115,9 +118,9 @@ if(!empty($_POST['year_from'])) {
                         </select>
                         年目<br>
                     </div>
-                    <input type="submit" value="診断する">
-                </form>
-            </div>
+                    <input type="button" value="診断する" class="next">
+                </div>
+            </form>
         </div><br><br>
         
         <div id="result_area" class="result">
@@ -165,8 +168,9 @@ if(!empty($_POST['year_from'])) {
                     <?php } ?>
                 <?php } ?>
             <?php } ?>
-            <script src="./js/script.js"></script>
         </div>
     </div>
+    <script src="js/diagnose.js"></script>
+    <!-- <script src="js/script.js"></script> -->
 </body>
 <html>
