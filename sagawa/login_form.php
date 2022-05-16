@@ -10,5 +10,6 @@
     </div>
     <input type="submit" value="ログイン"><br>
     <p>新規会員登録は<a href="./register_form.php">こちら</a></p>
+    <a href="./reset_email_form.php">パスワード再登録はこちら</a>
 </form>
 

@@ -121,13 +121,21 @@ if (!empty($_POST)) {
             <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
             <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
             <p>職種：<?php echo $employee[$n]['empcareer']; ?></p><br><br>
+            <form action="./reservation.php" method="POST">
+                <input type="hidden" name="empid" value="<?php echo $employee[$n]['empid']; ?>">
+                <input type="submit" value="予約はこちら">
+            </form>
             <div class="mouseoverChild">
-                <?php echo $employee[$n]['empname']; ?>
+                <p><?php echo $employee[$n]['empname']; ?></p>
                 <img src="./images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
                 <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
                 <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
                 <p>職種：<?php echo $employee[$n]['empcareer']; ?></p>
                 <p>趣味：<?php echo $employee[$n]['emphobby']; ?></p>
+                <form action="./reservation.php" method="POST">
+                    <input type="hidden" name="empid" value="<?php echo $employee[$n]['empid']; ?>">
+                    <input type="submit" value="予約はこちら">
+                </form>
             </div>
         </div>
         <br><br>
