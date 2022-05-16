@@ -1,5 +1,5 @@
 // 次に表示する部分のidを指定する配列を定義
-var orderArray = ['q1','q2','q3','result_area'];
+var orderArray = ['q1','q2','q3'];
 
 // 現在の配列の要素を意味する変数を定義
 var n=0;
