@@ -47,24 +47,25 @@ $date_1 = date('m/d', strtotime('1 day'));
         <th>時間(時)</th><?php for ($i = 1; $i <= 10; $i++) print '<th>' . date('m/d', strtotime($i . 'day')) . '</th>'; ?>
     </tr>
     <tr>
-        <th>1000</th><?php for ($i = 0; $i < 10; $i++) print '<td class="choice"></td>'; ?>
+        <th>1000</th><?php for ($i = 1; $i <= 10; $i++) print '<td class="choice"></td>'; ?>
     </tr>
     <tr>
-        <th>1100</th><?php for ($i = 0; $i < 10; $i++) print '<td></td>'; ?>
+        <th>1100</th><div class="underline"><?php for ($i = 1; $i <= 10; $i++) print '<td><a href="./reservation_confirm.php?time=1100&date=' . date('md', strtotime($i . 'day')) . '">◉</td>'; ?></div>
     </tr>
     <tr>
-        <th>1300</th><?php for ($i = 0; $i < 10; $i++) print '<td></td>'; ?>
+        <th>1300</th><?php for ($i = 1; $i <= 10; $i++) print '<td></td>'; ?>
     </tr>
     <tr>
-        <th>1400</th><?php for ($i = 0; $i < 10; $i++) print '<td></td>'; ?>
+        <th>1400</th><?php for ($i = 1; $i <= 10; $i++) print '<td></td>'; ?>
     </tr>
     <tr>
-        <th>1500</th><?php for ($i = 0; $i < 10; $i++) print '<td></td>'; ?>
+        <th>1500</th><?php for ($i = 1; $i <= 10; $i++) print '<td></td>'; ?>
     </tr>
     <tr>
-        <th>1600</th><?php for ($i = 0; $i < 10; $i++) print '<td></td>'; ?>
+        <th>1600</th><?php for ($i = 1; $i <= 10; $i++) print '<td></td>'; ?>
     </tr>
 </table>
+
 
 <br>
 <button type="button" id="btn"><span>a</span></button>

@@ -9,6 +9,7 @@ th {
 td,
 th {
     min-width: 32px;
+    text-align: center;
 }
 
 th {
@@ -17,4 +18,8 @@ th {
 
 .selected {
     background-color: red;
+}
+
+a {
+    text-decoration: none;
 }
