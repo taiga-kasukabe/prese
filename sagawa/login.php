@@ -6,7 +6,6 @@ session_start();
 $id = $_POST['id'];
 include('./conf/config.php');
 
-//DB内でPOSTされたメールアドレスを検索
 try {
   //インスタンス化（"データベースの種類:host=接続先アドレス, dbname=データベース名,charset=文字エンコード" "ユーザー名", "パスワード", opt)
     $pdo = new PDO(DSN, DB_USER, DB_PASS);
