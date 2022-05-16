@@ -57,6 +57,7 @@ if(!empty($_POST)) {
 ?>
 
 <body>
+<h1>簡易診断</h1>
 <div id="result_area" class="result is_open">
     <p>あなたにおすすめの社員はこちら</p>
 
@@ -101,6 +102,8 @@ if(!empty($_POST)) {
         <?php } ?>
     <?php } ?>
 </div>
+
+<a href="home.php">ホームへ</a>
 <script src="js/script.js"></script>
 </body>
 <html>
