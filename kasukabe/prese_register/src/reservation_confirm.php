@@ -47,3 +47,9 @@ $date_1 = date('m/d', strtotime('1 day'));
 
 <h2>予約時間：<?php echo $time; ?></h2>
 <h2>予約日程：<?php echo $reservation_date; ?></h2>
+
+<form action="./reservation.php" method="GET">
+    <input type="hidden" name="empid" value="<?php echo $empid; ?>">
+    <input type="hidden" name="week" value="0">
+    <input type="submit" value="戻る">
+</form>

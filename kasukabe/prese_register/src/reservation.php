@@ -5,7 +5,10 @@ session_start();
 
 // 変数定義
 include('../conf/db_conf.php');
-$empid = $_POST['empid'];
+$empid = $_GET['empid'];
+$week = $_GET['week'];
+
+
 
 //DB接続
 try {
@@ -50,32 +53,39 @@ $member = $stmt->fetch();
 <p>役職：<?php echo $employee['empjob']; ?></p>
 <p>職種：<?php echo $employee['empcareer']; ?></p>
 <p>趣味：<?php echo $employee['emphobby']; ?></p>
-
+<?php
+if ($week > 0) {
+    echo '<a href="./reservation.php?empid=' . $empid . '&week=' . $week - 1 . '">前の1週間</a></br>';
+}
+echo '<a href="./reservation.php?empid=' . $empid . '&week=' . $week + 1 .  '">次の1週間</a>';
+?>
 <table>
     <tr>
-        <th>時間(時)</th><?php for ($i = 1; $i <= 10; $i++) print '<th>' . date('m/d', strtotime($i . 'day')) . '</th>'; ?>
+        <th>時間(時)</th><?php for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) print '<th>' . date('m/d', strtotime($i . 'day')) . '</th>'; ?>
     </tr>
     <tr>
-        <th>1000</th><?php for ($i = 1; $i <= 10; $i++) print '<td class="choice"></td>'; ?>
+        <th>1000</th><?php for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1000&date=' . date('md', strtotime($i . 'day')) . '">◉</td>'; ?>
     </tr>
     <tr>
         <th>1100</th>
-        <?php for ($i = 1; $i <= 10; $i++) print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1100&date=' . date('md', strtotime($i . 'day')) . '">◉</td>'; ?>
+        <?php for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1100&date=' . date('md', strtotime($i . 'day')) . '">◉</td>'; ?>
     </tr>
     <tr>
-        <th>1300</th><?php for ($i = 1; $i <= 10; $i++) print '<td></td>'; ?>
+        <th>1300</th><?php for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1300&date=' . date('md', strtotime($i . 'day')) . '">◉</td>'; ?>
     </tr>
     <tr>
-        <th>1400</th><?php for ($i = 1; $i <= 10; $i++) print '<td></td>'; ?>
+        <th>1400</th><?php for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1400&date=' . date('md', strtotime($i . 'day')) . '">◉</td>'; ?>
     </tr>
     <tr>
-        <th>1500</th><?php for ($i = 1; $i <= 10; $i++) print '<td></td>'; ?>
+        <th>1500</th><?php for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1500&date=' . date('md', strtotime($i . 'day')) . '">◉</td>'; ?>
     </tr>
     <tr>
-        <th>1600</th><?php for ($i = 1; $i <= 10; $i++) print '<td></td>'; ?>
+        <th>1600</th><?php for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1600&date=' . date('md', strtotime($i . 'day')) . '">◉</td>'; ?>
     </tr>
 </table>
 
+
+<a href="./home.php">戻る</a>
 
 <br>
 <button type="button" id="btn"><span>a</span></button>
