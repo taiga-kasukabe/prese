@@ -13,6 +13,8 @@
 
 <?php
 
+session_start();
+
 //データベース情報の読み込み
 include('./conf/db_conf.php');
 
@@ -23,36 +25,38 @@ try{
     $msg = $e -> getMessage();
 }
 
+$id = $_SESSION['id'];
+
 if(!empty($_POST)) {
-    // バリデーションチェック
-    // if ($_POST['year_from'] > $_POST['year_to']) {
-    //     $err_msg['empyear'] = "正しい範囲を選択してください";
-    // }
+    // 診断で入力した情報
+    $gender = $_POST['gender'];
+    $job = $_POST['job'];
+    $year_from = $_POST['year_from'];
+    $year_to = $_POST['year_to'];
+    
+    // 複数選択で配列で受け取ったjobを文字列として結合
+     $job_str = "'".implode("','", $job)."'";
 
-    // if (empty($_POST['job'])) {
-    //     $err_msg['empjob'] = "どれか一つを選択してください";
-    // }
+    $sql = "UPDATE users_table SET gender = :gender, job_str = :job_str, year_from = :year_from, year_to = :year_to WHERE id=:id";
+    $stmt = $dbh -> prepare($sql);
+    $stmt -> bindValue(':gender', $gender);
+    $stmt -> bindValue(':job_str', $job_str);
+    $stmt -> bindValue(':year_from', $year_from);
+    $stmt -> bindValue(':year_to', $year_to);
+    $stmt -> bindValue(':id', $id);
+    $stmt -> execute();
 
-    // if(!isset($err_msg)) {
-        $gender = $_POST['gender'];
-        $job = $_POST['job'];
-        $year_from = $_POST['year_from'];
-        $year_to = $_POST['year_to'];
+    // データベース検索
+    // （1）emptag2かemptag3に選択されたjobが含まれている（2）emptag1の性別と一致（3）年次が選択された範囲内
+    $sql_emp = "SELECT * FROM emp_table WHERE ((emptag2 IN ($job_str)) OR (emptag3 IN ($job_str))) AND (emptag1 = :gender) AND (empyear >= :year_from AND empyear <= :year_to)";
+    $stmt = $dbh->prepare($sql_emp);
+    $stmt->bindValue(':gender', $gender);
+     // $stmt->bindValue(':job_str', $job_str);
+    $stmt->bindValue(':year_from', $year_from);
+    $stmt->bindValue(':year_to', $year_to);
+    $stmt->execute();
+    $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // 複数選択で配列で受け取ったjobを文字列として結合
-        $job_str = "'".implode("','", $job)."'";
-
-        // データベース検索
-        // （1）emptag2かemptag3に選択されたjobが含まれている（2）emptag1の性別と一致（3）年次が選択された範囲内
-        $sql_emp = "SELECT * FROM emp_table WHERE ((emptag2 IN ($job_str)) OR (emptag3 IN ($job_str))) AND (emptag1 = :gender) AND (empyear >= :year_from AND empyear <= :year_to)";
-        $stmt = $dbh->prepare($sql_emp);
-        $stmt->bindValue(':gender', $gender);
-        // $stmt->bindValue(':job_str', $job_str);
-        $stmt->bindValue(':year_from', $year_from);
-        $stmt->bindValue(':year_to', $year_to);
-        $stmt->execute();
-        $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // }
 }
 ?>
 

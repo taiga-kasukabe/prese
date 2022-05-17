@@ -9,6 +9,7 @@
     <title>簡易診断</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/diagnose.css">
 </head>
 
 
@@ -23,21 +24,21 @@
                 <div id="q1" class="question is_open">
                     Q.性別は？
                     <div id="gender">
-                        <input type="radio" name="gender" value="m" required <?php if (isset($_POST['gender']) && $_POST['gender'] == "m") { echo 'checked'; } ?>>男性
-                        <input type="radio" name="gender" value="f" required <?php if (isset($_POST['gender']) && $_POST['gender'] == "f") { echo 'checked'; } ?>>女性
+                        <input type="radio" name="gender" id="m" value="m" data-q="q1" <?php if (isset($_POST['gender']) && $_POST['gender'] == "m") { echo 'checked'; } ?>><label for="m">男性</label>
+                        <input type="radio" name="gender" id="f" value="f" data-q="q1" <?php if (isset($_POST['gender']) && $_POST['gender'] == "f") { echo 'checked'; } ?>><label for="f">女性</label>
                     </div>
-                    <input type="button" value="次へ" class="next">
+                    <input type="button" value="次へ" class="next" data-button="q1">
                 </div>
                 
                 <div id="q2" class="question">
                     Q.職種は？
                     <div id="job">
-                        <input type="checkbox" name="job[]" value="nwp" <?php if (isset($_POST['job']) && in_array("nwp", $_POST['job'])) { echo 'checked'; } ?>>NWP
-                        <input type="checkbox" name="job[]" value="se" <?php if (isset($_POST['job']) && in_array("se", $_POST['job'])) { echo 'checked'; } ?>>SE
-                        <input type="checkbox" name="job[]" value="service" <?php if (isset($_POST['job']) && in_array("service", $_POST['job'])) { echo 'checked'; } ?>>サービス開発
-                        <input type="checkbox" name="job[]" value="collab" <?php if (isset($_POST['job']) && in_array("collab", $_POST['job'])) { echo 'checked'; } ?>>協業ビジネス
+                        <input type="checkbox" name="job[]" value="nwp" data-q="q2" <?php if (isset($_POST['job']) && in_array("nwp", $_POST['job'])) { echo 'checked'; } ?>>NWP
+                        <input type="checkbox" name="job[]" value="se" data-q="q2" <?php if (isset($_POST['job']) && in_array("se", $_POST['job'])) { echo 'checked'; } ?>>SE
+                        <input type="checkbox" name="job[]" value="service" data-q="q2" <?php if (isset($_POST['job']) && in_array("service", $_POST['job'])) { echo 'checked'; } ?>>サービス開発
+                        <input type="checkbox" name="job[]" value="collab" data-q="q2" <?php if (isset($_POST['job']) && in_array("collab", $_POST['job'])) { echo 'checked'; } ?>>協業ビジネス
                     </div>
-                    <input type="button" value="次へ" class="next">
+                    <input type="button" value="次へ" class="next" data-button="q2">
                 </div>
 
                 <div id="q3" class="question">
