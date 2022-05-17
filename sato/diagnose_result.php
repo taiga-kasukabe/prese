@@ -37,7 +37,7 @@ if(!empty($_POST)) {
     // 複数選択で配列で受け取ったjobを文字列として結合
      $job_str = "'".implode("','", $job)."'";
 
-    $sql = "UPDATE users_table SET (gender, job_str, year_from, year_to) VALUES (:gender, :job_str, :year_from, :year_to) WHERE id=:id";
+    $sql = "UPDATE users_table SET gender = :gender, job_str = :job_str, year_from = :year_from, year_to = :year_to WHERE id=:id";
     $stmt = $dbh -> prepare($sql);
     $stmt -> bindValue(':gender', $gender);
     $stmt -> bindValue(':job_str', $job_str);
@@ -45,9 +45,6 @@ if(!empty($_POST)) {
     $stmt -> bindValue(':year_to', $year_to);
     $stmt -> bindValue(':id', $id);
     $stmt -> execute();
-
-    // 複数選択で配列で受け取ったjobを文字列として結合
-     $job_str = "'".implode("','", $job)."'";
 
     // データベース検索
     // （1）emptag2かemptag3に選択されたjobが含まれている（2）emptag1の性別と一致（3）年次が選択された範囲内
