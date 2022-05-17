@@ -7,7 +7,7 @@ session_start();
 include('../conf/db_conf.php');
 $empid = $_GET['empid'];
 $week = $_GET['week'];
-
+$weekJa = array("日", "月", "火", "水", "木", "金", "土");
 
 
 //DB接続
@@ -53,15 +53,18 @@ $member = $stmt->fetch();
 <p>役職：<?php echo $employee['empjob']; ?></p>
 <p>職種：<?php echo $employee['empcareer']; ?></p>
 <p>趣味：<?php echo $employee['emphobby']; ?></p>
+
 <?php
+// echo $weekJa[date('w', strtotime(date('Y-m-d')))];
 if ($week > 0) {
     echo '<a href="./reservation.php?empid=' . $empid . '&week=' . $week - 1 . '">前の1週間</a></br>';
 }
 echo '<a href="./reservation.php?empid=' . $empid . '&week=' . $week + 1 .  '">次の1週間</a>';
 ?>
+
 <table>
     <tr>
-        <th>時間(時)</th><?php for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) print '<th>' . date('m/d', strtotime($i . 'day')) . '</th>'; ?>
+        <th>時間(時)</th><?php for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) print '<th>' . date('m/d', strtotime($i . 'day')) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($i . 'day'))))] . ')</th>'; ?>
     </tr>
     <tr>
         <th>1000</th><?php for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1000&date=' . date('md', strtotime($i . 'day')) . '">◉</td>'; ?>
