@@ -12,17 +12,6 @@
     text-align: center;
 }
 
-#q1, #q2, #q3{
-  border: 2px solid #000;
-  width: 400px;
-  padding: 20px;
-}
-
-.question, .result {
-  display: none;
-}
-
-
 /* ------works_modal css------ */
 .works_modal_wrapper {
     position: fixed;
@@ -95,9 +84,6 @@ html.is_open, body.is_open {
     transform: translateY(-30px);
     opacity: 0;
 }
-
-#q1.is_open, #q2.is_open, #q3.is_open, #result_area.is_open {
-  display: block;}
 
 /* @keyframes works_modal_wrapper_open {
     0% {

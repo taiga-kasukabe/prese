@@ -1,0 +1,14 @@
+
+#q1, #q2, #q3{
+    border: 2px solid #000;
+    width: 400px;
+    padding: 20px;
+}
+  
+.question, .result {
+    display: none;
+}
+  
+#q1.is_open, #q2.is_open, #q3.is_open, #result_area.is_open {
+    display: block;
+}

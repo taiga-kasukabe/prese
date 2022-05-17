@@ -9,6 +9,7 @@
     <title>簡易診断</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/diagnose.css">
 </head>
 
 
