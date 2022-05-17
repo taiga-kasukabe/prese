@@ -58,6 +58,7 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <a href="./mypage.php">マイページ</a><br>
 <a href="./diagnose.php">簡易診断はこちら</a><br><br>
 
+<h2>社員一覧</h2>
 <!-- ループで取得した社員情報を全て表示 -->
 <?php for ($num = 0; $num < count($employee); $num++) { ?>
 
