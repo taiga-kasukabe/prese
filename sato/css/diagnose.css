@@ -1,7 +1,21 @@
 #q1, #q2, #q3{
-    border: 2px solid #000;
-    width: 400px;
-    padding: 20px;
+    border-radius: 15px;
+    width: 600px;
+    padding: 30px;
+    background-color: rgb(193, 225, 255);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.q_content{
+    text-align: left;
+    display: inline-block;
+}
+
+.q_text {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 20px;
 }
 
 /* 表示・非表示の切り替え */
