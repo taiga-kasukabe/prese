@@ -76,7 +76,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <a href="./diagnose.php">簡易診断はこちら</a><br><br>
 
 <!-- おすすめの社員の表示 -->
-<?php if (isset($employee_rec)) { ?>
+<?php if (!empty($employee_rec)) { ?>
 <h2>おすすめ社員一覧</h2>
 <?php for ($num = 0; $num < count($employee_rec); $num++) { ?>
 
