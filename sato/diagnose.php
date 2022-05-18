@@ -38,6 +38,7 @@
                         <input type="checkbox" name="job[]" value="service" data-q="q2" <?php if (isset($_POST['job']) && in_array("service", $_POST['job'])) { echo 'checked'; } ?>>サービス開発
                         <input type="checkbox" name="job[]" value="collab" data-q="q2" <?php if (isset($_POST['job']) && in_array("collab", $_POST['job'])) { echo 'checked'; } ?>>協業ビジネス
                     </div>
+                    <input type="button" value="前へ" class="prev" data-button="q2">
                     <input type="button" value="次へ" class="next" data-button="q2">
                 </div>
 
@@ -75,6 +76,7 @@
                         </select>
                         年目<br>
                     </div>
+                    <input type="button" value="前へ" class="prev" data-button="q3">
                     <input type="submit" value="診断する">
                 </div>
             </form>
