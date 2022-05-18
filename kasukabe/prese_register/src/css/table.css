@@ -9,8 +9,17 @@ th {
 td,
 th {
     min-width: 32px;
+    text-align: center;
 }
 
 th {
-    background: silver;
+    background-color: silver;
+}
+
+.selected {
+    background-color: red;
+}
+
+a {
+    text-decoration: none;
 }

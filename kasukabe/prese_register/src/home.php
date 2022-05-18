@@ -121,8 +121,9 @@ if (!empty($_POST)) {
             <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
             <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
             <p>職種：<?php echo $employee[$n]['empcareer']; ?></p><br><br>
-            <form action="./reservation.php" method="POST">
+            <form action="./reservation.php" method="GET">
                 <input type="hidden" name="empid" value="<?php echo $employee[$n]['empid']; ?>">
+                <input type="hidden" name="week" value="0">
                 <input type="submit" value="予約はこちら">
             </form>
             <div class="mouseoverChild">
