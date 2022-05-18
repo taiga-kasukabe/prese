@@ -40,6 +40,7 @@ $stmt->bindValue(':id', $id);
 $stmt->execute();
 $member = $stmt->fetch();
 
+// 前回の診断結果を取得，変数に代入
 $gender = $member['gender'];
 $job_str = $member['job_str'];
 $year_from = $member['year_from'];
@@ -110,6 +111,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!-- モーダルウインドウここまで -->
 <?php } ?>
 <?php } ?>
+
 
 <h2>社員一覧</h2>
 <!-- ループで取得した社員情報を全て表示 -->
