@@ -41,6 +41,10 @@ try{
 
 ?>
 
-
+<html>
+<body>
 <h1><?php echo $msg; ?></h1>
+登録ID名：<?php echo $id; ?><br>
+先ほど登録完了メールを送りました。<br>
+ご確認ください。<br><br>
 <?php echo $link; ?>
