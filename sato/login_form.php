@@ -27,7 +27,7 @@ if(!empty($_SESSION['err_msg'])){
 </div>
 <div>
     <label>パスワード：</label>
-    <input type="text" name="password" required>
+    <input type="password" name="password" required>
 </div>
 <input type="submit" value="ログイン">
 </form>
