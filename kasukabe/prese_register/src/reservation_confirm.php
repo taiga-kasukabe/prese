@@ -6,6 +6,9 @@ include('../conf/db_conf.php');
 $empid = $_GET['empid'];
 $time =  $_GET['time'];
 $reservation_date =  $_GET['date'];
+$weekNum = $_GET['weekJa'];
+$weekJa = array("日", "月", "火", "水", "木", "金", "土");
+
 
 //DB接続
 try {
@@ -46,7 +49,7 @@ $date_1 = date('m/d', strtotime('1 day'));
 <p>趣味：<?php echo $employee['emphobby']; ?></p>
 
 <h2>予約時間：<?php echo $time; ?></h2>
-<h2>予約日程：<?php echo $reservation_date; ?></h2>
+<h2>予約日程：<?php echo $reservation_date . '(' . $weekJa[$weekNum] . ')'; ?></h2>
 
 <form action="./reservation.php" method="GET">
     <input type="hidden" name="empid" value="<?php echo $empid; ?>">
