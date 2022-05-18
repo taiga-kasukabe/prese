@@ -149,6 +149,6 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <?php } ?>
 
-<script src="./js/script.js"></script>
+<script src="./js/modal.js"></script>
 
 </body>
