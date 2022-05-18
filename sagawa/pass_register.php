@@ -6,6 +6,8 @@ session_start();
 include("./conf/vari_session_pass.php");
 include("./conf/config.php");
 
+//$mail = $_POST['mail'];
+//$id = $_POST['id'];
 
 //データベースへ接続、テーブルがない場合は作成
 try {
@@ -15,17 +17,28 @@ try {
   } catch (Exception $e) {
     echo $e->getMessage() . PHP_EOL;
   }
+//  if ( isset ($mail) ) {
+//   echo "変数1がセットされている";
+//  }else{
+//    echo "変数1がセットされていない";
+//  }
+
+//$sql = "SELECT * FROM users_table WHERE id = :id";
+//$stmt = $pdo -> prepare($sql);
+//$stmt -> bindValue(':id', $id);
+//$stmt -> execute();
+//$member = $stmt -> fetch();
 
 
-$sql =  "UPDATE users_table SET password = :password, password_confirm = :password_confirm WHERE mail=:mail";
+$sql =  "UPDATE users_table SET password = :password ,password_confirm = :password_confirm WHERE id=:id";
 $stmt = $pdo -> prepare($sql);
-//$stmt -> bindValue(':password', $password);
-//$stmt -> bindValue(':password_confirm', $password_confirm);
-$params = array(':password' => $password, ':password_confirm' => $password_confirm);
-$stmt -> execute($params);
+$stmt -> bindValue(':password', $password);
+$stmt -> bindValue(':password_confirm', $password_confirm);
+$stmt -> bindValue(':id', $id);
+//$params = array(':password' => $password, ':password_confirm' => $password_confirm);
+$stmt -> execute();
 
 ?>
 <h1>再登録しました</h1>
-<p>登録ID名：<?php echo $id;?></p>
 <p>こちらのリンクからログインしてください</p>
 <a href="./login_form.php">ログインページへ</a>

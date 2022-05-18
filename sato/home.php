@@ -40,6 +40,7 @@ $stmt->bindValue(':id', $id);
 $stmt->execute();
 $member = $stmt->fetch();
 
+// 前回の診断結果を取得，変数に代入
 $gender = $member['gender'];
 $job_str = $member['job_str'];
 $year_from = $member['year_from'];
@@ -75,7 +76,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <a href="./diagnose.php">簡易診断はこちら</a><br><br>
 
 <!-- おすすめの社員の表示 -->
-<?php if (isset($employee_rec)) { ?>
+<?php if (!empty($employee_rec)) { ?>
 <h2>おすすめ社員一覧</h2>
 <?php for ($num = 0; $num < count($employee_rec); $num++) { ?>
 
@@ -110,6 +111,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!-- モーダルウインドウここまで -->
 <?php } ?>
 <?php } ?>
+
 
 <h2>社員一覧</h2>
 <!-- ループで取得した社員情報を全て表示 -->
@@ -147,6 +149,6 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <?php } ?>
 
-<script src="./js/script.js"></script>
+<script src="./js/modal.js"></script>
 
 </body>

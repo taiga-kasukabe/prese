@@ -107,7 +107,8 @@ if(!empty($_POST)) {
     <?php } ?>
 </div>
 
-<a href="home.php">ホームへ</a>
-<script src="js/script.js"></script>
+<a href="home.php">ホームへ</a><br>
+<a href="diagnose.php">もう一度診断する</a>
+<script src="js/modal.js"></script>
 </body>
 <html>
