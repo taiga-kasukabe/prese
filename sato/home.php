@@ -65,6 +65,9 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
 
+<header>
+ <img src="images/ntt-east.png" alt="NTT東日本">
+</header>
 
 <body>
 <h1>ホーム</h1>
