@@ -65,11 +65,14 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
 
+<header>
+    <img src="images/wavywater.jpg" width="200em">
+    <img src="images/ntt-east.png" alt="NTT東日本" width="200em">
+</header>
 
 <body>
-<h1>ホーム</h1>
 
-<p>こんにちは、<?php echo $member['username']; ?> さん</p>
+<!-- <p>こんにちは、<?php //echo $member['username']; ?> さん</p> -->
 
 <!-- マイページと簡易診断へのリンク -->
 <a href="./mypage.php">マイページ</a><br>
