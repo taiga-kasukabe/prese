@@ -39,6 +39,25 @@ $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':id', $id);
 $stmt->execute();
 $member = $stmt->fetch();
+
+// 未予約情報取得
+$sql = "SELECT * FROM rsvDB WHERE empid = :empid AND flag = 0";
+$stmt = $dbh->prepare($sql);
+$stmt->bindValue(':empid', $empid);
+$stmt->execute();
+$unrsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// 予約済み情報取得
+$sql = "SELECT * FROM rsvDB WHERE empid = :empid AND flag = 1";
+$stmt = $dbh->prepare($sql);
+$stmt->bindValue(':empid', $empid);
+$stmt->execute();
+$rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+for ($i = 0; $i < count($unrsvInfo); $i++) {
+    echo date('m/d', strtotime($unrsvInfo[$i]['rsvdate']));
+    echo date('Hi', strtotime($unrsvInfo[$i]['rsvtime']));
+}
 ?>
 
 <!-- 表示画面 -->
@@ -71,42 +90,85 @@ echo '<a href="./reservation.php?empid=' . $empid . '&week=' . $week + 1 .  '">�
     <tr>
         <th>1000</th>
         <?php
-        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++)
-            print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1000&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
+        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
+            for ($j = 0; $j < count($unrsvInfo); $j++) {
+                if (date('m/d', strtotime($unrsvInfo[$j]['rsvdate'])) == date('m/d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == 1000) {
+                    print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1000&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
+                } else {
+                    print '<td>x</td>';
+                }
+            }
+        }
         ?>
     </tr>
     <tr>
         <th>1100</th>
         <?php
-        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++)
-            print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1100&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
+        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
+            for ($j = 0; $j < count($unrsvInfo); $j++) {
+                if (date('m/d', strtotime($unrsvInfo[$j]['rsvdate'])) == date('m/d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == 1100) {
+                    print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1000&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
+                } else {
+                    print '<td>x</td>';
+                }
+            }
+        }
         ?>
     </tr>
     <tr>
         <th>1300</th>
         <?php
-        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++)
-            print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1300&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
+        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
+            for ($j = 0; $j < count($unrsvInfo); $j++) {
+                if (date('m/d', strtotime($unrsvInfo[$j]['rsvdate'])) == date('m/d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == 1300) {
+                    print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1000&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
+                } else {
+                    print '<td>x</td>';
+                }
+            }
+        }
         ?>
     </tr>
     <tr>
         <th>1400</th>
         <?php
-        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++)
-            print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1400&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
+        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
+            for ($j = 0; $j < count($unrsvInfo); $j++) {
+                if (date('m/d', strtotime($unrsvInfo[$j]['rsvdate'])) == date('m/d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == 1400) {
+                    print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1000&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
+                } else {
+                    print '<td>x</td>';
+                }
+            }
+        }
         ?>
     </tr>
     <tr>
         <th>1500</th>
         <?php
-        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++)
-            print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1500&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
+        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
+            for ($j = 0; $j < count($unrsvInfo); $j++) {
+                if (date('m/d', strtotime($unrsvInfo[$j]['rsvdate'])) == date('m/d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == 1500) {
+                    print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1000&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
+                } else {
+                    print '<td>x</td>';
+                }
+            }
+        }
         ?>
     </tr>
     <tr>
         <th>1600</th>
-        <?php for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++)
-            print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1600&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
+        <?php
+        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
+            for ($j = 0; $j < count($unrsvInfo); $j++) {
+                if (date('m/d', strtotime($unrsvInfo[$j]['rsvdate'])) == date('m/d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == 1600) {
+                    print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1000&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
+                } else {
+                    print '<td>x</td>';
+                }
+            }
+        }
         ?>
     </tr>
 </table>
