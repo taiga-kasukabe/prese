@@ -29,7 +29,7 @@ try {
    
     // SMTPサーバの設定
     $sendmail->isSMTP();                          // SMTPの使用宣言
-    $sendmail->Host       = 'smtp.mail.yahoo.co.jp';   // SMTPサーバーを指定
+    $sendmail->Host       = 'smtp.gmail.com';   // SMTPサーバーを指定
     $sendmail->SMTPAuth   = true;                 // SMTP authenticationを有効化
     $sendmail->Username   = $user_name;   // SMTPサーバーのユーザ名
     $sendmail->Password   = $user_pass;           // SMTPサーバーのパスワード

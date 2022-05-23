@@ -33,6 +33,7 @@ $mail_mem = $stmt -> fetch();
 //if (!empty($member AND $mail_mem)){
   if (!empty($mail_mem)){
   //$_SESSION['id'] = $member['id'];
+  //$_SESSION['user']['mail'] = $_POST["mail"];
   header('Location: ./reset_pass_form.php');
   //$link = '<a href="./reset_pass_form.php">こちらから</a>';
   //$msg = 'パスワード再登録画面へ';
