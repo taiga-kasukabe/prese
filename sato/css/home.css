@@ -1,0 +1,13 @@
+body {
+    width: auto;
+}
+
+#header_background {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+#logo {
+    z-index: 100;
+}

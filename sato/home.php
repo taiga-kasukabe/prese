@@ -9,6 +9,7 @@
     <title>ホーム</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/home.css">
 </head>
 
 <?php
@@ -65,12 +66,13 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
 
-<header>
-    <img src="images/wavywater.jpg" width="200em">
-    <img src="images/ntt-east.png" alt="NTT東日本" width="200em">
-</header>
-
 <body>
+<header>
+    <div class="dekinai">
+        <img src="images/sea.jpg" id="header_background">
+        <img src="images/ntt-east.png" alt="NTT東日本" id="logo" width="200em">
+    </div>
+</header>
 
 <!-- <p>こんにちは、<?php //echo $member['username']; ?> さん</p> -->
 
