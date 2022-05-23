@@ -67,9 +67,26 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <p>予約日：　<?php echo $stuid[$n]['rsvdate']; ?></p>
                 <p>予約時間：<?php echo $stuid[$n]['rsvtime']; ?></p>
                 <p>相談内容：<?php echo $stuid[$n]['comment']; ?></p>
-                <button onclick="location.href='./rsv_cancel.php'">予約取消</button>
+                <!--<button onclick="location.href='./rsv_cancel.php'">予約取消</button>-->
+                
+                <button type="button" id="btn" value = "[$n]">予約取消</button>
+                </script>
                 <br><br>
             <?php } ?>
+            <script type="text/javascript">
+                let btn = document.getElementById('btn');
+ 
+                btn.addEventListener('click', function() {
+                let result = window.confirm('予約取り消しますか？');
+ 
+                if (result) {
+                    window.location.href = "./rsv_cancel.php";
+
+                } else {
+                    alert("取り消しをやめる");
+                }
+                });
+            </script>
         </div>
 </div>
 </font>
