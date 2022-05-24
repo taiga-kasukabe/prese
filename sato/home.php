@@ -9,6 +9,7 @@
     <title>ホーム</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/home.css">
 </head>
 
 <?php
@@ -65,11 +66,15 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
 
-
 <body>
-<h1>ホーム</h1>
+<header>
+    <div class="dekinai">
+        <img src="images/sea.jpg" id="header_background">
+        <img src="images/ntt-east.png" alt="NTT東日本" id="logo" width="200em">
+    </div>
+</header>
 
-<p>こんにちは、<?php echo $member['username']; ?> さん</p>
+<!-- <p>こんにちは、<?php //echo $member['username']; ?> さん</p> -->
 
 <!-- マイページと簡易診断へのリンク -->
 <a href="./mypage.php">マイページ</a><br>

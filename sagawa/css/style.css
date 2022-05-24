@@ -13,7 +13,7 @@
   left : 30%;                           /* 表示位置 */
   bottom : 100%;                        /* 表示位置 */
   margin-bottom : 12px;                 /* 表示位置 */
-  font-size: 80%;                       /* 文字サイズ */
+  font-size: 150%;                       /* 文字サイズ */
 }
 .balloon:after{
   border-top: 12px solid rgba(102, 102, 255, 0.50);    /* 吹き出し口の高さ・色 */
