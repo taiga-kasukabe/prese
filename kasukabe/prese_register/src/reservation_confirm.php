@@ -45,11 +45,19 @@ $employee = $stmt->fetch();
 <p>職種：<?php echo $employee['empcareer']; ?></p>
 <p>趣味：<?php echo $employee['emphobby']; ?></p>
 
-<h2>予約時間：<?php echo $time; ?></h2>
-<h2>予約日程：<?php echo $reservation_date . '(' . $weekJa[$weekNum] . ')'; ?></h2>
-<h2>相談内容：<?php echo $comment;?></h2>
+<h2>予約時間：<?php echo substr_replace($time, ':', 2, 0); ?></h2>
+<h2>予約日程：<?php echo date('m/d', strtotime($reservation_date)) . '(' . $weekJa[$weekNum] . ')'; ?></h2>
+<h2>相談内容：<?php if(isset($comment)){echo $comment;}else{echo "特になし";}?></h2>
+<form action="./reservation.php" method="get">
+    <input type="hidden" name="empid" value="<?php echo $empid;?>">
+    <input type="hidden" name="time" value="<?php echo $time;?>">
+    <input type="hidden" name="date" value="<?php echo $reservation_date?>">
+    <input type="hidden" name="weekNum" value="<?php echo $weekNum;?>">
+    <input type="hidden" name="comment" value="<?php echo $comment;?>">
+    <input type="submit" value="予約">
+</form>
 
-<form action="./reservation.php" method="GET">
+<form action="./reservation_form.php" method="GET">
     <input type="hidden" name="empid" value="<?php echo $empid; ?>">
     <input type="hidden" name="week" value="0">
     <input type="submit" value="戻る">
