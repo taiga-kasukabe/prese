@@ -9,6 +9,8 @@
     <title>ホーム</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300&display=swap" rel="stylesheet">
 </head>
 
 <?php
@@ -65,28 +67,44 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
 
+<header>
+    <div class="bg">
+        <p id="title">面談予約ページ</p>
+        <a href="./mypage.php" id="mypage">マイページ</a>
+        <img src="images/ntt-east_white.png" id="logo">
+    </div>
+    <div id="menu">
+    <p>メニューバーを作りたい</p>
+    <!-- <nav>
+        <ul>
+
+        </ul>
+    </nav> -->
+    </div>
+</header>
+
+
 <body>
-<p>こんにちは、<?php echo $member['username']; ?> さん</p>
+<main>
+<!-- <p>こんにちは、<?php //echo $member['username']; ?> さん</p> -->
 
 <!-- マイページと簡易診断へのリンク -->
-<a href="./mypage.php">マイページ</a><br>
 <a href="./diagnose.php">簡易診断はこちら</a><br><br>
 
 <!-- おすすめの社員の表示 -->
 <?php if (!empty($employee_rec)) { ?>
-<h2>おすすめ社員一覧</h2>
+<h2 class="section_title">おすすめ社員一覧</h2>
+<div class="employee">
 <?php for ($num = 0; $num < count($employee_rec); $num++) { ?>
 
 <!-- リストの名前部分をモーダル表示のボタンに -->
-<div class="works_modal_open" data-modal-open="rec-modal-<?php echo $num; ?>">
-    <h2><?php echo $employee_rec[$num]['empname']; ?></h2>
-    <img src="./images/<?php echo $employee_rec[$num]['empimg_id']; ?>" width="200">
-    <p>年次：<?php echo $employee_rec[$num]['empyear']; ?></p>
-    <p>職種：<?php echo $employee_rec[$num]['empjob']; ?></p>
-    <p>経歴：<?php echo $employee_rec[$num]['empcareer']; ?></p>
-</div>
-
-<br><br><br>
+    <div class="works_modal_open" data-modal-open="rec-modal-<?php echo $num; ?>">
+        <h2><?php echo $employee_rec[$num]['empname']; ?></h2>
+        <img src="./images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
+        <p>年次：<?php echo $employee_rec[$num]['empyear']; ?></p>
+        <p>職種：<?php echo $employee_rec[$num]['empjob']; ?></p>
+        <p>経歴：<?php echo $employee_rec[$num]['empcareer']; ?></p>
+    </div>
 
 <!-- モーダルウインドウここから -->
 <div class="works_modal_wrapper" data-modal="rec-modal-<?php echo $num; ?>">
@@ -108,10 +126,12 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!-- モーダルウインドウここまで -->
 <?php } ?>
 <?php } ?>
+</div>
 
 
-<h2>社員一覧</h2>
+<h2 class="section_title">社員一覧</h2>
 <!-- ループで取得した社員情報を全て表示 -->
+<div class="employee">
 <?php for ($num = 0; $num < count($employee); $num++) { ?>
 
 <!-- リストの名前部分をモーダル表示のボタンに -->
@@ -145,7 +165,9 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!-- モーダルウインドウここまで -->
 
 <?php } ?>
+</div>
 
 <script src="./js/modal.js"></script>
-
+</main>
 </body>
+</html>
