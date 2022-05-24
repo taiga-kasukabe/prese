@@ -8,7 +8,6 @@ $time =  $_GET['time'];
 $reservation_date =  $_GET['date'];
 $weekNum = $_GET['weekJa'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
-$comment = $_POST['comment'];
 
 
 //DB接続
@@ -33,10 +32,18 @@ $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':empid', $empid);
 $stmt->execute();
 $employee = $stmt->fetch();
+
+// ユーザ情報取得
+$id = $_SESSION['id'];
+$sql = "SELECT * FROM users_table WHERE id = :id";
+$stmt = $dbh->prepare($sql);
+$stmt->bindValue(':id', $id);
+$stmt->execute();
+$member = $stmt->fetch();
 ?>
 
 <!-- 表示画面 -->
-<h1>予約確認画面</h1>
+<h1>コメント入力画面</h1>
 
 <p><?php echo $employee['empname']; ?></p>
 <img src="./images/<?php echo $employee['empimg_id']; ?>" alt="社員画像" height="300">
@@ -47,7 +54,11 @@ $employee = $stmt->fetch();
 
 <h2>予約時間：<?php echo $time; ?></h2>
 <h2>予約日程：<?php echo $reservation_date . '(' . $weekJa[$weekNum] . ')'; ?></h2>
-<h2>相談内容：<?php echo $comment;?></h2>
+
+<form action="<?php echo './reservation_confirm.php?empid=' . $empid . '&time=' . $time . '&date=' . $reservation_date . '&weekJa=' . $weekNum; ?>" method="post">
+    <input type="text" name="comment">
+    <input type="submit" value="予約確認画面へ">
+</form>
 
 <form action="./reservation.php" method="GET">
     <input type="hidden" name="empid" value="<?php echo $empid; ?>">

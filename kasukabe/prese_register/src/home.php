@@ -116,7 +116,7 @@ if (!empty($_POST)) {
     } ?>
     <?php for ($n = 0; $n < count($employee); $n++) { ?>
         <div class="mouseoverParent">
-            <p><?php echo $employee[$n]['empname']; ?></p>
+            <h2><?php echo $employee[$n]['empname']; ?></h2>
             <img src="./images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
             <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
             <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
@@ -127,14 +127,15 @@ if (!empty($_POST)) {
                 <input type="submit" value="予約はこちら">
             </form>
             <div class="mouseoverChild">
-                <p><?php echo $employee[$n]['empname']; ?></p>
+                <h2><?php echo $employee[$n]['empname']; ?></h2>
                 <img src="./images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
                 <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
                 <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
                 <p>職種：<?php echo $employee[$n]['empcareer']; ?></p>
                 <p>趣味：<?php echo $employee[$n]['emphobby']; ?></p>
-                <form action="./reservation.php" method="POST">
+                <form action="./reservation.php" method="GET">
                     <input type="hidden" name="empid" value="<?php echo $employee[$n]['empid']; ?>">
+                    <input type="hidden" name="week" value="0">
                     <input type="submit" value="予約はこちら">
                 </form>
             </div>

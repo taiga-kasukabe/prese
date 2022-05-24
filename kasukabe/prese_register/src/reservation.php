@@ -55,14 +55,15 @@ $stmt->execute();
 $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 for ($i = 0; $i < count($unrsvInfo); $i++) {
-    echo date('m/d', strtotime($unrsvInfo[$i]['rsvdate']));
-    echo date('Hi', strtotime($unrsvInfo[$i]['rsvtime']));
+    // echo date('m/d', strtotime($unrsvInfo[$i]['rsvdate']));
+    // echo date('Hi', strtotime($unrsvInfo[$i]['rsvtime']));
 }
 ?>
 
+
 <!-- 表示画面 -->
 <h1>予約画面</h1>
-<p><?php echo $employee['empname']; ?></p>
+<h2><?php echo $employee['empname']; ?></h2>
 <img src="./images/<?php echo $employee['empimg_id']; ?>" alt="社員画像" height="300">
 <p>年次：<?php echo $employee['empyear']; ?>年目</p>
 <p>役職：<?php echo $employee['empjob']; ?></p>
@@ -87,97 +88,54 @@ echo '<a href="./reservation.php?empid=' . $empid . '&week=' . $week + 1 .  '">�
             print '<th>' . date('m/d', strtotime($i . 'day')) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($i . 'day'))))] . ')</th>';
         ?>
     </tr>
-    <tr>
-        <th>1000</th>
-        <?php
+    <?php
+    for ($time = 1000; $time <= 1600; $time += 100) {
+        if ($time == 1200) {
+            continue;
+        }
+        echo '<tr>
+        <th>' . $time . '</th>';
         for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
+            $cnt = 0;
+            // 未予約日程を表示
             for ($j = 0; $j < count($unrsvInfo); $j++) {
-                if (date('m/d', strtotime($unrsvInfo[$j]['rsvdate'])) == date('m/d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == 1000) {
-                    print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1000&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
-                } else {
-                    print '<td>x</td>';
+                if (date('m/d', strtotime($unrsvInfo[$j]['rsvdate'])) == date('m/d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == $time) {
+                    // ラジオボタンで実装
+                    // print '<td><form action="./reservation_confirm.php" method="GET">
+                    //     <input type="radio" name="radio">
+                    //     <input type="hidden" name="empid" value="' . $empid . '">
+                    //     <input type="hidden" name="time" value="' . $time . '">
+                    //     <input type="hidden" name="date" value="' . date('m/d', strtotime($i . 'day')) . '">
+                    //     <input type="hidden" name="weekJa" value="' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">
+                    //     </form></td>';
+
+                    // aタグで実装
+                    print '<td><a href="./reservation_comment.php?empid=' . $empid . '&time=' . $time . '&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</a></td>';
+                    $cnt++;
                 }
             }
-        }
-        ?>
-    </tr>
-    <tr>
-        <th>1100</th>
-        <?php
-        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
-            for ($j = 0; $j < count($unrsvInfo); $j++) {
-                if (date('m/d', strtotime($unrsvInfo[$j]['rsvdate'])) == date('m/d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == 1100) {
-                    print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1000&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
-                } else {
+            // 予約済み日程を表示
+            for ($k = 0; $k < count($rsvInfo); $k++) {
+                if (date('m/d', strtotime($rsvInfo[$k]['rsvdate'])) == date('m/d', strtotime($i . 'day')) && date('Hi', strtotime($rsvInfo[$k]['rsvtime'])) == $time) {
                     print '<td>x</td>';
+                    $cnt++;
                 }
             }
-        }
-        ?>
-    </tr>
-    <tr>
-        <th>1300</th>
-        <?php
-        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
-            for ($j = 0; $j < count($unrsvInfo); $j++) {
-                if (date('m/d', strtotime($unrsvInfo[$j]['rsvdate'])) == date('m/d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == 1300) {
-                    print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1000&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
-                } else {
-                    print '<td>x</td>';
-                }
+            if ($cnt > 0) {
+                continue;
             }
+            print '<td>-</td>';
         }
-        ?>
-    </tr>
-    <tr>
-        <th>1400</th>
-        <?php
-        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
-            for ($j = 0; $j < count($unrsvInfo); $j++) {
-                if (date('m/d', strtotime($unrsvInfo[$j]['rsvdate'])) == date('m/d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == 1400) {
-                    print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1000&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
-                } else {
-                    print '<td>x</td>';
-                }
-            }
-        }
-        ?>
-    </tr>
-    <tr>
-        <th>1500</th>
-        <?php
-        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
-            for ($j = 0; $j < count($unrsvInfo); $j++) {
-                if (date('m/d', strtotime($unrsvInfo[$j]['rsvdate'])) == date('m/d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == 1500) {
-                    print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1000&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
-                } else {
-                    print '<td>x</td>';
-                }
-            }
-        }
-        ?>
-    </tr>
-    <tr>
-        <th>1600</th>
-        <?php
-        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
-            for ($j = 0; $j < count($unrsvInfo); $j++) {
-                if (date('m/d', strtotime($unrsvInfo[$j]['rsvdate'])) == date('m/d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == 1600) {
-                    print '<td><a href="./reservation_confirm.php?empid=' . $empid . '&time=1000&date=' . date('m/d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</td>';
-                } else {
-                    print '<td>x</td>';
-                }
-            }
-        }
-        ?>
-    </tr>
+        echo '</tr>';
+    }
+    ?>
+
 </table>
+<p>相談内容</p>
+<input type="text" name="comment"><br>
+<input type="submit" value="予約">
 
-
-<a href="./home.php">戻る</a>
-
-<br>
-<button type="button" id="btn"><span>a</span></button>
+<input type="button" onclick="location.href='./home.php'" value="戻る">
 
 <!-- for jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
