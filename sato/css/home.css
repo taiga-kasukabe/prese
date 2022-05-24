@@ -1,13 +1,23 @@
-body {
-    width: auto;
-}
-
-#header_background {
+header {
     position: relative;
-    width: 100%;
-    z-index: 1;
+    height: 50vh;
 }
 
-#logo {
-    z-index: 100;
+.layer {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background: url(../images/sea.jpg) center/cover;
+    z-index: -1;
+}
+
+.layer::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    background-color: rgba(204, 45, 45, 0.64);
+    z-index: 1;
 }
