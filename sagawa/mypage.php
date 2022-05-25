@@ -60,6 +60,7 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <font size="2">
 <div>    
     <h2>予約確認<h2> 
+    <form action="./rsv_cancel.php" method="post">
         <p><?php echo $member['username']; ?> さんの予約状況</p><br>
         <div>
             <?php for ($n = 0; $n < count($stuid); $n++) { ?>
@@ -69,7 +70,7 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <p>相談内容：<?php echo $stuid[$n]['comment']; ?></p>
                 <!--<button onclick="location.href='./rsv_cancel.php'">予約取消</button>-->
                 
-                <button type="button" id="btn" value = "[$n]">予約取消</button>
+                <button type="button" id="btn" value = "$n">予約取消</button>
                 </script>
                 <br><br>
             <?php } ?>
@@ -81,7 +82,6 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
  
                 if (result) {
                     window.location.href = "./rsv_cancel.php";
-
                 } else {
                     alert("取り消しをやめる");
                 }
@@ -92,4 +92,5 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </font>
 </body>
 <p><a href="./reset_pass_form.php">パスワード再登録はこちら</a></p>
+<p><a href="./withdrawal_form.php">退会はこちら</a></p>
 <p><a href="./home.php">TOPへ</a></p>

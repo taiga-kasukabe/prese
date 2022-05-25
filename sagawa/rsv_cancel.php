@@ -23,3 +23,5 @@ $stmt -> bindValue(':id', $id);
 $stmt -> execute();
 
 ?>
+<h1>予約キャンセルしました</h1>
+<a href="./mypage.php">マイページへ</a>
