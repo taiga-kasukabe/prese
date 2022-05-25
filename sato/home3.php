@@ -8,8 +8,8 @@
     <!-- ページのタイトルをtestに設定 -->
     <title>ホーム</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/modal2.css">
-    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/modal3.css">
+    <link rel="stylesheet" href="./css/home3.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
     </head>
 
@@ -86,6 +86,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
 <main>
     <div class="headImg">
+        <img src="images/oudanhodou.jpg">
         <p>面談予約？？</p>
     </div>
 <!-- <p>こんにちは、<?php //echo $member['username']; ?> さん</p> -->
@@ -95,7 +96,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <!-- おすすめの社員の表示 -->
 <?php if (!empty($employee_rec)) { ?>
-<h2 class="section_title">おすすめ社員一覧</h2>
+<p class="section_title">おすすめ社員一覧</p>
 <div class="employee">
 <?php for ($num = 0; $num < count($employee_rec); $num++) { ?>
 
@@ -131,7 +132,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 
-<h2 class="section_title">社員一覧</h2>
+<p class="section_title">社員一覧</p>
 <!-- ループで取得した社員情報を全て表示 -->
 <div class="employee">
 <?php for ($num = 0; $num < count($employee); $num++) { ?>
