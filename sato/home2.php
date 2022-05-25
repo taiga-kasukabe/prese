@@ -104,8 +104,8 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h2><?php echo $employee_rec[$num]['empname']; ?></h2>
         <img src="./images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
         <p>年次：<?php echo $employee_rec[$num]['empyear']; ?></p>
-        <p>職種：<?php echo $employee_rec[$num]['empjob']; ?></p>
-        <p>経歴：<?php echo $employee_rec[$num]['empcareer']; ?></p>
+        <p>職種：<?php echo $employee_rec[$num]['emptag2']; ?></p>
+        <!-- <p>経歴：<?php //echo $employee_rec[$num]['empcareer']; ?></p> -->
     </div>
 
 <!-- モーダルウインドウここから -->
@@ -141,8 +141,8 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <h2><?php echo $employee[$num]['empname']; ?></h2>
     <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="200">
     <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
-    <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
-    <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
+    <p>職種：<?php echo $employee[$num]['emptag2']; ?></p>
+    <!-- <p>経歴：<?php //echo $employee[$num]['empcareer']; ?></p> -->
 </div>
 
 <!-- モーダルウインドウここから -->

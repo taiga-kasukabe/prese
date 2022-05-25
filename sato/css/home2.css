@@ -12,6 +12,7 @@ html::after {
     height: 100%;
     content: '';
     z-index: -10;
+    /* color: #170D1F; */
     /* background: rgb(201,231,255);
     background: linear-gradient(180deg, rgba(201,231,255,1) 0%, rgba(229,208,255,1) 52%, rgba(215,255,193,1) 100%);  */
     background: rgb(201,231,255);
@@ -110,6 +111,10 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    /* column-gap: 50px; */
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 100px;
 }
 
 .section_title {
