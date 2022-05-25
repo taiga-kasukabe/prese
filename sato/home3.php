@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/modal3.css">
     <link rel="stylesheet" href="./css/home3.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
     </head>
 
 <?php
@@ -87,7 +87,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <main>
     <div class="headImg">
         <img src="images/oudanhodou.jpg">
-        <p>面談予約？？</p>
+        <p>面談予約</p>
     </div>
 <!-- <p>こんにちは、<?php //echo $member['username']; ?> さん</p> -->
 
