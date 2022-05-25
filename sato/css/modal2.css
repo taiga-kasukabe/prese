@@ -3,17 +3,17 @@
     width: 300px;
     padding: 20px;
     margin-bottom: 30px;
-    border: 2px solid rgb(119, 119, 119);
+    /* border: 2px solid rgb(119, 119, 119); */
     /* border-radius: 10%; */
     color: rgb(0, 0, 0);
-    /* background-color: #ffffff; */
+    background-color: #ffffff;
 }
 
 .works_modal_open img {
   width: 200px;
   height: 250px;
   object-fit: cover;
-  /* border-radius: 50%; */
+  border-radius: 50%;
 }
 
 .works_modal_content{
