@@ -1,0 +1,146 @@
+.works_modal_open {
+  position: relative;
+    cursor: pointer;
+    width: 200px;
+    height: 100px;
+    padding: 20px;
+    padding-top: 255px;
+    margin-bottom: 30px;
+    /* border: 2px solid rgb(119, 119, 119); */
+    /* border-radius: 5%; */
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+}
+
+.works_modal_open img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  object-position: right 50% bottom 80% ;
+}
+
+.works_modal_open p,h2 {
+  margin: 0;
+  padding: 3px;
+
+}
+
+.works_modal_content{
+    text-align: center;
+}
+
+/* ------works_modal css------ */
+.works_modal_wrapper {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: none;
+    opacity: 0;
+    z-index: -1;
+}
+.works_modal_window {
+    width: 80vh;
+    margin: auto;
+    padding: 15px;
+    background: #fff;
+    z-index: 1;
+    overflow-y: auto;
+    overflow-y: scroll;
+}
+.works_modal_content {
+    margin: 0 auto;
+    width: 80%;
+    height: 80%;
+}
+.works_modal_mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+.works_modal_close {
+    z-index: 300;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    color: #808080;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.works_modal_close:hover {
+    color: #000;
+    transition: all .5s;
+}
+html.is_open, body.is_open {
+    overflow: hidden;
+}
+.works_modal_wrapper.is_open {
+    opacity: 1;
+    z-index: 300;
+}
+.works_modal_wrapper.is_open .works_modal_window {
+    opacity: 1;
+    transform: translateY(0);
+}
+.works_modal_wrapper.is_close {
+    z-index: 300;
+    opacity: 1;
+}
+.works_modal_wrapper.is_close .works_modal_window {
+    transform: translateY(-30px);
+    opacity: 0;
+}
+
+/* @keyframes works_modal_wrapper_open {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      z-index: 300;
+    }
+  }
+  @keyframes works_modal_window_open {
+    0% {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes works_modal_wrapper_close {
+    0% {
+      z-index: 300;
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes works_modal_window_close {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+  }
+   */
