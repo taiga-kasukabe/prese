@@ -113,13 +113,15 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="works_modal_mask"></div>
     <div class="works_modal_window">
         <div class="works_modal_content">
-            <h1><?php echo $employee_rec[$num]['empname']; ?></h1>
-            <img src="./images/<?php echo $employee_rec[$num]['empimg_id']; ?>" width="150">
-            <p>年次：<?php echo $employee_rec[$num]['empyear']; ?></p>
-            <p>職種：<?php echo $employee_rec[$num]['empjob']; ?></p>
-            <p>経歴：<?php echo $employee_rec[$num]['empcareer']; ?></p>
-            <p>趣味：<?php echo $employee_rec[$num]['emphobby']; ?></p>
-            <p>コメント：<?php echo $employee_rec[$num]['empcomment']; ?></p><br>
+            <img src="./images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
+            <div class="introduction">
+                <h1><?php echo $employee_rec[$num]['empname']; ?></h1>
+                <p>年次：<?php echo $employee_rec[$num]['empyear']; ?></p>
+                <p>職種：<?php echo $employee_rec[$num]['empjob']; ?></p>
+                <p>経歴：<?php echo $employee_rec[$num]['empcareer']; ?></p>
+                <p>趣味：<?php echo $employee_rec[$num]['emphobby']; ?></p>
+                <p>コメント：<?php echo $employee_rec[$num]['empcomment']; ?></p><br>
+            </div>
             <a href="./reservation.php">面談予約はこちら</a><br><br>
         </div>
         <div class="works_modal_close">✖</div>
@@ -139,7 +141,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!-- リストの名前部分をモーダル表示のボタンに -->
 <div class="works_modal_open" data-modal-open="modal-<?php echo $num; ?>">
     <h2><?php echo $employee[$num]['empname']; ?></h2>
-    <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="200">
+    <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>">
     <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
     <p>職種：<?php echo $employee[$num]['emptag2']; ?></p>
     <!-- <p>経歴：<?php //echo $employee[$num]['empcareer']; ?></p> -->
@@ -150,13 +152,15 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="works_modal_mask"></div>
     <div class="works_modal_window">
         <div class="works_modal_content">
-            <h1><?php echo $employee[$num]['empname']; ?></h1>
-            <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="150">
-            <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
-            <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
-            <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
-            <p>趣味：<?php echo $employee[$num]['emphobby']; ?></p>
-            <p>コメント：<?php echo $employee[$num]['empcomment']; ?></p><br>
+            <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>">
+            <div class="introduction">
+                <h1><?php echo $employee[$num]['empname']; ?></h1>
+                <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
+                <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
+                <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
+                <p>趣味：<?php echo $employee[$num]['emphobby']; ?></p>
+                <p>コメント：<?php echo $employee[$num]['empcomment']; ?></p><br>
+            </div>
             <a href="./reservation.php">面談予約はこちら</a><br><br>
         </div>
         <div class="works_modal_close">✖</div>
