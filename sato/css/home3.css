@@ -75,12 +75,6 @@ body {
     z-index: -1;
 }
 
-main {
-    position: relative;
-    /* margin-left: 12%;
-    margin-right: 2%; */
-}
-
 .headImg {
     position: relative;
     width: 100%;
@@ -113,16 +107,35 @@ main {
     top: 40%;
     left: 50%;
     transform: translate(-50%,-50%);
-    padding: 5px 30px;
+    padding: 10px 80px;
     z-index: 1;
-    font-size: 2em;
+    font-size: 2.5em;
     font-family: 'Shippori Mincho', serif;
     color: #000000;
     background-color: #ffffff;
-    /* background: rgb(252,164,203);
-    background: radial-gradient(circle, rgba(252,164,203,1) 0%, rgba(63,136,223,1) 100%); */
+}
+
+#diagnose {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+    margin: 50px 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    color: #000000;
+    font-family: 'Noto Sans JP', sans-serif;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid rgba(62,86,175,1);
     /* background: rgb(62,86,175);
-    background: linear-gradient(137deg, rgba(62,86,175,1) 0%, rgba(217,92,51,1) 100%); */
+    background: linear-gradient(137deg, rgba(62,86,175,1) 0%, rgba(232,188,207,1) 51%, rgba(217,92,51,1) 100%); */
+}
+
+main {
+    position: relative;
+    width: 100%;
+    /* margin-left: 12%;
+    margin-right: 2%; */
 }
 
 .employee {

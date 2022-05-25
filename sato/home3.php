@@ -84,15 +84,14 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 <body>
-<main>
-    <div class="headImg">
-        <img src="images/oudanhodou.jpg">
-        <p>面談予約</p>
-    </div>
-<!-- <p>こんにちは、<?php //echo $member['username']; ?> さん</p> -->
+<div class="headImg">
+    <img src="images/oudanhodou.jpg">
+    <p>面談予約</p>
+</div>
 
+<main>
 <!-- マイページと簡易診断へのリンク -->
-<a href="./diagnose.php">簡易診断はこちら</a><br><br>
+<a href="./diagnose.php" id="diagnose">おすすめの社員を診断する</a>
 
 <!-- おすすめの社員の表示 -->
 <?php if (!empty($employee_rec)) { ?>
