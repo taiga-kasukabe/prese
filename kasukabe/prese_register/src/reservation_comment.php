@@ -4,15 +4,11 @@ session_start();
 // 変数定義
 include('../conf/db_conf.php');
 $empid = $_GET['empid'];
-$time =  substr_replace($_GET['time'], ':', 2, 0) . ':00';
+$time =  $_GET['time'];
 $reservation_date =  $_GET['date'];
-$weekNum = $_GET['weekNum'];
+$weekNum = $_GET['weekJa'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
-$comment = $_GET['comment'];
-var_dump($empid);
-var_dump($time);
-var_dump($reservation_date);
-var_dump($comment);
+
 
 //DB接続
 try {
@@ -44,28 +40,28 @@ $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':id', $id);
 $stmt->execute();
 $member = $stmt->fetch();
-
-// 該当予約情報取得
-$sql = "SELECT * FROM rsvDB WHERE empid = :empid AND rsvdate = :rsvdate AND rsvtime = :rsvtime";
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue(':empid', $empid);
-$stmt->bindValue('rsvdate', $reservation_date);
-$stmt->bindValue('rsvtime', $time);
-$stmt->execute();
-$unrsvInfo = $stmt->fetch();
-var_dump($unrsvInfo);
-
-$sql = "UPDATE rsvDB SET stuid = :stuid, comment = :comment, flag = 1 WHERE rsvDB. id=:id";
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue('stuid', $id);
-$stmt->bindValue('comment', $comment);
-$stmt->bindValue('id', $unrsvInfo['id']);
-$stmt->execute();
-
 ?>
 
-<!-- ページ表示 -->
-<h1>予約完了しました</h1>
-<h2>登録ID名：<?php echo $id; ?>さん</h2>
+<!-- 表示画面 -->
+<h1>コメント入力画面</h1>
 
-<input type="button" onclick="location.href='./home.php'" value="ホームへ">
+<p><?php echo $employee['empname']; ?></p>
+<img src="./images/<?php echo $employee['empimg_id']; ?>" alt="社員画像" height="300">
+<p>年次：<?php echo $employee['empyear']; ?>年目</p>
+<p>役職：<?php echo $employee['empjob']; ?></p>
+<p>職種：<?php echo $employee['empcareer']; ?></p>
+<p>趣味：<?php echo $employee['emphobby']; ?></p>
+
+<h2>予約時間：<?php echo substr_replace($time, ':', 2, 0); ?></h2>
+<h2>予約日程：<?php echo date('m/d', strtotime($reservation_date)) . '(' . $weekJa[$weekNum] . ')'; ?></h2>
+
+<form action="<?php echo './reservation_confirm.php?empid=' . $empid . '&time=' . $time . '&date=' . $reservation_date . '&weekJa=' . $weekNum; ?>" method="post">
+    <input type="text" name="comment"><br>
+    <input type="submit" value="予約確認画面へ">
+</form>
+
+<form action="./reservation_form.php" method="GET">
+    <input type="hidden" name="empid" value="<?php echo $empid; ?>">
+    <input type="hidden" name="week" value="0">
+    <input type="submit" value="戻る">
+</form>
