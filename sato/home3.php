@@ -101,8 +101,8 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <!-- リストの名前部分をモーダル表示のボタンに -->
     <div class="works_modal_open" data-modal-open="rec-modal-<?php echo $num; ?>">
-        <h2><?php echo $employee_rec[$num]['empname']; ?></h2>
         <img src="./images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
+        <h2><?php echo $employee_rec[$num]['empname']; ?></h2>
         <p>年次：<?php echo $employee_rec[$num]['empyear']; ?></p>
         <p>職種：<?php echo $employee_rec[$num]['emptag2']; ?></p>
         <!-- <p>経歴：<?php //echo $employee_rec[$num]['empcareer']; ?></p> -->

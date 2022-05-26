@@ -9,6 +9,8 @@
     /* border-radius: 5%; */
     color: rgb(0, 0, 0);
     background-color: #ffffff;
+    border: 1px solid #000000;
+    overflow: hidden;
 }
 
 .works_modal_open img {
@@ -19,6 +21,10 @@
   height: 250px;
   object-fit: cover;
   object-position: right 50% bottom 80% ;
+}
+
+.works_modal_open img:hover {
+  transform: scale(1.2,1.2);
 }
 
 .works_modal_open p,h2 {
@@ -78,7 +84,6 @@
   width: 200px;
   height: 250px;
   object-fit: cover;
-  /* object-position: right 50% bottom 80% ; */
 }
 .works_modal_mask {
     position: absolute;
