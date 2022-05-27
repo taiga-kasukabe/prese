@@ -72,26 +72,21 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <a href="./mypage.php" id="mypage">マイページ</a>
         <img src="images/ntt-east.png" id="logo">
     </div>
-    <div id="menu">
-    <p></p>
-    <!-- <nav>
-        <ul>
-
-        </ul>
-    </nav> -->
-    </div>
 </header>
 
 
 <body>
 <div class="headImg">
-    <img src="images/oudanhodou.jpg">
+    <!-- <img src="images/building.jpg"> -->
     <p>面談予約</p>
 </div>
 
 <main>
-<!-- マイページと簡易診断へのリンク -->
-<a href="./diagnose.php" id="diagnose">おすすめの社員を診断する</a>
+<!-- 簡易診断へのリンク -->
+<br>
+<a href="./diagnose.php" class="btn">
+    <span class="btn_text">おすすめの社員を診断する</span>
+</a>
 
 <!-- おすすめの社員の表示 -->
 <?php if (!empty($employee_rec)) { ?>
