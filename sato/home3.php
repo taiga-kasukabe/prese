@@ -8,6 +8,7 @@
     <!-- ページのタイトルをtestに設定 -->
     <title>ホーム</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
     <link rel="stylesheet" href="./css/modal3.css">
     <link rel="stylesheet" href="./css/home3.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
@@ -67,6 +68,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
 
+<body>
 <header>
     <div class="bg">
         <a href="./mypage.php" id="mypage">マイページ</a>
@@ -74,11 +76,9 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </header>
 
-
-<body>
 <div class="headImg">
-    <!-- <img src="images/building.jpg"> -->
     <p>面談予約</p>
+    <!-- <img src="images/building.jpg"> -->
 </div>
 
 <main>
