@@ -101,7 +101,6 @@ main {
     top: 400px;
     left: 0;
     width: 100%;
-    margin: 0;
     background-color: rgb(255, 255, 255);
 }
 
@@ -152,7 +151,7 @@ main {
 .list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
     margin: 0 20px 100px 20px;
 }
 

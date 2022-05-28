@@ -126,9 +126,9 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <p>職種：<?php echo $employee_rec[$num]['empjob']; ?></p>
                 <p>経歴：<?php echo $employee_rec[$num]['empcareer']; ?></p>
                 <p>趣味：<?php echo $employee_rec[$num]['emphobby']; ?></p>
-                <p>コメント：<?php echo $employee_rec[$num]['empcomment']; ?></p><br>
+                <p>コメント：<?php echo $employee_rec[$num]['empcomment']; ?></p>
             </div>
-            <a href="./reservation.php">面談予約はこちら</a><br><br>
+            <a href="./reservation.php"><span class="resv_txt">面談予約はこちら</span></a>
         </div>
         <div class="works_modal_close">✖</div>
     </div>
@@ -170,7 +170,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <p>趣味：<?php echo $employee[$num]['emphobby']; ?></p>
                 <p>コメント：<?php echo $employee[$num]['empcomment']; ?></p><br>
             </div>
-            <a href="./reservation.php">面談予約はこちら</a><br><br>
+            <a href="./reservation.php"><span class="resv_txt">面談予約はこちら</span></a>
         </div>
         <div class="works_modal_close">✖</div>
     </div>
