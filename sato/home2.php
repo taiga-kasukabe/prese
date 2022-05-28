@@ -8,10 +8,10 @@
     <!-- ページのタイトルをtestに設定 -->
     <title>ホーム</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/modal.css">
-    <link rel="stylesheet" href="./css/home.css">
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300&display=swap" rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="./css/modal2.css">
+    <link rel="stylesheet" href="./css/home2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    </head>
 
 <?php
 
@@ -69,12 +69,11 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <header>
     <div class="bg">
-        <p id="title">面談予約ページ</p>
         <a href="./mypage.php" id="mypage">マイページ</a>
-        <img src="images/ntt-east_white.png" id="logo">
+        <img src="images/ntt-east.png" id="logo">
     </div>
     <div id="menu">
-    <p>メニューバーを作りたい</p>
+    <p></p>
     <!-- <nav>
         <ul>
 
@@ -86,6 +85,9 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
 <main>
+    <div class="headImg">
+        <p>面談予約？？</p>
+    </div>
 <!-- <p>こんにちは、<?php //echo $member['username']; ?> さん</p> -->
 
 <!-- マイページと簡易診断へのリンク -->
@@ -102,8 +104,8 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h2><?php echo $employee_rec[$num]['empname']; ?></h2>
         <img src="./images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
         <p>年次：<?php echo $employee_rec[$num]['empyear']; ?></p>
-        <p>職種：<?php echo $employee_rec[$num]['empjob']; ?></p>
-        <p>経歴：<?php echo $employee_rec[$num]['empcareer']; ?></p>
+        <p>職種：<?php echo $employee_rec[$num]['emptag2']; ?></p>
+        <!-- <p>経歴：<?php //echo $employee_rec[$num]['empcareer']; ?></p> -->
     </div>
 
 <!-- モーダルウインドウここから -->
@@ -139,11 +141,9 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <h2><?php echo $employee[$num]['empname']; ?></h2>
     <img src="./images/<?php echo $employee[$num]['empimg_id']; ?>" width="200">
     <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
-    <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
-    <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
+    <p>職種：<?php echo $employee[$num]['emptag2']; ?></p>
+    <!-- <p>経歴：<?php //echo $employee[$num]['empcareer']; ?></p> -->
 </div>
-
-<br><br><br>
 
 <!-- モーダルウインドウここから -->
 <div class="works_modal_wrapper" data-modal="modal-<?php echo $num; ?>">
