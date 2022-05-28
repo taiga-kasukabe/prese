@@ -13,42 +13,34 @@ header {
     left: 0;
     width: 100%;
     height: 7%;
+    border-bottom: 1px solid #ffffff;
     z-index: 10;
+    transition: .5s;
 }
 .bg {
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: #ffffff36;
-    border-bottom: 1px solid #6e7d8877
 }
-
-/* .bg::before {
-    position: absolute;
-    content: '';
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.377);
-} */
-
 #mypage {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: 20px;
-    color: #000000;
+    color: #ffffff;
     display: inline-block;
     text-decoration: none;
 }
-
 #logo {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     left: 5px;
     width: 200px;
+}
+header.scroll-nav {
+    background-color: #13334c;
+    border-bottom: none;
 }
 
 /* body */

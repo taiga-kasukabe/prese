@@ -72,8 +72,16 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <header>
     <div class="bg">
         <a href="./mypage.php" id="mypage">マイページ</a>
-        <img src="images/ntt-east.png" id="logo">
+        <img src="images/ntt-east_white.png" id="logo">
     </div>
+    <script>
+        window.addEventListener("scroll", function () {
+        // ヘッダーを変数の中に格納する
+        const header = document.querySelector("header");
+        // 100px以上スクロールしたらヘッダーに「scroll-nav」クラスをつける
+        header.classList.toggle("scroll-nav", window.scrollY > 100);
+        });
+    </script>
 </header>
 
 <div class="headImg">
