@@ -47,19 +47,19 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <h1>こんにちは，<?php echo $employee['empname']; ?>さん</h1>
-<h2>空き日程編集画面です</h2>
+<h2>空き日程編集画面です<br>削除したい空き日程を登録してください</h2>
 <!-- 表示週の変更ボタン -->
 <?php
 if ($week > 0) {
-    echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week - 1 . '">前の1週間</a></br>';
+    echo '<a href="./editFree_form.php?empid=' . $empid . '&week=' . $week - 1 . '">前の1週間</a></br>';
 } else {
     echo '<del>前の1週間</del></br>';
 }
-echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 .  '">次の1週間</a>';
+echo '<a href="./editFree_form.php?empid=' . $empid . '&week=' . $week + 1 .  '">次の1週間</a>';
 ?>
 
 <!-- 予約表 -->
-<form action="./editFree.php" method="get">
+<form action="./editFree_confirm.php" method="get">
     <table>
         <tr>
             <!-- 日程表示 -->
@@ -104,4 +104,11 @@ echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 . 
         ?>
     </table>
     <input type="submit" value="確認">
+</form>
+<p>x：既に予約が入ってしまいました<br>-：空き日程として登録されていません</p>
+
+<form action="./registerFree_form.php" method="get">
+    <input type="hidden" name="empid" value="<?php echo $empid; ?>">
+    <input type="hidden" name="week" value="0">
+    <input type="submit" value="空き日程登録へ">
 </form>

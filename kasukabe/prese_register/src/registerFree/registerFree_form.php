@@ -107,6 +107,7 @@ if (!empty($employee)) {
         </table>
         <input type="submit" value="空き日程を登録">
     </form>
+    <p>-：既に空き日程として登録済み</p>
 
     <form action="./editFree_form.php" method="get">
         <input type="hidden" name="empid" value="<?php echo $empid; ?>">
@@ -114,6 +115,6 @@ if (!empty($employee)) {
         <input type="submit" value="空き日程の編集へ">
     </form>
 <?php } else { ?>
-<h1>存在しない社員IDです</h1>
+    <h1>存在しない社員IDです</h1>
 <?php } ?>
-<input type="button" onclick="location.href='./registerFree_login.php'" value="戻る">
+<input type="button" onclick="location.href='./registerFree_login.php'" value="社員変更">

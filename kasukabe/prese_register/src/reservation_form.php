@@ -110,6 +110,9 @@ echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 . 
     ?>
 
 </table>
+<p>◉：予約可能</p>
+<p>x：他の学生が予約済み</p>
+<p>-：予定が空いていません</p>
 
 <!-- <p>相談内容</p>
 <input type="text" name="comment"><br> -->
