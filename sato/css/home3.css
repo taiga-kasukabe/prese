@@ -12,16 +12,18 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    height: 10%;
+    height: 7%;
     z-index: 10;
 }
 .bg {
     position: relative;
     width: 100%;
     height: 100%;
+    background-color: #ffffff36;
+    border-bottom: 1px solid #6e7d8877
 }
 
-.bg::before {
+/* .bg::before {
     position: absolute;
     content: '';
     top: 0;
@@ -29,7 +31,7 @@ header {
     bottom: 0;
     left: 0;
     background-color: rgba(255, 255, 255, 0.377);
-}
+} */
 
 #mypage {
     position: absolute;
@@ -46,7 +48,7 @@ header {
     top: 50%;
     transform: translateY(-50%);
     left: 5px;
-    width: 250px;
+    width: 200px;
 }
 
 /* body */
@@ -64,37 +66,39 @@ body {
 }
 
 .headImg::after {
-    position: fixed;
+    position: absolute;
     content: '';
     top: 0;
     left: 0;
     width: 100%;
     height: 400px;
-    background-color: #447fcc;
-    /* background-color: rgba(146, 180, 189, 0.253); */
+    /* background-color: #447fcc; */
+    background-color: rgba(146, 180, 189, 0.253);
     z-index: -10;
 }
 
-/* .headImg img {
-    position: fixed;
+.headImg img {
+    position: absolute;
     width: 100%;
     height: 500px;
     object-fit: cover;
+    object-position: 50% 70%;
     margin: 0;
     content: '';
     z-index: -100;
-} */
+}
 
 .headImg p {
-    position: fixed;
+    position: absolute;
     top: 200px;
     left: 50%;
     transform: translate(-50%,-50%);
     padding: 10px 80px;
-    font-size: 2.5em;
-    font-family: 'Shippori Mincho', serif;
-    color: #000000;
-    background-color: #ffffffc5;
+    font-size: 4em;
+    font-family: 'Archivo Black', sans-serif;
+    font-style: italic;
+    color: #ffffff;
+    /* background-color: #ffffffc5; */
     z-index: -1;
     margin: 0;
 }
@@ -113,7 +117,7 @@ main {
     position: relative;
     width: 300px;
     height: 80px;
-    margin: 30px 50%;
+    margin: 60px 50%;
     transform: translateX(-50%);
     display: flex;
     line-height: 80px;
@@ -126,8 +130,8 @@ main {
     font-family: 'Noto Sans JP', sans-serif;
     text-align: center;
     background-color: #ffffff;
-    color: #447fcc;
-    border: 1px solid #447fcc;
+    color: #13334c;
+    border: 1px solid #13334c;
     z-index: 10;
 }
 
@@ -140,7 +144,7 @@ main {
     bottom: -1px;
     width: 0;
     display: block;
-    background-color: #447fcc;
+    background-color: #13334c;
     transition: .2s;
     z-index: -1;
 }
@@ -153,20 +157,24 @@ main {
     width: 100%;
 }
 
-.employee {
+.list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 0 50px 100px 50px;
+    margin: 0 20px 100px 20px;
 }
 
 .section_title {
-    text-align: center;
-    margin: 0 30px 40px 30px;
-    color: #000000;
-    border-bottom: solid 1px #000000;
+    text-align: left;
+    margin: 40px 30px;
+    color: #13334c;
+    border-bottom: solid 1px #13334c;
     padding-bottom: 20px;
     font-size: 2em;
-    font-family: 'Shippori Mincho', serif;
-    letter-spacing: 0.2em;
+    font-family: 'Archivo Black', sans-serif;
+    font-style: italic;
+}
+
+.mgr_20 {
+    margin-right: 20px;
 }
