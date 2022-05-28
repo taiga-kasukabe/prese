@@ -9,10 +9,7 @@ $reservation_date =  $_GET['date'];
 $weekNum = $_GET['weekNum'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
 $comment = $_GET['comment'];
-var_dump($empid);
-var_dump($time);
-var_dump($reservation_date);
-var_dump($comment);
+$id = $_SESSION['id'];
 
 //DB接続
 try {
@@ -37,14 +34,6 @@ $stmt->bindValue(':empid', $empid);
 $stmt->execute();
 $employee = $stmt->fetch();
 
-// ユーザ情報取得
-$id = $_SESSION['id'];
-$sql = "SELECT * FROM users_table WHERE id = :id";
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue(':id', $id);
-$stmt->execute();
-$member = $stmt->fetch();
-
 // 該当予約情報取得
 $sql = "SELECT * FROM rsvDB WHERE empid = :empid AND rsvdate = :rsvdate AND rsvtime = :rsvtime";
 $stmt = $dbh->prepare($sql);
@@ -53,7 +42,6 @@ $stmt->bindValue('rsvdate', $reservation_date);
 $stmt->bindValue('rsvtime', $time);
 $stmt->execute();
 $unrsvInfo = $stmt->fetch();
-var_dump($unrsvInfo);
 
 $sql = "UPDATE rsvDB SET stuid = :stuid, comment = :comment, flag = 1 WHERE rsvDB. id=:id";
 $stmt = $dbh->prepare($sql);

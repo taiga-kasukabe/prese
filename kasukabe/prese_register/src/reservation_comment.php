@@ -52,8 +52,8 @@ $member = $stmt->fetch();
 <p>職種：<?php echo $employee['empcareer']; ?></p>
 <p>趣味：<?php echo $employee['emphobby']; ?></p>
 
-<h2>予約時間：<?php echo substr_replace($time, ':', 2, 0); ?></h2>
 <h2>予約日程：<?php echo date('m/d', strtotime($reservation_date)) . '(' . $weekJa[$weekNum] . ')'; ?></h2>
+<h2>予約時間：<?php echo substr_replace($time, ':', 2, 0); ?></h2>
 
 <form action="<?php echo './reservation_confirm.php?empid=' . $empid . '&time=' . $time . '&date=' . $reservation_date . '&weekJa=' . $weekNum; ?>" method="post">
     <input type="text" name="comment"><br>

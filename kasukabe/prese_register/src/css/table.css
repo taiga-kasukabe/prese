@@ -23,3 +23,7 @@ th {
 a {
     text-decoration: none;
 }
+
+.is-hidden {
+    display: none;
+}
