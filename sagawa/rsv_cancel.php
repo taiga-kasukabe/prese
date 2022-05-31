@@ -15,12 +15,28 @@ try {
       echo $e->getMessage() . PHP_EOL;
     }
 
-$id = $_SESSION['id'];    
+$id = $_SESSION['id'];
+$empid = $_POST['empid'];
+ 
 
-$sql =  "UPDATE rsvdb SET stuid = NULL ,comment = NULL , flag = 0 WHERE stuid = '$id' AND empid in (SELECT empid FROM users_table WHERE empname = )";
+//rsvdb接続
+$sql_rsv = "SELECT * FROM rsvdb";
+$stmt = $pdo->prepare($sql_rsv);
+$stmt->execute();
+$rsv = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//empDB接続
+$sql_emp = "SELECT * FROM emp_table WHERE empid in (SELECT empid FROM rsvdb )";
+$stmt = $pdo->prepare($sql_emp);
+$stmt->execute();
+$employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+$sql =  "UPDATE rsvdb SET stuid = NULL ,comment = NULL , flag = 0 WHERE stuid = :id AND empid = :empid";
 $stmt = $pdo -> prepare($sql);
-$stmt -> bindValue(':id', $id);
+$stmt -> bindValue('id', $id);
+$stmt -> bindValue('empid', $empid);
 $stmt -> execute();
+
 
 ?>
 <h1>予約キャンセルしました</h1>
