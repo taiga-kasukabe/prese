@@ -86,7 +86,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="headImg">
     <p>MEETING</p>
-    <img src="images/building.jpg">
+    <img src="images/hito.jpg">
 </div>
 
 <main>
