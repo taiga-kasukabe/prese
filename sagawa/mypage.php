@@ -35,20 +35,15 @@ $member = $stmt -> fetch();
 $sql_rsv = "SELECT * FROM rsvdb";
 $stmt = $pdo->prepare($sql_rsv);
 $stmt->execute();
-$employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$employees = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $sql_rsv = "SELECT * FROM rsvdb WHERE stuid = '$id'";
 $stmt = $pdo->prepare($sql_rsv);
 $stmt->execute();
 $stuid = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if(!isset($stuid)){
-    echo 'NO';
-    exit;
-}
-
 //empDB接続
-$sql_emp = "SELECT * FROM emp_table WHERE empid in (SELECT empid FROM rsvdb )";
+$sql_emp = "SELECT * FROM emp_table WHERE empid in (SELECT empid FROM rsvdb WHERE stuid = '$id')";
 $stmt = $pdo->prepare($sql_emp);
 $stmt->execute();
 $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -64,13 +59,14 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <p><?php echo $member['username']; ?> さんの予約状況</p><br>
         <div>
             <?php for ($n = 0; $n < count($stuid); $n++) { ?>
+                <?php echo $stuid[$n]['empid'];?>
                 <p>面談相手：<?php echo $employee[$n]['empname']; ?></p>
                 <p>予約日：　<?php echo $stuid[$n]['rsvdate']; ?></p>
                 <p>予約時間：<?php echo $stuid[$n]['rsvtime']; ?></p>
                 <p>相談内容：<?php echo $stuid[$n]['comment']; ?></p>
                 <!--<button onclick="location.href='./rsv_cancel.php'">予約取消</button>-->
-                
-                <button type="button" id="btn" value = "$n">予約取消</button>
+                <input type="submit" value="取消">
+                <input type="hidden" name="empid" value="<?=$stuid[$n]['empid']?>">
                 </script>
                 <br><br>
             <?php } ?>
