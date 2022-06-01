@@ -57,6 +57,8 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <p>職種：<?php echo $employee['empcareer']; ?></p>
 <p>趣味：<?php echo $employee['emphobby']; ?></p>
 
+<h2>表から予約したい日程を選択してください</h2>
+
 <!-- 表示週の変更ボタン -->
 <?php
 if ($week > 0) {
@@ -68,49 +70,58 @@ echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 . 
 ?>
 
 <!-- 予約表 -->
-<table>
-    <tr>
-        <!-- 日程表示 -->
-        <th></th>
-        <?php for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++)
-            print '<th>' . date('m/d', strtotime($i . 'day')) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($i . 'day'))))] . ')</th>';
-        ?>
-    </tr>
-    <?php
-    for ($time = 1000; $time <= 1600; $time += 100) {
-        if ($time == 1200) {
-            continue;
-        }
-        echo '<tr>
-        <th>' . substr_replace($time, ':', 2, 0) . '</th>';
-        for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
-            $cnt = 0;
-            // 未予約日程を表示
-            for ($j = 0; $j < count($unrsvInfo); $j++) {
-                if ($unrsvInfo[$j]['rsvdate'] == date('Y-m-d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == $time) {
-                    print '<td><a href="./reservation_comment.php?empid=' . $empid . '&time=' . $time . '&date=' . date('Y-m-d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</a></td>';
-                    $cnt++;
-                }
-            }
-
-            // 予約済み日程を表示
-            for ($k = 0; $k < count($rsvInfo); $k++) {
-                if ($rsvInfo[$k]['rsvdate'] == date('Y-m-d', strtotime($i . 'day')) && date('Hi', strtotime($rsvInfo[$k]['rsvtime'])) == $time) {
-                    print '<td>x</td>';
-                    $cnt++;
-                }
-            }
-            if ($cnt > 0) {
+<form action="./reservation_confirm.php" method="POST">
+    <table>
+        <tr>
+            <!-- 日程表示 -->
+            <th></th>
+            <?php for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++)
+                print '<th>' . date('m/d', strtotime($i . 'day')) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($i . 'day'))))] . ')</th>';
+            ?>
+        </tr>
+        <?php
+        for ($time = 1000; $time <= 1600; $time += 100) {
+            if ($time == 1200) {
                 continue;
             }
-            print '<td>-</td>';
-        }
-        echo '</tr>';
-    }
-    ?>
+            echo '<tr>
+        <th>' . substr_replace($time, ':', 2, 0) . '</th>';
+            for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
+                $cnt = 0;
+                // 未予約日程を表示
+                for ($j = 0; $j < count($unrsvInfo); $j++) {
+                    if ($unrsvInfo[$j]['rsvdate'] == date('Y-m-d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == $time) {
+                        print '<td>
+                <input type="radio" name="free" value="' . $empid . ':' .  $time . ':' . date('Y-m-d', strtotime($i . 'day')) . ':' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '" required>
+                </td>';
+                        // print '<td><a href="./reservation_comment.php?empid=' . $empid . '&time=' . $time . '&date=' . date('Y-m-d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</a></td>';
 
-</table>
-<p>◉：予約可能</p>
+                        $cnt++;
+                    }
+                }
+
+                // 予約済み日程を表示
+                for ($k = 0; $k < count($rsvInfo); $k++) {
+                    if ($rsvInfo[$k]['rsvdate'] == date('Y-m-d', strtotime($i . 'day')) && date('Hi', strtotime($rsvInfo[$k]['rsvtime'])) == $time) {
+                        print '<td>x</td>';
+                        $cnt++;
+                    }
+                }
+                if ($cnt > 0) {
+                    continue;
+                }
+                print '<td>-</td>';
+            }
+            echo '</tr>';
+        }
+        ?>
+    </table><br>
+    相談内容：
+    <input type="text" name="comment"><br><br>
+    <input type="submit" value="予約確認画面へ">
+</form>
+
+<p>⚪︎：予約可能</p>
 <p>x：他の学生が予約済み</p>
 <p>-：予定が空いていません</p>
 
