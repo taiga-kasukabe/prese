@@ -4,7 +4,7 @@ session_start();
 
 // 変数定義
 include('../../conf/db_conf.php');
-$empid = $_GET['empid'];
+$empid = $_SESSION['eid'];
 $week = $_GET['week'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
 
