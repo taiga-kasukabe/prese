@@ -7,14 +7,13 @@ for ($i = 0; $i < count($_GET['free']); $i++) {
     list($empid[$i], $time[$i], $date[$i], $weekNum[$i]) = explode(":", $_GET['free'][$i]);
 }
 
-// DBconnection
-try {
-    //インスタンス化（"データベースの種類:host=接続先アドレス, dbname=データベース名,charset=文字エンコード" "ユーザー名", "パスワード", opt)
-      $pdo = new PDO(DSN, DB_USER, DB_PASS);
-    //エラー処理
-    } catch (Exception $e) {
-      echo $e->getMessage() . PHP_EOL;
-  }
+//データベース接続
+try{
+    $dbh = new PDO($dsn, $db_username, $db_password);
+} catch (PDOException $e) {
+    $msg = $e -> getMessage();
+}
+
   
 
 // 複数行挿入
@@ -47,7 +46,7 @@ for ($i = 0; $i < count($aryInsert); $i++) {
 $sql .= '(' . implode(',', $arySql1_validation) . ')';
 
 //bind処理
-$stmt = $pdo->prepare($sql);
+$stmt = $dbh->prepare($sql);
 foreach ($aryInsert as $key1_validation => $val1_validation) {
     $stmt->bindValue(':rsvdate' . $key1_validation, $val1_validation['rsvdate']);
     $stmt->bindValue(':rsvtime' . $key1_validation, $val1_validation['rsvtime']);

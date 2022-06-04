@@ -8,32 +8,30 @@ $empid = $_SESSION['eid'];
 $week = $_GET['week'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
 
-//DB接続
-try {
-    //インスタンス化（"データベースの種類:host=接続先アドレス, dbname=データベース名,charset=文字エンコード" "ユーザー名", "パスワード", opt)
-      $pdo = new PDO(DSN, DB_USER, DB_PASS);
-    //エラー処理
-    } catch (Exception $e) {
-      echo $e->getMessage() . PHP_EOL;
-  }
+//データベース接続
+try{
+    $dbh = new PDO($dsn, $db_username, $db_password);
+} catch (PDOException $e) {
+    $msg = $e -> getMessage();
+}
 
 // 社員リスト取得
 $sql = "SELECT * FROM emp_table WHERE empid = :empid";
-$stmt = $pdo->prepare($sql);
+$stmt = $dbh->prepare($sql);
 $stmt->bindValue(':empid', $empid);
 $stmt->execute();
 $employee = $stmt->fetch();
 
 // 未予約情報取得
 $sql = "SELECT * FROM rsvdb WHERE empid = :empid AND flag = 0";
-$stmt = $pdo->prepare($sql);
+$stmt = $dbh->prepare($sql);
 $stmt->bindValue(':empid', $empid);
 $stmt->execute();
 $unrsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // 予約済み情報取得
 $sql = "SELECT * FROM rsvdb WHERE empid = :empid AND flag = 1";
-$stmt = $pdo->prepare($sql);
+$stmt = $dbh->prepare($sql);
 $stmt->bindValue(':empid', $empid);
 $stmt->execute();
 $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);

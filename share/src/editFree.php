@@ -9,14 +9,13 @@ for ($i = 0; $i < count($_GET['editFree']); $i++) {
     $time[$i] = substr_replace($time[$i], ':', 2, 0) . ":00";
 }
 
-// DBconnection
-try {
-    //インスタンス化（"データベースの種類:host=接続先アドレス, dbname=データベース名,charset=文字エンコード" "ユーザー名", "パスワード", opt)
-      $pdo = new PDO(DSN, DB_USER, DB_PASS);
-    //エラー処理
-    } catch (Exception $e) {
-      echo $e->getMessage() . PHP_EOL;
-  }
+//データベース接続
+try{
+    $dbh = new PDO($dsn, $db_username, $db_password);
+} catch (PDOException $e) {
+    $msg = $e -> getMessage();
+}
+
 
 $sql = "SELECT id FROM rsvdb WHERE ";
 
@@ -27,7 +26,7 @@ for ($i = 0; $i < count($_GET['editFree']); $i++) {
 $sql .= implode(' OR ', $arySql1);
 
 //bind処理
-$stmt = $pdo->prepare($sql);
+$stmt = $dbh->prepare($sql);
 for ($i = 0; $i < count($_GET['editFree']); $i++) {
     $stmt->bindValue(':empid' . $i, $empid[$i]);
     $stmt->bindValue(':rsvdate' . $i, date('Y') . '-' . str_replace('/', '-', $date[$i]));
@@ -41,7 +40,7 @@ for ($i = 0; $i < count($deldata); $i++) {
     $delid[$i] = $deldata[$i]['id'];
 }
 $sql = "DELETE FROM rsvdb WHERE id IN (" . implode(',', $delid) . ")";
-$stmt = $pdo->prepare($sql);
+$stmt = $dbh->prepare($sql);
 $stmt->execute();
 ?>
 
