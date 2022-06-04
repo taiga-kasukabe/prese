@@ -58,7 +58,7 @@ $stmt->execute();
     <input type="hidden" name="week" value="0">
     <input type="submit" value="追加で削除">
 </form>
-<form action="./registerFree_confirm.php" method="GET">
+<form action="./registerFree_form.php" method="GET">
     <input type="hidden" name="empid" value="<?php echo $empid[0]; ?>">
     <input type="hidden" name="week" value="0">
     <input type="submit" value="空き日程を登録">
