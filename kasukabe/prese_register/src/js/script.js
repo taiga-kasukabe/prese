@@ -1,12 +1,9 @@
-//jQuery
-$(function () {
-    var nowchecked = $('input[name=radio]:checked').val();
-    $('input[name=radio]').click(function () {
-        if ($(this).val() == nowchecked) {
-            $(this).prop('checked', false);
-            nowchecked = false;
-        } else {
-            nowchecked = $(this).val();
-        }
+window.addEventListener('DOMContentLoaded', function () {
+    // 戻るボタンを制御
+    history.pushState(null, null, location.href);
+    window.addEventListener('popstate', (e) => {
+        history.go(1);
     });
 });
+
+//jQuery

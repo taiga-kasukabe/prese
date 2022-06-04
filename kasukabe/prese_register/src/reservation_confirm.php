@@ -3,12 +3,13 @@ session_start();
 
 // 変数定義
 include('../conf/db_conf.php');
-$empid = $_GET['empid'];
-$time =  $_GET['time'];
-$reservation_date =  $_GET['date'];
-$weekNum = $_GET['weekJa'];
-$weekJa = array("日", "月", "火", "水", "木", "金", "土");
+// $empid = $_GET['empid'];
+// $time =  $_GET['time'];
+// $reservation_date =  $_GET['date'];
+// $weekNum = $_GET['weekJa'];
 $comment = $_POST['comment'];
+$weekJa = array("日", "月", "火", "水", "木", "金", "土");
+list($empid, $time, $reservation_date, $weekNum) = explode(":", $_POST['free']);
 
 
 //DB接続
@@ -45,15 +46,19 @@ $employee = $stmt->fetch();
 <p>職種：<?php echo $employee['empcareer']; ?></p>
 <p>趣味：<?php echo $employee['emphobby']; ?></p>
 
-<h2>予約時間：<?php echo substr_replace($time, ':', 2, 0); ?></h2>
 <h2>予約日程：<?php echo date('m/d', strtotime($reservation_date)) . '(' . $weekJa[$weekNum] . ')'; ?></h2>
-<h2>相談内容：<?php if(isset($comment)){echo $comment;}else{echo "特になし";}?></h2>
+<h2>予約時間：<?php echo substr_replace($time, ':', 2, 0); ?></h2>
+<h2>相談内容：<?php if (!empty($comment)) {
+                echo $comment;
+            } else {
+                echo "特になし";
+            } ?></h2>
 <form action="./reservation.php" method="get">
-    <input type="hidden" name="empid" value="<?php echo $empid;?>">
-    <input type="hidden" name="time" value="<?php echo $time;?>">
-    <input type="hidden" name="date" value="<?php echo $reservation_date?>">
-    <input type="hidden" name="weekNum" value="<?php echo $weekNum;?>">
-    <input type="hidden" name="comment" value="<?php echo $comment;?>">
+    <input type="hidden" name="empid" value="<?php echo $empid; ?>">
+    <input type="hidden" name="time" value="<?php echo $time; ?>">
+    <input type="hidden" name="date" value="<?php echo $reservation_date ?>">
+    <input type="hidden" name="weekNum" value="<?php echo $weekNum; ?>">
+    <input type="hidden" name="comment" value="<?php echo $comment; ?>">
     <input type="submit" value="予約">
 </form>
 

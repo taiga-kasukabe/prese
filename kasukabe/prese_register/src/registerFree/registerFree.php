@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include('../conf/db_conf.php');
+include('../../conf/db_conf.php');
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
 for ($i = 0; $i < count($_GET['free']); $i++) {
     list($empid[$i], $time[$i], $date[$i], $weekNum[$i]) = explode(":", $_GET['free'][$i]);

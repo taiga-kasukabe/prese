@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
     <link rel="stylesheet" href="./css/modal3.css">
     <link rel="stylesheet" href="./css/home3.css">
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
-    </head>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">   
+</head>
 
 <?php
 
