@@ -27,33 +27,39 @@ try {
     $msg = $e->getMessage();
 }
 
-// 社員リスト取得
-$sql = "SELECT * FROM empDB WHERE empid = :empid";
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue(':empid', $empid);
-$stmt->execute();
-$employee = $stmt->fetch();
+
 
 // 該当予約情報取得
 $sql = "SELECT * FROM rsvDB WHERE empid = :empid AND rsvdate = :rsvdate AND rsvtime = :rsvtime";
 $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':empid', $empid);
-$stmt->bindValue('rsvdate', $reservation_date);
-$stmt->bindValue('rsvtime', $time);
+$stmt->bindValue(':rsvdate', $reservation_date);
+$stmt->bindValue(':rsvtime', $time);
 $stmt->execute();
 $unrsvInfo = $stmt->fetch();
 
-$sql = "UPDATE rsvDB SET stuid = :stuid, comment = :comment, flag = 1 WHERE rsvDB. id=:id";
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue('stuid', $id);
-$stmt->bindValue('comment', $comment);
-$stmt->bindValue('id', $unrsvInfo['id']);
-$stmt->execute();
-
+// 予約動作
+if ($unrsvInfo['flag'] != 1) {
+    $sql = "UPDATE rsvDB SET stuid = :stuid, comment = :comment, flag = 1 WHERE rsvDB. id=:id";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':stuid', $id);
+    $stmt->bindValue(':comment', $comment);
+    $stmt->bindValue(':id', $unrsvInfo['id']);
+    $stmt->execute();
+}
 ?>
 
 <!-- ページ表示 -->
-<h1>予約完了しました</h1>
-<h2>登録ID名：<?php echo $id; ?>さん</h2>
+<?php if (!empty($unrsvInfo) && $unrsvInfo['flag']!=1) { ?>
+    <h1>予約完了しました</h1>
+    <h2>登録ID名：<?php echo $id; ?>さん</h2>
+<?php } else { ?>
+    <h1>予期せぬエラーが発生しました</h1>
+    <p>同時に他の方が予約したかもしれません</p>
+    <p>内々定者の方に予定が入ったかもしれません</p>
+    <p>ブラウザの戻るボタンを押したかもしれません</p>
+<?php } ?>
 
 <input type="button" onclick="location.href='./home.php'" value="ホームへ">
+
+<script src="./js/script.js"></script>

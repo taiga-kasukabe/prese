@@ -1,11 +1,10 @@
-<link rel="stylesheet" href="css/table.css">
-
+<link rel="stylesheet" href="../css/table.css">
 <?php
 session_start();
 
 // 変数定義
-include('../conf/db_conf.php');
-$empid = $_GET['empid'];
+include('../../conf/db_conf.php');
+$empid = $_SESSION['eid'];
 $week = $_GET['week'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
 
@@ -47,30 +46,20 @@ $stmt->execute();
 $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-
-<!-- 表示画面 -->
-<h1>予約画面</h1>
-<h2><?php echo $employee['empname']; ?></h2>
-<img src="./images/<?php echo $employee['empimg_id']; ?>" alt="社員画像" height="300">
-<p>年次：<?php echo $employee['empyear']; ?>年目</p>
-<p>役職：<?php echo $employee['empjob']; ?></p>
-<p>職種：<?php echo $employee['empcareer']; ?></p>
-<p>趣味：<?php echo $employee['emphobby']; ?></p>
-
-<h2>表から予約したい日程を選択してください</h2>
-
+<h1>こんにちは，<?php echo $employee['empname']; ?>さん</h1>
+<h2>空き日程編集画面です<br>削除したい空き日程を登録してください</h2>
 <!-- 表示週の変更ボタン -->
 <?php
 if ($week > 0) {
-    echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week - 1 . '">前の1週間</a></br>';
+    echo '<a href="./editFree_form.php?empid=' . $empid . '&week=' . $week - 1 . '">前の1週間</a></br>';
 } else {
     echo '<del>前の1週間</del></br>';
 }
-echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 .  '">次の1週間</a>';
+echo '<a href="./editFree_form.php?empid=' . $empid . '&week=' . $week + 1 .  '">次の1週間</a>';
 ?>
 
 <!-- 予約表 -->
-<form action="./reservation_confirm.php" method="POST">
+<form action="./editFree_confirm.php" method="get">
     <table>
         <tr>
             <!-- 日程表示 -->
@@ -92,10 +81,8 @@ echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 . 
                 for ($j = 0; $j < count($unrsvInfo); $j++) {
                     if ($unrsvInfo[$j]['rsvdate'] == date('Y-m-d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == $time) {
                         print '<td>
-                <input type="radio" name="free" value="' . $empid . ':' .  $time . ':' . date('Y-m-d', strtotime($i . 'day')) . ':' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '" required>
-                </td>';
-                        // print '<td><a href="./reservation_comment.php?empid=' . $empid . '&time=' . $time . '&date=' . date('Y-m-d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</a></td>';
-
+                        <input type="checkbox" name="editFree[]" value="' . $empid . ':' .  $time . ':' . date('m/d', strtotime($i . 'day')) . ':' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">
+                    </td>';
                         $cnt++;
                     }
                 }
@@ -115,18 +102,13 @@ echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 . 
             echo '</tr>';
         }
         ?>
-    </table><br>
-    相談内容：
-    <input type="text" name="comment"><br><br>
-    <input type="submit" value="予約確認画面へ">
+    </table>
+    <input type="submit" value="確認">
 </form>
+<p>x：既に予約が入ってしまいました<br>-：空き日程として登録されていません</p>
 
-<p>⚪︎：予約可能</p>
-<p>x：他の学生が予約済み</p>
-<p>-：予定が空いていません</p><br>
-
-<input type="button" onclick="location.href='./home.php'" value="戻る">
-
-<!-- for jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="./js/script.js"></script>
+<form action="./registerFree_form.php" method="get">
+    <input type="hidden" name="empid" value="<?php echo $empid; ?>">
+    <input type="hidden" name="week" value="0">
+    <input type="submit" value="空き日程登録へ">
+</form>

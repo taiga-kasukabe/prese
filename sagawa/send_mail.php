@@ -1,5 +1,5 @@
 <?php
-//yahooでのtest
+//gmailでのtest
 
 //Composerを利用していない
 use PHPMailer\PHPMailer\PHPMailer;
