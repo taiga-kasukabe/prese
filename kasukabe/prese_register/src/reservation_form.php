@@ -123,13 +123,10 @@ echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 . 
 
 <p>⚪︎：予約可能</p>
 <p>x：他の学生が予約済み</p>
-<p>-：予定が空いていません</p>
+<p>-：予定が空いていません</p><br>
 
-<!-- <p>相談内容</p>
-<input type="text" name="comment"><br> -->
-<br>
 <input type="button" onclick="location.href='./home.php'" value="戻る">
 
 <!-- for jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="./js/script.js"></script>
+<script type="text/javascript" src="./js/script.js"></script>

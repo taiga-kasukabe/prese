@@ -36,36 +36,72 @@ for ($i = 0; $i < count($_GET['free']); $i++) {
         'flag' => '0'
     ];
 }
+
 // array_keyで配列インデックスキーを取得
 $aryColumn = array_keys($aryInsert[0]);
 
-$sql = "INSERT INTO rsvDB (" . implode(',', $aryColumn) . ") VALUES ";
-$arySql1 = [];
+//validation
+$sql = "SELECT * FROM rsvDB WHERE (rsvdate, rsvtime) IN ";
+$arySql1_validation = [];
 //行の繰り返し
-foreach ($aryInsert as $key1 => $val1) {
-    $arySql2 = [];
-    //列（カラム）の繰り返し
-    foreach ($val1 as $key2 => $val2) {
-        $arySql2[] = ':' . $key2 . $key1;
-    }
-    $arySql1[] = '(' . implode(',', $arySql2) . ')';
+for ($i = 0; $i < count($aryInsert); $i++) {
+    $arySql2_validation = [];
+    $arySql2_validation[] = ':rsvdate' . $i;
+    $arySql2_validation[] = ':rsvtime' . $i;
+    $arySql1_validation[] = '(' . implode(',', $arySql2_validation) . ')';
 }
-
-$sql .= implode(',', $arySql1);
+$sql .= '(' . implode(',', $arySql1_validation) . ')';
 
 //bind処理
 $stmt = $dbh->prepare($sql);
-foreach ($aryInsert as $key1 => $val1) {
-    foreach ($val1 as $key2 => $val2) {
-        $stmt->bindValue(':' . $key2 . $key1, $val2);
-    }
+foreach ($aryInsert as $key1_validation => $val1_validation) {
+    $stmt->bindValue(':rsvdate' . $key1_validation, $val1_validation['rsvdate']);
+    $stmt->bindValue(':rsvtime' . $key1_validation, $val1_validation['rsvtime']);
 }
 $stmt->execute();
+$validation = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// 重複日程がなければ登録
+if (empty($validation)) {
+    // 登録動作
+    $sql = "INSERT INTO rsvDB (" . implode(',', $aryColumn) . ") VALUES ";
+    $arySql1 = [];
+    //行の繰り返し
+    foreach ($aryInsert as $key1 => $val1) {
+        $arySql2 = [];
+        //列（カラム）の繰り返し
+        foreach ($val1 as $key2 => $val2) {
+            $arySql2[] = ':' . $key2 . $key1;
+        }
+        $arySql1[] = '(' . implode(',', $arySql2) . ')';
+    }
+
+    $sql .= implode(',', $arySql1);
+
+    //bind処理
+    $stmt = $dbh->prepare($sql);
+    foreach ($aryInsert as $key1 => $val1) {
+        foreach ($val1 as $key2 => $val2) {
+            $stmt->bindValue(':' . $key2 . $key1, $val2);
+        }
+    }
+    $stmt->execute();
+}
 ?>
 
-<h1>登録しました</h1>
-<form action="./registerFree_form.php" method="get">
-    <input type="hidden" name="week" value="0">
-    <input type="hidden" name="empid" value="<?php echo $empid[0]; ?>">
-    <input type="submit" value="追加登録">
-</form>
+<?php if (empty($validation)) { ?>
+    <h1>登録しました</h1>
+    <form action="./registerFree_form.php" method="get">
+        <input type="hidden" name="week" value="0">
+        <input type="hidden" name="empid" value="<?php echo $empid[0]; ?>">
+        <input type="submit" value="追加登録">
+    </form>
+<?php } else { ?>
+    <h1>登録できませんでした</h1>
+    <h2>予期せぬエラーが発生しました</h2>
+    <form action="./registerFree_form.php" method="GET">
+        <input type="hidden" name="week" value="0">
+        <input type="hidden" name="empid" value="<?php echo $empid[0]; ?>">
+        <input type="submit" value="再登録">
+    </form>
+<?php } ?>

@@ -76,8 +76,8 @@ if (!empty($employee)) {
                     continue;
                 }
                 echo '<tr>
-        <th>' . substr_replace($time, ':', 2, 0) . '</th>';
-                for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
+                <th>' . substr_replace($time, ':', 2, 0) . '</th>';
+                for ($i =  $week * 7; $i < 7 * ($week + 1); $i++) {
                     $cnt = 0;
                     // 未予約日程を表示
                     for ($j = 0; $j < count($unrsvInfo); $j++) {
@@ -97,9 +97,7 @@ if (!empty($employee)) {
                         continue;
                     }
                     // checkboxで実装
-                    print '<td>
-                <input type="checkbox" name="free[]" value="' . $empid . ':' .  $time . ':' . date('m/d', strtotime($i . 'day')) . ':' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">
-                </td>';
+                    print '<td><input type="checkbox" name="free[]" value="' . $empid . ':' .  $time . ':' . date('m/d', strtotime($i . 'day')) . ':' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '"></td>';
                 }
                 echo '</tr>';
             }

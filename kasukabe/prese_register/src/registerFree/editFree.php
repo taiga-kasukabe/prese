@@ -9,8 +9,6 @@ for ($i = 0; $i < count($_GET['editFree']); $i++) {
     $time[$i] = substr_replace($time[$i], ':', 2, 0) . ":00";
 }
 
-
-
 // DBconnection
 try {
     $options = array(
@@ -33,9 +31,7 @@ $arySql1 = array();
 for ($i = 0; $i < count($_GET['editFree']); $i++) {
     $arySql1[$i] = '(empid = :empid' . $i . ' AND rsvdate = :rsvdate' . $i . ' AND rsvtime = :rsvtime' . $i . ')';
 }
-
 $sql .= implode(' OR ', $arySql1);
-var_dump($sql);
 
 //bind処理
 $stmt = $dbh->prepare($sql);
@@ -52,13 +48,18 @@ for ($i = 0; $i < count($deldata); $i++) {
     $delid[$i] = $deldata[$i]['id'];
 }
 $sql = "DELETE FROM rsvDB WHERE id IN (" . implode(',', $delid) . ")";
-$stmt= $dbh->prepare($sql);
+$stmt = $dbh->prepare($sql);
 $stmt->execute();
 ?>
 
 <h1>削除しました</h1>
-<form action="./registerFree_form.php" method="get">
+<form action="./editFree_form.php" method="get">
     <input type="hidden" name="empid" value="<?php echo $empid[0]; ?>">
     <input type="hidden" name="week" value="0">
-    <input type="submit" value="追加で削除する">
+    <input type="submit" value="追加で削除">
+</form>
+<form action="./registerFree_confirm.php" method="GET">
+    <input type="hidden" name="empid" value="<?php echo $empid[0]; ?>">
+    <input type="hidden" name="week" value="0">
+    <input type="submit" value="空き日程を登録">
 </form>

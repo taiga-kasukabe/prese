@@ -57,6 +57,7 @@ if ($unrsvInfo['flag'] != 1) {
     <h1>予期せぬエラーが発生しました</h1>
     <p>同時に他の方が予約したかもしれません</p>
     <p>内々定者の方に予定が入ったかもしれません</p>
+    <p>ブラウザの戻るボタンを押したかもしれません</p>
 <?php } ?>
 
 <input type="button" onclick="location.href='./home.php'" value="ホームへ">
