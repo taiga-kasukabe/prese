@@ -109,4 +109,4 @@ if (!empty($employee)) {
 <?php } else { ?>
     <h1>存在しない社員IDです</h1>
 <?php } ?>
-<input type="button" onclick="location.href='./registerFree_login.php'" value="社員変更">
+<input type="button" onclick="location.href='./emplogin_form.php'" value="社員変更">

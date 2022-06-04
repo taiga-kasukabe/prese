@@ -33,7 +33,7 @@ $unrsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // 予約済み情報取得
 $sql = "SELECT * FROM rsvdb WHERE empid = :empid AND flag = 1";
-$stmt = $pod->prepare($sql);
+$stmt = $pdo->prepare($sql);
 $stmt->bindValue(':empid', $empid);
 $stmt->execute();
 $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
