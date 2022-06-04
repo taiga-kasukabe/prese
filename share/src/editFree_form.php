@@ -103,5 +103,5 @@ echo '<a href="./editFree_form.php?empid=' . $empid . '&week=' . $week + 1 .  '"
 <form action="./registerFree_form.php" method="get">
     <input type="hidden" name="empid" value="<?php echo $empid; ?>">
     <input type="hidden" name="week" value="0">
-    <input type="submit" value="空き日程登録へ">
+    <input type="submit" value="削除確認へ">
 </form>
