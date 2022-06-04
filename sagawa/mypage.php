@@ -52,7 +52,7 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $sql_emp = "SELECT * FROM emp_table";
 $stmt = $pdo->prepare($sql_emp);
 $stmt->execute();
-$ename = $stmt->fetch();
+$ename = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -61,19 +61,21 @@ $ename = $stmt->fetch();
 <font size="2">
 <div>    
     <h2>予約確認<h2> 
-    <form action="./rsv_cancel.php" method="post" onSubmit = "return check()">
         <p><?php echo $member['username']; ?> さんの予約状況</p><br>
         <div>
             <?php for ($n = 0; $n < count($stuid); $n++) { ?>
                 <?php echo $stuid[$n]['empid'];?>
-                <?php $t=$stuid[$n]['empid'];
-                ?>
-                <p>面談相手：<?php echo $ename; ?></p>
+                <?php for($i = 0; $i < count($ename); $i++) { 
+                        if($stuid[$n]['empid'] == $ename[$i]['empid']){ ?>
+                           <p>面談相手：<?php echo $ename[$i]['empname']; ?></p>
+                    <?php } } ?>
                 <p>予約日：　<?php echo $stuid[$n]['rsvdate']; ?></p>
                 <p>予約時間：<?php echo $stuid[$n]['rsvtime']; ?></p>
                 <p>相談内容：<?php echo $stuid[$n]['comment']; ?></p>
+                <form action="./rsv_cancel.php" method="post" onSubmit = "return check()">
                 <input type="submit" value="取消">
                 <input type="hidden" name="empid" value="<?=$stuid[$n]['empid']?>">
+                </form>
                 </script>
                 <br><br>
             <?php } ?>
