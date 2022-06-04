@@ -6,7 +6,7 @@ session_start();
 include('../../conf/db_conf.php');
 $week = $_GET['week'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
-$empid = $_GET['empid'];
+$empid = $_SESSION['eid'];
 
 try {
     $options = array(

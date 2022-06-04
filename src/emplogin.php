@@ -28,7 +28,7 @@ else if (($_POST['epass'] = $member['epassword'])) {
     //save the user's data in DB on SESSION
     $_SESSION['eid'] = $member['eid'];
     $msg = 'ログインしました。';
-    $link = '<a href="./empmypage.php?week=0">ホームへ</a>';
+    $link = '<a href="./registerFree_form.php?week=0">ホームへ</a>';
 }
 ?>
 
