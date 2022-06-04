@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+body {
+    position: relative;
+    height: 100%;
+    margin: 0;
+    background: rgb(107,133,238);
+    background: linear-gradient(180deg, rgba(107,133,238,1) 0%, rgba(110,184,255,1) 51%, rgba(202,255,124,1) 100%);
+}
+.container {
+    position: absolute;
+    width: 40%;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px;
+}
+p {
+    text-align: center;
+    color: #ffffff;
+    font-size: 2em;
+    margin: 0.5em;
+}
+.form {
+    text-align: center;
+}
