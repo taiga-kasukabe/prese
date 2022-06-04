@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include('../../conf/db_conf.php');
+include('../conf/config.php');
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
 for ($i = 0; $i < count($_GET['free']); $i++) {
     list($empid[$i], $time[$i], $date[$i], $weekNum[$i]) = explode(":", $_GET['free'][$i]);
@@ -9,19 +9,13 @@ for ($i = 0; $i < count($_GET['free']); $i++) {
 
 // DBconnection
 try {
-    $options = array(
-        // SQL実行失敗時には例外をスローしてくれる
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        // カラム名をキーとする連想配列で取得する．これが一番ポピュラーな設定
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        // バッファードクエリを使う(一度に結果セットをすべて取得し、サーバー負荷を軽減)
-        // SELECTで得た結果に対してもrowCountメソッドを使えるようにする
-        PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
-    );
-    $dbh = new PDO($dsn, $db_username, $db_password, $options);
-} catch (PDOException $e) {
-    $msg = $e->getMessage();
-}
+    //インスタンス化（"データベースの種類:host=接続先アドレス, dbname=データベース名,charset=文字エンコード" "ユーザー名", "パスワード", opt)
+      $pdo = new PDO(DSN, DB_USER, DB_PASS);
+    //エラー処理
+    } catch (Exception $e) {
+      echo $e->getMessage() . PHP_EOL;
+  }
+  
 
 // 複数行挿入
 $aryInsert = [];
@@ -41,7 +35,7 @@ for ($i = 0; $i < count($_GET['free']); $i++) {
 $aryColumn = array_keys($aryInsert[0]);
 
 //validation
-$sql = "SELECT * FROM rsvDB WHERE (rsvdate, rsvtime) IN ";
+$sql = "SELECT * FROM rsvdb WHERE (rsvdate, rsvtime) IN ";
 $arySql1_validation = [];
 //行の繰り返し
 for ($i = 0; $i < count($aryInsert); $i++) {
@@ -53,7 +47,7 @@ for ($i = 0; $i < count($aryInsert); $i++) {
 $sql .= '(' . implode(',', $arySql1_validation) . ')';
 
 //bind処理
-$stmt = $dbh->prepare($sql);
+$stmt = $pdo->prepare($sql);
 foreach ($aryInsert as $key1_validation => $val1_validation) {
     $stmt->bindValue(':rsvdate' . $key1_validation, $val1_validation['rsvdate']);
     $stmt->bindValue(':rsvtime' . $key1_validation, $val1_validation['rsvtime']);
@@ -64,7 +58,7 @@ $validation = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // 重複日程がなければ登録
 if (empty($validation)) {
     // 登録動作
-    $sql = "INSERT INTO rsvDB (" . implode(',', $aryColumn) . ") VALUES ";
+    $sql = "INSERT INTO rsvdb (" . implode(',', $aryColumn) . ") VALUES ";
     $arySql1 = [];
     //行の繰り返し
     foreach ($aryInsert as $key1 => $val1) {

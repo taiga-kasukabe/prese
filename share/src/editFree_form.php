@@ -3,44 +3,37 @@
 session_start();
 
 // 変数定義
-include('../../conf/db_conf.php');
+include('../conf/config.php');
 $empid = $_SESSION['eid'];
 $week = $_GET['week'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
 
 //DB接続
 try {
-    $options = array(
-        // SQL実行失敗時には例外をスローしてくれる
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        // カラム名をキーとする連想配列で取得する．これが一番ポピュラーな設定
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        // バッファードクエリを使う(一度に結果セットをすべて取得し、サーバー負荷を軽減)
-        // SELECTで得た結果に対してもrowCountメソッドを使えるようにする
-        PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
-    );
-    $dbh = new PDO($dsn, $db_username, $db_password, $options);
-} catch (PDOException $e) {
-    $msg = $e->getMessage();
-}
+    //インスタンス化（"データベースの種類:host=接続先アドレス, dbname=データベース名,charset=文字エンコード" "ユーザー名", "パスワード", opt)
+      $pdo = new PDO(DSN, DB_USER, DB_PASS);
+    //エラー処理
+    } catch (Exception $e) {
+      echo $e->getMessage() . PHP_EOL;
+  }
 
 // 社員リスト取得
-$sql = "SELECT * FROM empDB WHERE empid = :empid";
-$stmt = $dbh->prepare($sql);
+$sql = "SELECT * FROM emp_table WHERE empid = :empid";
+$stmt = $pdo->prepare($sql);
 $stmt->bindValue(':empid', $empid);
 $stmt->execute();
 $employee = $stmt->fetch();
 
 // 未予約情報取得
-$sql = "SELECT * FROM rsvDB WHERE empid = :empid AND flag = 0";
-$stmt = $dbh->prepare($sql);
+$sql = "SELECT * FROM rsvdb WHERE empid = :empid AND flag = 0";
+$stmt = $pdo->prepare($sql);
 $stmt->bindValue(':empid', $empid);
 $stmt->execute();
 $unrsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // 予約済み情報取得
-$sql = "SELECT * FROM rsvDB WHERE empid = :empid AND flag = 1";
-$stmt = $dbh->prepare($sql);
+$sql = "SELECT * FROM rsvdb WHERE empid = :empid AND flag = 1";
+$stmt = $pod->prepare($sql);
 $stmt->bindValue(':empid', $empid);
 $stmt->execute();
 $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
