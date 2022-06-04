@@ -48,6 +48,12 @@ $stmt = $pdo->prepare($sql_emp);
 $stmt->execute();
 $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+//ename
+$sql_emp = "SELECT * FROM emp_table";
+$stmt = $pdo->prepare($sql_emp);
+$stmt->execute();
+$ename = $stmt->fetch();
+
 ?>
 
 <h1>マイページ<h1>
@@ -55,33 +61,32 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <font size="2">
 <div>    
     <h2>予約確認<h2> 
-    <form action="./rsv_cancel.php" method="post">
+    <form action="./rsv_cancel.php" method="post" onSubmit = "return check()">
         <p><?php echo $member['username']; ?> さんの予約状況</p><br>
         <div>
             <?php for ($n = 0; $n < count($stuid); $n++) { ?>
                 <?php echo $stuid[$n]['empid'];?>
-                <p>面談相手：<?php echo $employee[$n]['empname']; ?></p>
+                <?php $t=$stuid[$n]['empid'];
+                ?>
+                <p>面談相手：<?php echo $ename; ?></p>
                 <p>予約日：　<?php echo $stuid[$n]['rsvdate']; ?></p>
                 <p>予約時間：<?php echo $stuid[$n]['rsvtime']; ?></p>
                 <p>相談内容：<?php echo $stuid[$n]['comment']; ?></p>
-                <!--<button onclick="location.href='./rsv_cancel.php'">予約取消</button>-->
                 <input type="submit" value="取消">
                 <input type="hidden" name="empid" value="<?=$stuid[$n]['empid']?>">
                 </script>
                 <br><br>
             <?php } ?>
             <script type="text/javascript">
-                let btn = document.getElementById('btn');
- 
-                btn.addEventListener('click', function() {
+                function check() {
                 let result = window.confirm('予約取り消しますか？');
- 
                 if (result) {
-                    window.location.href = "./rsv_cancel.php";
+                    return ture;
                 } else {
                     alert("取り消しをやめる");
+                    return false;
                 }
-                });
+                };
             </script>
         </div>
 </div>
@@ -89,4 +94,4 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </body>
 <p><a href="./reset_pass_form.php">パスワード再登録はこちら</a></p>
 <p><a href="./withdrawal_form.php">退会はこちら</a></p>
-<p><a href="./home.php">TOPへ</a></p>
+<p><a href="./home.php">HOMEへ</a></p>

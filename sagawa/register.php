@@ -30,6 +30,9 @@ try {
   $stmt -> bindValue(':password_confirm', $password_confirm);
   $stmt -> execute();
 
+//メール送信
+include("./send_mail.php");
+  
 ?>
 
 <h1>登録しました</h1>
