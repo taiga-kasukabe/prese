@@ -3,25 +3,23 @@ session_start();
 
 //変数定義
 
-include("./conf/vari_session_pass.php");
-include("./conf/config.php");
+include("../conf/vari_session_pass.php");
+include("../conf/config.php");
 
-//$mail = $_POST['mail'];
-//$id = $_POST['id'];
+
 
 //データベースへ接続、テーブルがない場合は作成
-try {
-  //インスタンス化（"データベースの種類:host=接続先アドレス, dbname=データベース名,charset=文字エンコード" "ユーザー名", "パスワード", opt)
-    $pdo = new PDO(DSN, DB_USER, DB_PASS);
-  //エラー処理
-  } catch (Exception $e) {
-    echo $e->getMessage() . PHP_EOL;
-  }
+try{
+    $dbh = new PDO($dsn, $db_username, $db_password);
+} catch (PDOException $e) {
+    $msg = $e -> getMessage();
+}
+
 
 
 
 $sql =  "UPDATE users_table SET password = :password ,password_confirm = :password_confirm WHERE id=:id";
-$stmt = $pdo -> prepare($sql);
+$stmt = $dbh -> prepare($sql);
 $stmt -> bindValue(':password', $password);
 $stmt -> bindValue(':password_confirm', $password_confirm);
 $stmt -> bindValue(':id', $id);

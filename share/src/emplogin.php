@@ -3,19 +3,18 @@
 session_start();
 
 $eid = $_POST['eid'];
-include('./conf/config.php');
+include('../conf/config.php');
 
-//DB内でPOSTされたメールアドレスを検索
-try {
-  //インスタンス化（"データベースの種類:host=接続先アドレス, dbname=データベース名,charset=文字エンコード" "ユーザー名", "パスワード", opt)
-    $pdo = new PDO(DSN, DB_USER, DB_PASS);
-  //エラー処理
-  } catch (Exception $e) {
-    echo $e->getMessage() . PHP_EOL;
+//データベース接続
+try{
+  $dbh = new PDO($dsn, $db_username, $db_password);
+} catch (PDOException $e) {
+  $msg = $e -> getMessage();
 }
 
+
 $sql = "SELECT * FROM emplogin WHERE eid = :eid";
-$stmt = $pdo->prepare($sql);
+$stmt = $dbh->prepare($sql);
 $stmt->bindValue(':eid', $eid);
 $stmt->execute();
 $member = $stmt->fetch();
