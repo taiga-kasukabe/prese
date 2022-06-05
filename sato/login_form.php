@@ -19,6 +19,13 @@ if(!empty($_SESSION['err_msg'])){
 ?>
 
 <body>
+<header>
+    <div class="bg">
+        <a href="./register_form.php" id="mypage">新規登録</a>
+        <img src="images/ntt-east_white.png" id="logo">
+    </div>
+</header>
+
 <div class="container">
     <p>LOGIN</p>
     <form action="login.php" method="POST">
