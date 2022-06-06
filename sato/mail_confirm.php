@@ -16,44 +16,42 @@
 <?php
 
 // セッションを開始する
-// session_start();
+session_start();
 
-// // セッション情報の引継ぎ
-// include("./conf/variable_session.php");
+// セッション情報の引継ぎ
+include("./conf/variable_session.php");
 
-// //データベース情報
-// include('./conf/db_conf.php');
+//データベース情報
+include('./conf/db_conf.php');
 
-// //データベース接続
-// try{
-//     $dbh = new PDO($dsn, $db_username, $db_password);
-// } catch (PDOException $e) {
-//     $msg = $e -> getMessage();
-// }
+//データベース接続
+try{
+    $dbh = new PDO($dsn, $db_username, $db_password);
+} catch (PDOException $e) {
+    $msg = $e -> getMessage();
+}
 
-//     $sql = "INSERT INTO users_table(username, username_kana, mail, mail_confirm, tel, school, department1, department2, student_year, id, password, password_confirm) VALUES (:username, :username_kana, :mail, :mail_confirm, :tel, :school, :department1, :department2, :student_year, :id, :password, :password_confirm)";
-//     $stmt = $dbh -> prepare($sql);
-//     $stmt -> bindValue(':username', $username);
-//     $stmt -> bindValue(':username_kana', $username_kana);
-//     $stmt -> bindValue(':mail', $mail);
-//     $stmt -> bindValue(':mail_confirm', $mail_confirm);
-//     $stmt -> bindValue(':tel', $tel);
-//     $stmt -> bindValue(':school', $school);
-//     $stmt -> bindValue(':department1', $department1);
-//     $stmt -> bindValue(':department2', $department2);
-//     $stmt -> bindValue(':student_year', $student_year);
-//     $stmt -> bindValue(':id', $id);
-//     $stmt -> bindValue(':password', $password);
-//     $stmt -> bindValue(':password_confirm', $password_confirm);
-//     $stmt -> execute();
+    $sql = "INSERT INTO users_table(username, username_kana, mail, mail_confirm, tel, school, department1, department2, student_year, id, password, password_confirm) VALUES (:username, :username_kana, :mail, :mail_confirm, :tel, :school, :department1, :department2, :student_year, :id, :password, :password_confirm)";
+    $stmt = $dbh -> prepare($sql);
+    $stmt -> bindValue(':username', $username);
+    $stmt -> bindValue(':username_kana', $username_kana);
+    $stmt -> bindValue(':mail', $mail);
+    $stmt -> bindValue(':mail_confirm', $mail_confirm);
+    $stmt -> bindValue(':tel', $tel);
+    $stmt -> bindValue(':school', $school);
+    $stmt -> bindValue(':department1', $department1);
+    $stmt -> bindValue(':department2', $department2);
+    $stmt -> bindValue(':student_year', $student_year);
+    $stmt -> bindValue(':id', $id);
+    $stmt -> bindValue(':password', $password);
+    $stmt -> bindValue(':password_confirm', $password_confirm);
+    $stmt -> execute();
 
-//     //メール送信
-//     include("./send_mail.php");
+    //メール送信
+    include("./send_mail.php");
 
     $msg = 'FINISH!';
     $link = '<a href="login_form.php">　ログイン　＞</a>';
-
-    $id="ysato1117"
 
 
 ?>
