@@ -7,20 +7,41 @@
     <title>ログイン</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
-    <link rel="stylesheet" href="./css/emplogin_form.css">
+    <link rel="stylesheet" href="../css/emplogin_form.css">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">    
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">   
 </head>
 
-<h1>社員ログインページ</h1>
-<form action="./emplogin.php" method="post">
-    <div>
-        <label>ログインID：</label>
-        <input type="text" name="eid" required>
+<body>
+<header>
+    <div class="bg">
+        <img src="../images/ntt-east_white.png" id="logo">
     </div>
-    <div>
-        <label>パスワード：</label>
-        <input type="password" name="epass" required>
-    </div>
-    <input type="submit" value="ログイン"><br>
-</form>
+</header>
+
+<main>
+<div class="container">
+    <h1>LOGIN</h1>
+    <p>for Employees</p>
+
+    <!-- エラーメッセージの表示
+    <p><?php 
+        // if(!empty($_SESSION['err_msg'])){
+        //     echo $_SESSION['err_msg'];
+        // }
+        // session_destroy();
+        ?>
+    </p> -->
+
+    <form action="./emplogin.php" method="POST">
+        <div class="form">
+            <input type="text" name="eid" placeholder="ID" required>
+            <input type="password" name="epass" placeholder="Password" required>
+        </div>
+
+        <button type="submit" id="login_btn">Login</button>
+    </form>
+</div>
+</main>
+</body>
+</html>
