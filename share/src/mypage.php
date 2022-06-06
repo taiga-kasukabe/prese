@@ -24,6 +24,7 @@ try{
 $id = $_SESSION['id'];
 
 //users_table接続
+// ログインしている学生のデータ取得
 $sql_user = "SELECT * FROM users_table WHERE id = :id";
 $stmt = $dbh -> prepare($sql_user);
 $stmt -> bindValue(':id', $id);
@@ -31,23 +32,28 @@ $stmt -> execute();
 $member = $stmt -> fetch();
 
 //rsvdb接続
+// rsvdbのデータを全て取得
 $sql_rsv = "SELECT * FROM rsvdb";
 $stmt = $dbh->prepare($sql_rsv);
 $stmt->execute();
 $employees = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// rsvdbのうちログインしている学生の予約データのみ取得
 $sql_rsv = "SELECT * FROM rsvdb WHERE stuid = '$id'";
 $stmt = $dbh->prepare($sql_rsv);
 $stmt->execute();
 $stuid = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 //empDB接続
+// rsvdbのうちログインしている学生が予約しているデータのempidを取得し，
+// それと一致するempidのデータをemp_tableから取得する
 $sql_emp = "SELECT * FROM emp_table WHERE empid in (SELECT empid FROM rsvdb WHERE stuid = '$id')";
 $stmt = $dbh->prepare($sql_emp);
 $stmt->execute();
 $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 //ename
+// emp_tableの情報をすべて取得する
 $sql_emp = "SELECT * FROM emp_table";
 $stmt = $dbh->prepare($sql_emp);
 $stmt->execute();
