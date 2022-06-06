@@ -17,7 +17,7 @@ include("./conf/variable_session.php");
     <title>登録情報確認</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
-    <link rel="stylesheet" href="./css/register_form.css">
+    <link rel="stylesheet" href="./css/register_confirm.css">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">   
 </head>
 
@@ -33,48 +33,50 @@ include("./conf/variable_session.php");
 <div class="container">
     <p>CONFIRM</p>
 
-    <div>
-        <label for=""> 姓名：<?php echo $username; ?></label><br>
+    <div class="item">
+        <span class="label"> 姓名</span><span class="data"><?php echo $username; ?></span>
     </div>
 
-    <div>
-        <label for="">姓名（カナ）：<?php echo $username_kana; ?></label><br>
+    <div class="item">
+        <span class="label">姓名（カナ）</span><span class="data"><?php echo $username_kana; ?></span>
     </div>
 
-    <div>
-        <label for="">メールアドレス：<?php echo $mail; ?></label><br>
+    <div class="item">
+        <span class="label">メールアドレス</span><span class="data"><?php echo $mail; ?></span>
     </div>
 
-    <div>
-        <label for="">電話：<?php echo $tel; ?></label><br>
+    <div class="item">
+        <span class="label">電話</span><span class="data"><?php echo $tel; ?></span>
     </div>
 
-    <div>
-        <label for="">学校名：<?php echo $school; ?></label><br>
+    <div class="item">
+        <span class="label">学校名</span><span class="data"><?php echo $school; ?></span>
     </div>
 
-    <div>
-        <label for="">学部（研究科）：<?php echo $department1; ?></label><br>
+    <div class="item">
+        <span class="label">学部（研究科）</span><span class="data"><?php echo $department1; ?></span>
     </div>
 
-    <div>
-        <label for="">学科：<?php echo $department2; ?></label><br>
+    <div class="item">
+        <span class="label">学科</span><span class="data"><?php echo $department2; ?></span>
     </div>
 
-    <div>
-        <label for="">学年：<?php echo $student_year; ?></label><br>
+    <div class="item">
+        <span class="label">学年</span><span class="data"><?php echo $student_year; ?></span>
     </div>
 
-    <div>
-        <label for="">ID：<?php echo $id; ?></label><br>
+    <div class="item">
+        <span class="label">ID</span><span class="data"><?php echo $id; ?></span>
     </div>
 
-    <div>
-        <label for="">パスワード：<?php echo str_repeat("*", mb_strlen($password_row, "UTF8")); ?></label><br>
+    <div class="item">
+        <span class="label">パスワード</span><span class="data"><?php echo str_repeat("*", mb_strlen($password_row, "UTF8")); ?></span>
     </div>
 
-    <a href="./mail_confirm.php">登録</a>
-    <a href="./register_form.php">修正</a>
+    <div class="link">
+        <a href="./register_form.php" id="edit">修正</a>
+        <a href="./mail_confirm.php" id="register">登録</a>
+    </div>
 </div>
 </main>
 </body>
