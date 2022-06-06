@@ -24,7 +24,7 @@
 
 <main>
     <div class="container">
-    <h1>新規会員登録</h1>
+    <p>SIGN UP</p>
     <form action="./validation.php" method="POST">
         <?php
         session_start();
@@ -105,8 +105,8 @@
             <input type="password" name="password_confirm" value="" required>
         </div>
 
-        <p><a href="./terms/tos.php">利用規約</a></p>
-        <p><a href="./terms/privacypolicy.php">プライバシー規約</a></p>
+        <a href="./terms/tos.php">利用規約</a>
+        <a href="./terms/privacypolicy.php">プライバシー規約</a><br>
 
         <input type="submit" value="確認">
     </form>

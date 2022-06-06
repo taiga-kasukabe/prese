@@ -63,3 +63,19 @@ main {
     margin: 0 ;
     padding: 80px 0 0 0 ;
 }
+.container {
+    width: 450px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+p {
+    padding: 10px 0;
+    text-align: center;
+    color: #005CAF;
+    font-size: 2em;
+    font-family: 'Archivo Black', sans-serif;
+    font-style: italic;
+}
+label {
+    display: block;
+}
