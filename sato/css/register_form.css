@@ -64,7 +64,7 @@ main {
     padding: 80px 0 0 0 ;
 }
 .container {
-    width: 450px;
+    width: 300px;
     margin: 0 auto;
     padding: 20px 0;
 }
@@ -78,4 +78,31 @@ p {
 }
 label {
     display: block;
+    color: #005CAF;
+    padding-left: 5px;
+}
+input {
+    display: block;
+    appearance: none;
+    outline: 0;
+    border: 1px solid #005CAF;
+    border-radius: 4px;
+
+    width: 300px;
+    padding: 10px 15px;
+    margin: 2px 0 8px 0;
+}
+.terms {
+    display: flex;
+    justify-content: center;
+}
+a {
+    display: inline-block;
+    margin: 8px;
+    text-decoration: none;
+    color: black;
+}
+#submit {
+    margin: 10px 0;
+    appearance: none;
 }

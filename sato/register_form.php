@@ -105,10 +105,13 @@
             <input type="password" name="password_confirm" value="" required>
         </div>
 
-        <a href="./terms/tos.php">利用規約</a>
-        <a href="./terms/privacypolicy.php">プライバシー規約</a><br>
+        <button type="submit" id="submit">確認</button>
 
-        <input type="submit" value="確認">
+        <div class="terms">
+            <a href="./terms/tos.php">利用規約</a>
+            <a href="./terms/privacypolicy.php">プライバシー規約</a><br>
+        </div>
+
     </form>
 </div>
 </main>
