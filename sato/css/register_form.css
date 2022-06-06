@@ -110,6 +110,8 @@ button {
     border: 1px solid #ffffff;
     border-radius: 3px;
     color: #ffffff;
+    font-size: 1em;
+    font-family: 'Noto Sans JP', sans-serif;
     padding: 5px;
     margin: 20px 0 20px 100px;
     width: 100px;
@@ -122,6 +124,9 @@ button:hover {
 }
 .err_msg {
     width: 150%;
-    padding: 20px 0;
+    padding: 10px 0;
     color: #ce0404;
+}
+input:focus::placeholder {
+    color: #ffffff;
 }

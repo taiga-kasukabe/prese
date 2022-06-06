@@ -94,17 +94,17 @@
 
         <div>
             <label>ID</label>
-            <input type="text" name="id" value="<?php if(!empty($id)){echo $id;} ?>" required>
+            <input type="text" name="id" placeholder="半角英数字4文字以上" value="<?php if(!empty($id)){echo $id;} ?>" required>
         </div>
 
         <div>
             <label>パスワード</label>
-            <input type="password" name="password" value="" required>
+            <input type="password" name="password" placeholder="半角英数字8文字以上" value="" required>
         </div>
 
         <div>
             <label>パスワード（再入力）</label>
-            <input type="password" name="password_confirm" value="" required>
+            <input type="password" name="password_confirm" placeholder="半角英数字8文字以上" value="" required>
         </div>
 
         <button type="submit" id="submit">確認</button>
