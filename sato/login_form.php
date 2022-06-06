@@ -13,9 +13,7 @@
 </head>
 
 <?php
-if(!empty($_SESSION['err_msg'])){
-    echo $_SESSION['err_msg'];
-}
+session_start();
 ?>
 
 <body>
@@ -33,6 +31,15 @@ if(!empty($_SESSION['err_msg'])){
             <input type="text" name="id" placeholder="ID" required>
             <input type="password" name="password" placeholder="Password" required>
         </div>
+
+        <!-- エラーメッセージの表示 -->
+        <p><?php 
+        if(!empty($_SESSION['err_msg'])){
+            echo $_SESSION['err_msg'];
+         }
+         ?>
+        </p>
+
         <button type="submit" id="login_btn">Login</button>
     </form>
 </div>
