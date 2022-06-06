@@ -42,7 +42,7 @@
         if(!empty($_SESSION['user'])){
             include("./conf/variable_session.php");
 
-        // session_destroy();
+        session_destroy();
         }
         ?>
 
