@@ -25,20 +25,22 @@ session_start();
 </header>
 
 <div class="container">
-    <p>LOGIN</p>
+    <h1>LOGIN</h1>
+
+    <!-- エラーメッセージの表示 -->
+    <p><?php 
+        if(!empty($_SESSION['err_msg'])){
+            echo $_SESSION['err_msg'];
+        }
+        session_destroy();
+        ?>
+    </p>
+
     <form action="login.php" method="POST">
         <div class="form">
             <input type="text" name="id" placeholder="ID" required>
             <input type="password" name="password" placeholder="Password" required>
         </div>
-
-        <!-- エラーメッセージの表示 -->
-        <p><?php 
-        if(!empty($_SESSION['err_msg'])){
-            echo $_SESSION['err_msg'];
-         }
-         ?>
-        </p>
 
         <button type="submit" id="login_btn">Login</button>
     </form>
