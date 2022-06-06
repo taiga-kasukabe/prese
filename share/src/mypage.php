@@ -9,7 +9,7 @@
 <?php
 session_start();
 //データベース情報の読み込み
-include('./conf/config.php');
+include('../conf/config.php');
 $employee = array();
 $temp = 0;
 
