@@ -60,8 +60,8 @@ include("./conf/variable_session.php");
         <label for="">パスワード：<?php echo str_repeat("*", mb_strlen($password_row, "UTF8")); ?></label><br>
     </div>
 
-    <p><a href="./register.php">登録</a></p>
-    <p><a href="./signup.php">修正</a></p>
+    <p><a href="./mail_confirm.php">登録</a></p>
+    <p><a href="./register_form.php">修正</a></p>
 
 </body>
 

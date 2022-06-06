@@ -106,10 +106,10 @@ session_start();
 
         //確認ページへ遷移
         //URLの書き方！！
-        header('Location:http://localhost/prese/sato/signup_confirm.php');
+        header('Location:http://localhost/prese/sato/register_confirm.php');
 
     } else {
-        header('Location:http://localhost/prese/sato/signup.php');
+        header('Location:http://localhost/prese/sato/register_form.php');
     }
 
 ?>
