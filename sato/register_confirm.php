@@ -15,10 +15,23 @@ include("./conf/variable_session.php");
     <meta charset="UTF-8">     
     <!-- ページのタイトルをtestに設定 -->
     <title>登録情報確認</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
+    <link rel="stylesheet" href="./css/register_form.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">   
 </head>
 
 <body>
-<h1>登録情報確認</h1>
+<header>
+    <div class="bg">
+        <img src="images/ntt-east_white.png" id="logo">
+    </div>
+    </script>
+</header>
+
+<main>
+<div class="container">
+    <p>CONFIRM</p>
 
     <div>
         <label for=""> 姓名：<?php echo $username; ?></label><br>
@@ -60,9 +73,10 @@ include("./conf/variable_session.php");
         <label for="">パスワード：<?php echo str_repeat("*", mb_strlen($password_row, "UTF8")); ?></label><br>
     </div>
 
-    <p><a href="./mail_confirm.php">登録</a></p>
-    <p><a href="./register_form.php">修正</a></p>
-
+    <a href="./mail_confirm.php">登録</a>
+    <a href="./register_form.php">修正</a>
+</div>
+</main>
 </body>
 
 </html>
