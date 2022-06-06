@@ -26,21 +26,23 @@
     <div class="container">
     <p>SIGN UP</p>
     <form action="./validation.php" method="POST">
-        <?php
-        session_start();
-
-        // エラーメッセージが空じゃないの時（バリデーションチェックが問題なかった時）以下の処理を行う
-        if(!empty($_SESSION['err'])){
-            foreach ($_SESSION['err'] as $value) {
-                echo $value . "<br>"; //hタグ内の改行はbr
+        <div class="err_msg">
+            <?php
+            session_start();
+            // エラーメッセージが空じゃないの時（バリデーションチェックが問題なかった時）以下の処理を行う
+            if(!empty($_SESSION['err'])){
+                foreach ($_SESSION['err'] as $value) {
+                    echo $value . "<br>"; //hタグ内の改行はbr
+                }
             }
-        }
+            ?>
+        </div>
 
+        <?php
         if(!empty($_SESSION['user'])){
             include("./conf/variable_session.php");
 
-        session_destroy();
-
+        // session_destroy();
         }
         ?>
 
