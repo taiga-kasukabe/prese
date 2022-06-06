@@ -100,9 +100,23 @@ a {
     display: inline-block;
     margin: 8px;
     text-decoration: none;
-    color: black;
+    color: rgb(49, 49, 49);
+    font-size: 0.8em;
 }
-#submit {
-    margin: 10px 0;
+button {
     appearance: none;
+    outline: 0;
+    background-color: #005CAF;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    color: #ffffff;
+    padding: 5px;
+    margin: 20px 0 20px 100px;
+    width: 100px;
+    cursor: pointer;
+    transition: 0.25s;
+    z-index: -1;
+}
+button:hover {
+    background-color: #1f72bb;
 }
