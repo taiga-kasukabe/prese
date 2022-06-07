@@ -100,8 +100,8 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         for ($j = 0; $j < count($unrsvInfo); $j++) {
                             if ($unrsvInfo[$j]['rsvdate'] == date('Y-m-d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == $time) {
                                 print '<td>
-                                <input type="checkbox" name="editFree[]" value="' . $empid . ':' .  $time . ':' . date('m/d', strtotime($i . 'day')) . ':' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">
-                            </td>';
+                                <label><input type="checkbox" name="editFree[]" value="' . $empid . ':' .  $time . ':' . date('m/d', strtotime($i . 'day')) . ':' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">
+                                <span></span></label></td>';
                                 $cnt++;
                             }
                         }
