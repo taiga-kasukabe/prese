@@ -62,7 +62,7 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <main>
 <h1><?php echo $employee['empname']; ?> さん</h1>
 <div class="container">
-    <h2>空き日程編集画面</h2>
+    <h2><i class="fa-regular fa-calendar-xmark"></i>空き日程の削除</h2>
 
         <div class="table">
         <!-- 表示週の変更ボタン -->
