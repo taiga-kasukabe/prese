@@ -1,4 +1,17 @@
-<link rel="stylesheet" href="../css/table.css">
+<!DOCTYPE html> 
+<html lang="ja"> 
+
+<!-- ヘッダ情報 -->
+<head>
+    <meta charset="UTF-8">     
+    <title>空き日程登録</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
+    <link rel="stylesheet" href="../css/registerFree_form.css">
+    <link rel="stylesheet" href="../css/table.css">  
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">   
+</head>
 
 <?php
 session_start();
@@ -40,8 +53,17 @@ if (!empty($employee)) {
 }
 ?>
 
+<body>
+<header>
+    <div class="bg">
+        <img src="../images/ntt-east_white.png" id="logo">
+    </div>
+    </script>
+</header>
+
+<main>
 <?php if (!empty($employee)) { ?>
-    <h1>こんにちは，<?php echo $employee['empname']; ?>さん</h1>
+    <h1><?php echo $employee['empname']; ?> さん</h1>
     <h2>空き日程を登録してください</h2>
     <!-- 表示週の変更ボタン -->
     <?php
@@ -110,3 +132,5 @@ if (!empty($employee)) {
     <h1>存在しない社員IDです</h1>
 <?php } ?>
 <input type="button" onclick="location.href='./emplogin_form.php'" value="社員変更">
+</main>
+</body>
