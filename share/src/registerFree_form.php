@@ -87,9 +87,9 @@ if (!empty($employee)) {
             <form action="./registerFree_confirm.php" method="GET">
                 <table>
                     <tr>
-                        <th>時間(時)</th>
+                        <th id="none"></th>
                         <?php for ($i = $week * 7; $i < 7 * ($week + 1); $i++)
-                            print '<th>' . date('m/d', strtotime($i . 'day')) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($i . 'day'))))] . ')</th>';
+                            print '<th class="date">' . date('m/d', strtotime($i . 'day')) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($i . 'day'))))] . ')</th>';
                         ?>
                     </tr>
                     <?php
@@ -98,7 +98,7 @@ if (!empty($employee)) {
                             continue;
                         }
                         echo '<tr>
-                        <th>' . substr_replace($time, ':', 2, 0) . '</th>';
+                        <th class="time">' . substr_replace($time, ':', 2, 0) . '</th>';
                         for ($i =  $week * 7; $i < 7 * ($week + 1); $i++) {
                             $cnt = 0;
                             // 未予約日程を表示
@@ -126,14 +126,14 @@ if (!empty($employee)) {
                     ?>
                 </table>
                 <p>-：既に空き日程として登録済み</p>
-                <button type="submit">登録する</button>
+                <button type="submit" class="register">登録する</button>
             </form>
         </div>
 
         <form action="./editFree_form.php" method="get">
             <input type="hidden" name="empid" value="<?php echo $empid; ?>">
             <input type="hidden" name="week" value="<?php echo $week; ?>">
-            <input type="submit" value="空き日程の編集へ">
+            <button type="submit" class="edit">空き日程を編集する ＞</button>
         </form>
     </div>
 <?php } else { ?>

@@ -60,15 +60,17 @@ h1 {
     margin: 0 auto;
 }
 h2 {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 .table {
     width: fit-content;
 }
 .move_btn {
-    margin-bottom: 5px;
     display: flex;
     justify-content: space-between;
+}
+.prev {
+    margin-left: 72.25px;
 }
 p {
     font-size: 0.85em;
@@ -76,19 +78,42 @@ p {
 }
 button {
     display: block;
-    margin: 10px auto;
     appearance: none;
-    font-size: 1em;
-    font-family: 'Noto Sans JP', sans-serif;
-    padding: 8px 15px;
     cursor: pointer;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+button.register {
+    margin: 10px auto;
+    font-size: 1em;
+    padding: 8px 15px;
     transition: 0.25s;
-
     background-color: #09bb7a;
     border: 1px solid #ffffff;
     border-radius: 5px;
     color: #ffffff;
 }
-button:hover {
+button.register:hover {
     background-color: #25da97;
+}
+button.edit {
+    position: relative;
+    margin: 30px auto;
+    padding-bottom: 1px;
+    border: none;
+    background-color: #ffffff;
+    color: #09bb7a;
+}
+button.edit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 0%;
+    border-bottom: 1px solid #09bb7a;
+    transition: .25s;
+}
+button.edit:hover::before {
+    width: 100%;
 }
