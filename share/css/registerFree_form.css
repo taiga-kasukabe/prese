@@ -60,7 +60,10 @@ h1 {
     margin: 0 auto;
 }
 h2 {
-    margin-bottom: 15px;
+    margin-bottom: 25px;
+}
+a:link, a:visited, a:active {
+    color: #333333;
 }
 .table {
     width: fit-content;
@@ -71,6 +74,20 @@ h2 {
 }
 .prev {
     margin-left: 72.25px;
+}
+.prev::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f137";
+    margin-right: 5px;
+    color: #09bb7a;
+}
+.next::after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f138";
+    margin-left: 5px;
+    color: #09bb7a;
 }
 p {
     font-size: 0.85em;
