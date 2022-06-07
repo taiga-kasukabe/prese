@@ -66,7 +66,7 @@ if (!empty($employee)) {
 
     <h1><?php echo $employee['empname']; ?> さん</h1>
     <div class="container">
-        <h2>空き日程の登録</h2>
+        <h2><i class="fa-regular fa-calendar-plus"></i>空き日程の登録</h2>
 
         <div class="table">
             <!-- 表示週の変更ボタン -->
@@ -76,7 +76,7 @@ if (!empty($employee)) {
                     if ($week > 0) {
                         echo '<a href="./registerFree_form.php?empid=' . $empid . '&week=' . $week - 1 . '" class="prev">前の1週間</a>';
                     } else {
-                        echo '<del class="prev">前の1週間</del>';
+                        echo '<a tabindex="-1" class="prev disabled_link">前の1週間</a>';
                     }
                     echo '<a href="./registerFree_form.php?empid=' . $empid . '&week=' . $week + 1 .  '" class="next">次の1週間</a>';
                 }

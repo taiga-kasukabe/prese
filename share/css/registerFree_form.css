@@ -53,14 +53,17 @@ h1 {
     font-weight: normal;
     padding-bottom: 5px;
     border-bottom: 1px solid #6d6d6d;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 .container {
     width: fit-content;
     margin: 0 auto;
 }
 h2 {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+}
+i {
+    margin-right: 8px;
 }
 a:link, a:visited, a:active {
     color: #333333;
@@ -75,12 +78,22 @@ a:link, a:visited, a:active {
 .prev {
     margin-left: 72.25px;
 }
+.disabled_link {
+    color: #c7c7c7;
+}
 .prev::before {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f137";
     margin-right: 5px;
     color: #09bb7a;
+}
+.disabled_link::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f137";
+    margin-right: 5px;
+    color: #c7c7c7;
 }
 .next::after {
     font-family: "Font Awesome 5 Free";
