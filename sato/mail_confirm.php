@@ -1,3 +1,18 @@
+<!DOCTYPE html> 
+<html lang="ja"> 
+
+<!-- ヘッダ情報 -->
+<head>
+    <!-- 文字コードをUTF-8に設定 -->
+    <meta charset="UTF-8">     
+    <!-- ページのタイトルをtestに設定 -->
+    <title>登録完了</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
+    <link rel="stylesheet" href="./css/mail_confirm.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">   
+</head>
+
 <?php
 
 // セッションを開始する
@@ -35,16 +50,30 @@ try{
     //メール送信
     include("./send_mail.php");
 
-    $msg = '会員登録が完了しました。';
-    $link = '<a href="login_form.php">ログインページ</a>';
+    $msg = 'FINISH!';
+    $link = '<a href="login_form.php">　ログイン　＞</a>';
 
 
 ?>
-
-<html>
 <body>
-<h1><?php echo $msg; ?></h1>
-登録ID名：<?php echo $id; ?><br>
-先ほど登録完了メールを送りました。<br>
-ご確認ください。<br><br>
-<?php echo $link; ?>
+<header>
+    <div class="bg">
+        <img src="images/ntt-east_white.png" id="logo">
+    </div>
+    </script>
+</header>
+
+<main>
+<div class="container">
+    <h1><?php echo $msg; ?></h1>
+    <div class="register_id">
+        登録ID名：<?php echo $id; ?>
+    </div>
+    <div class="text">
+        先ほど登録完了メールを送りました。<br>
+        ご確認ください。
+    </div>
+    <?php echo $link; ?>
+</div>
+</main>
+</body>

@@ -64,7 +64,7 @@ function isCheck(e) {
             }
         })
     } else {
-        // １つもなければ，dataQと同じ値をdata-bottun属性にもつボタンを有効にする．
+        // １つもなければ，dataQと同じ値をdata-bottun属性にもつボタンを無効にする．
         Array.from(document.querySelectorAll(".next")).forEach((button) => {
             if(button.getAttribute("data-button") === dataQ){
                 button.disabled = true;
