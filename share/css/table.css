@@ -42,6 +42,7 @@ input[type='checkbox']+span::before {
     margin-top: 8px;
     cursor: pointer;
     z-index: 1;
+    transition: .25s;
 
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
