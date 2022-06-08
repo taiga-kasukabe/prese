@@ -4,7 +4,7 @@
 <!-- ヘッダ情報 -->
 <head>
     <meta charset="UTF-8">     
-    <title>空き日程登録</title>
+    <title>空き日程削除</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
     <link rel="stylesheet" href="../css/editFree_form.css">
