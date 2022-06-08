@@ -64,7 +64,7 @@ $ename = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <p><?php echo $member['username']; ?> さんの予約状況</p><br>
         <div>
             <?php for ($n = 0; $n < count($stuid); $n++) { ?>
-                <?php echo $stuid[$n]['empid'];?>
+                
                 <?php for($i = 0; $i < count($ename); $i++) { 
                         if($stuid[$n]['empid'] == $ename[$i]['empid']){ ?>
                            <p>面談相手：<?php echo $ename[$i]['empname']; ?></p>
