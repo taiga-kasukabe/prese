@@ -39,12 +39,17 @@ for ($i = 0; $i < count($_GET['free']); $i++) {
         </div>
 
         <div class="btn">
-            <a href="./registerFree_form.php">修正</a>
+            <form action="./registerFree_form.php" method="get">
+                <input type="hidden" name="empid" value="<?php echo $empid[0]; ?>">
+                <input type="hidden" name="week" value="0">
+                <button type="submit" id="edit">修正</button>
+            </form>
+
             <form action="./registerFree.php" method="GET">
                 <?php for ($i = 0; $i < count($_GET['free']); $i++) { ?>
                     <input type="hidden" name="free[]" value="<?php echo $_GET['free'][$i]; ?>">
                 <?php } ?>
-                <button type="submit">登録</button>
+                <button type="submit" id="register">登録</button>
             </form>
         </div>
     </div>

@@ -126,7 +126,7 @@ if (!empty($employee)) {
                     ?>
                 </table>
                 <p>-：既に空き日程として登録済み</p>
-                <button type="submit" class="register">登録する</button>
+                <button type="submit" class="register">確認する</button>
             </form>
         </div>
 
