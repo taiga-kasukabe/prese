@@ -100,7 +100,7 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         for ($j = 0; $j < count($unrsvInfo); $j++) {
                             if ($unrsvInfo[$j]['rsvdate'] == date('Y-m-d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == $time) {
                                 print '<td>
-                                <label><input type="checkbox" name="editFree[]" value="' . $empid . ':' .  $time . ':' . date('m/d', strtotime($i . 'day')) . ':' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">
+                                <label><input type="checkbox" name="editFree[]" id="checkbox" value="' . $empid . ':' .  $time . ':' . date('m/d', strtotime($i . 'day')) . ':' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">
                                 <span></span></label></td>';
                                 $cnt++;
                             }
@@ -124,7 +124,7 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </table>
             <p>x：既に予約が入ってしまいました</p>
             <p>-：空き日程として登録されていません</p>  
-            <button type="submit" class="register">確認する</button>
+            <button type="submit" class="register" id="submit_btn">確認する</button>
         </form>
 
         <form action="./registerFree_form.php" method="get">
@@ -135,4 +135,5 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 </main>
+<script src="../js/schedule_disabled.js"></script>
 </body>

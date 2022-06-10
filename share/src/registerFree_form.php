@@ -119,14 +119,14 @@ if (!empty($employee)) {
                                 continue;
                             }
                             // checkboxで実装
-                            print '<td><label><input type="checkbox" name="free[]" value="' . $empid . ':' .  $time . ':' . date('m/d', strtotime($i . 'day')) . ':' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '"><span></span></label></td>';
+                            print '<td><label><input type="checkbox" name="free[]" id="checkbox" value="' . $empid . ':' .  $time . ':' . date('m/d', strtotime($i . 'day')) . ':' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '"><span></span></label></td>';
                         }
                         echo '</tr>';
                     }
                     ?>
                 </table>
                 <p>-：既に空き日程として登録済み</p>
-                <button type="submit" class="register">確認する</button>
+                <button type="submit" class="register" id="submit_btn">確認する</button>
             </form>
         </div>
 
@@ -141,4 +141,5 @@ if (!empty($employee)) {
 <?php } ?>
         <!-- <input type="button" onclick="location.href='./emplogin_form.php'" value="社員変更"> -->
 </main>
+<script src="../js/schedule_disabled.js"></script>
 </body>
