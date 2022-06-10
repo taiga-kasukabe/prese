@@ -128,7 +128,7 @@ button.register:disabled {
     background-color: #c7c7c7;
     cursor: default;
 }
-button.edit {
+button.backHome {
     position: relative;
     margin: 30px auto;
     padding-bottom: 1px;
@@ -136,7 +136,7 @@ button.edit {
     background-color: #ffffff;
     color: #09bb7a;
 }
-button.edit::before {
+button.backHome::before {
     content: '';
     position: absolute;
     top: 0;
@@ -147,6 +147,6 @@ button.edit::before {
     border-bottom: 1px solid #09bb7a;
     transition: .25s;
 }
-button.edit:hover::before {
+button.backHome:hover::before {
     width: 100%;
 }

@@ -130,7 +130,7 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <form action="./registerFree_form.php" method="get">
             <input type="hidden" name="empid" value="<?php echo $empid; ?>">
             <input type="hidden" name="week" value="0">
-            <input type="submit" value="削除確認へ">
+            <button type="submit" class="backHome">予約一覧に戻る ＞</button>
         </form>
     </div>
 </div>
