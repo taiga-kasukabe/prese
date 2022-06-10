@@ -124,6 +124,10 @@ button.register {
 button.register:hover {
     background-color: #25da97;
 }
+button.register:disabled {
+    background-color: #c7c7c7;
+    cursor: default;
+}
 button.edit {
     position: relative;
     margin: 30px auto;
