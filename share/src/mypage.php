@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>マイページ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
+    <link rel="stylesheet" href="../css/mypage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">   
 </head>
 
 <?php
@@ -22,6 +26,7 @@ try{
 
 
 $id = $_SESSION['id'];
+// $id = "yu";
 
 //users_table接続
 // ログインしている学生のデータ取得
@@ -59,45 +64,51 @@ $stmt = $dbh->prepare($sql_emp);
 $stmt->execute();
 $ename = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// $member['username'] = "佐藤ゆう";
+
 ?>
 
-<h1>マイページ<h1>
 <body>
-<font size="2">
-<div>    
-    <h2>予約確認<h2> 
-        <p><?php echo $member['username']; ?> さんの予約状況</p><br>
-        <div>
-            <?php for ($n = 0; $n < count($stuid); $n++) { ?>
-                
-                <?php for($i = 0; $i < count($ename); $i++) { 
-                        if($stuid[$n]['empid'] == $ename[$i]['empid']){ ?>
-                           <p>面談相手：<?php echo $ename[$i]['empname']; ?></p>
-                    <?php } } ?>
-                <p>予約日：　<?php echo $stuid[$n]['rsvdate']; ?></p>
-                <p>予約時間：<?php echo $stuid[$n]['rsvtime']; ?></p>
-                <p>相談内容：<?php echo $stuid[$n]['comment']; ?></p>
+<header>
+    <div class="bg">
+        <img src="../images/ntt-east_white.png" id="logo">
+    </div>
+</header>
+
+<main>
+<body>
+<h1><?php echo $member['username']; ?> さん</h1>
+    <div class="rsv_list">    
+        <h2>予約内容</h2> 
+        <?php for ($n = 0; $n < count($stuid); $n++) { ?>
+            <div class="rsv_content">
+                <div class="rsv_text">
+                    <?php for($i = 0; $i < count($ename); $i++) { 
+                        if($stuid[$n]['empid'] == $ename[$i]['empid']) { ?>
+                            <p>面談相手：<?php echo $ename[$i]['empname']; ?></p>
+                        <?php } 
+                    } ?>
+                    <p>予約日時：<?php echo $stuid[$n]['rsvdate']; ?><span class="time"><?php echo $stuid[$n]['rsvtime']; ?></span></p>
+                    <p>相談内容：<?php echo $stuid[$n]['comment']; ?></p>
+                </div>
                 <form action="./rsv_cancel.php" method="post" onSubmit = "return check()">
-                <input type="submit" value="取消">
+                <button type="submit">取消</button>
                 <input type="hidden" name="empid" value="<?=$stuid[$n]['empid']?>">
                 </form>
-                </script>
-                <br><br>
-            <?php } ?>
-            <script type="text/javascript">
-                function check() {
-                let result = window.confirm('予約取り消しますか？');
-                if (result) {
-                    return ture;
-                } else {
-                    alert("取り消しをやめる");
-                    return false;
-                }
-                };
-            </script>
-        </div>
-</div>
-</font>
+            </div>
+        <?php } ?>
+        <script type="text/javascript">
+            function check() {
+            let result = window.confirm('予約取り消しますか？');
+            if (result) {
+                return ture;
+            } else {
+                alert("取り消しをやめる");
+                return false;
+            }
+            };
+        </script>
+    </div>
 </body>
 <p><a href="./reset_pass_form.php">パスワード再登録はこちら</a></p>
 <p><a href="./withdrawal_form.php">退会はこちら</a></p>
