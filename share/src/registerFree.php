@@ -1,3 +1,17 @@
+<!DOCTYPE html> 
+<html lang="ja"> 
+
+<!-- ヘッダ情報 -->
+<head>
+    <meta charset="UTF-8">     
+    <title>登録完了</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
+    <link rel="stylesheet" href="../css/registerFree.css">
+    <script src="https://kit.fontawesome.com/2d726a91d3.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">   
+</head>
+
 <?php
 session_start();
 
@@ -82,19 +96,48 @@ if (empty($validation)) {
 }
 ?>
 
-<?php if (empty($validation)) { ?>
-    <h1>登録しました</h1>
-    <form action="./registerFree_form.php" method="get">
-        <input type="hidden" name="week" value="0">
-        <input type="hidden" name="empid" value="<?php echo $empid[0]; ?>">
-        <input type="submit" value="追加登録">
-    </form>
-<?php } else { ?>
-    <h1>登録できませんでした</h1>
-    <h2>予期せぬエラーが発生しました</h2>
-    <form action="./registerFree_form.php" method="GET">
-        <input type="hidden" name="week" value="0">
-        <input type="hidden" name="empid" value="<?php echo $empid[0]; ?>">
-        <input type="submit" value="再登録">
-    </form>
-<?php } ?>
+<body>
+<header>
+    <div class="bg">
+        <img src="../images/ntt-east_white.png" id="logo">
+    </div>
+    </script>
+</header>
+
+<main>
+<div class="container">
+    <?php if (empty($validation)) { ?>
+        <h1>COMPLETE</h1>
+        <div class="btn">
+            <form action="./registerFree_form.php" method="get">
+                <input type="hidden" name="week" value="0">
+                <input type="hidden" name="empid" value="<?php echo $empid[0]; ?>">
+                <button type="submit" id="register">追加で登録する</button>
+            </form>
+            <form action="./registerFree_form.php" method="get">
+                <input type="hidden" name="week" value="0">
+                <input type="hidden" name="empid" value="<?php echo $empid[0]; ?>">
+                <button id="backHome" onclick="location.href='./registerFree_form.php'">ホームへ戻る(今は登録画面)</button>
+            </form>
+        </div>
+    <?php } else { ?>
+        <h1>ERROR</h1>
+        <div class="text">
+            予期せぬエラーが発生しました。
+        </div>
+        <div class="btn">
+            <form action="./registerFree_form.php" method="GET">
+                <input type="hidden" name="week" value="0">
+                <input type="hidden" name="empid" value="<?php echo $empid[0]; ?>">
+                <button type="submit" id="register">再登録する</button>
+            </form>
+            <form action="./registerFree_form.php" method="GET">
+                <input type="hidden" name="week" value="0">
+                <input type="hidden" name="empid" value="<?php echo $empid[0]; ?>">
+                <button id="backHome" onclick="location.href='./registerFree_form.php'">ホームへ戻る(今は登録画面)</button>
+            </form>
+        </div>
+    <?php } ?>
+</div>
+</main>
+</body>

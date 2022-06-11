@@ -1,0 +1,95 @@
+@charset "UTF-8";
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #ffffff;
+    background-color: #09bb7a;
+    z-index: 10;
+    transition: .5s;
+}
+.bg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+#logo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 5px;
+    width: 200px;
+}
+
+/* body */
+body {
+    position: relative;
+    width: 100%;
+    background-color: #ffffff;
+}
+main {
+    width: 100%;
+    height: 100%;
+    padding: 100px 30px 100px 30px;
+}
+.container {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+h1 {
+    text-align: center;
+    margin-top: 10px;
+    color: #09bb7a;
+    font-size: 3em;
+    font-family: 'Archivo Black', sans-serif;
+    font-style: italic;
+}
+.text {
+    padding-top: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+form {
+    display: inline-block;
+}
+.btn {
+    text-align: center;
+}
+button {
+    display: inline-block;
+    appearance: none;
+    cursor: pointer;
+    font-family: 'Noto Sans JP', sans-serif;
+    margin: 10px 5px;
+    font-size: 1em;
+    padding: 8px 15px;
+    transition: 0.25s;
+}
+button#register {
+    background-color: #09bb7a;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    color: #ffffff;
+}
+button#backHome {
+    background-color: #ffffff;
+    border: 1px solid #09bb7a;
+    border-radius: 5px;
+    color: #09bb7a;
+}

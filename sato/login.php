@@ -23,7 +23,7 @@ $stmt->execute();
 $member = $stmt->fetch();
 
 //入力されたパスワードとデータベースから取得したパスワードが一致しているか確認
-if ($_POST['password'] == $member['password']) {
+if (password_verify($_POST['password'],$member['password'])) {
     $_SESSION['id'] = $member['id'];
     header('Location:http://localhost/prese/sato/home.php');
 } else {

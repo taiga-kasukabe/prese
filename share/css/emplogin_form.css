@@ -38,8 +38,8 @@ body {
     position: relative;
     height: 100%;
     margin: 0;
-    background: rgb(0,92,175);
-    background: linear-gradient(180deg, rgba(0,92,175,1) 0%, rgba(0,90,172,1) 50%, rgba(255,255,255,1) 100%);
+    background: rgb(0,145,92);
+    background: linear-gradient(180deg, rgba(0,145,92,1) 0%, rgba(0,163,101,1) 49%, rgba(255,255,255,1) 100%);
 }
 .container {
     max-width: 600px;
@@ -93,7 +93,7 @@ input:focus {
     background-color: #ffffff;
     width: 300px;
     margin: 0 auto 10px auto;
-    color: #005CAF;
+    color: #00915c;
 }
 button {
     appearance: none;
@@ -101,7 +101,7 @@ button {
     background-color: white;
     border: 0;
     padding: 10px 15px;
-    color: #005CAF;
+    color: #00915c;
     border-radius: 3px;
     width: 250px;
     cursor: pointer;
@@ -109,7 +109,7 @@ button {
     transition-duration: 0.25s;
 }
 button:hover {
-    background-color: #005CAF;
+    background-color: #00915c;
     color: #ffffff;
     border: 1px solid #ffffff;
 }
