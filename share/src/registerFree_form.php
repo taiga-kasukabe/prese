@@ -9,13 +9,13 @@ $weekJa = array("日", "月", "火", "水", "木", "金", "土");
 $empid = $_SESSION['eid'];
 
 //データベース接続
-try{
+try {
     $dbh = new PDO($dsn, $db_username, $db_password);
 } catch (PDOException $e) {
-    $msg = $e -> getMessage();
+    $msg = $e->getMessage();
 }
 
-  
+
 
 // 社員リスト取得
 $sql = "SELECT * FROM emp_table WHERE empid = :empid";
@@ -70,7 +70,7 @@ if (!empty($employee)) {
                     continue;
                 }
                 echo '<tr>
-                <th>' . substr_replace($time, ':', 2, 0) . '</th>';
+                <th>' . substr_replace($time, ':', 2, 0) . '〜</th>';
                 for ($i =  $week * 7; $i < 7 * ($week + 1); $i++) {
                     $cnt = 0;
                     // 未予約日程を表示
@@ -101,10 +101,9 @@ if (!empty($employee)) {
     </form>
     <p>-：既に空き日程として登録済み</p>
 
-    <form action="./editFree_form.php" method="get">
-        <input type="hidden" name="empid" value="<?php echo $empid; ?>">
+    <form action="./empmypage.php" method="get">
         <input type="hidden" name="week" value="<?php echo $week; ?>">
-        <input type="submit" value="空き日程の編集へ">
+        <input type="submit" value="マイページへ">
     </form>
 <?php } else { ?>
     <h1>存在しない社員IDです</h1>

@@ -37,13 +37,13 @@ $stmt->execute();
 $member = $stmt->fetch();
 
 // 社員リスト取得
-$sql = "SELECT * FROM empDB";
+$sql = "SELECT * FROM emp_table";
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // 社員最大年次取得
-$sql = "SELECT * FROM empDB WHERE empyear = (SELECT MAX(empyear) FROM empDB)";
+$sql = "SELECT * FROM emp_table WHERE empyear = (SELECT MAX(empyear) FROM emp_table)";
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 $employeeYear = $stmt->fetch();
@@ -59,7 +59,7 @@ if (!empty($_POST)) {
         $err_msg['empjob'] = "どれか一つ選択してください";
     }
     if (empty($err_msg)) { //ノーエラー時
-        $sql = "SELECT * FROM empDB WHERE emptag3 >= :empyearMin AND emptag3 <= :empyearMax AND emptag2 IN ($job_str) ";
+        $sql = "SELECT * FROM emp_table WHERE emptag3 >= :empyearMin AND emptag3 <= :empyearMax AND emptag2 IN ($job_str) ";
         // 「両方」が選択されれば，gender用SQLなし
         if ($_POST['gender'] != "両方") {
             $sql_gender = "AND emptag1= :gender ";

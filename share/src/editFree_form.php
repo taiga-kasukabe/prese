@@ -9,10 +9,10 @@ $week = $_GET['week'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
 
 //データベース接続
-try{
+try {
     $dbh = new PDO($dsn, $db_username, $db_password);
 } catch (PDOException $e) {
-    $msg = $e -> getMessage();
+    $msg = $e->getMessage();
 }
 
 // 社員リスト取得
@@ -98,8 +98,7 @@ echo '<a href="./editFree_form.php?empid=' . $empid . '&week=' . $week + 1 .  '"
 </form>
 <p>x：既に予約が入ってしまいました<br>-：空き日程として登録されていません</p>
 
-<form action="./registerFree_form.php" method="get">
-    <input type="hidden" name="empid" value="<?php echo $empid; ?>">
+<form action="./empmypage.php" method="get">
     <input type="hidden" name="week" value="0">
-    <input type="submit" value="削除確認へ">
+    <input type="submit" value="マイページへ">
 </form>

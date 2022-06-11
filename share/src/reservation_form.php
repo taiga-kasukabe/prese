@@ -76,7 +76,7 @@ echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 . 
                 continue;
             }
             echo '<tr>
-        <th>' . substr_replace($time, ':', 2, 0) . '</th>';
+        <th>' . substr_replace($time, ':', 2, 0) . '〜</th>';
             for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
                 $cnt = 0;
                 // 未予約日程を表示
