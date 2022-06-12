@@ -16,25 +16,27 @@ try {
 
 $id = $_SESSION['id'];
 $empid = $_POST['empid'];
+$rsvdate = $_POST['rsvdate'];
+$rsvtime = $_POST['rsvtime'];
 
+// //rsvdb接続
+// $sql_rsv = "SELECT * FROM rsvdb";
+// $stmt = $dbh->prepare($sql_rsv);
+// $stmt->execute();
+// $rsv = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-//rsvdb接続
-$sql_rsv = "SELECT * FROM rsvdb";
-$stmt = $dbh->prepare($sql_rsv);
-$stmt->execute();
-$rsv = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// //empDB接続
+// $sql_emp = "SELECT * FROM emp_table WHERE empid in (SELECT empid FROM rsvdb )";
+// $stmt = $dbh->prepare($sql_emp);
+// $stmt->execute();
+// $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-//empDB接続
-$sql_emp = "SELECT * FROM emp_table WHERE empid in (SELECT empid FROM rsvdb )";
-$stmt = $dbh->prepare($sql_emp);
-$stmt->execute();
-$employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
-$sql =  "UPDATE rsvdb SET stuid = NULL ,comment = NULL , flag = 0 WHERE stuid = :id AND empid = :empid";
+$sql =  "UPDATE rsvdb SET stuid = '' ,comment = '' , flag = 0 WHERE stuid = :stuid AND empid = :empid AND rsvdate = :rsvdate AND rsvtime = :rsvtime";
 $stmt = $dbh->prepare($sql);
-$stmt->bindValue('id', $id);
-$stmt->bindValue('empid', $empid);
+$stmt->bindValue(':stuid', $id);
+$stmt->bindValue(':empid', $empid);
+$stmt->bindValue(':rsvdate', $rsvdate);
+$stmt->bindValue(':rsvtime', $rsvtime);
 $stmt->execute();
 
 

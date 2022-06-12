@@ -27,7 +27,7 @@ if (!empty($rsvInfo)) {
     for ($i = 0; $i < count($rsvInfo); $i++) {
         $updateID[$i] = $rsvInfo[$i]['id'];
     }
-    $sql = "UPDATE rsvdb SET stuid='', flag=0 WHERE id IN (" . implode(',', $updateID) . ")";
+    $sql = "UPDATE rsvdb SET stuid='', flag=0, comment='' WHERE id IN (" . implode(',', $updateID) . ")";
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
 }

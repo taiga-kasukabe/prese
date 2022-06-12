@@ -97,7 +97,6 @@ if (!empty($_SESSION['id'])) {
                                         <p><span class="tag"><i class="fa-solid fa-user"></i>面談相手</span>&nbsp;&nbsp;<?php echo $ename[$i]['empname']; ?></p>
                                 <?php }
                                 } ?>
-                                <!-- ここの日程表示を自分で変える -->
 
                                 <?php $rsvtime = $stuid[$n]['rsvdate'] ?>
                                 <p><span class="tag"><i class="fa-solid fa-clock"></i>予約日時</span>&nbsp;&nbsp;<?php echo date('m/d', strtotime($stuid[$n]['rsvdate'])) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($stuid[$n]['rsvdate']))))] . ')'; ?>&nbsp;&nbsp;&nbsp;<?php echo date('H:i', strtotime($stuid[$n]['rsvtime'])) . '〜' . date('H:i', strtotime($stuid[$n]['rsvtime'] . " +1 hours")); ?></p>
@@ -114,8 +113,10 @@ if (!empty($_SESSION['id'])) {
                             <?php else : ?>
                                 <div class="delete_btn">
                                     <form action="./rsv_cancel.php" method="post" onSubmit="return check()">
-                                        <button type="submit" class="delete">取消</button>
                                         <input type="hidden" name="empid" value="<?= $stuid[$n]['empid'] ?>">
+                                        <input type="hidden" name="rsvdate" value="<?= $stuid[$n]['rsvdate'] ?>">
+                                        <input type="hidden" name="rsvtime" value="<?= $stuid[$n]['rsvtime'] ?>">
+                                        <button type="submit" class="delete">取消</button>
                                     </form>
                                 </div>
                             <?php endif; ?>
@@ -123,11 +124,11 @@ if (!empty($_SESSION['id'])) {
                     <?php } ?>
                     <script type="text/javascript">
                         function check() {
-                            let result = window.confirm('予約取り消しますか？');
+                            let result = window.confirm('予約を取り消しますか？');
                             if (result) {
                                 return ture;
                             } else {
-                                alert("取り消しをやめる");
+                                alert("キャンセルしました");
                                 return false;
                             }
                         };
