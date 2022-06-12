@@ -78,7 +78,7 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="works_modal_close">✖</div>
                 </div>
             </div>
-<!-- モーダルウインドウここまで -->
+            <!-- モーダルウインドウここまで -->
 
         <?php } ?>
     </table>
