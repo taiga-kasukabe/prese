@@ -44,10 +44,6 @@ if (!empty($_SESSION['eid'])) {
     $stmt->bindValue(':empid', $empid);
     $stmt->execute();
     $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    echo "<PRE>";
-    var_dump($rsvInfo);
-    echo "</PRE>";
 }
 
 // 学生情報取得
@@ -68,46 +64,47 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th>確認</th>
             </tr>
             <?php for ($i = 0; $i < count($rsvInfo); $i++) {
-                if (date('Y-m-d') <= $rsvInfo[$i]['rsvdate']) {?>
-                <tr>
-                    <?php print '<td>' . date('m/d', strtotime($rsvInfo[$i]['rsvdate'])) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($rsvInfo[$i]['rsvtime']))))] . ')' . '</td><td>' . date('H:i', strtotime($rsvInfo[$i]['rsvtime'])) . '〜' . date('H:i', strtotime($rsvInfo[$i]['rsvtime'] . " +1 hours")) . '</td><td>';
-                    if ($rsvInfo[$i]['flag'] == 1) {
-                        print '予約済み';
-                    } else {
-                        print '空き';
-                    }
-                    print '</td><td>'; ?>
-                    <?php if ($rsvInfo[$i]['flag'] == 1) { ?>
-                        <div class="works_modal_open" data-modal-open="modal-<?php echo $i; ?>">
-                            <input type="button" value="予約確認">
-                        </div>
-                    <?php } ?>
-                    </td>
-                </tr>
+                if (date('Y-m-d') <= $rsvInfo[$i]['rsvdate']) { ?>
+                    <tr>
+                        <?php print '<td>' . date('m/d', strtotime($rsvInfo[$i]['rsvdate'])) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($rsvInfo[$i]['rsvtime']))))] . ')' . '</td><td>' . date('H:i', strtotime($rsvInfo[$i]['rsvtime'])) . '〜' . date('H:i', strtotime($rsvInfo[$i]['rsvtime'] . " +1 hours")) . '</td><td>';
+                        if ($rsvInfo[$i]['flag'] == 1) {
+                            print '予約済み';
+                        } else {
+                            print '空き';
+                        }
+                        print '</td><td>'; ?>
+                        <?php if ($rsvInfo[$i]['flag'] == 1) { ?>
+                            <div class="works_modal_open" data-modal-open="modal-<?php echo $i; ?>">
+                                <input type="button" value="予約確認">
+                            </div>
+                        <?php } ?>
+                        </td>
+                    </tr>
 
-                <!-- モーダルウインドウここから -->
-                <div class="works_modal_wrapper" data-modal="modal-<?php echo $i; ?>">
-                    <div class="works_modal_mask"></div>
-                    <div class="works_modal_window">
-                        <div class="works_modal_content">
-                            <p>学生情報</p>
-                            <p>名前：
-                                <?php for ($j = 0; $j < count($stuInfo); $j++) {
-                                    if ($rsvInfo[$i]['stuid'] == $stuInfo[$j]['id']) {
-                                        echo $stuInfo[$j]['username'];
-                                        $num = $j;
-                                    }
-                                } ?>さん</p>
-                            <p>大学情報：<?php echo $stuInfo[$num]['school'] . ' ' . $stuInfo[$num]['department1'] . ' ' . $stuInfo[$num]['department2'] . ' ' . $stuInfo[$num]['student_year']; ?></p>
-                            <p>相談内容：<?php echo $rsvInfo[$i]['comment']; ?></p>
-                            <p>メールアドレス：<?php echo $stuInfo[$num]['mail']; ?></p>
+                    <!-- モーダルウインドウここから -->
+                    <div class="works_modal_wrapper" data-modal="modal-<?php echo $i; ?>">
+                        <div class="works_modal_mask"></div>
+                        <div class="works_modal_window">
+                            <div class="works_modal_content">
+                                <p>学生情報</p>
+                                <p>名前：
+                                    <?php for ($j = 0; $j < count($stuInfo); $j++) {
+                                        if ($rsvInfo[$i]['stuid'] == $stuInfo[$j]['id']) {
+                                            echo $stuInfo[$j]['username'];
+                                            $num = $j;
+                                        }
+                                    } ?>さん</p>
+                                <p>大学情報：<?php echo $stuInfo[$num]['school'] . ' ' . $stuInfo[$num]['department1'] . ' ' . $stuInfo[$num]['department2'] . ' ' . $stuInfo[$num]['student_year']; ?></p>
+                                <p>相談内容：<?php echo $rsvInfo[$i]['comment']; ?></p>
+                                <p>メールアドレス：<?php echo $stuInfo[$num]['mail']; ?></p>
+                            </div>
+                            <div class="works_modal_close">✖</div>
                         </div>
-                        <div class="works_modal_close">✖</div>
                     </div>
-                </div>
-                <!-- モーダルウインドウここまで -->
+                    <!-- モーダルウインドウここまで -->
 
-            <?php } } ?>
+            <?php }
+            } ?>
         </table>
 
         <form action="./registerFree_form.php" method="get">
