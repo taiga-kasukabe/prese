@@ -20,7 +20,7 @@ try {
 }
 
 // 社員リスト取得
-$sql = "SELECT * FROM empDB WHERE empid = :empid";
+$sql = "SELECT * FROM emp_table WHERE empid = :empid";
 $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':empid', $empid);
 $stmt->execute();
