@@ -89,7 +89,7 @@ if (!empty($employee)) {
                         <table>
                             <tr>
                                 <th id="none"></th>
-                                <?php for ($i = $week * 7+2; $i < 7 * ($week + 1)+2; $i++)
+                                <?php for ($i = $week * 7 + 2; $i < 7 * ($week + 1) + 2; $i++)
                                     print '<th class="date">' . date('m/d', strtotime($i . 'day')) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($i . 'day'))))] . ')</th>';
                                 ?>
                             </tr>
@@ -99,8 +99,8 @@ if (!empty($employee)) {
                                     continue;
                                 }
                                 echo '<tr>
-                        <th class="time">' . substr_replace($time, ':', 2, 0) . '</th>';
-                                for ($i =  $week * 7+2; $i < 7 * ($week + 1)+2; $i++) {
+                        <th class="time">' . substr_replace($time, ':', 2, 0) . '〜' . substr_replace($time + 100, ':', 2, 0) . '</th>';
+                                for ($i =  $week * 7 + 2; $i < 7 * ($week + 1) + 2; $i++) {
                                     $cnt = 0;
                                     // 未予約日程を表示
                                     for ($j = 0; $j < count($unrsvInfo); $j++) {
@@ -139,9 +139,10 @@ if (!empty($employee)) {
                 </form>
             </div>
         <?php } else { ?>
-            <h1>存在しない社員IDです</h1>
+            <h1>セッションが切れました</h1>
+            <h2>再ログインしてください</h2>
+            <a href="./emplogin_form.php">ログイン</a>
         <?php } ?>
-        <!-- <input type="button" onclick="location.href='./emplogin_form.php'" value="社員変更"> -->
     </main>
     <script src="../js/schedule_disabled.js"></script>
 </body>

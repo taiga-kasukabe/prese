@@ -42,7 +42,6 @@ if ($unrsvInfo['flag'] != 1) {
 <!-- ページ表示 -->
 <?php if (!empty($unrsvInfo) && $unrsvInfo['flag'] != 1) { ?>
     <h1>予約完了しました</h1>
-    <h2>登録ID名：<?php echo $id; ?>さん</h2>
 <?php } else { ?>
     <h1>予期せぬエラーが発生しました</h1>
     <p>同時に他の方が予約したかもしれません</p>
@@ -50,6 +49,7 @@ if ($unrsvInfo['flag'] != 1) {
     <p>ブラウザの戻るボタンを押したかもしれません</p>
 <?php } ?>
 
+<input type="button" onclick="location.href='./mypage.php'" value="予約確認(マイページへ)">
 <input type="button" onclick="location.href='./home.php'" value="ホームへ">
 
-<script src="../js/blowserBack.js"></script>
+<script src="../js/browserBack.js"></script>
