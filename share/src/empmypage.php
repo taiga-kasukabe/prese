@@ -85,12 +85,15 @@ echo "</PRE>";
                     <div class="works_modal_content">
                         <p>学生情報</p>
                         <p>名前：
-                            <?php for($j = 0; $j < count($stuInfo); $j++)  {
-                                if($rsvInfo[$i]['stuid'] == $stuInfo[$j]['id']){
-                                    
+                            <?php for ($j = 0; $j < count($stuInfo); $j++) {
+                                if ($rsvInfo[$i]['stuid'] == $stuInfo[$j]['id']) {
+                                    echo $stuInfo[$j]['username'];
+                                    $num = $j;
                                 }
-                            }            ?></p>
+                            } ?>さん</p>
+                            <p>大学情報：<?php echo $stuInfo[$num]['school'] .' '. $stuInfo[$num]['department1'].' ' .$stuInfo[$num]['department2'] . ' ' .$stuInfo[$num]['student_year'];?></p>
                         <p>相談内容：<?php echo $rsvInfo[$i]['comment']; ?></p>
+                        <p>メールアドレス：<?php echo $stuInfo[$num]['mail'];?></p>
                     </div>
                     <div class="works_modal_close">✖</div>
                 </div>
