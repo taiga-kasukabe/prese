@@ -26,8 +26,7 @@ try{
 }
 
 
-// $id = $_SESSION['id'];
-$id = "yu";
+$id = $_SESSION['id'];
 
 //users_table接続
 // ログインしている学生のデータ取得
@@ -65,8 +64,6 @@ $stmt = $dbh->prepare($sql_emp);
 $stmt->execute();
 $ename = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$member['username'] = "佐藤ゆう";
-
 ?>
 
 <body>
@@ -96,18 +93,27 @@ $member['username'] = "佐藤ゆう";
                             <p><span class="tag"><i class="fa-solid fa-user"></i>面談相手</span>&nbsp;&nbsp;<?php echo $ename[$i]['empname']; ?></p>
                         <?php } 
                     } ?>
+
+                    <?php $rsvtime=$stuid[$n]['rsvdate']?>
+
                     <p><span class="tag"><i class="fa-solid fa-clock"></i>予約日時</span>&nbsp;&nbsp;<?php echo $stuid[$n]['rsvdate']; ?>&nbsp;&nbsp;&nbsp;<?php echo $stuid[$n]['rsvtime']; ?></p>
                     <div class="comment">
                         <p class="comment_tag"><span class="tag"><i class="fa-solid fa-pen"></i>相談内容</span>&nbsp;&nbsp;</p>
                         <p class="comment_data"><?php echo $stuid[$n]['comment']; ?></p>
                     </div>
                 </div>
-                <div class="delete_btn">
-                    <form action="./rsv_cancel.php" method="post" onSubmit = "return check()">
-                    <button type="submit" class="delete">取消</button>
-                    <input type="hidden" name="empid" value="<?=$stuid[$n]['empid']?>">
-                    </form>
-                </div>
+
+                <?php if($rsvtime <= date('Y-m-d',strtotime("+2day"))):?>
+                    <p>予約日2日前以降は予約の取り消しは出来ません。</p>
+                    <p>これ以降は直接連絡をお取りください。</p>
+                <?php else:?>
+                    <div class="delete_btn">
+                        <form action="./rsv_cancel.php" method="post" onSubmit = "return check()">
+                        <button type="submit" class="delete">取消</button>
+                        <input type="hidden" name="empid" value="<?=$stuid[$n]['empid']?>">
+                        </form>
+                    </div>
+                <?php endif; ?>
             </div>
         <?php } ?>
         <script type="text/javascript">
