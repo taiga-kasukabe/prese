@@ -3,7 +3,7 @@
 session_start();
 
     //データベース情報
-    include('./conf/db_conf.php');
+    include('../conf/config.php');
 
     //データベース接続
     try{
@@ -106,10 +106,10 @@ session_start();
 
         //確認ページへ遷移
         //URLの書き方！！
-        header('Location:http://localhost/prese/share/src/register_confirm.php');
+        header('Location:http://localhost/prese/sato/register_confirm.php');
 
     } else {
-        header('Location:http://localhost/prese/share/src/register_form.php');
+        header('Location:http://localhost/prese/sato/register_form.php');
     }
 
 ?>

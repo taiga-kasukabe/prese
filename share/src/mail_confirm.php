@@ -19,10 +19,10 @@
 session_start();
 
 // セッション情報の引継ぎ
-include("./conf/variable_session.php");
+include("../conf/variable_session.php");
 
 //データベース情報
-include('./conf/config.php');
+include('../conf/config.php');
 
 //データベース接続
 try{
@@ -58,7 +58,7 @@ try{
 <body>
 <header>
     <div class="bg">
-        <img src="images/ntt-east_white.png" id="logo">
+        <img src="../images/ntt-east_white.png" id="logo">
     </div>
     </script>
 </header>
