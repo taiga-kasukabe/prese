@@ -9,22 +9,20 @@ include("../conf/config.php");
 
 
 //データベースへ接続、テーブルがない場合は作成
-try{
+try {
     $dbh = new PDO($dsn, $db_username, $db_password);
 } catch (PDOException $e) {
-    $msg = $e -> getMessage();
+    $msg = $e->getMessage();
 }
 
 
-
-
 $sql =  "UPDATE users_table SET password = :password ,password_confirm = :password_confirm WHERE id=:id";
-$stmt = $dbh -> prepare($sql);
-$stmt -> bindValue(':password', $password);
-$stmt -> bindValue(':password_confirm', $password_confirm);
-$stmt -> bindValue(':id', $id);
+$stmt = $dbh->prepare($sql);
+$stmt->bindValue(':password', $password);
+$stmt->bindValue(':password_confirm', $password_confirm);
+$stmt->bindValue(':id', $id);
 //$params = array(':password' => $password, ':password_confirm' => $password_confirm);
-$stmt -> execute();
+$stmt->execute();
 
 ?>
 <h1>再登録しました</h1>

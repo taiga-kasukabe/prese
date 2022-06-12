@@ -3,10 +3,6 @@ session_start();
 
 // 変数定義
 include('../conf/config.php');
-// $empid = $_GET['empid'];
-// $time =  $_GET['time'];
-// $reservation_date =  $_GET['date'];
-// $weekNum = $_GET['weekJa'];
 $comment = $_POST['comment'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
 list($empid, $time, $reservation_date, $weekNum) = explode(":", $_POST['free']);

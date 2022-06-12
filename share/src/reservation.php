@@ -9,7 +9,6 @@ $reservation_date =  $_GET['date'];
 $weekNum = $_GET['weekNum'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
 $comment = $_GET['comment'];
-$id = $_SESSION['id'];
 
 //データベース接続
 try {
@@ -29,7 +28,8 @@ $stmt->execute();
 $unrsvInfo = $stmt->fetch();
 
 // 予約動作
-if ($unrsvInfo['flag'] != 1) {
+if ($unrsvInfo['flag'] != 1 || !empty($_SESSION['id'])) {
+    $id = $_SESSION['id'];
     $sql = "UPDATE rsvdb SET stuid = :stuid, comment = :comment, flag = 1 WHERE rsvDB. id=:id";
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':stuid', $id);
@@ -40,16 +40,20 @@ if ($unrsvInfo['flag'] != 1) {
 ?>
 
 <!-- ページ表示 -->
-<?php if (!empty($unrsvInfo) && $unrsvInfo['flag'] != 1) { ?>
+<?php if (!empty($unrsvInfo) && $unrsvInfo['flag'] != 1 && !empty($_SESSION['id'])) { ?>
     <h1>予約完了しました</h1>
-<?php } else { ?>
+    <input type="button" onclick="location.href='./mypage.php'" value="予約確認(マイページへ)">
+    <input type="button" onclick="location.href='./home.php'" value="ホームへ">
+<?php } elseif (!empty($_SESSION['id'])) { ?>
     <h1>予期せぬエラーが発生しました</h1>
     <p>同時に他の方が予約したかもしれません</p>
     <p>内々定者の方に予定が入ったかもしれません</p>
     <p>ブラウザの戻るボタンを押したかもしれません</p>
+    <input type="button" onclick="location.href='./mypage.php'" value="予約確認(マイページへ)">
+    <input type="button" onclick="location.href='./home.php'" value="ホームへ">
+<?php } else { ?>
+    <h1>セッションが切れました</h1>
+    <input type="button" onclick="location.href='./login_form.php'" value="ログインページへ">
 <?php } ?>
-
-<input type="button" onclick="location.href='./mypage.php'" value="予約確認(マイページへ)">
-<input type="button" onclick="location.href='./home.php'" value="ホームへ">
 
 <script src="../js/browserBack.js"></script>
