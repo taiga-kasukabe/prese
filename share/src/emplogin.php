@@ -21,12 +21,12 @@ $member = $stmt->fetch();
 
 if (!isset($member['eid']) || $_POST['epass'] != $member['epassword']) {
   $msg = 'idもしくはパスワードが間違っています。';
-  $link = '<a href="./emplogin_form.php" class="err_msg">戻る</a>';
+  $link = '<a href="./empmypage.php" class="err_msg">戻る</a>';
 } else if (($_POST['epass'] = $member['epassword'])) {
   //save the user's data in DB on SESSION
   $_SESSION['eid'] = $member['eid'];
   $msg = 'ログインしました。';
-  $link = '<a href="./registerFree_form.php?week=0">ホームへ</a>';
+  $link = '<a href="./empmypage.php?week=0">ホームへ</a>';
 }
 ?>
 
