@@ -5,14 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <title>内々定者マイページ</title>
-    <link rel="stylesheet" href="../css/table.css">
-    <link rel="stylesheet" href="../css/popup_emp.css">
+    <link rel="stylesheet" href="../../css/table.css">
+    <link rel="stylesheet" href="../../css/popup_emp.css">
 </head>
 
 <?php
 session_start();
 
-include('../conf/config.php');
+include('../../conf/config.php');
 if (empty($_GET['week'])) {
     $week = 0;
 } else {
@@ -123,7 +123,7 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <a href="./emplogin_form.php">ログイン画面へ</a>
     <?php } ?>
 
-    <script src="../js/modal.js"></script>
+    <script src="../../js/modal.js"></script>
 </body>
 
 </html>

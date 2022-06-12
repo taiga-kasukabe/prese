@@ -9,7 +9,7 @@
 <h1>パスワードを再登録します。</h1>
 <h2>登録したメールアドレスを入力してください</h2>
 <h3>
-<form action="reset_email.php" method="post" class="form_log">
+<form action="./reset_email.php" method="post" class="form_log">
     <!--<div>
         <label>ログインID：</label>
         <input type="text" name="id" required>

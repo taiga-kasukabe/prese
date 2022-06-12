@@ -8,7 +8,7 @@
     <title>登録完了</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
-    <link rel="stylesheet" href="../css/editFree.css">
+    <link rel="stylesheet" href="../../css/editFree.css">
     <script src="https://kit.fontawesome.com/2d726a91d3.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
 </head>
@@ -16,7 +16,7 @@
 <?php
 session_start();
 
-include('../conf/config.php');
+include('../../conf/config.php');
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
 for ($i = 0; $i < count($_GET['editFree']); $i++) {
     list($empid[$i], $time[$i], $date[$i], $weekNum[$i]) = explode(":", $_GET['editFree'][$i]);
@@ -64,7 +64,7 @@ if (!empty($deldata)) {
 <body>
     <header>
         <div class="bg">
-            <img src="../images/ntt-east_white.png" id="logo">
+            <img src="../../images/ntt-east_white.png" id="logo">
         </div>
         </script>
     </header>

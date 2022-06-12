@@ -8,7 +8,7 @@
 
 session_start();
 //データベース情報の読み込み
-include('../conf/config.php');
+include('../../conf/config.php');
 //データベースへ接続、テーブルがない場合は作成
 //データベース接続
 try{
@@ -21,7 +21,7 @@ try{
 ?>
 
 <h1>パスワード再登録画面</h1>
-<form action="reset_vali_pass.php" method="post" class="form_log"> 
+<form action="./reset_vali_pass.php" method="post" class="form_log"> 
 <!--<p>こんにちは、<?php echo $member['username']; ?> さん</p>-->
 <div>
     <div>

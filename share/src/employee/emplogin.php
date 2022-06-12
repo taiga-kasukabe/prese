@@ -3,7 +3,7 @@
 session_start();
 
 $eid = $_POST['eid'];
-include('../conf/config.php');
+include('../../conf/config.php');
 
 //データベース接続
 try {

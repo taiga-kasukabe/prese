@@ -2,7 +2,7 @@
 session_start();
 
 // 変数定義
-include('../conf/config.php');
+include('../../conf/config.php');
 $empid = $_GET['empid'];
 $time =  substr_replace($_GET['time'], ':', 2, 0) . ':00';
 $reservation_date =  $_GET['date'];
@@ -56,4 +56,4 @@ if ($unrsvInfo['flag'] != 1 || !empty($_SESSION['id'])) {
     <input type="button" onclick="location.href='./login_form.php'" value="ログインページへ">
 <?php } ?>
 
-<script src="../js/browserBack.js"></script>
+<script src="../../js/browserBack.js"></script>

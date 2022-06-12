@@ -4,7 +4,7 @@
 session_start();
 
 // 変数定義
-include('../conf/config.php');
+include('../../conf/config.php');
 $empid = $_GET['empid'];
 $week = $_GET['week'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
@@ -42,7 +42,7 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!-- 表示画面 -->
 <h1>予約画面</h1>
 <h2><?php echo $employee['empname']; ?></h2>
-<img src="./images/<?php echo $employee['empimg_id']; ?>" alt="社員画像" height="300">
+<img src="../../../sato/images/<?php echo $employee['empimg_id']; ?>" alt="社員画像" height="300">
 <p>年次：<?php echo $employee['empyear']; ?>年目</p>
 <p>役職：<?php echo $employee['empjob']; ?></p>
 <p>職種：<?php echo $employee['empcareer']; ?></p>
@@ -66,7 +66,7 @@ echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 . 
         <tr>
             <!-- 日程表示 -->
             <th></th>
-            <?php for ($i = 2 + $week * 7; $i <= 7 * ($week + 1)+1; $i++)
+            <?php for ($i = 2 + $week * 7; $i <= 7 * ($week + 1) + 1; $i++)
                 print '<th>' . date('m/d', strtotime($i . 'day')) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($i . 'day'))))] . ')</th>';
             ?>
         </tr>
@@ -77,7 +77,7 @@ echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 . 
             }
             echo '<tr>
         <th>' . substr_replace($time, ':', 2, 0) . '〜</th>';
-            for ($i = 2 + $week * 7; $i <= 7 * ($week + 1)+1; $i++) {
+            for ($i = 2 + $week * 7; $i <= 7 * ($week + 1) + 1; $i++) {
                 $cnt = 0;
                 // 未予約日程を表示
                 for ($j = 0; $j < count($unrsvInfo); $j++) {
@@ -120,4 +120,4 @@ echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 . 
 
 <!-- for jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="../js/browserBack.js"></script>
+<script type="text/javascript" src="../../js/browserBack.js"></script>

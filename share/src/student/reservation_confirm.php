@@ -2,7 +2,7 @@
 session_start();
 
 // 変数定義
-include('../conf/config.php');
+include('../../conf/config.php');
 $comment = $_POST['comment'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
 list($empid, $time, $reservation_date, $weekNum) = explode(":", $_POST['free']);
@@ -27,7 +27,7 @@ $employee = $stmt->fetch();
 <h1>予約確認画面</h1>
 
 <p><?php echo $employee['empname']; ?></p>
-<img src="./images/<?php echo $employee['empimg_id']; ?>" alt="社員画像" height="300">
+<img src="../../../sato/images/<?php echo $employee['empimg_id']; ?>" alt="社員画像" height="300">
 <p>年次：<?php echo $employee['empyear']; ?>年目</p>
 <p>役職：<?php echo $employee['empjob']; ?></p>
 <p>職種：<?php echo $employee['empcareer']; ?></p>

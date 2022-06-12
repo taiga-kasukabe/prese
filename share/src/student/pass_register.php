@@ -3,8 +3,8 @@ session_start();
 
 //変数定義
 
-include("../conf/vari_session_pass.php");
-include("../conf/config.php");
+include("../../conf/vari_session_pass.php");
+include("../../conf/config.php");
 
 
 
