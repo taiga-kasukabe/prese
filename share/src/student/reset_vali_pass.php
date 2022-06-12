@@ -5,7 +5,7 @@ $_SESSION = array();
 //変数定義
 //include("./conf/vari_reset.php");
 //DB接続用
-include("../conf/config.php");
+include("../../conf/config.php");
 
 $password = ($_POST['password']);
 $password_confirm = ($_POST['password_confirm']);

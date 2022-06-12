@@ -10,7 +10,7 @@
     <title>登録完了</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
-    <link rel="stylesheet" href="../css/mail_confirm.css">
+    <link rel="stylesheet" href="../../css/mail_confirm.css">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
 </head>
 
@@ -20,10 +20,10 @@
 session_start();
 
 // セッション情報の引継ぎ
-include("../conf/variable_session.php");
+include("../../conf/variable_session.php");
 
 //データベース情報
-include('../conf/config.php');
+include('../../conf/config.php');
 
 //データベース接続
 try {
@@ -62,14 +62,14 @@ if (empty($member)) {
 include("./send_mail.php");
 
 $msg = 'FINISH!';
-$link = '<a href="login_form.php">　ログイン　＞</a>';
+$link = '<a href="./login_form.php">　ログイン　＞</a>';
 
 ?>
 
 <body>
     <header>
         <div class="bg">
-            <img src="../images/ntt-east_white.png" id="logo">
+            <img src="../../images/ntt-east_white.png" id="logo">
         </div>
         </script>
     </header>
@@ -92,10 +92,10 @@ $link = '<a href="login_form.php">　ログイン　＞</a>';
             <h1>登録できませんでした</h1>
             <h2>IDに重複がございました．</h2>
             <h2>申し訳ございませんが，改めて登録してください</h2>
-            <a href="register_form.php">会員登録</a>
+            <a href="./register_form.php">会員登録</a>
         </main>
     <?php } ?>
-    <script src="../js/browserBack.js"></script>
+    <script src="../../js/browserBack.js"></script>
 </body>
 
 </html>

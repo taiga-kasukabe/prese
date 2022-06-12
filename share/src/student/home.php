@@ -10,8 +10,8 @@
     <title>ホーム</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
-    <link rel="stylesheet" href="../css/popup.css">
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../../css/popup.css">
+    <link rel="stylesheet" href="../../css/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
 </head>
 
@@ -26,7 +26,7 @@ if (!isset($_SESSION['id'])) {
 
 
 //データベース情報の読み込み
-include('../conf/config.php');
+include('../../conf/config.php');
 
 
 //データベース接続
@@ -76,7 +76,7 @@ if (!empty($_SESSION['id'])) {
     <header>
         <div class="bg">
             <a href="./mypage.php" id="mypage">マイページ</a>
-            <img src="../images/ntt-east_white.png" id="logo">
+            <img src="../../images/ntt-east_white.png" id="logo">
         </div>
         <script>
             window.addEventListener("scroll", function() {
@@ -90,7 +90,7 @@ if (!empty($_SESSION['id'])) {
 
     <div class="headImg">
         <p>MEETING</p>
-        <img src="../images/hito.jpg">
+        <img src="../../images/hito.jpg">
     </div>
 
     <?php if (!empty($_SESSION['id'])) { ?>
@@ -109,7 +109,7 @@ if (!empty($_SESSION['id'])) {
 
                         <!-- リストをモーダル表示のボタンに -->
                         <div class="works_modal_open" data-modal-open="rec-modal-<?php echo $num; ?>">
-                            <div class="emp_img" style="background-image: url(../../sato/images/<?php echo $employee_rec[$num]['empimg_id']; ?>);background-size:cover;">
+                            <div class="emp_img" style="background-image: url(../../../sato/images/<?php echo $employee_rec[$num]['empimg_id']; ?>);background-size:cover;">
                             </div>
                             <div class="arrow">→</div>
                             <div class="emp_data">
@@ -125,7 +125,7 @@ if (!empty($_SESSION['id'])) {
                             <div class="works_modal_mask"></div>
                             <div class="works_modal_window">
                                 <div class="works_modal_content">
-                                    <img src="../../sato/images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
+                                    <img src="../../../sato/images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
                                     <div class="introduction">
                                         <h1><?php echo $employee_rec[$num]['empname']; ?></h1>
                                         <p>年次：<?php echo $employee_rec[$num]['empyear']; ?></p>
@@ -152,13 +152,13 @@ if (!empty($_SESSION['id'])) {
 
                         <!-- リストの名前部分をモーダル表示のボタンに -->
                         <div class="works_modal_open" data-modal-open="modal-<?php echo $num; ?>">
-                            <div class="emp_img" style="background-image: url(../../sato/images/<?php echo $employee[$num]['empimg_id']; ?>);background-size:cover;">
+                            <div class="emp_img" style="background-image: url(../../../sato/images/<?php echo $employee[$num]['empimg_id']; ?>);background-size:cover;">
                             </div>
                             <div class="arrow">→</div>
                             <div class="emp_data">
                                 <h2><?php echo $employee[$num]['empname']; ?></h2>
                                 <p><span class="mgr_20">年次：<?php echo $employee[$num]['empyear']; ?></span>職種：<?php echo $employee[$num]['emptag2']; ?></p>
-                                <!-- <p>経歴：<?php //echo $employee[$num]['empcareer']; 
+                                <!-- <p>経歴：<?php //echo $employee[$num]['empcareer'];
                                             ?></p> -->
                             </div>
                         </div>
@@ -168,7 +168,7 @@ if (!empty($_SESSION['id'])) {
                             <div class="works_modal_mask"></div>
                             <div class="works_modal_window">
                                 <div class="works_modal_content">
-                                    <img src="../../sato/images/<?php echo $employee[$num]['empimg_id']; ?>">
+                                    <img src="../../../sato/images/<?php echo $employee[$num]['empimg_id']; ?>">
                                     <div class="introduction">
                                         <h1><?php echo $employee[$num]['empname']; ?></h1>
                                         <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
@@ -187,7 +187,7 @@ if (!empty($_SESSION['id'])) {
                     <?php } ?>
                 </div>
 
-                <script src="../js/modal.js"></script>
+                <script src="../../js/modal.js"></script>
         </main>
     <?php } else { ?>
         <h1>セッションが切れました</h1>

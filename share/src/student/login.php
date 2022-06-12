@@ -6,7 +6,7 @@ session_start();
 $id = $_POST['id'];
 
 //データベース情報の読み込み
-include('../conf/config.php');
+include('../../conf/config.php');
 
 //データベース接続
 try{

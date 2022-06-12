@@ -8,8 +8,8 @@
     <title>空き日程登録</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
-    <link rel="stylesheet" href="../css/registerFree_form.css">
-    <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../../css/registerFree_form.css">
+    <link rel="stylesheet" href="../../css/table.css">
     <script src="https://kit.fontawesome.com/2d726a91d3.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
 </head>
@@ -17,7 +17,7 @@
 <?php
 session_start();
 
-include('../conf/config.php');
+include('../../conf/config.php');
 $week = $_GET['week'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
 $empid = $_SESSION['eid'];
@@ -57,7 +57,7 @@ if (!empty($employee)) {
 <body>
     <header>
         <div class="bg">
-            <img src="../images/ntt-east_white.png" id="logo">
+            <img src="../../images/ntt-east_white.png" id="logo">
         </div>
         </script>
     </header>
@@ -144,5 +144,5 @@ if (!empty($employee)) {
             <a href="./emplogin_form.php">ログイン</a>
         <?php } ?>
     </main>
-    <script src="../js/schedule_disabled.js"></script>
+    <script src="../../js/schedule_disabled.js"></script>
 </body>

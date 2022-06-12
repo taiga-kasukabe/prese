@@ -3,7 +3,7 @@
 session_start();
 
     //データベース情報
-    include('../conf/config.php');
+    include('../../conf/config.php');
 
     //データベース接続
     try{
@@ -11,10 +11,10 @@ session_start();
     } catch (PDOException $e) {
         $msg = $e -> getMessage();
     }
-        
+
     // 変数定義
     //各種入力情報，正規表現，エラーメッセージ配列
-    include("../conf/variable.php");
+    include("../../conf/variable.php");
 
     // バリデーションチェックを行う
     // username_kanaがカナのみか
@@ -63,7 +63,7 @@ session_start();
     $stmt->bindValue(':id', $id);
     $stmt->execute();
     $member = $stmt->fetch();
-    
+
     // idが4文字以上半角英数字か
     if (!preg_match("/^[a-zA-Z0-9]+$/", $id) || strlen($id) < 4) {
         $err_msg['id_confirm'] = '・idは4文字以上の半角英数字を入力してください';
@@ -111,5 +111,4 @@ session_start();
     } else {
         header('Location:./register_form.php');
     }
-
 ?>

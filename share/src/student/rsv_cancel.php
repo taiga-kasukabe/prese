@@ -7,7 +7,7 @@
 </head>
 <?php
 session_start();
-include("../conf/config.php");
+include("../../conf/config.php");
 try {
     $dbh = new PDO($dsn, $db_username, $db_password);
 } catch (PDOException $e) {

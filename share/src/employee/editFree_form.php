@@ -8,8 +8,8 @@
     <title>空き日程削除</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
-    <link rel="stylesheet" href="../css/editFree_form.css">
-    <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../../css/editFree_form.css">
+    <link rel="stylesheet" href="../../css/table.css">
     <script src="https://kit.fontawesome.com/2d726a91d3.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
 </head>
@@ -18,7 +18,7 @@
 session_start();
 
 // 変数定義
-include('../conf/config.php');
+include('../../conf/config.php');
 $empid = $_SESSION['eid'];
 $week = $_GET['week'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
@@ -136,5 +136,5 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </main>
-    <script src="../js/schedule_disabled.js"></script>
+    <script src="../../js/schedule_disabled.js"></script>
 </body>
