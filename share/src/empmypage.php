@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>内々定者マイページ</title>
     <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../css/popup_emp.css">
 </head>
 
 <?php
@@ -61,8 +62,24 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     print '空き';
                 }
                 print '</td><td>'; ?>
-                <input type="button" value="予約確認">
+                <div class="works_modal_open" data-modal-open="modal-<?php echo $i; ?>">
+                    <input type="button" value="予約確認">  
+                </div>
+            </td>
             </tr>
+
+            <!-- モーダルウインドウここから -->
+            <div class="works_modal_wrapper" data-modal="modal-<?php echo $i; ?>">
+                <div class="works_modal_mask"></div>
+                <div class="works_modal_window">
+                    <div class="works_modal_content">
+                        <p>中身</p>
+                    </div>
+                    <div class="works_modal_close">✖</div>
+                </div>
+            </div>
+<!-- モーダルウインドウここまで -->
+
         <?php } ?>
     </table>
 
@@ -76,6 +93,7 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <input type="submit" value="削除">
     </form>
 
+<script src="../js/modal.js"></script>
 </body>
 
 </html>
