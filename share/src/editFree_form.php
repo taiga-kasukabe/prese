@@ -84,7 +84,7 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <tr>
                             <!-- 日程表示 -->
                             <th id="none"></th>
-                            <?php for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++)
+                            <?php for ($i = $week * 7; $i <= 7 * ($week + 1) - 1; $i++)
                                 print '<th class="date">' . date('m/d', strtotime($i . 'day')) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($i . 'day'))))] . ')</th>';
                             ?>
                         </tr>
@@ -95,7 +95,7 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             }
                             echo '<tr>
                 <th class="time">' . substr_replace($time, ':', 2, 0) . '</th>';
-                            for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
+                            for ($i = $week * 7; $i <= 7 * ($week + 1) - 1; $i++) {
                                 $cnt = 0;
                                 // 未予約日程を表示
                                 for ($j = 0; $j < count($unrsvInfo); $j++) {
@@ -128,7 +128,7 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <button type="submit" class="register" id="submit_btn">確認する</button>
                 </form>
 
-                <form action="./registerFree_form.php" method="get">
+                <form action="./empmypage.php" method="get">
                     <input type="hidden" name="empid" value="<?php echo $empid; ?>">
                     <input type="hidden" name="week" value="0">
                     <button type="submit" class="backHome">予約一覧に戻る ＞</button>

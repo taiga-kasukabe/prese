@@ -132,7 +132,7 @@ if (!empty($employee)) {
                 </div>
 
 
-                <form action="./editFree_form.php" method="get">
+                <form action="./empmypage.php" method="get">
                     <input type="hidden" name="empid" value="<?php echo $empid; ?>">
                     <input type="hidden" name="week" value="<?php echo $week; ?>">
                     <button type="submit" class="backHome">予約一覧に戻る ＞</button>

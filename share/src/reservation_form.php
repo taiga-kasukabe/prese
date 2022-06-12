@@ -17,21 +17,21 @@ try {
 }
 
 // 社員リスト取得
-$sql = "SELECT * FROM empDB WHERE empid = :empid";
+$sql = "SELECT * FROM emp_table WHERE empid = :empid";
 $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':empid', $empid);
 $stmt->execute();
 $employee = $stmt->fetch();
 
 // 未予約情報取得
-$sql = "SELECT * FROM rsvDB WHERE empid = :empid AND flag = 0";
+$sql = "SELECT * FROM rsvdb WHERE empid = :empid AND flag = 0";
 $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':empid', $empid);
 $stmt->execute();
 $unrsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // 予約済み情報取得
-$sql = "SELECT * FROM rsvDB WHERE empid = :empid AND flag = 1";
+$sql = "SELECT * FROM rsvdb WHERE empid = :empid AND flag = 1";
 $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':empid', $empid);
 $stmt->execute();
@@ -66,7 +66,7 @@ echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 . 
         <tr>
             <!-- 日程表示 -->
             <th></th>
-            <?php for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++)
+            <?php for ($i = 2 + $week * 7; $i <= 7 * ($week + 1)+1; $i++)
                 print '<th>' . date('m/d', strtotime($i . 'day')) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($i . 'day'))))] . ')</th>';
             ?>
         </tr>
@@ -77,7 +77,7 @@ echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 . 
             }
             echo '<tr>
         <th>' . substr_replace($time, ':', 2, 0) . '〜</th>';
-            for ($i = 1 + $week * 7; $i <= 7 * ($week + 1); $i++) {
+            for ($i = 2 + $week * 7; $i <= 7 * ($week + 1)+1; $i++) {
                 $cnt = 0;
                 // 未予約日程を表示
                 for ($j = 0; $j < count($unrsvInfo); $j++) {
