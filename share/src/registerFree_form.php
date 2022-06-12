@@ -89,7 +89,7 @@ if (!empty($employee)) {
                         <table>
                             <tr>
                                 <th id="none"></th>
-                                <?php for ($i = $week * 7; $i < 7 * ($week + 1); $i++)
+                                <?php for ($i = $week * 7+2; $i < 7 * ($week + 1)+2; $i++)
                                     print '<th class="date">' . date('m/d', strtotime($i . 'day')) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($i . 'day'))))] . ')</th>';
                                 ?>
                             </tr>
@@ -100,7 +100,7 @@ if (!empty($employee)) {
                                 }
                                 echo '<tr>
                         <th class="time">' . substr_replace($time, ':', 2, 0) . '</th>';
-                                for ($i =  $week * 7; $i < 7 * ($week + 1); $i++) {
+                                for ($i =  $week * 7+2; $i < 7 * ($week + 1)+2; $i++) {
                                     $cnt = 0;
                                     // 未予約日程を表示
                                     for ($j = 0; $j < count($unrsvInfo); $j++) {
