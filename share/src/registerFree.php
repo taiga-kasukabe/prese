@@ -49,11 +49,12 @@ for ($i = 0; $i < count($_GET['free']); $i++) {
 $aryColumn = array_keys($aryInsert[0]);
 
 //validation
-$sql = "SELECT * FROM rsvdb WHERE (rsvdate, rsvtime) IN ";
+$sql = "SELECT * FROM rsvdb WHERE (empid, rsvdate, rsvtime) IN ";
 $arySql1_validation = [];
 //行の繰り返し
 for ($i = 0; $i < count($aryInsert); $i++) {
     $arySql2_validation = [];
+    $arySql2_validation[] = ':empid' . $i;
     $arySql2_validation[] = ':rsvdate' . $i;
     $arySql2_validation[] = ':rsvtime' . $i;
     $arySql1_validation[] = '(' . implode(',', $arySql2_validation) . ')';
@@ -63,6 +64,7 @@ $sql .= '(' . implode(',', $arySql1_validation) . ')';
 //bind処理
 $stmt = $dbh->prepare($sql);
 foreach ($aryInsert as $key1_validation => $val1_validation) {
+    $stmt->bindValue(':empid' . $key1_validation, $val1_validation['empid']);
     $stmt->bindValue(':rsvdate' . $key1_validation, $val1_validation['rsvdate']);
     $stmt->bindValue(':rsvtime' . $key1_validation, $val1_validation['rsvtime']);
 }
