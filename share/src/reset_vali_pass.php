@@ -29,6 +29,9 @@ if ($_POST['password'] != $_POST['password_confirm']){
     $err_msg['pass_confirm'] = 'パスワード(確認)が一致しません';
 }
 
+$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+$password_confirm = password_hash($_POST['password_confirm'], PASSWORD_DEFAULT);
+
 $_SESSION['err'] = array();
 $_SESSION['err'] = $_SESSION['err'] + $err_msg;
 
