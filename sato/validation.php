@@ -3,7 +3,7 @@
 session_start();
 
     //データベース情報
-    include('./conf/config.php');
+    include('./conf/db_conf.php');
 
     //データベース接続
     try{
