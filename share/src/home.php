@@ -25,7 +25,7 @@ if(!isset($_SESSION['id'])){
 
 
 //データベース情報の読み込み
-include('./conf/db_conf.php');
+include('../conf/config.php');
 
 //データベース接続
 try{
@@ -72,7 +72,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <header>
     <div class="bg">
         <a href="./mypage.php" id="mypage">マイページ</a>
-        <img src="images/ntt-east_white.png" id="logo">
+        <img src="../images/ntt-east_white.png" id="logo">
     </div>
     <script>
         window.addEventListener("scroll", function () {
