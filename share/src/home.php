@@ -99,7 +99,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <!-- おすすめの社員の表示 -->
 <?php if (!empty($employee_rec)) { ?>
-<p class="section_title">RECCOMEND</p>
+<p class="section_title">RECOMMEND</p>
 <div class="list">
 <?php for ($num = 0; $num < count($employee_rec); $num++) { ?>
 
@@ -120,7 +120,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="works_modal_mask"></div>
     <div class="works_modal_window">
         <div class="works_modal_content">
-            <img src="../../satoimages/<?php echo $employee_rec[$num]['empimg_id']; ?>">
+            <img src="../../sato/images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
             <div class="introduction">
                 <h1><?php echo $employee_rec[$num]['empname']; ?></h1>
                 <p>年次：<?php echo $employee_rec[$num]['empyear']; ?></p>
