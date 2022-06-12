@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
     <link rel="stylesheet" href="../css/mypage.css">
+    <script src="https://kit.fontawesome.com/2d726a91d3.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">   
 </head>
 
@@ -25,8 +26,8 @@ try{
 }
 
 
-$id = $_SESSION['id'];
-// $id = "yu";
+// $id = $_SESSION['id'];
+$id = "yu";
 
 //users_table接続
 // ログインしている学生のデータ取得
@@ -64,7 +65,7 @@ $stmt = $dbh->prepare($sql_emp);
 $stmt->execute();
 $ename = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// $member['username'] = "佐藤ゆう";
+$member['username'] = "佐藤ゆう";
 
 ?>
 
@@ -72,12 +73,19 @@ $ename = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <header>
     <div class="bg">
         <img src="../images/ntt-east_white.png" id="logo">
+        <a href="./home.php" id="home">ホーム</a>
     </div>
 </header>
 
 <main>
 <body>
-<h1><?php echo $member['username']; ?> さん</h1>
+<div class="top">
+    <h1><?php echo $member['username']; ?> さん</h1>
+    <div class="link">
+        <a href="./reset_pass_form.php">パスワード再登録はこちら</a>
+        <a href="./withdrawal_form.php">退会はこちら</a>
+    </div>
+</div>
     <div class="rsv_list">    
         <h2>予約内容</h2> 
         <?php for ($n = 0; $n < count($stuid); $n++) { ?>
@@ -85,16 +93,21 @@ $ename = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="rsv_text">
                     <?php for($i = 0; $i < count($ename); $i++) { 
                         if($stuid[$n]['empid'] == $ename[$i]['empid']) { ?>
-                            <p>面談相手：<?php echo $ename[$i]['empname']; ?></p>
+                            <p><span class="tag"><i class="fa-solid fa-user"></i>面談相手</span>&nbsp;&nbsp;<?php echo $ename[$i]['empname']; ?></p>
                         <?php } 
                     } ?>
-                    <p>予約日時：<?php echo $stuid[$n]['rsvdate']; ?><span class="time"><?php echo $stuid[$n]['rsvtime']; ?></span></p>
-                    <p>相談内容：<?php echo $stuid[$n]['comment']; ?></p>
+                    <p><span class="tag"><i class="fa-solid fa-clock"></i>予約日時</span>&nbsp;&nbsp;<?php echo $stuid[$n]['rsvdate']; ?>&nbsp;&nbsp;&nbsp;<?php echo $stuid[$n]['rsvtime']; ?></p>
+                    <div class="comment">
+                        <p class="comment_tag"><span class="tag"><i class="fa-solid fa-pen"></i>相談内容</span>&nbsp;&nbsp;</p>
+                        <p class="comment_data"><?php echo $stuid[$n]['comment']; ?></p>
+                    </div>
                 </div>
-                <form action="./rsv_cancel.php" method="post" onSubmit = "return check()">
-                <button type="submit">取消</button>
-                <input type="hidden" name="empid" value="<?=$stuid[$n]['empid']?>">
-                </form>
+                <div class="delete_btn">
+                    <form action="./rsv_cancel.php" method="post" onSubmit = "return check()">
+                    <button type="submit" class="delete">取消</button>
+                    <input type="hidden" name="empid" value="<?=$stuid[$n]['empid']?>">
+                    </form>
+                </div>
             </div>
         <?php } ?>
         <script type="text/javascript">
@@ -110,6 +123,3 @@ $ename = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </script>
     </div>
 </body>
-<p><a href="./reset_pass_form.php">パスワード再登録はこちら</a></p>
-<p><a href="./withdrawal_form.php">退会はこちら</a></p>
-<p><a href="./home.php">HOMEへ</a></p>
