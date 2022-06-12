@@ -5,9 +5,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
-require('/xampp/htdocs/PHPMailer/src/PHPMailer.php');
-require('/xampp/htdocs/PHPMailer/src/Exception.php');
-require('/xampp/htdocs/PHPMailer/src/SMTP.php');
+require('../PHPMailer/src/PHPMailer.php');
+require('../PHPMailer/src/Exception.php');
+require('../PHPMailer/src/SMTP.php');
 
 //メールを送信するアカウント情報の読み込み
 include("../conf/mail_pass.php");
