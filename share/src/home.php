@@ -172,7 +172,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <p>コメント：<?php echo $employee[$num]['empcomment']; ?></p><br>
             </div>
             <?php
-            print '<a href="./reservation.php?empid='. $employee[$num]['empid']. '&week=0"><span class="resv_txt">面談予約はこちら</span></a>';
+            print '<a href="./reservation_form.php?empid='. $employee[$num]['empid']. '&week=0"><span class="resv_txt">面談予約はこちら</span></a>';
             ?>
         </div>
         <div class="works_modal_close">✖</div>
