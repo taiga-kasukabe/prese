@@ -44,6 +44,10 @@ if (!empty($_SESSION['eid'])) {
     $stmt->bindValue(':empid', $empid);
     $stmt->execute();
     $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    echo "<PRE>";
+    var_dump($rsvInfo);
+    echo "</PRE>";
 }
 
 // 学生情報取得
@@ -63,7 +67,8 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th>予約状況</th>
                 <th>確認</th>
             </tr>
-            <?php for ($i = 0; $i < count($rsvInfo); $i++) { ?>
+            <?php for ($i = 0; $i < count($rsvInfo); $i++) {
+                if (date('Y-m-d') <= $rsvInfo[$i]['rsvdate']) {?>
                 <tr>
                     <?php print '<td>' . date('m/d', strtotime($rsvInfo[$i]['rsvdate'])) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($rsvInfo[$i]['rsvtime']))))] . ')' . '</td><td>' . date('H:i', strtotime($rsvInfo[$i]['rsvtime'])) . '〜' . date('H:i', strtotime($rsvInfo[$i]['rsvtime'] . " +1 hours")) . '</td><td>';
                     if ($rsvInfo[$i]['flag'] == 1) {
@@ -72,9 +77,11 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         print '空き';
                     }
                     print '</td><td>'; ?>
-                    <div class="works_modal_open" data-modal-open="modal-<?php echo $i; ?>">
-                        <input type="button" value="予約確認">
-                    </div>
+                    <?php if ($rsvInfo[$i]['flag'] == 1) { ?>
+                        <div class="works_modal_open" data-modal-open="modal-<?php echo $i; ?>">
+                            <input type="button" value="予約確認">
+                        </div>
+                    <?php } ?>
                     </td>
                 </tr>
 
@@ -100,7 +107,7 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <!-- モーダルウインドウここまで -->
 
-            <?php } ?>
+            <?php } } ?>
         </table>
 
         <form action="./registerFree_form.php" method="get">

@@ -18,6 +18,7 @@ session_start();
 include('../conf/config.php');
 $employee = array();
 $temp = 0;
+$weekJa = array("日", "月", "火", "水", "木", "金", "土");
 
 //データベース接続
 try {
@@ -98,7 +99,7 @@ $ename = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <!-- ここの日程表示を自分で変える -->
 
                             <?php $rsvtime = $stuid[$n]['rsvdate'] ?>
-                            <p><span class="tag"><i class="fa-solid fa-clock"></i>予約日時</span>&nbsp;&nbsp;<?php echo $stuid[$n]['rsvdate']; ?>&nbsp;&nbsp;&nbsp;<?php echo $stuid[$n]['rsvtime']; ?></p>
+                            <p><span class="tag"><i class="fa-solid fa-clock"></i>予約日時</span>&nbsp;&nbsp;<?php echo date('m/d', strtotime($stuid[$n]['rsvdate'])) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($stuid[$n]['rsvdate']))))] . ')'; ?>&nbsp;&nbsp;&nbsp;<?php echo date('H:i', strtotime($stuid[$n]['rsvtime'])) . '〜' . date('H:i', strtotime($stuid[$n]['rsvtime'] . " +1 hours")); ?></p>
                             <div class="comment">
                                 <p class="comment_tag"><span class="tag"><i class="fa-solid fa-pen"></i>相談内容</span>&nbsp;&nbsp;</p>
                                 <p class="comment_data"><?php echo $stuid[$n]['comment']; ?></p>
@@ -108,6 +109,7 @@ $ename = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php if ($rsvtime <= date('Y-m-d', strtotime("+2day"))) : ?>
                             <p>予約日2日前以降は予約の取り消しは出来ません。</p>
                             <p>これ以降は直接連絡をお取りください。</p>
+                            <p>メールアドレス：hoge@hoge.com</p>
                         <?php else : ?>
                             <div class="delete_btn">
                                 <form action="./rsv_cancel.php" method="post" onSubmit="return check()">
