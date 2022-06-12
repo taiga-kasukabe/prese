@@ -25,8 +25,8 @@ $member = $stmt->fetch();
 //入力されたパスワードとデータベースから取得したパスワードが一致しているか確認
 if (password_verify($_POST['password'],$member['password'])) {
     $_SESSION['id'] = $member['id'];
-    header('Location:http://localhost/prese/share/src/home.php');
+    header('Location:./home.php');
 } else {
     $_SESSION['err_msg'] = 'メールアドレスもしくはパスワードが間違っています。';
-    header('Location:http://localhost/prese/share/src/login_form.php');
+    header('Location:./login_form.php');
 }

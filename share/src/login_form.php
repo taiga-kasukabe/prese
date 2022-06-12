@@ -36,7 +36,7 @@ session_start();
         ?>
     </p>
 
-    <form action="login.php" method="POST">
+    <form action="./login.php" method="POST">
         <div class="form">
             <input type="text" name="id" placeholder="ID" required>
             <input type="password" name="password" placeholder="Password" required>

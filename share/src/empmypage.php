@@ -36,12 +36,22 @@ $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':empid', $empid);
 $stmt->execute();
 $employee = $stmt->fetch();
+
 // 予約情報取得
 $sql = "SELECT * FROM rsvdb WHERE empid = :empid ORDER BY rsvdate, rsvtime";
 $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':empid', $empid);
 $stmt->execute();
 $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// 学生情報取得
+$sql = "SELECT * FROM users_table";
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
+$stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+echo "<PRE>";
+var_dump($stuInfo);
+echo "</PRE>";
 ?>
 
 <body>
@@ -63,9 +73,9 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 }
                 print '</td><td>'; ?>
                 <div class="works_modal_open" data-modal-open="modal-<?php echo $i; ?>">
-                    <input type="button" value="予約確認">  
+                    <input type="button" value="予約確認">
                 </div>
-            </td>
+                </td>
             </tr>
 
             <!-- モーダルウインドウここから -->
@@ -73,7 +83,14 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="works_modal_mask"></div>
                 <div class="works_modal_window">
                     <div class="works_modal_content">
-                        <p>中身</p>
+                        <p>学生情報</p>
+                        <p>名前：
+                            <?php for($j = 0; $j < count($stuInfo); $j++)  {
+                                if($rsvInfo[$i]['stuid'] == $stuInfo[$j]['id']){
+                                    
+                                }
+                            }            ?></p>
+                        <p>相談内容：<?php echo $rsvInfo[$i]['comment']; ?></p>
                     </div>
                     <div class="works_modal_close">✖</div>
                 </div>
@@ -93,7 +110,7 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <input type="submit" value="削除">
     </form>
 
-<script src="../js/modal.js"></script>
+    <script src="../js/modal.js"></script>
 </body>
 
 </html>

@@ -96,6 +96,7 @@ $member['username'] = "佐藤ゆう";
                             <p><span class="tag"><i class="fa-solid fa-user"></i>面談相手</span>&nbsp;&nbsp;<?php echo $ename[$i]['empname']; ?></p>
                         <?php } 
                     } ?>
+                    <!-- ここの日程表示を自分で変える -->
                     <p><span class="tag"><i class="fa-solid fa-clock"></i>予約日時</span>&nbsp;&nbsp;<?php echo $stuid[$n]['rsvdate']; ?>&nbsp;&nbsp;&nbsp;<?php echo $stuid[$n]['rsvtime']; ?></p>
                     <div class="comment">
                         <p class="comment_tag"><span class="tag"><i class="fa-solid fa-pen"></i>相談内容</span>&nbsp;&nbsp;</p>
