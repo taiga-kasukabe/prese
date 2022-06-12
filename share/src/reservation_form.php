@@ -120,4 +120,4 @@ echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 . 
 
 <!-- for jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="../js/blowserBack.js"></script>
+<script type="text/javascript" src="../js/browserBack.js"></script>
