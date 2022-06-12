@@ -2,7 +2,7 @@
 
 session_start();
 
-include("./conf/variable_session.php");
+include("../conf/variable_session.php");
 
 ?>
 
@@ -17,14 +17,14 @@ include("./conf/variable_session.php");
     <title>登録情報確認</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
-    <link rel="stylesheet" href="./css/register_confirm.css">
+    <link rel="stylesheet" href="../css/register_confirm.css">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">   
 </head>
 
 <body>
 <header>
     <div class="bg">
-        <img src="images/ntt-east_white.png" id="logo">
+        <img src="../images/ntt-east_white.png" id="logo">
     </div>
     </script>
 </header>

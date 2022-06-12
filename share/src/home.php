@@ -183,7 +183,7 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php } ?>
 </div>
 
-<script src="../js/popup.js"></script>
+<script src="../js/modal.js"></script>
 </main>
 </body>
 </html>

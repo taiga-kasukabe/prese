@@ -9,7 +9,7 @@
     <title>登録完了</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
-    <link rel="stylesheet" href="./css/mail_confirm.css">
+    <link rel="stylesheet" href="../css/mail_confirm.css">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">   
 </head>
 
@@ -22,7 +22,7 @@ session_start();
 include("./conf/variable_session.php");
 
 //データベース情報
-include('./conf/db_conf.php');
+include('./conf/config.php');
 
 //データベース接続
 try{
