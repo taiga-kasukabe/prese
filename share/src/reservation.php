@@ -20,7 +20,7 @@ try {
 
 
 // 該当予約情報取得
-$sql = "SELECT * FROM rsvDB WHERE empid = :empid AND rsvdate = :rsvdate AND rsvtime = :rsvtime";
+$sql = "SELECT * FROM rsvdb WHERE empid = :empid AND rsvdate = :rsvdate AND rsvtime = :rsvtime";
 $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':empid', $empid);
 $stmt->bindValue(':rsvdate', $reservation_date);
@@ -30,7 +30,7 @@ $unrsvInfo = $stmt->fetch();
 
 // 予約動作
 if ($unrsvInfo['flag'] != 1) {
-    $sql = "UPDATE rsvDB SET stuid = :stuid, comment = :comment, flag = 1 WHERE rsvDB. id=:id";
+    $sql = "UPDATE rsvdb SET stuid = :stuid, comment = :comment, flag = 1 WHERE rsvDB. id=:id";
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':stuid', $id);
     $stmt->bindValue(':comment', $comment);

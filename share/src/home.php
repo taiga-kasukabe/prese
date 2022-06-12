@@ -27,6 +27,7 @@ if(!isset($_SESSION['id'])){
 //データベース情報の読み込み
 include('../conf/config.php');
 
+
 //データベース接続
 try{
     $dbh = new PDO($dsn, $db_username, $db_password);
@@ -170,7 +171,9 @@ $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <p>趣味：<?php echo $employee[$num]['emphobby']; ?></p>
                 <p>コメント：<?php echo $employee[$num]['empcomment']; ?></p><br>
             </div>
-            <a href="./reservation.php"><span class="resv_txt">面談予約はこちら</span></a>
+            <?php
+            print '<a href="./reservation.php?empid='. $employee[$num]['empid']. '&week=0"><span class="resv_txt">面談予約はこちら</span></a>';
+            ?>
         </div>
         <div class="works_modal_close">✖</div>
     </div>
