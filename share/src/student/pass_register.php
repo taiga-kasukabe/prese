@@ -46,6 +46,8 @@
         $stmt->bindValue(':id', $id);
         //$params = array(':password' => $password, ':password_confirm' => $password_confirm);
         $stmt->execute();
+
+        session_destroy();
     ?>
 
     <main>
@@ -55,7 +57,7 @@
         <div class="container">
             <h2>再設定が完了しました</h2>
             <p class="login_link">こちらのリンクからログインしてください</p>
-            <a href="./login_form.php">ログインページへ</a>
+            <a href="./login_form.php" class="login">ログインページへ</a>
         </div>
     </main>
     <?php } else { ?>
