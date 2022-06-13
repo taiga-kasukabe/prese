@@ -114,3 +114,8 @@ button {
 button:hover {
     background-color: #1f72bb;
 }
+.err_msg {
+    width: 150%;
+    padding: 10px 0;
+    color: #ce0404;
+}

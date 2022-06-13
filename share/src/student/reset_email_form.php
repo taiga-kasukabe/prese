@@ -25,6 +25,16 @@
         </div>
         <div class="container">
             <h2>登録したメールアドレスを入力してください</h2>
+            <div class="err_msg">
+                <?php
+                session_start();
+
+                // エラーメッセージが空じゃないの時（バリデーションチェックが問題なかった時）以下の処理を行う
+                if (!empty($_SESSION['err'])) {
+                    echo $_SESSION['err'];
+                }
+                ?>
+            </div>
             <form action="./reset_email.php" method="post" class="form_log">
                 <div>
                     <label>メールアドレス</label>
