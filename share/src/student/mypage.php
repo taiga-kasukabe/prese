@@ -83,8 +83,8 @@ if (!empty($_SESSION['id'])) {
                 <div class="top">
                     <h1><?php echo $member['username']; ?> さん</h1>
                     <div class="link">
-                        <a href="./reset_pass_form.php">パスワード再登録はこちら</a>
-                        <a href="./withdrawal_form.php">退会はこちら</a>
+                        <a href="./reset_pass_form.php" class="link_top">パスワード再設定</a>
+                        <a href="./withdrawal_form.php" class="link_top">退会</a>
                     </div>
                 </div>
                 <div class="rsv_list">
@@ -135,7 +135,7 @@ if (!empty($_SESSION['id'])) {
                             };
                         </script>
                     <?php } else { ?>
-                        <div class="container">
+                        <div class="rsv_content">
                             <p>現在予約している面談はありません</p>
                         </div>
                     <?php } ?>
