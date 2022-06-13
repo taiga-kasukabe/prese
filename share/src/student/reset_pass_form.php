@@ -30,6 +30,8 @@ try{
         </div>
     </header>
 
+    <?php // SESSIONが切れてないか確認
+    if (!empty($_SESSION['id'])) { ?>
     <main>
         <div class="top">
             <h1>パスワード再設定</h1>
@@ -62,4 +64,13 @@ try{
             </form>
         </div>
     </main>
+    <?php } else { ?>
+        <main>
+            <div class="container">
+                <p>セッションが切れました</p>
+                <p>ログインしてください</p>
+                <a href="./login_form.php" class="login">ログインページへ</a>
+            </div>
+        </main>
+    <?php } ?>
 </body>

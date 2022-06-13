@@ -62,8 +62,11 @@ h1 {
     font-weight: normal;
     margin-bottom: 10px;
 }
+h2 {
+    text-align: center;
+}
 .container {
-    width: 300px;
+    width: fit-content;
     margin: 0 auto;
 }
 .top {
@@ -72,46 +75,10 @@ h1 {
     margin-bottom: 30px;
     justify-content: space-between;
 }
-label {
-    display: block;
-    color: #005CAF;
-    padding-left: 5px;
+p {
+    margin: 20px 0;
 }
-input {
-    display: block;
-    appearance: none;
-    outline: 0;
-    border: 1px solid #005CAF;
-    border-radius: 4px;
-
-    width: 300px;
-    padding: 10px 15px;
-    margin: 2px 0 8px 0;
-}
-button {
-    appearance: none;
-    outline: 0;
-    background-color: #005CAF;
-    border: 1px solid #ffffff;
-    border-radius: 3px;
-    color: #ffffff;
-    font-size: 1em;
-    font-family: 'Noto Sans JP', sans-serif;
-    padding: 5px;
-    margin: 20px 0 20px 100px;
-    width: 100px;
-    cursor: pointer;
-    transition: 0.25s;
-    z-index: -1;
-}
-button:hover {
-    background-color: #1f72bb;
-}.err_msg {
-    width: 150%;
-    padding: 10px 0;
-    color: #ce0404;
-}
-a.login {
+a {
     display: block;
     text-align: center;
     width: 180px;
@@ -130,9 +97,6 @@ a.login {
     border-radius: 3px;
     color: #ffffff;
 }
-a.login:hover {
+a:hover {
     background-color: #1f72bb;
-}
-p {
-    text-align: center;
 }
