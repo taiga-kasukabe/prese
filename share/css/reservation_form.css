@@ -55,7 +55,7 @@ body {
 }
 main {
     margin: 0 ;
-    padding: 100px 30px 100px 30px;
+    padding: 100px 50px 100px 50px;
 }
 h1 {
     font-size: 1.2em;
@@ -69,8 +69,60 @@ h1 {
     justify-content: space-between;
 }
 .profile {
-    border: 1px solid #000000;
+    /* border: 2px solid #066fca; */
+    border-radius: 13px;
+    padding: 30px;
+    display: flex;
+    width: 1000px;
+    margin-bottom: 50px;
+    background-color: #b1cee8;
 }
+.emp_img {
+    width: 250px;
+    height: 300px;
+    background-position: center;
+}
+.introduction {
+    margin-left: 20px;
+    padding: 0 20px 20px 20px;
+}
+.profile h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+.introduction p {
+    margin: 8px 0;
+    font-size: 1.1em;
+}
+.container {
+    margin-left: 30px;
+}
+.choose_comment {
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+.topic {
+    margin: 15px 0;
+}
+label {
+    display: block;
+    color: #005CAF;
+    padding-left: 5px;
+}
+input[type=text] {
+    display: block;
+    appearance: none;
+    outline: 0;
+    border: 1px solid #005CAF;
+    border-radius: 4px;
+
+    width: 800px;
+    height: 100px;
+    padding: 10px 15px;
+    margin: 2px 0 8px 0;
+}
+
+/* btn */
 i {
     margin-right: 8px;
 }
@@ -95,7 +147,7 @@ a:link, a:visited, a:active {
     font-weight: 900;
     content: "\f137";
     margin-right: 5px;
-    color: #09bb7a;
+    color: #005CAF;
 }
 .disabled_link::before {
     font-family: "Font Awesome 5 Free";
@@ -109,7 +161,7 @@ a:link, a:visited, a:active {
     font-weight: 900;
     content: "\f138";
     margin-left: 5px;
-    color: #09bb7a;
+    color: #005CAF;
 }
 .usage_guide {
     font-size: 0.85em;
@@ -136,7 +188,7 @@ input[type='radio']+span::before {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     line-height: 12px;
-    color: #2ab683;
+    color: #005CAF;
 }
 input[type='radio']:checked+span::before {
     content: '\f00c';
