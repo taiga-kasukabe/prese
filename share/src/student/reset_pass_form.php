@@ -2,39 +2,54 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>パスワード再登録</title>
+    <title>パスワード再設定</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
+    <link rel="stylesheet" href="../../css/reset_pass_form.css">
+    <script src="https://kit.fontawesome.com/2d726a91d3.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
 </head>
-<?php
 
+<?php
 session_start();
 //データベース情報の読み込み
 include('../../conf/config.php');
-//データベースへ接続、テーブルがない場合は作成
+
 //データベース接続
 try{
     $dbh = new PDO($dsn, $db_username, $db_password);
 } catch (PDOException $e) {
     $msg = $e -> getMessage();
 }
-
-
 ?>
+<body>
+    <header>
+        <div class="bg">
+            <img src="../../images/ntt-east_white.png" id="logo">
+            <a href="./home.php" id="home">ホーム</a>
+        </div>
+    </header>
 
-<h1>パスワード再登録画面</h1>
-<form action="./reset_vali_pass.php" method="post" class="form_log"> 
-<!--<p>こんにちは、<?php echo $member['username']; ?> さん</p>-->
-<div>
-    <div>
-        <label>ログインID：</label>
-        <input type="text" name="id" required>
-    </div>
-        <label>パスワード：</label>
-        <input type="password" name="password"  required>＊８文字以上の半角英数字
-    </div>
-    <div>
-        <label>パスワード（再入力）：</label>
-        <input type="password" name="password_confirm" required>＊８文字以上の半角英数字
-    </div>
-
-<div>
-<input type="submit" value="登録">
+    <main>
+        <div class="top">
+            <h1>パスワード再設定</h1>
+        </div>
+        <div class="container">
+            <form action="./reset_vali_pass.php" method="post" class="form_log"> 
+                <div>
+                    <label>ログインID</label>
+                    <input type="text" name="id" required>
+                </div>
+                <div>
+                    <label>新しいパスワード</label>
+                    <input type="password" name="password" placeholder="半角英数字8文字以上" required>
+                </div>
+                <div>
+                    <label>新しいパスワード（再入力）</label>
+                    <input type="password" name="password_confirm" placeholder="半角英数字8文字以上" required>
+                </div>
+                <button type="submit">登録</button>
+            </form>
+        </div>
+    </main>
+</body>
