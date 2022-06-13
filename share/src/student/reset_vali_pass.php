@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION = array();
+// $_SESSION = array();
 
 //変数定義
 //include("./conf/vari_reset.php");
@@ -51,5 +51,3 @@ if(empty($_SESSION['err'])){
 }
 
 ?>
-<?php echo $msg; ?>
-<?php echo $link; ?>

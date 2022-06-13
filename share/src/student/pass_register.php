@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
 </head>
 
+
 <body>
     <header>
         <div class="bg">
@@ -21,11 +22,11 @@
         </script>
     </header>
 
-    <?php // SESSIONが切れてないか確認
-    if (!empty($_SESSION['id'])) { ?>
-    
-        <?php
+    <?php
         session_start();
+
+        // SESSIONが切れてないか確認
+        if (!empty($_SESSION['id'])) {
 
         //変数定義
         include("../../conf/vari_session_pass.php");
@@ -45,20 +46,18 @@
         $stmt->bindValue(':id', $id);
         //$params = array(':password' => $password, ':password_confirm' => $password_confirm);
         $stmt->execute();
+    ?>
 
-        session_destroy();
-
-        ?>
-        <main>
-            <div class="top">
-                <h1>パスワード再設定</h1>
-            </div>
-            <div class="container">
-                <h2>再設定が完了しました</h2>
-                <p class="login_link">こちらのリンクからログインしてください</p>
-                <a href="./login_form.php">ログインページへ</a>
-            </div>
-        </main>
+    <main>
+        <div class="top">
+            <h1>パスワード再設定</h1>
+        </div>
+        <div class="container">
+            <h2>再設定が完了しました</h2>
+            <p class="login_link">こちらのリンクからログインしてください</p>
+            <a href="./login_form.php">ログインページへ</a>
+        </div>
+    </main>
     <?php } else { ?>
         <main>
             <div class="container">
