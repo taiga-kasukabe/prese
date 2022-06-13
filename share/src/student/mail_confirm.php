@@ -89,10 +89,14 @@ $link = '<a href="./login_form.php">　ログイン　＞</a>';
         </main>
     <?php } else { ?>
         <main>
-            <h1>登録できませんでした</h1>
-            <h2>IDに重複がございました．</h2>
-            <h2>申し訳ございませんが，改めて登録してください</h2>
-            <a href="./register_form.php">会員登録</a>
+            <div class="container">
+                <h2>登録できませんでした</h2>
+                <div class="text">
+                    <p>IDに重複がございました。</p>
+                    <p>申し訳ございませんが、改めて登録してください。</p>
+                </div>
+                <a href="./register_form.php">再登録する</a>
+            </div>
         </main>
     <?php } ?>
     <script src="../../js/browserBack.js"></script>
