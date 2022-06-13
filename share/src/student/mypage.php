@@ -106,9 +106,11 @@ if (!empty($_SESSION['id'])) {
                             </div>
 
                             <?php if ($rsvtime <= date('Y-m-d', strtotime("+2day"))) : ?>
-                                <p>予約日2日前以降は予約の取り消しは出来ません。</p>
-                                <p>これ以降は直接連絡をお取りください。</p>
-                                <p>メールアドレス：hoge@hoge.com</p>
+                                <div class="not_cancel">
+                                    <p>予約日2日前以降は予約の取り消しは出来ません。</p>
+                                    <p>これ以降は直接連絡をお取りください。</p>
+                                    <p>メールアドレス：hoge@hoge.com</p>
+                                </div>
                             <?php else : ?>
                                 <div class="delete_btn">
                                     <form action="./rsv_cancel.php" method="post" onSubmit="return check()">

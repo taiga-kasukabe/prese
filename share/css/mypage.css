@@ -159,3 +159,7 @@ button[type=submit] {
 button[type=submit]:hover {
     background-color: #1c7acd;
 }
+.not_cancel {
+    margin: 15px auto 0 auto;
+    width: fit-content;
+}
