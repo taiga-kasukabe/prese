@@ -1,4 +1,16 @@
-<link rel="stylesheet" href="css/table.css">
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>マイページ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
+    <link rel="stylesheet" href="../../css/reservation_form.css">
+    <link rel="stylesheet" href="../../css/table.css">
+    <script src="https://kit.fontawesome.com/2d726a91d3.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
+</head>
 
 <?php
 session_start();
@@ -38,86 +50,107 @@ $stmt->execute();
 $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<body>
+    <header>
+        <div class="bg">
+            <img src="../../images/ntt-east_white.png" id="logo">
+            <a href="./home.php" id="home">ホーム</a>
+        </div>
+    </header>
 
-<!-- 表示画面 -->
-<h1>予約画面</h1>
-<h2><?php echo $employee['empname']; ?></h2>
-<img src="../../../sato/images/<?php echo $employee['empimg_id']; ?>" alt="社員画像" height="300">
-<p>年次：<?php echo $employee['empyear']; ?>年目</p>
-<p>役職：<?php echo $employee['empjob']; ?></p>
-<p>職種：<?php echo $employee['empcareer']; ?></p>
-<p>趣味：<?php echo $employee['emphobby']; ?></p>
+    <main>
+        <?php if (!empty($_SESSION['id'])) { ?>
+            <div class="top">
+                <h1>予約画面</h1>
+            </div>
+            <div class="profile">
+                <h2><?php echo $employee['empname']; ?></h2>
+                <img src="../../../sato/images/<?php echo $employee['empimg_id']; ?>" alt="社員画像" height="300">
+                <p>年次：<?php echo $employee['empyear']; ?>年目</p>
+                <p>役職：<?php echo $employee['empjob']; ?></p>
+                <p>職種：<?php echo $employee['empcareer']; ?></p>
+                <p>趣味：<?php echo $employee['emphobby']; ?></p>
+            </div>
 
-<h2>表から予約したい日程を選択してください</h2>
+            <h2>表から予約したい日程を選択してください</h2>
 
-<!-- 表示週の変更ボタン -->
-<?php
-if ($week > 0) {
-    echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week - 1 . '">前の1週間</a></br>';
-} else {
-    echo '<del>前の1週間</del></br>';
-}
-echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 .  '">次の1週間</a>';
-?>
+            <div class="table">
+                <!-- 表示週の変更ボタン -->
+                <div class="move_btn">
+                    <?php
+                        if ($week > 0) {
+                            echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week - 1 . '" class="prev">前の1週間</a>';
+                        } else {
+                            echo '<a tabindex="-1" class="prev disabled_link">前の1週間</a>';
+                        }
+                        echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 .  '" class="next">次の1週間</a>';
+                    ?>
+                </div>
+            
+                <!-- 予約表 -->
+                <form action="./reservation_confirm.php" method="POST">
+                    <table>
+                        <tr>
+                            <!-- 日程表示 -->
+                            <th></th>
+                            <?php for ($i = 2 + $week * 7; $i <= 7 * ($week + 1) + 1; $i++)
+                                print '<th class="date">' . date('m/d', strtotime($i . 'day')) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($i . 'day'))))] . ')</th>';
+                            ?>
+                        </tr>
+                        <?php
+                        for ($time = 1000; $time <= 1600; $time += 100) {
+                            if ($time == 1200) {
+                                continue;
+                            }
+                            echo '<tr>
+                        <th class="time">' . substr_replace($time, ':', 2, 0) . '〜</th>';
+                            for ($i = 2 + $week * 7; $i <= 7 * ($week + 1) + 1; $i++) {
+                                $cnt = 0;
+                                // 未予約日程を表示
+                                for ($j = 0; $j < count($unrsvInfo); $j++) {
+                                    if ($unrsvInfo[$j]['rsvdate'] == date('Y-m-d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == $time) {
+                                        print '<td>
+                                <label><input type="radio" id="checkbox" name="free" value="' . $empid . ':' .  $time . ':' . date('Y-m-d', strtotime($i . 'day')) . ':' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '" required>
+                                <span></span></label></td>';
+                                        // print '<td><a href="./reservation_comment.php?empid=' . $empid . '&time=' . $time . '&date=' . date('Y-m-d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</a></td>';
 
-<!-- 予約表 -->
-<form action="./reservation_confirm.php" method="POST">
-    <table>
-        <tr>
-            <!-- 日程表示 -->
-            <th></th>
-            <?php for ($i = 2 + $week * 7; $i <= 7 * ($week + 1) + 1; $i++)
-                print '<th>' . date('m/d', strtotime($i . 'day')) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($i . 'day'))))] . ')</th>';
-            ?>
-        </tr>
-        <?php
-        for ($time = 1000; $time <= 1600; $time += 100) {
-            if ($time == 1200) {
-                continue;
-            }
-            echo '<tr>
-        <th>' . substr_replace($time, ':', 2, 0) . '〜</th>';
-            for ($i = 2 + $week * 7; $i <= 7 * ($week + 1) + 1; $i++) {
-                $cnt = 0;
-                // 未予約日程を表示
-                for ($j = 0; $j < count($unrsvInfo); $j++) {
-                    if ($unrsvInfo[$j]['rsvdate'] == date('Y-m-d', strtotime($i . 'day')) && date('Hi', strtotime($unrsvInfo[$j]['rsvtime'])) == $time) {
-                        print '<td>
-                <input type="radio" name="free" value="' . $empid . ':' .  $time . ':' . date('Y-m-d', strtotime($i . 'day')) . ':' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '" required>
-                </td>';
-                        // print '<td><a href="./reservation_comment.php?empid=' . $empid . '&time=' . $time . '&date=' . date('Y-m-d', strtotime($i . 'day')) . '&weekJa=' . date('w', strtotime(date('Y-m-d', strtotime($i . 'day')))) . '">◉</a></td>';
+                                        $cnt++;
+                                    }
+                                }
 
-                        $cnt++;
-                    }
-                }
+                                // 予約済み日程を表示
+                                for ($k = 0; $k < count($rsvInfo); $k++) {
+                                    if ($rsvInfo[$k]['rsvdate'] == date('Y-m-d', strtotime($i . 'day')) && date('Hi', strtotime($rsvInfo[$k]['rsvtime'])) == $time) {
+                                        print '<td>x</td>';
+                                        $cnt++;
+                                    }
+                                }
+                                if ($cnt > 0) {
+                                    continue;
+                                }
+                                print '<td>-</td>';
+                            }
+                            echo '</tr>';
+                        }
+                        ?>
+                    </table>
+                    <div class="usage_guide">
+                        <p>⚪︎：予約可能&nbsp;&nbsp;&nbsp;&nbsp;x：他の学生が予約済み&nbsp;&nbsp;&nbsp;&nbsp;-：予定が空いていません</p>
+                    </div>
 
-                // 予約済み日程を表示
-                for ($k = 0; $k < count($rsvInfo); $k++) {
-                    if ($rsvInfo[$k]['rsvdate'] == date('Y-m-d', strtotime($i . 'day')) && date('Hi', strtotime($rsvInfo[$k]['rsvtime'])) == $time) {
-                        print '<td>x</td>';
-                        $cnt++;
-                    }
-                }
-                if ($cnt > 0) {
-                    continue;
-                }
-                print '<td>-</td>';
-            }
-            echo '</tr>';
-        }
-        ?>
-    </table><br>
-    相談内容：
-    <input type="text" name="comment"><br><br>
-    <input type="submit" value="予約確認画面へ">
-</form>
-
-<p>⚪︎：予約可能</p>
-<p>x：他の学生が予約済み</p>
-<p>-：予定が空いていません</p><br>
-
-<input type="button" onclick="location.href='./home.php'" value="戻る">
-
+                    相談内容：
+                    <input type="text" name="comment"><br><br>
+                    <input type="submit" value="予約確認画面へ">
+                </form>
+                <input type="button" onclick="location.href='./home.php'" value="戻る">
+            </div>
+        <?php } else { ?>
+        <h2>セッションが切れました</h2>
+        <h2>ログインしてください</h2>
+        <a href="./login_form.php">ログインページへ</a>
+    <?php } ?>
+</main>
 <!-- for jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="../../js/browserBack.js"></script>
+</body>
