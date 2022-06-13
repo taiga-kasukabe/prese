@@ -62,7 +62,6 @@ try{
                 </div>
                 <button type="submit">登録</button>
             </form>
-            <?php var_dump($_SESSION['id']) ?>
         </div>
     </main>
     <?php } else { ?>
