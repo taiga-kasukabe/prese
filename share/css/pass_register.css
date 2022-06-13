@@ -75,10 +75,13 @@ h2 {
     margin-bottom: 30px;
     justify-content: space-between;
 }
-p {
+p.login_link {
     margin: 20px 0;
 }
-a {
+p {
+    text-align: center;
+}
+a.login {
     display: block;
     text-align: center;
     width: 180px;
@@ -97,6 +100,6 @@ a {
     border-radius: 3px;
     color: #ffffff;
 }
-a:hover {
+a.login:hover {
     background-color: #1f72bb;
 }
