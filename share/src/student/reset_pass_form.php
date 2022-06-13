@@ -36,6 +36,16 @@ try{
         </div>
         <div class="container">
             <form action="./reset_vali_pass.php" method="post" class="form_log"> 
+                <div class="err_msg">
+                    <?php
+                    // エラーメッセージが空じゃないの時（バリデーションチェックが問題なかった時）以下の処理を行う
+                    if (!empty($_SESSION['err'])) {
+                        foreach ($_SESSION['err'] as $value) {
+                            echo $value . "<br>"; //hタグ内の改行はbr
+                        }
+                    }
+                    ?>
+                </div>
                 <div>
                     <label>ログインID</label>
                     <input type="text" name="id" required>

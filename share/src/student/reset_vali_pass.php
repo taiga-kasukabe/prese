@@ -21,12 +21,12 @@ try{
 
 //正規表現でパスワードをバリデーション
 if (strlen($_POST['password']) < 8 || !preg_match("/^[a-zA-Z0-9]+$/", $_POST['password'])) {
-    $err_msg['pass_length'] = 'パスワードは8文字以上の半角英数字を入力してください';
+    $err_msg['pass_length'] = '・パスワードは8文字以上の半角英数字を入力してください';
 }
 
 //パスワード再入力のチェック
 if ($_POST['password'] != $_POST['password_confirm']){
-    $err_msg['pass_confirm'] = 'パスワード(確認)が一致しません';
+    $err_msg['pass_confirm'] = '・パスワード（再入力）が一致しません';
 }
 
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -46,8 +46,8 @@ if(empty($_SESSION['err'])){
     header('Location: ./pass_register.php');
 } else {
     // パスワード再登録やり直し
-    $msg = "再入力と一致していません";
-    $link = '<a href="./reset_pass_form.php">戻る</a>';
+    header('Location: ./reset_pass_form.php');
+
 }
 
 ?>
