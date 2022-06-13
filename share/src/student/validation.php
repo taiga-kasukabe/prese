@@ -18,7 +18,7 @@ session_start();
 
     // バリデーションチェックを行う
     // username_kanaがカナのみか
-    if(!preg_match("/^[ァ-ヾ]+$/u", $username_kana)){
+    if(!preg_match("/^([ァ-ヾ]| |　)+$/u", $username_kana)){
         $err_msg['username_kana'] = '・姓名(カナ)にはカタカナを入力してください';
     }
 

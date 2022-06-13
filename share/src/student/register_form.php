@@ -74,7 +74,7 @@
 
                 <div>
                     <label>電話番号</label>
-                    <input type="text" name="tel" value="<?php if (!empty($tel)) {
+                    <input type="text" name="tel" placeholder="ハイフンなし半角" value="<?php if (!empty($tel)) {
                                                                 echo $tel;
                                                             } ?>" required>
                 </div>
