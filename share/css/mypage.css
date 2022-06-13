@@ -138,3 +138,9 @@ button[type=submit] {
 button[type=submit]:hover {
     background-color: #1c7acd;
 }
+.container {
+    margin: 20px auto 30px auto;
+    padding: 15px 35px;
+    width: fit-content;
+    border-radius: 8px;
+}
