@@ -64,7 +64,8 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <h1>予約画面</h1>
             </div> -->
             <div class="profile">
-                <div class="emp_img" style="background-image: url(../../../sato/images/<?php echo $employee['empimg_id']; ?>);background-size:cover;">
+                <div class="emp_img">
+                <img src="../../../sato/images/<?php echo $employee['empimg_id']; ?>" alt="社員画像">
                 </div>
                 <div class="introduction">
                     <h2><?php echo $employee['empname']; ?></h2>
@@ -92,7 +93,7 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 
                     <!-- 予約表 -->
-                    <form action="./reservation_confirm.php" method="POST">
+                    <form action="./reservation_confirm.php" method="POST" id="reservation">
                         <table>
                             <tr>
                                 <!-- 日程表示 -->
@@ -143,11 +144,13 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <div class="topic">
                             <label>相談内容</label>
-                            <input type="text" name="comment" placeholder="こんなこと書いてね的な文章">
+                            <textarea name="comment" placeholder="こんなこと書いてね的な文章"></textarea>
                         </div>
-                        <input type="submit" value="予約確認画面へ">
                     </form>
-                    <input type="button" onclick="location.href='./home.php'" value="戻る">
+                    <div class="btn">
+                            <button onclick="location.href='./home.php'">戻る</button>
+                            <button type="submit" id="submit_btn" form="reservation">予約確認画面へ</button>
+                    </div>
                 </div>
             </div>
         <?php } else { ?>
@@ -159,4 +162,5 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!-- for jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="../../js/browserBack.js"></script>
+<script src="../../js/schedule_disabled.js"></script>
 </body>

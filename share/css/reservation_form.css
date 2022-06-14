@@ -13,7 +13,7 @@ html {
 
 /* header */
 header {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -55,7 +55,7 @@ body {
 }
 main {
     margin: 0 ;
-    padding: 100px 50px 100px 50px;
+    padding: 140px 50px 100px 50px;
 }
 h1 {
     font-size: 1.2em;
@@ -69,57 +69,45 @@ h1 {
     justify-content: space-between;
 }
 .profile {
-    /* border: 2px solid #066fca; */
-    border-radius: 13px;
-    padding: 30px;
     display: flex;
     width: 1000px;
-    margin-bottom: 50px;
-    background-color: #b1cee8;
+    margin: 0 auto 70px auto;
 }
 .emp_img {
     width: 250px;
-    height: 300px;
+    height: 350px;
     background-position: center;
 }
+.emp_img img {
+    width: 250px;
+    height: 350px;
+    object-fit: cover;
+}
 .introduction {
-    margin-left: 20px;
-    padding: 0 20px 20px 20px;
+    padding: 20px 40px;
+    width: 750px;
+    /* background-color: #005CAF; */
+    border: 1px solid #b8b7b7;
+    border-left: none;
 }
 .profile h2 {
-    font-size: 1.8em;
+    font-size: 1.6em;
     margin-bottom: 20px;
 }
 .introduction p {
     margin: 8px 0;
-    font-size: 1.1em;
+    font-size: 1em;
 }
 .container {
-    margin-left: 30px;
+    margin: 0 auto 0 auto;
+    width: fit-content;
 }
 .choose_comment {
     font-weight: normal;
-    margin-bottom: 20px;
-}
-.topic {
-    margin: 15px 0;
-}
-label {
-    display: block;
-    color: #005CAF;
-    padding-left: 5px;
-}
-input[type=text] {
-    display: block;
-    appearance: none;
-    outline: 0;
-    border: 1px solid #005CAF;
-    border-radius: 4px;
-
-    width: 800px;
-    height: 100px;
-    padding: 10px 15px;
-    margin: 2px 0 8px 0;
+    margin-bottom: 30px;
+    font-size: 1.4em;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #b8b7b7;
 }
 
 /* btn */
@@ -137,7 +125,7 @@ a:link, a:visited, a:active {
     justify-content: space-between;
 }
 .prev {
-    margin-left: 72.25px;
+    margin-left: 97.05px;
 }
 .disabled_link {
     color: #c7c7c7;
@@ -192,4 +180,57 @@ input[type='radio']+span::before {
 }
 input[type='radio']:checked+span::before {
     content: '\f00c';
+}
+.topic {
+    margin: 25px 0;
+}
+label {
+    display: block;
+    color: #005CAF;
+    padding-left: 5px;
+}
+textarea {
+    display: block;
+    appearance: none;
+    outline: 0;
+    border: 1px solid #005CAF;
+    border-radius: 4px;
+
+    width: 700px;
+    height: 100px;
+    padding: 10px 15px;
+    margin: 5px 0 30px 0;
+    text-align: left;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+textarea::placeholder {
+    color: #6d6d6d;
+    font-size: 1.1em;
+}
+.btn {
+    width: fit-content;
+    margin: 0 auto;
+}
+button {
+    appearance: none;
+    outline: 0;
+    background-color: #005CAF;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 1em;
+    font-family: 'Noto Sans JP', sans-serif;
+    padding: 5px 15px;
+    margin: 20px 10px;
+    /* width: 100px; */
+    cursor: pointer;
+    transition: 0.25s;
+    z-index: -1;
+}
+button:hover {
+    background-color: #1f72bb;
+}
+button:disabled {
+    background-color: #c7c7c7;
+    cursor: default;
 }
