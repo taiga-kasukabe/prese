@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>マイページ</title>
+    <title>面談予約</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
     <link rel="stylesheet" href="../../css/reservation_form.css">
