@@ -14,13 +14,9 @@
 <?php
 session_start();
 
-$_POST['free'] = "1:1500:2022-06-18:6";
-// var_dump($_POST['free']);
-$comment = '';
-
 // 変数定義
 include('../../conf/config.php');
-// $comment = $_POST['comment'];
+$comment = $_POST['comment'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
 list($empid, $time, $reservation_date, $weekNum) = explode(":", $_POST['free']);
 
