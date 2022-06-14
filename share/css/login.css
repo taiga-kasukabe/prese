@@ -110,6 +110,7 @@ button {
     border: 0;
     padding: 10px 15px;
     color: #005CAF;
+    border: 1px solid #005CAF;
     border-radius: 3px;
     width: 250px;
     cursor: pointer;
@@ -120,4 +121,28 @@ button:hover {
     background-color: #005CAF;
     color: #ffffff;
     border: 1px solid #ffffff;
+}
+a {
+    display: block;
+    position: relative;
+    width: fit-content;
+    margin: 10px auto;
+    padding-bottom: 1px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 0.9em;
+}
+a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 0%;
+    border-bottom: 1px solid #ffffff;
+    transition: .25s;
+}
+a:hover::before {
+    width: 100%;
 }

@@ -46,6 +46,6 @@ session_start();
 
         <button type="submit" id="login_btn">Login</button>
     </form>
-    <a href="./reset_email_form.php">パスワード再登録はこちら</a>
+    <a href="./reset_email_form.php">パスワードを忘れた方はこちら ＞</a>
 </div>
 </body>
