@@ -58,7 +58,25 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <img src="./images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">
             <p>年次：<?php echo $employee[$n]['empyear']; ?>年目</p>
             <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
+
+            
+            <input id="copyTarget" type="text" value=<?php echo $employee[$n]['empcareer']; ?> readonly>
+            <button onclick="copyToClipboard()">copy</button>
+            <script>
+            function copyToClipboard() {
+            // コピー対象をJavaScript上で変数として定義する
+            var copyTarget = document.getElementById("copyTarget");
+            // コピー対象のテキストを選択する
+            copyTarget.select();
+            // 選択しているテキストをクリップボードにコピーする
+            document.execCommand("Copy");
+            // コピーをお知らせする
+            alert("コピーできました！ : " + copyTarget.value);
+            }
+            </script>
+            
             <p>職種：<?php echo $employee[$n]['empcareer']; ?></p><br><br>
+            
             <div class="mouseoverChild">
                 <?php echo $employee[$n]['empname']; ?>
                 <img src="./images/<?php echo $employee[$n]['empimg_id']; ?>" alt="社員画像" height="300">

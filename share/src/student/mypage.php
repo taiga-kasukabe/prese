@@ -77,18 +77,17 @@ if (!empty($_SESSION['id'])) {
     </header>
 
     <main>
-
-        <body>
-            <?php if (!empty($_SESSION['id'])) { ?>
-                <div class="top">
-                    <h1><?php echo $member['username']; ?> さん</h1>
-                    <div class="link">
-                        <a href="./reset_pass_form.php">パスワード再登録はこちら</a>
-                        <a href="./withdrawal_form.php">退会はこちら</a>
-                    </div>
+        <?php if (!empty($_SESSION['id'])) { ?>
+            <div class="top">
+                <h1><?php echo $member['username']; ?> さん</h1>
+                <div class="link">
+                    <a href="./reset_pass_form.php" class="link_top">パスワード再設定</a>
+                    <a href="./withdrawal_form.php" class="link_top">退会</a>
                 </div>
-                <div class="rsv_list">
-                    <h2>予約内容</h2>
+            </div>
+            <div class="rsv_list">
+                <h2>予約内容</h2>
+                <?php if(!empty($stuid)) { ?>
                     <?php for ($n = 0; $n < count($stuid); $n++) { ?>
                         <div class="rsv_content">
                             <div class="rsv_text">
@@ -107,9 +106,11 @@ if (!empty($_SESSION['id'])) {
                             </div>
 
                             <?php if ($rsvtime <= date('Y-m-d', strtotime("+2day"))) : ?>
-                                <p>予約日2日前以降は予約の取り消しは出来ません。</p>
-                                <p>これ以降は直接連絡をお取りください。</p>
-                                <p>メールアドレス：hoge@hoge.com</p>
+                                <div class="not_cancel">
+                                    <p>予約日2日前以降は予約の取り消しは出来ません。</p>
+                                    <p>これ以降は直接連絡をお取りください。</p>
+                                    <p>メールアドレス：hoge@hoge.com</p>
+                                </div>
                             <?php else : ?>
                                 <div class="delete_btn">
                                     <form action="./rsv_cancel.php" method="post" onSubmit="return check()">
@@ -128,17 +129,21 @@ if (!empty($_SESSION['id'])) {
                             if (result) {
                                 return ture;
                             } else {
-                                alert("キャンセルしました");
+                                    alert("キャンセルしました");
                                 return false;
                             }
                         };
                     </script>
-                </div>
-            <?php } else { ?>
-                <h2>セッションが切れました</h2>
-                <h2>ログインしてください</h2>
-                <a href="./login_form.php">ログインページへ</a>
-            <?php } ?>
-        </body>
+                <?php } else { ?>
+                    <div class="rsv_content">
+                        <p>現在予約している面談はありません</p>
+                    </div>
+                <?php } ?>
+            </div>
+        <?php } else { ?>
+            <h2>セッションが切れました</h2>
+            <h2>ログインしてください</h2>
+            <a href="./login_form.php">ログインページへ</a>
+        <?php } ?>
     </main>
 </body>

@@ -15,7 +15,7 @@ try {
 }
 
 
-//メールアドレスの重複チェック
+//メールアドレスの存在チェック
 //データベース内のメールアドレスを取得
 $sql_mail = "SELECT * FROM users_table WHERE mail = :mail";
 $stmt = $dbh->prepare($sql_mail);
@@ -25,15 +25,12 @@ $mail_mem = $stmt->fetch();
 
 //if (!empty($member AND $mail_mem)){
 if (!empty($mail_mem)) {
-  //$_SESSION['id'] = $member['id'];
-  //$_SESSION['user']['mail'] = $_POST["mail"];
+  $_SESSION['id'] = $mail_mem['id'];
   header('Location: ./reset_pass_form.php');
-  //$link = '<a href="./reset_pass_form.php">こちらから</a>';
-  //$msg = 'パスワード再登録画面へ';
 } else {
-  $msg = 'IDもしくはメールアドレスが登録されていません';
+  $_SESSION['err'] = array();
+  $_SESSION['err'] = 'メールアドレスが登録されていません';
+  header('Location: ./reset_email_form.php');
 }
 
 ?>
-//<?php echo $link; ?>
-<?php echo $msg; ?>

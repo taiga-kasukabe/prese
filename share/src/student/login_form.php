@@ -24,6 +24,8 @@ session_start();
     </div>
 </header>
 
+
+
 <div class="container">
     <h1>LOGIN</h1>
 
@@ -44,5 +46,6 @@ session_start();
 
         <button type="submit" id="login_btn">Login</button>
     </form>
+    <a href="./reset_email_form.php">パスワードを忘れた方はこちら ＞</a>
 </div>
 </body>
