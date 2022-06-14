@@ -12,7 +12,6 @@ try {
   $msg = $e->getMessage();
 }
 
-
 $sql = "SELECT * FROM emplogin WHERE eid = :eid";
 $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':eid', $eid);

@@ -54,7 +54,7 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <body>
-    <?php if (!empty($employee)) { ?>
+    <?php if (!empty($_SESSION['eid'])) { ?>
         <h1><?php echo $employee['empname']; ?>さんの予約確認ページ</h1>
         <table>
             <tr>

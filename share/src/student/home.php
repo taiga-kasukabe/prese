@@ -16,14 +16,7 @@
 </head>
 
 <?php
-
 session_start();
-
-if (!isset($_SESSION['id'])) {
-    echo 'ログインが必要です';
-    exit;
-}
-
 
 //データベース情報の読み込み
 include('../../conf/config.php');
