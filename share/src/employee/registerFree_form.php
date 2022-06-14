@@ -20,7 +20,6 @@ session_start();
 include('../../conf/config.php');
 $week = $_GET['week'];
 $weekJa = array("日", "月", "火", "水", "木", "金", "土");
-$empid = $_SESSION['eid'];
 
 //データベース接続
 try {
@@ -31,13 +30,17 @@ try {
 
 
 
-// 社員リスト取得
-$sql = "SELECT * FROM emp_table WHERE empid = :empid";
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue(':empid', $empid);
-$stmt->execute();
-$employee = $stmt->fetch();
-if (!empty($employee)) {
+if (!empty($_SESSION['eid'])) {
+
+    $empid = $_SESSION['eid'];
+
+    // 社員リスト取得
+    $sql = "SELECT * FROM emp_table WHERE empid = :empid";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':empid', $empid);
+    $stmt->execute();
+    $employee = $stmt->fetch();
+
     // 未予約情報取得
     $sql = "SELECT * FROM rsvdb WHERE empid = :empid AND flag = 0";
     $stmt = $dbh->prepare($sql);
@@ -63,7 +66,7 @@ if (!empty($employee)) {
     </header>
 
     <main>
-        <?php if (!empty($employee)) { ?>
+        <?php if (!empty($_SESSION['eid'])) { ?>
 
             <h1><?php echo $employee['empname']; ?> さん</h1>
             <div class="container">
