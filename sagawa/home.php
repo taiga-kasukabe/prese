@@ -60,19 +60,22 @@ $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <p>役職：<?php echo $employee[$n]['empjob']; ?></p>
 
             
-            <input id="copyTarget" type="text" value=<?php echo $employee[$n]['empcareer']; ?> readonly>
-            <button onclick="copyToClipboard()">copy</button>
+            <p id="copy-text"><?php echo $employee[$n]['empcareer']; ?></p>
+            <button id="copy-btn">メールアドレスをコピー</button>
+            
             <script>
-            function copyToClipboard() {
-            // コピー対象をJavaScript上で変数として定義する
-            var copyTarget = document.getElementById("copyTarget");
-            // コピー対象のテキストを選択する
-            copyTarget.select();
-            // 選択しているテキストをクリップボードにコピーする
-            document.execCommand("Copy");
-            // コピーをお知らせする
-            alert("コピーできました！ : " + copyTarget.value);
-            }
+            let copy_text = document.querySelector('#copy-text').textContent;
+            let copy_btn = document.querySelector('#copy-btn');
+
+            copy_btn.addEventListener(`click`, () => {
+                navigator.clipboard.writeText(copy_text).then(() => {
+		        // true
+                    alert("コピーできました！ : ");
+	            }, () => {
+		        // false
+                    alert("コピーできていません : ");
+	            });
+            });                
             </script>
             
             <p>職種：<?php echo $employee[$n]['empcareer']; ?></p><br><br>
