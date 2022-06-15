@@ -5,8 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <title>内々定者マイページ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
     <link rel="stylesheet" href="../../css/table.css">
     <link rel="stylesheet" href="../../css/popup_emp.css">
+    <link rel="stylesheet" href="../../css/empmypage.css">
+    <script src="https://kit.fontawesome.com/2d726a91d3.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
 </head>
 
 <?php
@@ -54,92 +59,99 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <body>
+    <header>
+        <div class="bg">
+            <img src="../../images/ntt-east_white.png" id="logo">
+        </div>
+    </header>
+
     <?php if (!empty($_SESSION['eid'])) { ?>
-        <h1><?php echo $employee['empname']; ?>さんの予約確認ページ</h1>
-        <table>
-            <tr>
-                <th>日付</th>
-                <th>時間</th>
-                <th>予約状況</th>
-                <th>確認</th>
-            </tr>
-            <?php for ($i = 0; $i < count($rsvInfo); $i++) {
-                if (date('Y-m-d') <= $rsvInfo[$i]['rsvdate']) { ?>
-                    <tr>
-                        <?php print '<td>' . date('m/d', strtotime($rsvInfo[$i]['rsvdate'])) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($rsvInfo[$i]['rsvtime']))))] . ')' . '</td><td>' . date('H:i', strtotime($rsvInfo[$i]['rsvtime'])) . '〜' . date('H:i', strtotime($rsvInfo[$i]['rsvtime'] . " +1 hours")) . '</td><td>';
-                        if ($rsvInfo[$i]['flag'] == 1) {
-                            print '予約済み';
-                        } else {
-                            print '空き';
-                        }
-                        print '</td><td>'; ?>
-                        <?php if ($rsvInfo[$i]['flag'] == 1) { ?>
-                            <div class="works_modal_open" data-modal-open="modal-<?php echo $i; ?>">
-                                <input type="button" value="予約確認">
-                            </div>
-                        <?php } ?>
-                        </td>
-                    </tr>
+        <main>
+            <h1><?php echo $employee['empname']; ?> さん</h1>
+            <table>
+                <tr>
+                    <th>日付</th>
+                    <th>時間</th>
+                    <th>予約状況</th>
+                    <th>確認</th>
+                </tr>
+                <?php for ($i = 0; $i < count($rsvInfo); $i++) {
+                    if (date('Y-m-d') <= $rsvInfo[$i]['rsvdate']) { ?>
+                        <tr>
+                            <?php print '<td>' . date('m/d', strtotime($rsvInfo[$i]['rsvdate'])) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($rsvInfo[$i]['rsvtime']))))] . ')' . '</td><td>' . date('H:i', strtotime($rsvInfo[$i]['rsvtime'])) . '〜' . date('H:i', strtotime($rsvInfo[$i]['rsvtime'] . " +1 hours")) . '</td><td>';
+                            if ($rsvInfo[$i]['flag'] == 1) {
+                                print '予約済み';
+                            } else {
+                                print '空き';
+                            }
+                            print '</td><td>'; ?>
+                            <?php if ($rsvInfo[$i]['flag'] == 1) { ?>
+                                <div class="works_modal_open" data-modal-open="modal-<?php echo $i; ?>">
+                                    <button>予約確認</button>
+                                </div>
+                            <?php } ?>
+                            </td>
+                        </tr>
 
-                    <!-- モーダルウインドウここから -->
-                    <div class="works_modal_wrapper" data-modal="modal-<?php echo $i; ?>">
-                        <div class="works_modal_mask"></div>
-                        <div class="works_modal_window">
-                            <div class="works_modal_content">
-                                <p>学生情報</p>
-                                <p>名前：
-                                    <?php for ($j = 0; $j < count($stuInfo); $j++) {
-                                        if ($rsvInfo[$i]['stuid'] == $stuInfo[$j]['id']) {
-                                            echo $stuInfo[$j]['username'];
-                                            $num = $j;
-                                        }
-                                    } ?>さん</p>
-                                <p>大学情報：<?php echo $stuInfo[$num]['school'] . ' ' . $stuInfo[$num]['department1'] . ' ' . $stuInfo[$num]['department2'] . ' ' . $stuInfo[$num]['student_year']; ?></p>
-                                <p>相談内容：<?php echo $rsvInfo[$i]['comment']; ?></p>
-                                <p>メールアドレス：</p>
-                                <p id="copy-text"><?php  echo $stuInfo[$num]['mail']; ?></p>
-                                <button id="copy-btn">メールアドレスをコピー</button>
-            
-                                <script>
-                                let copy_text = document.querySelector('#copy-text').textContent;
-                                let copy_btn = document.querySelector('#copy-btn');
+                        <!-- モーダルウインドウここから -->
+                        <div class="works_modal_wrapper" data-modal="modal-<?php echo $i; ?>">
+                            <div class="works_modal_mask"></div>
+                            <div class="works_modal_window">
+                                <div class="works_modal_content">
+                                    <p>学生情報</p>
+                                    <p>名前：
+                                        <?php for ($j = 0; $j < count($stuInfo); $j++) {
+                                            if ($rsvInfo[$i]['stuid'] == $stuInfo[$j]['id']) {
+                                                echo $stuInfo[$j]['username'];
+                                                $num = $j;
+                                            }
+                                        } ?>さん</p>
+                                    <p>大学情報：<?php echo $stuInfo[$num]['school'] . ' ' . $stuInfo[$num]['department1'] . ' ' . $stuInfo[$num]['department2'] . ' ' . $stuInfo[$num]['student_year']; ?></p>
+                                    <p>相談内容：<?php echo $rsvInfo[$i]['comment']; ?></p>
+                                    <p>メールアドレス：</p>
+                                    <p id="copy-text"><?php  echo $stuInfo[$num]['mail']; ?></p>
+                                    <button id="copy-btn">メールアドレスをコピー</button>
+                
+                                    <script>
+                                    let copy_text = document.querySelector('#copy-text').textContent;
+                                    let copy_btn = document.querySelector('#copy-btn');
 
-                                copy_btn.addEventListener(`click`, () => {
-                                    navigator.clipboard.writeText(copy_text).then(() => {
-		                            // true
-                                    alert("コピーしました！ : ");
-	                                }, () => {
-		                            // false
-                                    alert("コピーできていません : ");
-	                                });
-                                });                
-                                </script>
+                                    copy_btn.addEventListener(`click`, () => {
+                                        navigator.clipboard.writeText(copy_text).then(() => {
+                                        // true
+                                        alert("コピーしました！ : ");
+                                        }, () => {
+                                        // false
+                                        alert("コピーできていません : ");
+                                        });
+                                    });                
+                                    </script>
+                                </div>
+                                <div class="works_modal_close">✖</div>
                             </div>
-                            <div class="works_modal_close">✖</div>
                         </div>
-                    </div>
-                    <!-- モーダルウインドウここまで -->
+                        <!-- モーダルウインドウここまで -->
 
-            <?php }
-            } ?>
-        </table>
+                <?php }
+                } ?>
+            </table>
 
-        <form action="./registerFree_form.php" method="get">
-            <input type="hidden" name="week" value="0">
-            <input type="submit" value="追加">
-        </form>
-
-        <form action="./editFree_form.php" method="get">
-            <input type="hidden" name="week" value="0">
-            <input type="submit" value="削除">
-        </form>
-
+            <div class="btn_list">
+                <form action="./registerFree_form.php" method="get">
+                    <input type="hidden" name="week" value="0">
+                    <button type="submit" class="schedule">追加</button>
+                </form>
+                <form action="./editFree_form.php" method="get">
+                    <input type="hidden" name="week" value="0">
+                    <button type="submit" class="schedule">削除</button>
+                </form>
+            </div>
+        </main>
     <?php } else { ?>
         <h1>セッションが切れました</h1>
         <h2>ログインし直してください</h2>
         <a href="./emplogin_form.php">ログイン画面へ</a>
     <?php } ?>
-
     <script src="../../js/modal.js"></script>
 </body>
 
