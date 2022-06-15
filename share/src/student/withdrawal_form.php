@@ -22,7 +22,7 @@
 
     <main>
         <div class="container">
-            <h2>退会する場合にはこちらのボタンをクリック</h2>
+            <h2>退会する場合はこちらのボタンをクリック</h2>
             <div class="btn_list">
                 <button onclick='location.href="./mypage.php"' id="page_back">戻る</button>
                 <button type="button" id="btn">退会</button>
