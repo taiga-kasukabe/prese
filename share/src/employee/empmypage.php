@@ -149,9 +149,11 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </main>
     <?php } else { ?>
-        <h1>セッションが切れました</h1>
-        <h2>ログインし直してください</h2>
-        <a href="./emplogin_form.php">ログイン画面へ</a>
+        <div class="container">
+            <p>セッションが切れました</p>
+            <p>ログインしてください</p>
+            <a href="./login_form.php" class="login">ログインページへ</a>
+        </div>
     <?php } ?>
     <script src="../../js/modal.js"></script>
 </body>
