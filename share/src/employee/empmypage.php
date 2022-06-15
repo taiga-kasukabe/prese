@@ -96,8 +96,8 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     } ?>さん</p>
                                 <p>大学情報：<?php echo $stuInfo[$num]['school'] . ' ' . $stuInfo[$num]['department1'] . ' ' . $stuInfo[$num]['department2'] . ' ' . $stuInfo[$num]['student_year']; ?></p>
                                 <p>相談内容：<?php echo $rsvInfo[$i]['comment']; ?></p>
-
-                                <p id="copy-text">メールアドレス：<?php  echo $stuInfo[$num]['mail']; ?></p>
+                                <p>メールアドレス：</p>
+                                <p id="copy-text"><?php  echo $stuInfo[$num]['mail']; ?></p>
                                 <button id="copy-btn">メールアドレスをコピー</button>
             
                                 <script>
@@ -107,7 +107,7 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 copy_btn.addEventListener(`click`, () => {
                                     navigator.clipboard.writeText(copy_text).then(() => {
 		                            // true
-                                    alert("コピーできました！ : ");
+                                    alert("コピーしました！ : ");
 	                                }, () => {
 		                            // false
                                     alert("コピーできていません : ");
