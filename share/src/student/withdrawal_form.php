@@ -20,26 +20,40 @@
         </div>
     </header>
 
-    <main>
-        <div class="container">
-            <h2>退会する場合はこちらのボタンをクリック</h2>
-            <div class="btn_list">
-                <button onclick='location.href="./mypage.php"' id="page_back">戻る</button>
-                <button type="button" id="btn">退会</button>
-            </div>
-            <script type="text/javascript">
-                let btn = document.getElementById('btn');
-                btn.addEventListener('click', function() {
-                    let result = window.confirm('本当に退会しますか？');
+    <?php 
+    session_start();
 
-                    if (result) {
-                        window.location.href = "./withdrawal.php";
-                    } else {
-                        alert("キャンセルしました");
-                    }
-                });
-            </script>
-        </div>
-    </main>
+    // SESSIONが切れてないか確認
+    if (!empty($_SESSION['id'])) { ?>
+        <main>
+            <div class="container">
+                <h2>退会する場合はこちらのボタンをクリック</h2>
+                <div class="btn_list">
+                    <button onclick='location.href="./mypage.php"' id="page_back">戻る</button>
+                    <button type="button" id="btn">退会</button>
+                </div>
+                <script type="text/javascript">
+                    let btn = document.getElementById('btn');
+                    btn.addEventListener('click', function() {
+                        let result = window.confirm('本当に退会しますか？');
+
+                        if (result) {
+                            window.location.href = "./withdrawal.php";
+                        } else {
+                            alert("キャンセルしました");
+                        }
+                    });
+                </script>
+            </div>
+        </main>
+    <?php } else { ?>
+        <main>
+            <div class="container">
+                <p>セッションが切れました</p>
+                <p>ログインしてください</p>
+                <a href="./login_form.php" class="login">ログインページへ</a>
+            </div>
+        </main>
+    <?php } ?>
     <script type="text/javascript" src="../../js/browserBack.js"></script>
 </body>
