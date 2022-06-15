@@ -7,7 +7,7 @@
     <title>内々定者マイページ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
-    <link rel="stylesheet" href="../../css/table.css">
+    <link rel="stylesheet" href="../../css/rsv_table.css">
     <link rel="stylesheet" href="../../css/popup_emp.css">
     <link rel="stylesheet" href="../../css/empmypage.css">
     <script src="https://kit.fontawesome.com/2d726a91d3.js" crossorigin="anonymous"></script>
@@ -68,6 +68,7 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php if (!empty($_SESSION['eid'])) { ?>
         <main>
             <h1><?php echo $employee['empname']; ?> さん</h1>
+            <h2><i class="fa-solid fa-clipboard-list"></i>予約可能日程一覧</h2>
             <table>
                 <tr>
                     <th>日付</th>
@@ -87,7 +88,7 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             print '</td><td>'; ?>
                             <?php if ($rsvInfo[$i]['flag'] == 1) { ?>
                                 <div class="works_modal_open" data-modal-open="modal-<?php echo $i; ?>">
-                                    <button>予約確認</button>
+                                    <button class="rsv_check">予約確認</button>
                                 </div>
                             <?php } ?>
                             </td>
