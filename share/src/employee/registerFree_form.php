@@ -148,4 +148,5 @@ if (!empty($_SESSION['eid'])) {
         <?php } ?>
     </main>
     <script src="../../js/schedule_disabled.js"></script>
+    <script src="../../js/browserBack.js"></script>
 </body>
