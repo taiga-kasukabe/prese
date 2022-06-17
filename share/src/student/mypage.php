@@ -46,7 +46,7 @@ if (!empty($_SESSION['id'])) {
     $employees = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // rsvdbのうちログインしている学生の予約データのみ取得
-    $sql_rsv = "SELECT * FROM rsvdb WHERE stuid = '$id'";
+    $sql_rsv = "SELECT * FROM rsvdb WHERE stuid = '$id' ORDER BY rsvdate, rsvtime";
     $stmt = $dbh->prepare($sql_rsv);
     $stmt->execute();
     $stuid = $stmt->fetchAll(PDO::FETCH_ASSOC);
