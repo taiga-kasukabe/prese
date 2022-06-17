@@ -183,9 +183,11 @@ if (!empty($_SESSION['id'])) {
                 <script src="../../js/modal.js"></script>
         </main>
     <?php } else { ?>
-        <h1>セッションが切れました</h1>
-        <h2>ログインしてください</h2>
-        <a href="./login_form.php">ログインページへ</a>
+    <div class="container">
+        <p>セッションが切れました</p>
+        <p>ログインしてください</p>
+        <a href="./login_form.php" class="login">ログインページへ</a>
+    </div>
     <?php } ?>
 </body>
 

@@ -46,7 +46,7 @@ if (!empty($_SESSION['id'])) {
     $employees = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // rsvdbのうちログインしている学生の予約データのみ取得
-    $sql_rsv = "SELECT * FROM rsvdb WHERE stuid = '$id'";
+    $sql_rsv = "SELECT * FROM rsvdb WHERE stuid = '$id' ORDER BY rsvdate, rsvtime";
     $stmt = $dbh->prepare($sql_rsv);
     $stmt->execute();
     $stuid = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -109,7 +109,6 @@ if (!empty($_SESSION['id'])) {
                                 <div class="not_cancel">
                                     <p>予約日2日前以降は予約の取り消しは出来ません。</p>
                                     <p>これ以降は直接連絡をお取りください。</p>
-                                    <p>メールアドレス：hoge@hoge.com</p>
                                 </div>
                             <?php else : ?>
                                 <div class="delete_btn">

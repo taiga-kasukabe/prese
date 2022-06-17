@@ -109,24 +109,8 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         } ?>さん</p>
                                     <p>大学情報：<?php echo $stuInfo[$num]['school'] . ' ' . $stuInfo[$num]['department1'] . ' ' . $stuInfo[$num]['department2'] . ' ' . $stuInfo[$num]['student_year']; ?></p>
                                     <p>相談内容：<?php echo $rsvInfo[$i]['comment']; ?></p>
-                                    <p>メールアドレス：</p>
-                                    <p id="copy-text"><?php echo $stuInfo[$num]['mail']; ?></p>
-                                    <button id="copy-btn">メールアドレスをコピー</button>
-
-                                    <script>
-                                        let copy_text = document.querySelector('#copy-text').textContent;
-                                        let copy_btn = document.querySelector('#copy-btn');
-
-                                        copy_btn.addEventListener(`click`, () => {
-                                            navigator.clipboard.writeText(copy_text).then(() => {
-                                                // true
-                                                alert("コピーしました！ : ");
-                                            }, () => {
-                                                // false
-                                                alert("コピーできていません : ");
-                                            });
-                                        });
-                                    </script>
+                                    <p>メールアドレス：<span class="copy-text" data-mail="mail-<?php echo $i ?>" ><?php  echo $stuInfo[$num]['mail']; ?></span></p>
+                                    <button class="copy-btn" data-mail-copy="mail-<?php echo $i ?>">メールアドレスをコピー</button>
                                 </div>
                                 <div class="works_modal_close">✖</div>
                             </div>
@@ -147,17 +131,19 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <button type="submit" class="schedule">削除</button>
                 </form>
             </div>
+            <script>
+                
+            </script>
         </main>
     <?php } else { ?>
-        <main>
-            <div class="container">
-                <p>セッションが切れました</p>
-                <p>ログインしてください</p>
-                <a href="./emplogin_form.php" class="login">ログインページへ</a>
-            </div>
-        </main>
+        <div class="container">
+            <p>セッションが切れました</p>
+            <p>ログインしてください</p>
+            <a href="./emplogin_form.php" class="login">ログインページへ</a>
+        </div>
     <?php } ?>
     <script src="../../js/modal.js"></script>
+    <script src="../../js/mailCopy.js"></script>
 </body>
 
 </html>
