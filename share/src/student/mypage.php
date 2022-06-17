@@ -109,7 +109,6 @@ if (!empty($_SESSION['id'])) {
                                 <div class="not_cancel">
                                     <p>予約日2日前以降は予約の取り消しは出来ません。</p>
                                     <p>これ以降は直接連絡をお取りください。</p>
-                                    <p>メールアドレス：hoge@hoge.com</p>
                                 </div>
                             <?php else : ?>
                                 <div class="delete_btn">

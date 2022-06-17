@@ -110,22 +110,22 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <p>大学情報：<?php echo $stuInfo[$num]['school'] . ' ' . $stuInfo[$num]['department1'] . ' ' . $stuInfo[$num]['department2'] . ' ' . $stuInfo[$num]['student_year']; ?></p>
                                     <p>相談内容：<?php echo $rsvInfo[$i]['comment']; ?></p>
                                     <p>メールアドレス：</p>
-                                    <p id="copy-text"><?php  echo $stuInfo[$num]['mail']; ?></p>
+                                    <p id="copy-text"><?php echo $stuInfo[$num]['mail']; ?></p>
                                     <button id="copy-btn">メールアドレスをコピー</button>
-                
-                                    <script>
-                                    let copy_text = document.querySelector('#copy-text').textContent;
-                                    let copy_btn = document.querySelector('#copy-btn');
 
-                                    copy_btn.addEventListener(`click`, () => {
-                                        navigator.clipboard.writeText(copy_text).then(() => {
-                                        // true
-                                        alert("コピーしました！ : ");
-                                        }, () => {
-                                        // false
-                                        alert("コピーできていません : ");
+                                    <script>
+                                        let copy_text = document.querySelector('#copy-text').textContent;
+                                        let copy_btn = document.querySelector('#copy-btn');
+
+                                        copy_btn.addEventListener(`click`, () => {
+                                            navigator.clipboard.writeText(copy_text).then(() => {
+                                                // true
+                                                alert("コピーしました！ : ");
+                                            }, () => {
+                                                // false
+                                                alert("コピーできていません : ");
+                                            });
                                         });
-                                    });                
                                     </script>
                                 </div>
                                 <div class="works_modal_close">✖</div>
@@ -152,7 +152,7 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="container">
             <p>セッションが切れました</p>
             <p>ログインしてください</p>
-            <a href="./login_form.php" class="login">ログインページへ</a>
+            <a href="./emplogin_form.php" class="login">ログインページへ</a>
         </div>
     <?php } ?>
     <script src="../../js/modal.js"></script>
