@@ -93,9 +93,11 @@ $employee = $stmt->fetch();
                 </form>
             </div>
         <?php } else { ?>
-            <h2>セッションが切れました</h2>
-            <h2>ログインしてください</h2>
-            <a href="./login_form.php">ログインページへ</a>
+        <div class="container">
+            <p>セッションが切れました</p>
+            <p>ログインしてください</p>
+            <a href="./login_form.php" class="login">ログインページへ</a>
+        </div>
         <?php } ?>
     </main>
 <!-- for jQuery -->

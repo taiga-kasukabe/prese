@@ -85,8 +85,11 @@ if (!empty($_SESSION['id'])) {
                     <button onclick="location.href='./home.php'">ホームへ</button>
                 </div>
             <?php } else { ?>
-                <h1>セッションが切れました</h1>
-                <button id="login" onclick="location.href='./login_form.php'">ログインページへ</button>
+            <div class="container">
+               <p>セッションが切れました</p>
+              <p>ログインしてください</p>
+               <a href="./login_form.php" class="login">ログインページへ</a>
+            </div>
             <?php } ?>
         </div>
     </main>
