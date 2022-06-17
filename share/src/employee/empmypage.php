@@ -147,6 +147,7 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <button type="submit" class="schedule">削除</button>
                 </form>
             </div>
+            <a href="./emplogout.php">ログアウト</a>
         </main>
     <?php } else { ?>
         <main>
