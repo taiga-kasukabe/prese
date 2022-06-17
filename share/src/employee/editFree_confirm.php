@@ -58,9 +58,11 @@ if (!empty($_GET['editFree'])) {
                 </div>
             </div>
         <?php } else { ?>
-            <h1>セッションが切れました</h1>
-            <h2>再ログインしてください</h2>
-            <a href="./emplogin_form.php">ログイン</a>
+            <div class="container">
+                <p>セッションが切れました</p>
+                <p>ログインしてください</p>
+                <a href="./emplogin_form.php" class="login">ログインページへ</a>
+            </div>
         <?php } ?>
     </main>
 </body>
