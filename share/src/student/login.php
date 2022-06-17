@@ -27,6 +27,6 @@ if (password_verify($_POST['password'],$member['password'])) {
     $_SESSION['id'] = $member['id'];
     header('Location:./home.php');
 } else {
-    $_SESSION['err_msg'] = 'メールアドレスもしくはパスワードが間違っています。';
+    $_SESSION['err_msg'] = 'IDもしくはパスワードが間違っています。';
     header('Location:./login_form.php');
 }
