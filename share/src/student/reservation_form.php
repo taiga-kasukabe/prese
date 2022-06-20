@@ -60,9 +60,6 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <main>
         <?php if (!empty($_SESSION['id'])) { ?>
-            <!-- <div class="top">
-                <h1>予約画面</h1>
-            </div> -->
             <div class="profile">
                 <div class="emp_img">
                 <img src="../../../sato/images/<?php echo $employee['empimg_id']; ?>" alt="社員画像">
