@@ -62,7 +62,7 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php if (!empty($_SESSION['id'])) { ?>
             <div class="profile">
                 <div class="emp_img">
-                <img src="../../../sato/images/<?php echo $employee['empimg_id']; ?>" alt="社員画像">
+                    <img src="../../../sato/images/<?php echo $employee['empimg_id']; ?>" alt="社員画像">
                 </div>
                 <div class="introduction">
                     <h2><?php echo $employee['empname']; ?></h2>
@@ -80,18 +80,18 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <!-- 表示週の変更ボタン -->
                     <div class="move_btn">
                         <?php
-                            if ($week > 0) {
-                                echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week - 1 . '" class="prev">前の1週間</a>';
-                            } else {
-                                echo '<a tabindex="-1" class="prev disabled_link">前の1週間</a>';
-                            }
-                            echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 .  '" class="next">次の1週間</a>';
+                        if ($week > 0) {
+                            echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week - 1 . '#tab_rsv" class="prev">前の1週間</a>';
+                        } else {
+                            echo '<a tabindex="-1" class="prev disabled_link">前の1週間</a>';
+                        }
+                        echo '<a href="./reservation_form.php?empid=' . $empid . '&week=' . $week + 1 .  '#tab_rsv" class="next">次の1週間</a>';
                         ?>
                     </div>
-                
+
                     <!-- 予約表 -->
                     <form action="./reservation_confirm.php" method="POST" id="reservation">
-                        <table>
+                        <table id="tab_rsv">
                             <tr>
                                 <!-- 日程表示 -->
                                 <th></th>
@@ -145,21 +145,21 @@ $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </form>
                     <div class="btn">
-                            <button onclick="location.href='./home.php'">戻る</button>
-                            <button type="submit" id="submit_btn" form="reservation">予約確認画面へ</button>
+                        <button onclick="location.href='./home.php'">戻る</button>
+                        <button type="submit" id="submit_btn" form="reservation">予約確認画面へ</button>
                     </div>
                 </div>
             </div>
         <?php } else { ?>
-        <div class="container">
-            <p>セッションが切れました</p>
-            <p>ログインしてください</p>
-            <a href="./login_form.php" class="login">ログインページへ</a>
-        </div>
-    <?php } ?>
-</main>
-<!-- for jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="../../js/browserBack.js"></script>
-<script src="../../js/schedule_disabled.js"></script>
+            <div class="container">
+                <p>セッションが切れました</p>
+                <p>ログインしてください</p>
+                <a href="./login_form.php" class="login">ログインページへ</a>
+            </div>
+        <?php } ?>
+    </main>
+    <!-- for jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/browserBack.js"></script>
+    <script src="../../js/schedule_disabled.js"></script>
 </body>

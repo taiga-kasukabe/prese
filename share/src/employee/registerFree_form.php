@@ -78,18 +78,18 @@ if (!empty($_SESSION['eid'])) {
                         <?php
                         if (isset($employee)) {
                             if ($week > 0) {
-                                echo '<a href="./registerFree_form.php?empid=' . $empid . '&week=' . $week - 1 . '" class="prev">前の1週間</a>';
+                                echo '<a href="./registerFree_form.php?empid=' . $empid . '&week=' . $week - 1 . '#tab_free" class="prev">前の1週間</a>';
                             } else {
                                 echo '<a tabindex="-1" class="prev disabled_link">前の1週間</a>';
                             }
-                            echo '<a href="./registerFree_form.php?empid=' . $empid . '&week=' . $week + 1 .  '" class="next">次の1週間</a>';
+                            echo '<a href="./registerFree_form.php?empid=' . $empid . '&week=' . $week + 1 .  '#tab_free" class="next">次の1週間</a>';
                         }
                         ?>
                     </div>
 
                     <!-- 予約表 -->
                     <form action="./registerFree_confirm.php" method="GET">
-                        <table>
+                        <table id="tab_free">
                             <tr>
                                 <th id="none"></th>
                                 <?php for ($i = $week * 7 + 2; $i < 7 * ($week + 1) + 2; $i++)

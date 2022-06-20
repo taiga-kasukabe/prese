@@ -87,48 +87,50 @@ if (!empty($_SESSION['id'])) {
             </div>
             <div class="rsv_list">
                 <h2>予約内容</h2>
-                <?php if(!empty($stuid)) { ?>
-                    <?php for ($n = 0; $n < count($stuid); $n++) { ?>
-                        <div class="rsv_content">
-                            <div class="rsv_text">
-                                <?php for ($i = 0; $i < count($ename); $i++) {
-                                    if ($stuid[$n]['empid'] == $ename[$i]['empid']) { ?>
-                                        <p><span class="tag"><i class="fa-solid fa-user"></i>面談相手</span>&nbsp;&nbsp;<?php echo $ename[$i]['empname']; ?></p>
-                                <?php }
-                                } ?>
+                <?php if (!empty($stuid)) { ?>
+                    <?php for ($n = 0; $n < count($stuid); $n++) {
+                        if (date('Y-m-d') <= $stuid[$n]['rsvdate']) { ?>
+                            <div class="rsv_content">
+                                <div class="rsv_text">
+                                    <?php for ($i = 0; $i < count($ename); $i++) {
+                                        if ($stuid[$n]['empid'] == $ename[$i]['empid']) { ?>
+                                            <p><span class="tag"><i class="fa-solid fa-user"></i>面談相手</span>&nbsp;&nbsp;<?php echo $ename[$i]['empname']; ?></p>
+                                    <?php }
+                                    } ?>
 
-                                <?php $rsvtime = $stuid[$n]['rsvdate'] ?>
-                                <p><span class="tag"><i class="fa-solid fa-clock"></i>予約日時</span>&nbsp;&nbsp;<?php echo date('m/d', strtotime($stuid[$n]['rsvdate'])) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($stuid[$n]['rsvdate']))))] . ')'; ?>&nbsp;&nbsp;&nbsp;<?php echo date('H:i', strtotime($stuid[$n]['rsvtime'])) . '〜' . date('H:i', strtotime($stuid[$n]['rsvtime'] . " +1 hours")); ?></p>
-                                <div class="comment">
-                                    <p class="comment_tag"><span class="tag"><i class="fa-solid fa-pen"></i>相談内容</span>&nbsp;&nbsp;</p>
-                                    <p class="comment_data"><?php echo $stuid[$n]['comment']; ?></p>
+                                    <?php $rsvtime = $stuid[$n]['rsvdate'] ?>
+                                    <p><span class="tag"><i class="fa-solid fa-clock"></i>予約日時</span>&nbsp;&nbsp;<?php echo date('m/d', strtotime($stuid[$n]['rsvdate'])) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($stuid[$n]['rsvdate']))))] . ')'; ?>&nbsp;&nbsp;&nbsp;<?php echo date('H:i', strtotime($stuid[$n]['rsvtime'])) . '〜' . date('H:i', strtotime($stuid[$n]['rsvtime'] . " +1 hours")); ?></p>
+                                    <div class="comment">
+                                        <p class="comment_tag"><span class="tag"><i class="fa-solid fa-pen"></i>相談内容</span>&nbsp;&nbsp;</p>
+                                        <p class="comment_data"><?php echo $stuid[$n]['comment']; ?></p>
+                                    </div>
                                 </div>
+
+                                <?php if ($rsvtime <= date('Y-m-d', strtotime("+2day"))) : ?>
+                                    <div class="not_cancel">
+                                        <p>予約日2日前以降は予約の取り消しは出来ません。</p>
+                                        <p>これ以降は直接連絡をお取りください。</p>
+                                    </div>
+                                <?php else : ?>
+                                    <div class="delete_btn">
+                                        <form action="./rsv_cancel.php" method="post" onSubmit="return check()">
+                                            <input type="hidden" name="empid" value="<?= $stuid[$n]['empid'] ?>">
+                                            <input type="hidden" name="rsvdate" value="<?= $stuid[$n]['rsvdate'] ?>">
+                                            <input type="hidden" name="rsvtime" value="<?= $stuid[$n]['rsvtime'] ?>">
+                                            <button type="submit" class="delete">取消</button>
+                                        </form>
+                                    </div>
+                                <?php endif; ?>
                             </div>
-
-                            <?php if ($rsvtime <= date('Y-m-d', strtotime("+2day"))) : ?>
-                                <div class="not_cancel">
-                                    <p>予約日2日前以降は予約の取り消しは出来ません。</p>
-                                    <p>これ以降は直接連絡をお取りください。</p>
-                                </div>
-                            <?php else : ?>
-                                <div class="delete_btn">
-                                    <form action="./rsv_cancel.php" method="post" onSubmit="return check()">
-                                        <input type="hidden" name="empid" value="<?= $stuid[$n]['empid'] ?>">
-                                        <input type="hidden" name="rsvdate" value="<?= $stuid[$n]['rsvdate'] ?>">
-                                        <input type="hidden" name="rsvtime" value="<?= $stuid[$n]['rsvtime'] ?>">
-                                        <button type="submit" class="delete">取消</button>
-                                    </form>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    <?php } ?>
+                    <?php }
+                    } ?>
                     <script type="text/javascript">
                         function check() {
                             let result = window.confirm('予約を取り消しますか？');
                             if (result) {
                                 return ture;
                             } else {
-                                    alert("キャンセルしました");
+                                alert("キャンセルしました");
                                 return false;
                             }
                         };
