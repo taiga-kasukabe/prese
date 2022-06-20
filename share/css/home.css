@@ -1,4 +1,9 @@
 @charset "UTF-8";
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
 html {
     height: 100%;
     width: 100%;
@@ -171,6 +176,18 @@ main {
     margin-right: 20px;
 }
 /* セッション切れ */
+/* header */
+header.blue_header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #005CAF;
+    border-bottom: 1px solid #ffffff;
+    z-index: 10;
+    transition: .5s;
+}
 .container {
     width: fit-content;
     margin: 0 auto;
@@ -196,4 +213,10 @@ a.login {
 }
 a.login:hover {
     background-color: #1f72bb;
+}
+main.session {
+    position: relative;
+    top: 0;
+    margin: 0 ;
+    padding: 140px 0 0 0 ;
 }
