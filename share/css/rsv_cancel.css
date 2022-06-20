@@ -57,6 +57,10 @@ main {
     margin: 0 ;
     padding: 140px 50px 100px 50px;
 }
+h1 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
 
 /* セッション切れ */
 .container {

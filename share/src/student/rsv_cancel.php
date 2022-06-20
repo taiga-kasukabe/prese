@@ -46,8 +46,10 @@ if (!empty($_SESSION['id'])) {
 
     <main>
         <?php if (!empty($_SESSION['id'])) { ?>
-            <h1>予約キャンセルしました</h1>
-            <a href="./mypage.php">マイページへ</a>
+            <div class="container">
+                <h1>予約をキャンセルしました</h1>
+                <a href="./mypage.php" class="login">マイページへ</a>
+            </div>
         <?php } else { ?>
             <div class="container">
                 <p>セッションが切れました</p>
