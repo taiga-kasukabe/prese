@@ -66,27 +66,27 @@ if (!empty($_SESSION['id'])) {
 ?>
 
 <body>
-    <header>
-        <div class="bg">
-            <a href="./mypage.php" id="mypage">マイページ</a>
-            <img src="../../images/ntt-east_white.png" id="logo">
-        </div>
-        <script>
-            window.addEventListener("scroll", function() {
-                // ヘッダーを変数の中に格納する
-                const header = document.querySelector("header");
-                // 100px以上スクロールしたらヘッダーに「scroll-nav」クラスをつける
-                header.classList.toggle("scroll-nav", window.scrollY > 100);
-            });
-        </script>
-    </header>
-
-    <div class="headImg">
-        <p>MEETING</p>
-        <img src="../../images/hito.jpg">
-    </div>
-
     <?php if (!empty($_SESSION['id'])) { ?>
+        <header>
+            <div class="bg">
+                <a href="./mypage.php" id="mypage">マイページ</a>
+                <img src="../../images/ntt-east_white.png" id="logo">
+            </div>
+            <script>
+                window.addEventListener("scroll", function() {
+                    // ヘッダーを変数の中に格納する
+                    const header = document.querySelector("header");
+                    // 100px以上スクロールしたらヘッダーに「scroll-nav」クラスをつける
+                    header.classList.toggle("scroll-nav", window.scrollY > 100);
+                });
+            </script>
+        </header>
+
+        <div class="headImg">
+            <p>MEETING</p>
+            <img src="../../images/hito.jpg">
+        </div>
+
         <main>
             <!-- 簡易診断へのリンク -->
             <br>
@@ -183,11 +183,20 @@ if (!empty($_SESSION['id'])) {
                 <script src="../../js/modal.js"></script>
         </main>
     <?php } else { ?>
-    <div class="container">
-        <p>セッションが切れました</p>
-        <p>ログインしてください</p>
-        <a href="./login_form.php" class="login">ログインページへ</a>
-    </div>
+        <header class="blue_header">
+            <div class="bg">
+                <a href="./mypage.php" id="mypage">マイページ</a>
+                <img src="../../images/ntt-east_white.png" id="logo">
+            </div>
+        </header>
+
+        <main class="session">
+            <div class="container">
+                <p>セッションが切れました</p>
+                <p>ログインしてください</p>
+                <a href="./login_form.php" class="login">ログインページへ</a>
+            </div>
+        </main>
     <?php } ?>
 </body>
 
