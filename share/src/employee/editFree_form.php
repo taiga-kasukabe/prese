@@ -73,17 +73,17 @@ if (!empty($_SESSION['eid'])) {
                     <div class="move_btn">
                         <?php
                         if ($week > 0) {
-                            echo '<a href="./editFree_form.php?empid=' . $empid . '&week=' . $week - 1 . '" class="prev">前の1週間</a>';
+                            echo '<a href="./editFree_form.php?empid=' . $empid . '&week=' . $week - 1 . '#tab_free" class="prev">前の1週間</a>';
                         } else {
                             echo '<a tabindex="-1" class="prev disabled_link">前の1週間</del></br>';
                         }
-                        echo '<a href="./editFree_form.php?empid=' . $empid . '&week=' . $week + 1 .  '" class="next">次の1週間</a>';
+                        echo '<a href="./editFree_form.php?empid=' . $empid . '&week=' . $week + 1 .  '#tab_free" class="next">次の1週間</a>';
                         ?>
                     </div>
 
                     <!-- 予約表 -->
                     <form action="./editFree_confirm.php" method="get">
-                        <table>
+                        <table id="tab_free">
                             <tr>
                                 <!-- 日程表示 -->
                                 <th id="none"></th>

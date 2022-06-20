@@ -77,7 +77,7 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th>確認</th>
                 </tr>
                 <?php for ($i = 0; $i < count($rsvInfo); $i++) {
-                    if (date('Y-m-d') <= $rsvInfo[$i]['rsvdate']) { ?>
+                    if (date('Y-m-d', strtotime("+1day")) <= $rsvInfo[$i]['rsvdate']) { ?>
                         <tr>
                             <?php print '<td>' . date('m/d', strtotime($rsvInfo[$i]['rsvdate'])) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($rsvInfo[$i]['rsvtime']))))] . ')' . '</td><td>' . date('H:i', strtotime($rsvInfo[$i]['rsvtime'])) . '〜' . date('H:i', strtotime($rsvInfo[$i]['rsvtime'] . " +1 hours")) . '</td><td>';
                             if ($rsvInfo[$i]['flag'] == 1) {

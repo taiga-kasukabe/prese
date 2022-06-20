@@ -87,7 +87,7 @@ if (!empty($_SESSION['id'])) {
             </div>
             <div class="rsv_list">
                 <h2>予約内容</h2>
-                <?php if(!empty($stuid)) { ?>
+                <?php if (!empty($stuid)) { ?>
                     <?php for ($n = 0; $n < count($stuid); $n++) { ?>
                         <div class="rsv_content">
                             <div class="rsv_text">
@@ -128,7 +128,7 @@ if (!empty($_SESSION['id'])) {
                             if (result) {
                                 return ture;
                             } else {
-                                    alert("キャンセルしました");
+                                alert("キャンセルしました");
                                 return false;
                             }
                         };
