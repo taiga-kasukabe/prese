@@ -108,8 +108,6 @@ if (!empty($_SESSION['id'])) {
                             <div class="emp_data">
                                 <h2><?php echo $employee_rec[$num]['empname']; ?></h2>
                                 <p><span class="mgr_20">年次：<?php echo $employee_rec[$num]['empyear']; ?></span>職種：<?php echo $employee_rec[$num]['emptag2']; ?></p>
-                                <!-- <p>経歴：<?php //echo $employee[$num]['empcareer']; 
-                                            ?></p> -->
                             </div>
                         </div>
 
@@ -127,7 +125,7 @@ if (!empty($_SESSION['id'])) {
                                         <p>趣味：<?php echo $employee_rec[$num]['emphobby']; ?></p>
                                         <p>コメント：<?php echo $employee_rec[$num]['empcomment']; ?></p>
                                     </div>
-                                    <a href="./reservation_form.php?empid=<?= $employee[$num]['empid'] ?>week=0"><span class="resv_txt">面談予約はこちら</span></a>
+                                    <a href="./reservation_form.php?empid=<?= $employee_rec[$num]['empid'] ?>week=0"><span class="resv_txt">面談予約はこちら</span></a>
                                 </div>
                                 <div class="works_modal_close">✖</div>
                             </div>
