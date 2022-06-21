@@ -101,7 +101,7 @@ a:link, a:visited, a:active {
     margin-left: 5px;
     color: #09bb7a;
 }
-p {
+.usage_guide {
     font-size: 0.85em;
     text-align: right;
 }

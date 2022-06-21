@@ -136,11 +136,13 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </script>
         </main>
     <?php } else { ?>
-        <div class="container">
-            <p>セッションが切れました</p>
-            <p>ログインしてください</p>
-            <a href="./emplogin_form.php" class="login">ログインページへ</a>
-        </div>
+        <main>
+            <div class="container">
+                <p>セッションが切れました</p>
+                <p>ログインしてください</p>
+                <a href="./emplogin_form.php" class="login">ログインページへ</a>
+            </div>
+        </main>
     <?php } ?>
     <script src="../../js/modal.js"></script>
     <script src="../../js/mailCopy.js"></script>

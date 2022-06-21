@@ -17,20 +17,18 @@
 <?php
 session_start();
 
-include('../../conf/config.php');
-$week = $_GET['week'];
-$weekJa = array("日", "月", "火", "水", "木", "金", "土");
-
-//データベース接続
-try {
-    $dbh = new PDO($dsn, $db_username, $db_password);
-} catch (PDOException $e) {
-    $msg = $e->getMessage();
-}
-
-
-
 if (!empty($_SESSION['eid'])) {
+    include('../../conf/config.php');
+    $week = $_GET['week'];
+    $weekJa = array("日", "月", "火", "水", "木", "金", "土");
+
+    //データベース接続
+    try {
+        $dbh = new PDO($dsn, $db_username, $db_password);
+    } catch (PDOException $e) {
+        $msg = $e->getMessage();
+    }
+    
 
     $empid = $_SESSION['eid'];
 
@@ -129,7 +127,7 @@ if (!empty($_SESSION['eid'])) {
                             }
                             ?>
                         </table>
-                        <p>-：既に空き日程として登録済み</p>
+                        <p class="usage_guide">-：既に空き日程として登録済み</p>
                         <button type="submit" class="register" id="submit_btn">確認する</button>
                     </form>
                 </div>

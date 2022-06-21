@@ -34,7 +34,7 @@ if (!empty($_GET['free'])) {
 
     <main>
         <?php if (!empty($_SESSION['eid']) && !empty($_GET['free'])) { ?>
-            <div class="container">
+            <div class="container_border">
                 <h1>以下の日程を空き日程に登録しますか？</h1>
                 <div class="schedule">
                     <?php for ($i = 0; $i < count($_GET['free']); $i++) { ?>
