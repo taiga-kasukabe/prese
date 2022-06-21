@@ -13,18 +13,19 @@
 
 <?php
 session_start();
-include("../../conf/config.php");
-try {
-    $dbh = new PDO($dsn, $db_username, $db_password);
-} catch (PDOException $e) {
-    $msg = $e->getMessage();
-}
-
-$empid = $_POST['empid'];
-$rsvdate = $_POST['rsvdate'];
-$rsvtime = $_POST['rsvtime'];
 
 if (!empty($_SESSION['id'])) {
+    include("../../conf/config.php");
+    try {
+        $dbh = new PDO($dsn, $db_username, $db_password);
+    } catch (PDOException $e) {
+        $msg = $e->getMessage();
+    }
+
+    $empid = $_POST['empid'];
+    $rsvdate = $_POST['rsvdate'];
+    $rsvtime = $_POST['rsvtime'];
+
     $id = $_SESSION['id'];
     $sql =  "UPDATE rsvdb SET stuid = '' ,comment = '' , flag = 0 WHERE stuid = :stuid AND empid = :empid AND rsvdate = :rsvdate AND rsvtime = :rsvtime";
     $stmt = $dbh->prepare($sql);

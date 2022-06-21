@@ -15,39 +15,41 @@
 <?php
 session_start();
 
-// 変数定義
-include('../../conf/config.php');
-$empid = $_GET['empid'];
-$week = $_GET['week'];
-$weekJa = array("日", "月", "火", "水", "木", "金", "土");
+if (!empty($_SESSION['id'])) {
+    // 変数定義
+    include('../../conf/config.php');
+    $empid = $_GET['empid'];
+    $week = $_GET['week'];
+    $weekJa = array("日", "月", "火", "水", "木", "金", "土");
 
-//データベース接続
-try {
-    $dbh = new PDO($dsn, $db_username, $db_password);
-} catch (PDOException $e) {
-    $msg = $e->getMessage();
+    //データベース接続
+    try {
+        $dbh = new PDO($dsn, $db_username, $db_password);
+    } catch (PDOException $e) {
+        $msg = $e->getMessage();
+    }
+
+    // 社員リスト取得
+    $sql = "SELECT * FROM emp_table WHERE empid = :empid";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':empid', $empid);
+    $stmt->execute();
+    $employee = $stmt->fetch();
+
+    // 未予約情報取得
+    $sql = "SELECT * FROM rsvdb WHERE empid = :empid AND flag = 0";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':empid', $empid);
+    $stmt->execute();
+    $unrsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // 予約済み情報取得
+    $sql = "SELECT * FROM rsvdb WHERE empid = :empid AND flag = 1";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':empid', $empid);
+    $stmt->execute();
+    $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-
-// 社員リスト取得
-$sql = "SELECT * FROM emp_table WHERE empid = :empid";
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue(':empid', $empid);
-$stmt->execute();
-$employee = $stmt->fetch();
-
-// 未予約情報取得
-$sql = "SELECT * FROM rsvdb WHERE empid = :empid AND flag = 0";
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue(':empid', $empid);
-$stmt->execute();
-$unrsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// 予約済み情報取得
-$sql = "SELECT * FROM rsvdb WHERE empid = :empid AND flag = 1";
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue(':empid', $empid);
-$stmt->execute();
-$rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <body>

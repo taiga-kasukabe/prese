@@ -14,26 +14,28 @@
 <?php
 session_start();
 
-// 変数定義
-include('../../conf/config.php');
-$comment = $_POST['comment'];
-$weekJa = array("日", "月", "火", "水", "木", "金", "土");
-list($empid, $time, $reservation_date, $weekNum) = explode(":", $_POST['free']);
+if (!empty($_SESSION['id'])) {
+    // 変数定義
+    include('../../conf/config.php');
+    $comment = $_POST['comment'];
+    $weekJa = array("日", "月", "火", "水", "木", "金", "土");
+    list($empid, $time, $reservation_date, $weekNum) = explode(":", $_POST['free']);
 
 
-//データベース接続
-try {
-    $dbh = new PDO($dsn, $db_username, $db_password);
-} catch (PDOException $e) {
-    $msg = $e->getMessage();
+    //データベース接続
+    try {
+        $dbh = new PDO($dsn, $db_username, $db_password);
+    } catch (PDOException $e) {
+        $msg = $e->getMessage();
+    }
+
+    // 社員リスト取得
+    $sql = "SELECT * FROM emp_table WHERE empid = :empid";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':empid', $empid);
+    $stmt->execute();
+    $employee = $stmt->fetch();
 }
-
-// 社員リスト取得
-$sql = "SELECT * FROM emp_table WHERE empid = :empid";
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue(':empid', $empid);
-$stmt->execute();
-$employee = $stmt->fetch();
 ?>
 
 <body>
