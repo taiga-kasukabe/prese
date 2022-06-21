@@ -7,8 +7,7 @@ session_start();
 //DB接続用
 include("../../conf/config.php");
 
-$id = $_SESSION['id'];
-$old_password = $_POST['old_password'];
+$id = $_POST['id'];
 $password = ($_POST['password']);
 $password_confirm = ($_POST['password_confirm']);
 $err_msg = array();
@@ -20,17 +19,11 @@ try{
     $msg = $e -> getMessage();
 }
 
-//データベースからログインIDが一致するユーザー情報を取得する
-$sql = "SELECT * FROM users_table WHERE id = :id";
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue(':id', $id);
-$stmt->execute();
-$member = $stmt->fetch();
-
-// 旧パスワードの一致を確認
-if (!password_verify($old_password, $member['password'])) {
-    $err_msg['old_pass_confirm'] = '・旧パスワードが一致しません';
+// IDが入力されたメールアドレスのIDと一致するかチェック
+if($_POST['id'] != $_SESSION['id']) {
+    $err_msg['id_confirm'] = '・IDが間違っています';
 }
+
 
 //正規表現でパスワードをバリデーション
 if (strlen($_POST['password']) < 8 || !preg_match("/^[a-zA-Z0-9]+$/", $_POST['password'])) {
@@ -51,7 +44,7 @@ $_SESSION['err'] = $_SESSION['err'] + $err_msg;
 $_SESSION['user'] = array();
 $_SESSION['user']['password'] = $password;
 $_SESSION['user']['password_confirm'] = $password_confirm;
-$_SESSION['user']['id'] = $id;
+$_SESSION['user']['id'] = $_POST["id"];
 
 //条件により確認or再登録
 if(empty($_SESSION['err'])){
@@ -59,7 +52,7 @@ if(empty($_SESSION['err'])){
     header('Location: ./pass_register.php');
 } else {
     // パスワード再登録やり直し
-    header('Location: ./reset_pass_form.php');
+    header('Location: ./reset_email.php');
 
 }
 

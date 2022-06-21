@@ -49,8 +49,8 @@ try{
                     ?>
                 </div>
                 <div>
-                    <label>ログインID</label>
-                    <input type="text" name="id" required>
+                    <label>旧パスワード</label>
+                    <input type="password" name="old_password" required>
                 </div>
                 <div>
                     <label>新しいパスワード</label>

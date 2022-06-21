@@ -35,7 +35,7 @@
                 }
                 ?>
             </div>
-            <form action="./reset_email.php" method="post" class="form_log">
+            <form action="./reset_vali_email.php" method="post" class="form_log">
                 <div>
                     <label>メールアドレス</label>
                     <input type="text" name="mail" value=""  required>

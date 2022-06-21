@@ -26,7 +26,7 @@
         session_start();
 
         // SESSIONが切れてないか確認
-        if (!empty($_SESSION['id'])) {
+        if (!empty($_SESSION['user']['id'])) {
 
         //変数定義
         include("../../conf/vari_session_pass.php");
