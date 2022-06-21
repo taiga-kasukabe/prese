@@ -126,7 +126,7 @@ if (!empty($_GET['free'])) {
                         <button id="backHome" onclick="location.href='./empmypage.php'">ホームへ戻る</button>
                     </form>
                 </div>
-            <?php } else { ?>
+            <?php } elseif (!empty($_SESSION['eid'])) { ?>
                 <h1>ERROR</h1>
                 <div class="text">
                     予期せぬエラーが発生しました。
@@ -143,6 +143,10 @@ if (!empty($_GET['free'])) {
                         <button id="backHome" onclick="location.href='./empmypage.php'">ホームへ戻る</button>
                     </form>
                 </div>
+            <?php } else { ?>
+                <p>セッションが切れました</p>
+                <p>再ログインしてください</p>
+                <a href="./emplogin_form.php" class="login">ログイン</a>
             <?php } ?>
         </div>
     </main>
