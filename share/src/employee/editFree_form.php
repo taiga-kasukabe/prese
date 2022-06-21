@@ -17,6 +17,7 @@
 <?php
 session_start();
 
+
 // 変数定義
 include('../../conf/config.php');
 $week = $_GET['week'];
@@ -126,8 +127,8 @@ if (!empty($_SESSION['eid'])) {
                             }
                             ?>
                         </table>
-                        <p>x：既に予約が入ってしまいました</p>
-                        <p>-：空き日程として登録されていません</p>
+                        <p class="usage_guide">x：既に予約が入ってしまいました</p>
+                        <p class="usage_guide">-：空き日程として登録されていません</p>
                         <button type="submit" class="register" id="submit_btn">確認する</button>
                     </form>
 

@@ -34,7 +34,7 @@ if (!empty($_GET['editFree'])) {
 
     <main>
         <?php if (!empty($_SESSION['eid']) && !empty($_GET['editFree'])) { ?>
-            <div class="container">
+            <div class="container_border">
                 <h1>以下の日程を空き日程から削除しますか？</h1>
                 <div class="schedule">
                     <?php for ($i = 0; $i < count($_GET['editFree']); $i++) { ?>
