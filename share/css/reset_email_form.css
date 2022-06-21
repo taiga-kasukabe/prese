@@ -63,11 +63,11 @@ h1 {
     margin-bottom: 10px;
 }
 h2 {
-    width: 180%;
+    transform: translateX(-10%);
+    width: 140%;
     font-size: 1.1em;
     font-weight: normal;
     margin-top: 45px;
-    margin-bottom: 10px;
 }
 .container {
     width: 300px;

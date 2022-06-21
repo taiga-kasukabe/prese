@@ -24,7 +24,7 @@
             <h1>パスワード再設定</h1>
         </div>
         <div class="container">
-            <h2>登録したメールアドレスを入力してください</h2>
+            <h2>・登録したメールアドレスを入力してください</h2>
             <div class="err_msg">
                 <?php
                 session_start();
