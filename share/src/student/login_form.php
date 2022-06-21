@@ -34,8 +34,10 @@ session_start();
         <p><?php
             if (!empty($_SESSION['err_msg'])) {
                 echo $_SESSION['err_msg'];
+
+                session_destroy();
+
             }
-            session_destroy();
             ?>
         </p>
 
