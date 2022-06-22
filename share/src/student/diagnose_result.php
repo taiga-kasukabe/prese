@@ -20,7 +20,10 @@
 session_start();
 
 //データベース情報の読み込み
-include('../../conf/config.php');
+// include('../../conf/config.php');
+$dsn = "mysql:charset=UTF8;dbname=preempdb;host=localhost";
+$db_username = "root";
+$db_password = "root";
 
 //データベース接続
 try{
@@ -29,35 +32,39 @@ try{
     $msg = $e -> getMessage();
 }
 
-$id = $_SESSION['id'];
+// $id = $_SESSION['id'];
 
 if(!empty($_POST)) {
     // 診断で入力した情報
-    $gender = $_POST['gender'];
-    $job = $_POST['job'];
-    $year_from = $_POST['year_from'];
-    $year_to = $_POST['year_to'];
+    $academichistory = $_POST['academichistory'];
+    $industry = $_POST['industry'];
+    $skill = $_POST['skill'];
     
-    // 複数選択で配列で受け取ったjobを文字列として結合
-     $job_str = "'".implode("','", $job)."'";
+    // 複数選択で配列で受け取った変数を文字列として結合
+    $academichistory_str = "'^(?=.*".implode(").*$|^(?=.*", $academichistory).").*$'";
+    $industry_str = "'^(?=.*".implode(").*$|^(?=.*", $industry).").*$'";
+    $skill_str = "'^(?=.*".implode(").*$|^(?=.*", $skill).").*$'";
 
-    $sql = "UPDATE users_table SET gender = :gender, job_str = :job_str, year_from = :year_from, year_to = :year_to WHERE id=:id";
-    $stmt = $dbh -> prepare($sql);
-    $stmt -> bindValue(':gender', $gender);
-    $stmt -> bindValue(':job_str', $job_str);
-    $stmt -> bindValue(':year_from', $year_from);
-    $stmt -> bindValue(':year_to', $year_to);
-    $stmt -> bindValue(':id', $id);
-    $stmt -> execute();
+    var_dump($academichistory_str);
+    var_dump($industry_str);
+    var_dump($skill_str);
+
+    // $sql = "UPDATE users_table SET academichistory = :academichistory, industry = :industry, skill = :skill WHERE id=:id";
+    // $stmt = $dbh -> prepare($sql);
+    // $stmt -> bindValue(':academichistory', $academichistory_str);
+    // $stmt -> bindValue(':industry', $industry_str);
+    // $stmt -> bindValue(':skill', $skill_str);
+    // $stmt -> bindValue(':id', $id);
+    // $stmt -> execute();
 
     // データベース検索
     // （1）emptag2かemptag3に選択されたjobが含まれている（2）emptag1の性別と一致（3）年次が選択された範囲内
-    $sql_emp = "SELECT * FROM emp_table WHERE ((emptag2 IN ($job_str)) OR (emptag3 IN ($job_str))) AND (emptag1 = :gender) AND (empyear >= :year_from AND empyear <= :year_to)";
+    $sql_emp = "SELECT * FROM emp_table WHERE (empacademichistory REGEXP ($academichistory_str)) AND (empindustry REGEXP ($industry_str)) AND (empskill REGEXP ($skill_str))";
     $stmt = $dbh->prepare($sql_emp);
-    $stmt->bindValue(':gender', $gender);
-     // $stmt->bindValue(':job_str', $job_str);
-    $stmt->bindValue(':year_from', $year_from);
-    $stmt->bindValue(':year_to', $year_to);
+    // $stmt->bindValue(':academichistory', $academichistory_str);
+    // $stmt->bindValue(':industry', $industry_str);
+    // $stmt->bindValue(':skill', $skill_str);
+    var_dump($sql_emp);
     $stmt->execute();
     $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -73,7 +80,7 @@ if(!empty($_POST)) {
     </header>
 
     <main>
-        <?php if (!empty($_SESSION['id'])) { ?>
+        <?php //if (!empty($_SESSION['id'])) { ?>
             <div id="result_area" class="result is_open">
                 <p class="text">あなたにおすすめの社員はこちら！</p>
 
@@ -88,7 +95,7 @@ if(!empty($_POST)) {
 
                                 <!-- リストをモーダル表示のボタンに -->
                                 <div class="works_modal_open" data-modal-open="rec-modal-<?php echo $num; ?>">
-                                    <div class="emp_img" style="background-image: url(../../../sato/images/<?php echo $employee_rec[$num]['empimg_id']; ?>);background-size:cover;">
+                                    <div class="emp_img" style="background-image: url(../../images/<?php echo $employee_rec[$num]['empimg_id']; ?>);background-size:cover;">
                                     </div>
                                     <div class="arrow">→</div>
                                     <div class="emp_data">
@@ -102,7 +109,7 @@ if(!empty($_POST)) {
                                     <div class="works_modal_mask"></div>
                                     <div class="works_modal_window">
                                         <div class="works_modal_content">
-                                            <img src="../../../sato/images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
+                                            <img src="../../images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
                                             <div class="introduction">
                                                 <h1><?php echo $employee_rec[$num]['empname']; ?></h1>
                                                 <p>年次：<?php echo $employee_rec[$num]['empyear']; ?></p>
@@ -126,13 +133,13 @@ if(!empty($_POST)) {
                 <a href="./diagnose.php" class="white">もう一度診断する</a>
                 <a href="./home.php" class="blue">ホームへ戻る</a>
             </div>
-        <?php } else { ?>
-            <div class="container">
+        <?php //} else { ?>
+            <!-- <div class="container">
                 <p>セッションが切れました</p>
                 <p>ログインしてください</p>
                 <a href="./login_form.php" class="login">ログインページへ</a>
-            </div>
-        <?php } ?>
+            </div> -->
+        <?php //} ?>
     </main>
 <script src="../../js/modal.js"></script>
 </body>
