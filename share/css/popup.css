@@ -46,6 +46,10 @@
     padding: 3px;
     font-weight: normal;
   }
+
+  .mgr_20 {
+    margin-right: 20px;
+  }
   
   .arrow {
     position: absolute;
