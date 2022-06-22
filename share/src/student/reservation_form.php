@@ -68,11 +68,14 @@ if (!empty($_SESSION['id'])) {
                 </div>
                 <div class="introduction">
                     <h2><?php echo $employee['empname']; ?></h2>
-                    <p>年次：<?php echo $employee['empyear']; ?>年目</p>
-                    <p>役職：<?php echo $employee['empjob']; ?></p>
-                    <p>職種：<?php echo $employee['empcareer']; ?></p>
+                    <p>年齢：<?php echo $employee['empage']; ?></p>
+                    <p>所在地：<?php echo $employee['empplace']; ?></p>
+                    <p>所属：<?php echo $employee['empuniv'],$employee['empfac'],$employee['empdept']; ?></p>
+                    <p>ゼミ・研究内容：<?php echo $employee['empresearch']; ?></p>
+                    <p>見ていた業界：<?php echo $employee['empindustry']; ?></p>
+                    <p>就活サポートスキル：<?php echo $employee['empskill']; ?></p>
                     <p>趣味：<?php echo $employee['emphobby']; ?></p>
-                    <p>コメント：<?php echo $employee['empcomment']; ?></p><br>
+                    <p>アピールポイント：<?php echo $employee['empapeal']; ?></p><br>
                 </div>
             </div>
 
