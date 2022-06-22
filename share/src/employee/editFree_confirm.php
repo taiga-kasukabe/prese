@@ -65,4 +65,5 @@ if (!empty($_GET['editFree'])) {
             </div>
         <?php } ?>
     </main>
+    <script src="../../js/browserBack.js"></script>
 </body>
