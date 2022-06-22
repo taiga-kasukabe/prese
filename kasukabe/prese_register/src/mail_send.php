@@ -12,7 +12,16 @@ use PHPMailer\PHPMailer\Exception;
 require '/Applications/MAMP/htdocs/php_mailer/vendor/autoload.php';
 
 // ユーザ情報読み込み
-require '../conf/mail_pass.php';
+// include '../../conf/mail_pass.php';
+// include '../../conf/mail_conf.php';
+
+$user_mail = 'taiga.kasukabe@gmail.com';
+$user_pass = 'mffjkyfejmlkdcdx';
+
+$subject = "登録完了";
+$message_html = "<h1>NTT東日本です．</h1><p>会員登録完了しました．</p>";
+$message_plain = "NTT東日本です．会員登録完了しました";
+$from = "taiga.kasukabe@gmail.com";
 
 //mbstring の日本語設定
 mb_language("japanese");

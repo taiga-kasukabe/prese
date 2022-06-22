@@ -12,7 +12,10 @@ use PHPMailer\PHPMailer\Exception;
 require '/Applications/MAMP/htdocs/php_mailer/vendor/autoload.php';
 
 // ユーザ情報読み込み
-require '../conf/mail_pass.php';
+require '../../conf/mail_pass_copy.php';
+
+// メールテキスト読み込み
+require '../../conf/mail_conf.php';
 
 //mbstring の日本語設定
 mb_language("japanese");
