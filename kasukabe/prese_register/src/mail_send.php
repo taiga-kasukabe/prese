@@ -12,12 +12,12 @@ use PHPMailer\PHPMailer\Exception;
 require '/Applications/MAMP/htdocs/php_mailer/vendor/autoload.php';
 
 // ユーザ情報読み込み
-// include '../../conf/mail_pass.php';
-// include '../../conf/mail_conf.php';
-
+// include('../conf/mail_pass.php');
 $user_mail = 'taiga.kasukabe@gmail.com';
 $user_pass = 'mffjkyfejmlkdcdx';
 
+// メール情報読み込み
+// include('../conf/mail_conf.php');
 $subject = "登録完了";
 $message_html = "<h1>NTT東日本です．</h1><p>会員登録完了しました．</p>";
 $message_plain = "NTT東日本です．会員登録完了しました";
@@ -39,8 +39,8 @@ try {
     // $gmail->SMTPDebug = SMTP::DEBUG_SERVER;  // デバグの出力を有効に（テスト環境での検証用）
     $gmail->isSMTP();   // SMTP を使用
     $gmail->Host       = 'smtp.gmail.com';  // ★★★ Gmail SMTP サーバーを指定
-    $gmail->SMTPAuth   = true;   // SMTP authentication を有効に
-    $gmail->Username   = $user_mail;  // ★★★ Gmail ユーザ名
+    $gmail->SMTPAuth = true;   // SMTP authentication を有効に
+    $gmail->Username = $user_mail;  // ★★★ Gmail ユーザ名
     $gmail->Password   = $user_pass;  // ★★★ Gmail パスワード
     $gmail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // ★★★ 暗号化（TLS)を有効に
     $gmail->Port = 587;  //★★★ ポートは 587

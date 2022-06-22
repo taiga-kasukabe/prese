@@ -52,7 +52,9 @@ if (!empty($_SESSION['id'])) {
         $stmt->bindValue(':id', $unrsvInfo['id']);
         $stmt->execute();
     }
-}?>
+
+    include("../../../kasukabe/prese_register/src/mail_send.php");
+} ?>
 
 <body>
     <header>
@@ -85,11 +87,11 @@ if (!empty($_SESSION['id'])) {
                     <button onclick="location.href='./home.php'">ホームへ</button>
                 </div>
             <?php } else { ?>
-            <div class="container">
-               <p>セッションが切れました</p>
-              <p>ログインしてください</p>
-               <a href="./login_form.php" class="login">ログインページへ</a>
-            </div>
+                <div class="container">
+                    <p>セッションが切れました</p>
+                    <p>ログインしてください</p>
+                    <a href="./login_form.php" class="login">ログインページへ</a>
+                </div>
             <?php } ?>
         </div>
     </main>

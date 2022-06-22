@@ -20,7 +20,7 @@
 session_start();
 
 // セッション情報の引継ぎ
-include("../../conf/variable_session.php");
+include('../../conf/variable_session.php');
 
 //データベース情報
 include('../../conf/config.php');
