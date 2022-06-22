@@ -101,17 +101,22 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <div class="works_modal_mask"></div>
                             <div class="works_modal_window">
                                 <div class="works_modal_content">
-                                    <p>学生情報</p>
-                                    <p>名前：
-                                        <?php for ($j = 0; $j < count($stuInfo); $j++) {
-                                            if ($rsvInfo[$i]['stuid'] == $stuInfo[$j]['id']) {
-                                                echo $stuInfo[$j]['username'];
-                                                $num = $j;
-                                            }
-                                        } ?>さん</p>
-                                    <p>大学情報：<?php echo $stuInfo[$num]['school'] . ' ' . $stuInfo[$num]['department1'] . ' ' . $stuInfo[$num]['department2'] . ' ' . $stuInfo[$num]['student_year']; ?></p>
-                                    <p>相談内容：<?php echo $rsvInfo[$i]['comment']; ?></p>
-                                    <p>メールアドレス：<span class="copy-text" data-mail="mail-<?php echo $i ?>" ><?php  echo $stuInfo[$num]['mail']; ?></span></p>
+                                    <p class="title">学生情報</p>
+                                    <div class="stuInfo">
+                                        <p><span class="tag"><i class="fa-solid fa-user"></i>面談相手</span>
+                                            <?php for ($j = 0; $j < count($stuInfo); $j++) {
+                                                if ($rsvInfo[$i]['stuid'] == $stuInfo[$j]['id']) {
+                                                    echo $stuInfo[$j]['username'];
+                                                    $num = $j;
+                                                }
+                                            } ?>さん</p>
+                                        <p><span class="tag"><i class="fa-solid fa-clock"></i>大学情報</span><?php echo $stuInfo[$num]['school'] . ' ' . $stuInfo[$num]['department1'] . ' ' . $stuInfo[$num]['department2'] . ' ' . $stuInfo[$num]['student_year']; ?></p>
+                                        <div class="comment">
+                                            <p class="comment_tag"><span class="tag"><i class="fa-solid fa-pen"></i>相談内容</span></p>
+                                            <p class="comment_data"><?php echo $rsvInfo[$i]['comment']; ?></p>
+                                        </div>
+                                        <p><span class="tag"><i class="fa-solid fa-clock"></i>メールアドレス</span><span class="copy-text" data-mail="mail-<?php echo $i ?>" ><?php  echo $stuInfo[$num]['mail']; ?></span></p>
+                                    </div>
                                     <button class="copy-btn" data-mail-copy="mail-<?php echo $i ?>">メールアドレスをコピー</button>
                                 </div>
                                 <div class="works_modal_close">✖</div>

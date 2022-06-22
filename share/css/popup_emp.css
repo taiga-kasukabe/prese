@@ -2,67 +2,53 @@
     position: relative;
       cursor: pointer;
   }
-/*   
-  .works_modal_open:hover .emp_img{
-    transform: scale(1.05,1.05);
-    opacity: 0.7;
-    transition: .3s;
+
+  /* modal text*/
+  .title {
+    text-align: center;
+    font-size: 1.2em
   }
-  
-  .works_modal_open:hover .arrow {
-    background-color: #005CAF;
+  .stuInfo {
+    margin: 20px auto;
+    width: fit-content;
+    line-height: 2em;
+  }
+  .copy-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 5px;
+    background-color: #ffffff;
+    color: #09bb7a;
+    border: 1px solid #09bb7a;
+    border-radius: 2.3px;
+    transition: .2s;
+  }
+  .copy-btn:hover {
+    background-color: #09bb7a;
     color: #ffffff;
-    transition: .3s;
   }
-  
-  .emp_img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 300px;
-    background-position: center;
-    background-color: #ffffff;
-  }
-  
-  .emp_data {
-    position: absolute;
-    top: 300px;
-    left: 0px;
-    width: 230px;
-    height: 80px;
-    padding: 10px;
-    background-color: #ffffff;
-  }
-  
-  .emp_data p,h2 {
-    margin: 0;
-    padding: 3px;
-    font-weight: normal;
-  }
-  
-  .arrow {
-    position: absolute;
-    right: -1px;
-    bottom: 100px;
-    padding: 11px 15px;
-    background-color: #ffffff;
-    color: #005CAF;
-    font-size: 1.3em;
-    /* border: 1px solid #345de4; */
-  /* }
-  
-  .introduction {
-    text-align: left;
-    overflow-x: hidden;
-    margin-left: 250px;
-    margin-right: 10px;
-  }
-  
-  .introduction h1 {
-    margin-top: 0;
-  } */ 
-  
+  .tag {
+    font-weight: bold;
+    color: #09bb7a;
+    margin-right: 30px;
+}
+.comment {
+    display: flex;
+}
+.comment_tag {
+    display: block;
+    width: 130px;
+}
+.comment_data {
+    display: block;
+    width: 338.9px;
+    min-height: 50px;
+    line-height: 1.3em;
+    margin-top: 5px;
+    padding: 4px 8px 6px 8px;
+    border: 1px solid #b3b3b3;
+}
+
   /* ------works_modal css------ */
   .works_modal_wrapper {
       position: fixed;
@@ -80,62 +66,16 @@
       z-index: -1;
   }
   .works_modal_window {
-      width: 100vh;
+      width: 80vh;
       margin: auto;
       padding: 40px 80px;
       background: #fff;
       z-index: 1;
   }
   .works_modal_content {
-      text-align: center;
       margin-top: 0;
       width: 100%;
       height: 80%;
-  }
-  .works_modal_content img {
-    position: absolute;
-    top: 40px;
-    left: 70px;
-    width: 200px;
-    height: 250px;
-    object-fit: cover;
-  }
-  .works_modal_content a {
-    display: flex;
-    width: 200px;
-    height: 50px;
-    margin: 20px 50%;
-    transform: translateX(-50%);
-    text-decoration: none;
-    line-height: 50px;
-  }
-  .resv_txt {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background-color: #ffffff;
-    color: #005CAF;
-    border: 1px solid #005CAF;
-    z-index: 1;
-  }
-  .resv_txt::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 1px;
-    bottom: -1px;
-    width: 0;
-    display: block;
-    background-color: #005CAF;
-    transition: .2s;
-    z-index: -1;
-  }
-  .resv_txt:hover {
-    color: #ffffff;
-  }
-  .resv_txt:hover::before {
-    width: 100%;
   }
   .works_modal_mask {
       position: absolute;
@@ -179,43 +119,3 @@
       transform: translateY(-30px);
       opacity: 0;
   }
-  
-  /* @keyframes works_modal_wrapper_open {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-        z-index: 300;
-      }
-    }
-    @keyframes works_modal_window_open {
-      0% {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    @keyframes works_modal_wrapper_close {
-      0% {
-        z-index: 300;
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-      }
-    }
-    @keyframes works_modal_window_close {
-      0% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      100% {
-        transform: translateY(-30px);
-        opacity: 0;
-      }
-    }
-     */
