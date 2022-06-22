@@ -64,6 +64,11 @@ table {
     width: fit-content;
     margin: 0 auto;
 }
+.noRsvComment{
+    width: fit-content;
+    margin: 10px auto;
+    padding: 10px;
+}
 .btn_list {
     width: fit-content;
     margin: 20px auto;

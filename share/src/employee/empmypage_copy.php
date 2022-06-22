@@ -44,9 +44,11 @@ if (!empty($_SESSION['eid'])) {
     $employee = $stmt->fetch();
 
     // 予約情報取得
-    $sql = "SELECT * FROM rsvdb WHERE empid = :empid ORDER BY rsvdate, rsvtime";
+    $sql = "SELECT * FROM rsvdb WHERE (empid = :empid AND ((rsvdate >= :today) AND (flag = 1)) OR ((rsvdate >= :2daysAfter) AND (flag = 0))) ORDER BY rsvdate, rsvtime";
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':empid', $empid);
+    $stmt->bindValue(':today', date('Y-m-d'));
+    $stmt->bindValue(':2daysAfter', date('Y-m-d',strtotime('+2day')));
     $stmt->execute();
     $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -69,15 +71,15 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <main>
             <h1><?php echo $employee['empname']; ?> さん</h1>
             <h2><i class="fa-solid fa-clipboard-list"></i>予約可能日程一覧</h2>
-            <table>
-                <tr>
-                    <th>日付</th>
-                    <th>時間</th>
-                    <th>予約状況</th>
-                    <th>確認</th>
-                </tr>
-                <?php for ($i = 0; $i < count($rsvInfo); $i++) {
-                    if (date('Y-m-d') <= $rsvInfo[$i]['rsvdate']) { ?>
+            <?php if (!empty($rsvInfo)) { ?>
+                <table>
+                    <tr>
+                        <th>日付</th>
+                        <th>時間</th>
+                        <th>予約状況</th>
+                        <th>確認</th>
+                    </tr>
+                    <?php for ($i = 0; $i < count($rsvInfo); $i++) { ?>
                         <tr>
                             <?php print '<td>' . date('m/d', strtotime($rsvInfo[$i]['rsvdate'])) . '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($rsvInfo[$i]['rsvtime']))))] . ')' . '</td><td>' . date('H:i', strtotime($rsvInfo[$i]['rsvtime'])) . '〜' . date('H:i', strtotime($rsvInfo[$i]['rsvtime'] . " +1 hours")) . '</td><td>';
                             if ($rsvInfo[$i]['flag'] == 1) {
@@ -116,10 +118,11 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                         </div>
                         <!-- モーダルウインドウここまで -->
-
-                <?php }
-                } ?>
-            </table>
+                    <?php } ?>
+                </table>
+            <?php } else { ?>
+                <p class="noRsvComment">現在登録している予約可能日程はありません</p>
+            <?php } ?>
 
             <div class="btn_list">
                 <form action="./registerFree_form.php" method="get">
