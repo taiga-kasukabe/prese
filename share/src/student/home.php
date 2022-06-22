@@ -40,10 +40,14 @@ if (!empty($_SESSION['id'])) {
     $member = $stmt->fetch();
 
     // 前回の診断結果を取得，変数に代入
-    $gender = $member['gender'];
-    $job_str = $member['job_str'];
-    $year_from = $member['year_from'];
-    $year_to = $member['year_to'];
+    // $gender = $member['gender'];
+    // $job_str = $member['job_str'];
+    // $year_from = $member['year_from'];
+    // $year_to = $member['year_to'];
+    
+    $academichistory = $member['academichistory'];
+    $industry = $member['industry'];
+    $skill = $member['skill'];
 
     //社員情報（全体）の取得
     $sql_emp = "SELECT * FROM emp_table";
@@ -107,7 +111,7 @@ if (!empty($_SESSION['id'])) {
                             <div class="arrow">→</div>
                             <div class="emp_data">
                                 <h2><?php echo $employee_rec[$num]['empname']; ?></h2>
-                                <p><span class="mgr_20">年次：<?php echo $employee_rec[$num]['empyear']; ?></span>職種：<?php echo $employee_rec[$num]['emptag2']; ?></p>
+                                <!-- <p><span class="mgr_20">年次：<?php //echo $employee_rec[$num]['empyear']; ?></span>職種：<?php //echo $employee_rec[$num]['emptag2']; ?></p> -->
                             </div>
                         </div>
 
@@ -116,14 +120,12 @@ if (!empty($_SESSION['id'])) {
                             <div class="works_modal_mask"></div>
                             <div class="works_modal_window">
                                 <div class="works_modal_content">
-                                    <img src="../../../sato/images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
+                                    <img src="../../images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
                                     <div class="introduction">
                                         <h1><?php echo $employee_rec[$num]['empname']; ?></h1>
-                                        <p>年次：<?php echo $employee_rec[$num]['empyear']; ?></p>
-                                        <p>職種：<?php echo $employee_rec[$num]['empjob']; ?></p>
-                                        <p>経歴：<?php echo $employee_rec[$num]['empcareer']; ?></p>
+                                        <p>所属：<?php echo $employee_rec[$num]['empuniv']; ?></p>
+                                        <p>見ていた業界：<?php echo $employee_rec[$num]['empindutry']; ?></p>
                                         <p>趣味：<?php echo $employee_rec[$num]['emphobby']; ?></p>
-                                        <p>コメント：<?php echo $employee_rec[$num]['empcomment']; ?></p>
                                     </div>
                                     <a href="./reservation_form.php?empid=<?= $employee_rec[$num]['empid'] ?>week=0"><span class="resv_txt">面談予約はこちら</span></a>
                                 </div>
@@ -148,7 +150,7 @@ if (!empty($_SESSION['id'])) {
                             <div class="arrow">→</div>
                             <div class="emp_data">
                                 <h2><?php echo $employee[$num]['empname']; ?></h2>
-                                <p><span class="mgr_20">年次：<?php echo $employee[$num]['empyear']; ?></span>職種：<?php echo $employee[$num]['emptag2']; ?></p>
+                                <!-- <p><span class="mgr_20">年次：<?php //echo $employee[$num]['empyear']; ?></span>職種：<?php //echo $employee[$num]['emptag2']; ?></p> -->
                                 <!-- <p>経歴：<?php //echo $employee[$num]['empcareer'];
                                             ?></p> -->
                             </div>
@@ -159,14 +161,12 @@ if (!empty($_SESSION['id'])) {
                             <div class="works_modal_mask"></div>
                             <div class="works_modal_window">
                                 <div class="works_modal_content">
-                                    <img src="../../../sato/images/<?php echo $employee[$num]['empimg_id']; ?>">
+                                    <img src="../../images/<?php echo $employee[$num]['empimg_id']; ?>">
                                     <div class="introduction">
                                         <h1><?php echo $employee[$num]['empname']; ?></h1>
-                                        <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
-                                        <p>職種：<?php echo $employee[$num]['empjob']; ?></p>
-                                        <p>経歴：<?php echo $employee[$num]['empcareer']; ?></p>
+                                        <p>所属：<?php echo $employee[$num]['empuniv']; ?></p>
+                                        <p>見ていた業界：<?php echo $employee[$num]['empindustry']; ?></p>
                                         <p>趣味：<?php echo $employee[$num]['emphobby']; ?></p>
-                                        <p>コメント：<?php echo $employee[$num]['empcomment']; ?></p><br>
                                     </div>
                                     <a href="./reservation_form.php?empid=<?= $employee[$num]['empid'] ?>&week=0"><span class="resv_txt">面談予約はこちら</span></a>
                                 </div>
