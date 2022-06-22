@@ -81,7 +81,55 @@ main {
     margin: 20px auto 20px auto;
     color: #005CAF;
 }
+.btn_list {
+    width: fit-content;
+    margin: 0 auto;
+}
+a.white {
+    display: inline-block;
+    text-align: center;
+    width: 180px;
+    margin: 10px 5px;
+    padding: 8px;
+    text-decoration: none;
+    font-size: 1em;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: lighter;
+    cursor: pointer;
+    transition: 0.25s;
 
+    background-color: #ffffff;
+    border: 1px solid #005CAF;
+    border-radius: 3px;
+    color: #005CAF;
+}
+a.white:hover {
+    background-color: #e4e4e4;
+    color: #005CAF;
+}
+a.blue {
+    display: inline-block;
+    text-align: center;
+    width: 180px;
+    margin: 10px 5px;
+    padding: 8px;
+    text-decoration: none;
+    font-size: 1em;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: lighter;
+    cursor: pointer;
+    transition: 0.25s;
+
+    background-color: #005CAF;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    color: #ffffff;
+}
+a.blue:hover {
+    background-color: #1f72bb;
+}
 /* セッション切れ */
 .container {
     width: fit-content;

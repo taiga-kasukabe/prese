@@ -35,8 +35,8 @@
     position: absolute;
     top: 300px;
     left: 0px;
-    width: 230px;
-    height: 80px;
+    width: 248px;
+    height: 100px;
     padding: 10px;
     background-color: #ffffff;
   }
@@ -54,7 +54,7 @@
   .arrow {
     position: absolute;
     right: -1px;
-    bottom: 100px;
+    bottom: 98px;
     padding: 11px 15px;
     background-color: #ffffff;
     color: #005CAF;

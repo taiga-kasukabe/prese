@@ -122,8 +122,10 @@ if(!empty($_POST)) {
                     <?php } ?>
                 <?php } ?>
             </div>
-            <a href="home.php">ホームへ</a><br>
-            <a href="diagnose.php">もう一度診断する</a>
+            <div class="btn_list">
+                <a href="./diagnose.php" class="white">もう一度診断する</a>
+                <a href="./home.php" class="blue">ホームへ戻る</a>
+            </div>
         <?php } else { ?>
             <div class="container">
                 <p>セッションが切れました</p>
