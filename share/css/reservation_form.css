@@ -74,45 +74,51 @@ h1 {
     margin: 0 auto 70px auto;
 }
 .emp_img {
-    width: 270px;
-    height: 380px;
+    width: 320px;
+    height: 470px;
     background-position: center;
 }
 .emp_img img {
-    width: 270px;
-    height: 380px;
+    width: 320px;
+    height: 470px;
     object-fit: cover;
 }
 .profile h2 {
     font-weight: normal;
     font-size: 1.8em;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    color: #005CAF;
 }
 .introduction {
     padding: 20px 40px;
     width: 750px;
-    /* background-color: #005CAF; */
-    border: 1px solid #b8b7b7;
+    height: 470px;
+    border: 1px solid #005CAF;
     border-left: none;
 }
+.introduction i {
+    color: #005CAF;
+}
 .introduction p {
-    margin: 8px 0;
-    font-size: 1em;
+    margin-top: 10px;
+    margin-bottom: 8px;
 }
-.full_tag {
-    font-weight: bold;
-}
-/* .data_line {
+.data_line {
 display: flex;
-line-height: 2em;
+font-size: 1em;
+border-bottom: 1px solid #bebebe;
+padding-bottom: 2px;
+margin-bottom: 10px;
 }
 .data_tag {
-width: fit-content;
+width: 200px;
 min-width: 50px;
+font-weight: bold;
+color: #005CAF;
 }
 .data_text {
-width: fit-content;
-} */
+width: 600px;
+}
   
 
 /* 日程選択 */
