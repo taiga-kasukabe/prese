@@ -102,7 +102,7 @@ if (!empty($_SESSION['id'])) {
 
                         <!-- リストをモーダル表示のボタンに -->
                         <div class="works_modal_open" data-modal-open="rec-modal-<?php echo $num; ?>">
-                            <div class="emp_img" style="background-image: url(../../../sato/images/<?php echo $employee_rec[$num]['empimg_id']; ?>);background-size:cover;">
+                            <div class="emp_img" style="background-image: url(../../images/<?php echo $employee_rec[$num]['empimg_id']; ?>);background-size:cover;">
                             </div>
                             <div class="arrow">→</div>
                             <div class="emp_data">
@@ -116,7 +116,7 @@ if (!empty($_SESSION['id'])) {
                             <div class="works_modal_mask"></div>
                             <div class="works_modal_window">
                                 <div class="works_modal_content">
-                                    <img src="../../../sato/images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
+                                    <img src="../../images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
                                     <div class="introduction">
                                         <h1><?php echo $employee_rec[$num]['empname']; ?></h1>
                                         <p>年次：<?php echo $employee_rec[$num]['empyear']; ?></p>
@@ -143,7 +143,7 @@ if (!empty($_SESSION['id'])) {
 
                         <!-- リストの名前部分をモーダル表示のボタンに -->
                         <div class="works_modal_open" data-modal-open="modal-<?php echo $num; ?>">
-                            <div class="emp_img" style="background-image: url(../../../sato/images/<?php echo $employee[$num]['empimg_id']; ?>);background-size:cover;">
+                            <div class="emp_img" style="background-image: url(../../images/<?php echo $employee[$num]['empimg_id']; ?>);background-size:cover;">
                             </div>
                             <div class="arrow">→</div>
                             <div class="emp_data">
@@ -159,7 +159,7 @@ if (!empty($_SESSION['id'])) {
                             <div class="works_modal_mask"></div>
                             <div class="works_modal_window">
                                 <div class="works_modal_content">
-                                    <img src="../../../sato/images/<?php echo $employee[$num]['empimg_id']; ?>">
+                                    <img src="../../images/<?php echo $employee[$num]['empimg_id']; ?>">
                                     <div class="introduction">
                                         <h1><?php echo $employee[$num]['empname']; ?></h1>
                                         <p>年次：<?php echo $employee[$num]['empyear']; ?></p>
