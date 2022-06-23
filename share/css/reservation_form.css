@@ -87,7 +87,7 @@ h1 {
     font-weight: normal;
     font-size: 1.8em;
     margin-bottom: 10px;
-    color: #005CAF;
+    /* color: #005CAF; */
 }
 .introduction {
     padding: 20px 40px;
