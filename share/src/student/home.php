@@ -123,7 +123,7 @@ if (!empty($_SESSION['id'])) {
                                     <img src="../../images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
                                     <div class="introduction">
                                         <h1><?php echo $employee_rec[$num]['empname']; ?></h1>
-                                        <p>所属：<?php echo $employee_rec[$num]['empuniv']; ?></p>
+                                        <p>所属：<?php echo $employee_rec[$num]['empuniv'], $employee_rec[$num]['empfac'], $employee_rec[$num]['empdept']; ?></p>
                                         <p>見ていた業界：<?php echo $employee_rec[$num]['empindutry']; ?></p>
                                         <p>趣味：<?php echo $employee_rec[$num]['emphobby']; ?></p>
                                     </div>
@@ -164,7 +164,7 @@ if (!empty($_SESSION['id'])) {
                                     <img src="../../images/<?php echo $employee[$num]['empimg_id']; ?>">
                                     <div class="introduction">
                                         <h1><?php echo $employee[$num]['empname']; ?></h1>
-                                        <p>所属：<?php echo $employee[$num]['empuniv']; ?></p>
+                                        <p>所属：<?php echo $employee[$num]['empuniv'], $employee[$num]['empfac'], $employee[$num]['empdept']; ?></p>
                                         <p>見ていた業界：<?php echo $employee[$num]['empindustry']; ?></p>
                                         <p>趣味：<?php echo $employee[$num]['emphobby']; ?></p>
                                     </div>
