@@ -2,7 +2,7 @@
     position: relative;
       cursor: pointer;
       width: 250px;
-      height: 390px;
+      height: 400px;
       margin: 20px;
       color: #005CAF;
       border: 1px solid #005CAF;
@@ -24,8 +24,8 @@
   .emp_img {
     position: absolute;
     top: 0;
-    left: -1;
-    width: 100%;
+    left: -2px;
+    width: 250px;
     height: 300px;
     background-position: center;
     background-color: #ffffff;
@@ -36,25 +36,27 @@
     top: 300px;
     left: 0px;
     width: 248px;
-    height: 90px;
+    height: 100px;
     padding: 10px;
     background-color: #ffffff;
   }
   
   .emp_data p,h2 {
-    margin: 10px 0;
+    margin: 0;
     padding: 3px;
     font-weight: normal;
   }
 
-  .mgr_20 {
-    margin-right: 20px;
+  .emp_data p{
+    font-size: 1em;
+    letter-spacing: 0.15em;
+    color: #808080;
   }
   
   .arrow {
     position: absolute;
     right: -1px;
-    bottom: 88px;
+    bottom: 98px;
     padding: 11px 15px;
     background-color: #ffffff;
     color: #005CAF;
@@ -65,12 +67,27 @@
   .introduction {
     text-align: left;
     overflow-x: hidden;
-    margin-left: 250px;
-    margin-right: 10px;
+    margin-left: 30px;
   }
   
   .introduction h1 {
     margin-top: 0;
+    font-weight: normal;
+    margin-bottom: 20px;
+  }
+
+  .data_line {
+    display: flex;
+    line-height: 2em;
+  }
+
+  .data_tag {
+    width: fit-content;
+    min-width: 50px;
+  }
+
+  .data_text {
+    width: fit-content;
   }
   
   /* ------works_modal css------ */
@@ -90,7 +107,8 @@
       z-index: -1;
   }
   .works_modal_window {
-      width: 80vw;
+      width: 90vw;
+      max-width: 900px;
       margin: auto;
       padding: 40px 80px;
       background: #fff;
@@ -98,23 +116,22 @@
   }
   .works_modal_content {
       text-align: center;
-      margin-top: 0;
-      width: 100%;
+      margin:0 auto 30px auto;
+      width: fit-content;
       height: 80%;
+      display: flex;
   }
-  .works_modal_content img {
-    position: absolute;
-    top: 40px;
-    left: 70px;
+  .empimg_modal img {
     width: 200px;
     height: 250px;
     object-fit: cover;
+    margin-right: 30px;
   }
-  .works_modal_content a {
+  .works_modal_window a {
     display: flex;
     width: 200px;
     height: 50px;
-    margin: 20px 50%;
+    margin: 0 50%;
     transform: translateX(-50%);
     text-decoration: none;
     line-height: 50px;
