@@ -74,14 +74,19 @@ h1 {
     margin: 0 auto 70px auto;
 }
 .emp_img {
-    width: 250px;
-    height: 350px;
+    width: 270px;
+    height: 380px;
     background-position: center;
 }
 .emp_img img {
-    width: 250px;
-    height: 350px;
+    width: 270px;
+    height: 380px;
     object-fit: cover;
+}
+.profile h2 {
+    font-weight: normal;
+    font-size: 1.8em;
+    margin-bottom: 15px;
 }
 .introduction {
     padding: 20px 40px;
@@ -90,14 +95,27 @@ h1 {
     border: 1px solid #b8b7b7;
     border-left: none;
 }
-.profile h2 {
-    font-size: 1.6em;
-    margin-bottom: 20px;
-}
 .introduction p {
     margin: 8px 0;
     font-size: 1em;
 }
+.full_tag {
+    font-weight: bold;
+}
+/* .data_line {
+display: flex;
+line-height: 2em;
+}
+.data_tag {
+width: fit-content;
+min-width: 50px;
+}
+.data_text {
+width: fit-content;
+} */
+  
+
+/* 日程選択 */
 .container {
     margin: 0 auto 0 auto;
     width: fit-content;

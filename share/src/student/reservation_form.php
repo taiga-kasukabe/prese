@@ -64,18 +64,19 @@ if (!empty($_SESSION['id'])) {
         <?php if (!empty($_SESSION['id'])) { ?>
             <div class="profile">
                 <div class="emp_img">
-                    <img src="../../../sato/images/<?php echo $employee['empimg_id']; ?>" alt="社員画像">
+                    <img src="../../images/<?php echo $employee['empimg_id']; ?>" alt="社員画像">
                 </div>
                 <div class="introduction">
                     <h2><?php echo $employee['empname']; ?></h2>
-                    <p>年齢：<?php echo $employee['empage']; ?></p>
-                    <p>所在地：<?php echo $employee['empplace']; ?></p>
-                    <p>所属：<?php echo $employee['empuniv'],$employee['empfac'],$employee['empdept']; ?></p>
-                    <p>ゼミ・研究内容：<?php echo $employee['empresearch']; ?></p>
-                    <p>見ていた業界：<?php echo $employee['empindustry']; ?></p>
-                    <p>就活サポートスキル：<?php echo $employee['empskill']; ?></p>
-                    <p>趣味：<?php echo $employee['emphobby']; ?></p>
-                    <p>アピールポイント：<?php echo $employee['empapeal']; ?></p><br>
+                    <p><i class="fa-solid fa-location-dot"></i><?php echo $employee['empplace']; ?>&emsp;&emsp;<i class="fa-solid fa-graduation-cap"></i><?php echo $employee['empuniv'] . "&nbsp;&nbsp;",$employee['empfac'] . "&nbsp;&nbsp;",$employee['empdept']; ?></p>
+                    <p><span class="full_tag">ゼミ・研究内容</span>&emsp;<?php echo $employee['empresearch']; ?></p>
+                    <p><span class="full_tag">見ていた業界</span>&emsp;<?php echo $employee['empindustry']; ?></p>
+                    <p><span class="full_tag">就活サポートスキル</span>&emsp;<?php echo $employee['empskill']; ?></p>
+                    <p><span class="full_tag">趣味</span>&emsp;<?php echo $employee['emphobby']; ?></p>
+                    <div class="data_line">
+                        <div class="data_tag"><p><span class="full_tag">アピールポイント</span>&emsp;</p></div>
+                        <div class="data_text"><p><?php echo $employee['empapeal']; ?></p></div>
+                    </div>
                 </div>
             </div>
 
