@@ -64,7 +64,7 @@ if (!empty($_SESSION['id'])) {
         <?php if (!empty($_SESSION['id'])) { ?>
             <div class="profile">
                 <div class="emp_img">
-                    <img src="../../../sato/images/<?php echo $employee['empimg_id']; ?>" alt="社員画像">
+                    <img src="../../images/<?php echo $employee['empimg_id']; ?>" alt="社員画像">
                 </div>
                 <div class="introduction">
                     <h2><?php echo $employee['empname']; ?></h2>
