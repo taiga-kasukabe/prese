@@ -45,10 +45,6 @@ if(!empty($_POST)) {
     $industry_str = "'^(?=.*".implode(").*$|^(?=.*", $industry).").*$'";
     $skill_str = "'^(?=.*".implode(").*$|^(?=.*", $skill).").*$'";
 
-    var_dump($academichistory_str);
-    var_dump($industry_str);
-    var_dump($skill_str);
-
     // $sql = "UPDATE users_table SET academichistory = :academichistory, industry = :industry, skill = :skill WHERE id=:id";
     // $stmt = $dbh -> prepare($sql);
     // $stmt -> bindValue(':academichistory', $academichistory_str);
