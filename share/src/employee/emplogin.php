@@ -2,7 +2,7 @@
 
 session_start();
 
-$eid = $_POST['eid'];
+$eid = $_POST['empid'];
 include('../../conf/config.php');
 
 //データベース接続
@@ -12,18 +12,18 @@ try {
   $msg = $e->getMessage();
 }
 
-$sql = "SELECT * FROM emplogin WHERE eid = :eid";
+$sql = "SELECT * FROM emp_table WHERE empid = :empid";
 $stmt = $dbh->prepare($sql);
-$stmt->bindValue(':eid', $eid);
+$stmt->bindValue(':empid', $eid);
 $stmt->execute();
 $member = $stmt->fetch();
 
-if (!isset($member['eid']) || $_POST['epass'] != $member['epassword']) {
+if (!isset($member['empid']) || $_POST['emppassword'] != $member['emppassword']) {
   $_SESSION['err_msg'] = 'IDもしくはパスワードが間違っています。';
   header('Location:./emplogin_form.php');
-} else if (($_POST['epass'] = $member['epassword'])) {
+} else if (($_POST['emppassword'] = $member['emppassword'])) {
   //save the user's data in DB on SESSION
-  $_SESSION['eid'] = $member['eid'];
+  $_SESSION['empid'] = $member['empid'];
   header('Location:./empmypage.php');
 }
 ?>

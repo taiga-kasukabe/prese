@@ -112,7 +112,7 @@ if (!empty($_GET['free'])) {
 
     <main>
         <div class="container">
-            <?php if (empty($validation) && !empty($_GET['free']) && !empty($_SESSION['eid'])) { ?>
+            <?php if (empty($validation) && !empty($_GET['free']) && !empty($_SESSION['empid'])) { ?>
                 <h1>COMPLETE</h1>
                 <div class="btn">
                     <form action="./registerFree_form.php" method="get">
@@ -126,7 +126,7 @@ if (!empty($_GET['free'])) {
                         <button id="backHome" onclick="location.href='./empmypage.php'">ホームへ戻る</button>
                     </form>
                 </div>
-            <?php } elseif (!empty($_SESSION['eid'])) { ?>
+            <?php } elseif (!empty($_SESSION['empid'])) { ?>
                 <h1>ERROR</h1>
                 <div class="text">
                     予期せぬエラーが発生しました。

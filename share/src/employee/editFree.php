@@ -72,7 +72,7 @@ if (!empty($_GET['editFree'])) {
     </header>
 
     <main>
-        <?php if (!empty($_GET['editFree']) && !empty($_SESSION['eid'])) { ?>
+        <?php if (!empty($_GET['editFree']) && !empty($_SESSION['empid'])) { ?>
             <div class="container">
                 <h1>COMPLETE</h1>
                 <div class="btn">

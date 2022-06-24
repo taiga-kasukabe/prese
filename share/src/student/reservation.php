@@ -53,7 +53,7 @@ if (!empty($_SESSION['id'])) {
         $stmt->execute();
     }
 
-    include("../../../kasukabe/prese_register/src/mail_send.php");
+    include("../../../kasukabe/prese_register/src/mail_send_rsv.php");
 } ?>
 
 <body>

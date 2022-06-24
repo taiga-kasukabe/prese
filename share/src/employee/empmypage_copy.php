@@ -34,8 +34,8 @@ try {
 
 
 // SESSIONが切れてないか確認
-if (!empty($_SESSION['eid'])) {
-    $empid = $_SESSION['eid'];
+if (!empty($_SESSION['empid'])) {
+    $empid = $_SESSION['empid'];
     // 社員リスト取得
     $sql = "SELECT * FROM emp_table WHERE empid = :empid";
     $stmt = $dbh->prepare($sql);
@@ -67,7 +67,7 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </header>
 
-    <?php if (!empty($_SESSION['eid'])) { ?>
+    <?php if (!empty($_SESSION['empid'])) { ?>
         <main>
             <h1><?php echo $employee['empname']; ?> さん</h1>
             <h2><i class="fa-solid fa-clipboard-list"></i>予約可能日程一覧</h2>

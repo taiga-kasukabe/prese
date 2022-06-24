@@ -33,7 +33,7 @@ if (!empty($_GET['free'])) {
     </header>
 
     <main>
-        <?php if (!empty($_SESSION['eid']) && !empty($_GET['free'])) { ?>
+        <?php if (!empty($_SESSION['empid']) && !empty($_GET['free'])) { ?>
             <div class="container_border">
                 <h1>以下の日程を空き日程に登録しますか？</h1>
                 <div class="schedule">

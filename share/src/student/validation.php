@@ -105,7 +105,6 @@ session_start();
     if(empty($_SESSION['err'])){
 
         //確認ページへ遷移
-        //URLの書き方！！
         header('Location:./register_confirm.php');
 
     } else {

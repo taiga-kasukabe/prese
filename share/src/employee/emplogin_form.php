@@ -41,8 +41,8 @@ session_start();
 
             <form action="./emplogin.php" method="POST">
                 <div class="form">
-                    <input type="text" name="eid" placeholder="ID" required>
-                    <input type="password" name="epass" placeholder="Password" required>
+                    <input type="text" name="empid" placeholder="ID" required>
+                    <input type="password" name="emppassword" placeholder="Password" required>
                 </div>
 
                 <button type="submit" id="login_btn">Login</button>

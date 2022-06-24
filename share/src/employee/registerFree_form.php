@@ -17,7 +17,7 @@
 <?php
 session_start();
 
-if (!empty($_SESSION['eid'])) {
+if (!empty($_SESSION['empid'])) {
     include('../../conf/config.php');
     $week = $_GET['week'];
     $weekJa = array("日", "月", "火", "水", "木", "金", "土");
@@ -28,9 +28,9 @@ if (!empty($_SESSION['eid'])) {
     } catch (PDOException $e) {
         $msg = $e->getMessage();
     }
-    
 
-    $empid = $_SESSION['eid'];
+
+    $empid = $_SESSION['empid'];
 
     // 社員リスト取得
     $sql = "SELECT * FROM emp_table WHERE empid = :empid";
@@ -64,7 +64,7 @@ if (!empty($_SESSION['eid'])) {
     </header>
 
     <main>
-        <?php if (!empty($_SESSION['eid'])) { ?>
+        <?php if (!empty($_SESSION['empid'])) { ?>
 
             <h1><?php echo $employee['empname']; ?> さん</h1>
             <div class="container">
