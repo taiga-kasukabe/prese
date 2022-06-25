@@ -2,7 +2,7 @@
 <!-- ./conf/mail_conf.phpを読み込む必要あり -->
 
 <?php
-// HPMailer のクラスをグローバル名前空間（global namespace）にインポート
+// PHPMailer のクラスをグローバル名前空間（global namespace）にインポート
 // スクリプトの先頭で宣言する必要があります
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -12,16 +12,15 @@ use PHPMailer\PHPMailer\Exception;
 require '/Applications/MAMP/htdocs/php_mailer/vendor/autoload.php';
 
 // ユーザ情報読み込み
-// include('../conf/mail_pass.php');
 $user_mail = 'taiga.kasukabe@gmail.com';
 $user_pass = 'mffjkyfejmlkdcdx';
 
 // メール情報読み込み
-// include('../conf/mail_conf.php');
-$subject = $unrsvInfo['rsvdate']. " : ". $unrsvInfo['rsvtime'] ."面談予約が入りました";
-$message_html = "<h1>NTT東日本です．</h1><p>学生から面談予約が入りました</p>";
-$message_plain = "NTT東日本です．学生から面談予約が入りました．";
+$subject = date('m月d日', strtotime($unrsvInfo['rsvdate'])) .  '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($unrsvInfo['rsvdate']))))] . ") " . date('H:i', strtotime($unrsvInfo['rsvtime'])) . '〜' . date('H:i', strtotime($unrsvInfo['rsvtime'] . " +1 hours")) . "に面談予約が入りました";
+$message_html = "<h1>PRESE Web制作班です．</h1><p>学生から面談予約が入りました．</p><p>日時：" . date('m月d日', strtotime($unrsvInfo['rsvdate'])) .  '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($unrsvInfo['rsvdate']))))] . ") " . date('H:i', strtotime($unrsvInfo['rsvtime'])) . '〜' . date('H:i', strtotime($unrsvInfo['rsvtime'] . " +1 hours")) . "</p><p>詳しくは<a href='localhost/demo/src/employee/emplogin_form.php'>こちら</a>から確認してください</p>";
+$message_plain = "PRESE Web制作班です．学生から面談予約が入りました．日時：". date('m月d日', strtotime($unrsvInfo['rsvdate'])) .  '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($unrsvInfo['rsvdate']))))] . ") " . date('H:i', strtotime($unrsvInfo['rsvtime'])) . '〜' . date('H:i', strtotime($unrsvInfo['rsvtime'] . " +1 hours"));
 $from = "taiga.kasukabe@gmail.com";
+$mail = $stuInfo['mail'];
 
 //mbstring の日本語設定
 mb_language("japanese");
@@ -70,3 +69,4 @@ try {
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$gmail->ErrorInfo}";
 }
+?>

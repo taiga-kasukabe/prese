@@ -8,6 +8,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+// 曜日表示に使用
+$weekJa = array("日", "月", "火", "水", "木", "金", "土");
+
 // Composer のオートローダーの読み込み（ファイルの位置によりパスを適宜変更）
 require '/Applications/MAMP/htdocs/php_mailer/vendor/autoload.php';
 
@@ -18,10 +21,11 @@ $user_pass = 'mffjkyfejmlkdcdx';
 
 // メール情報読み込み
 // include('../conf/mail_conf.php');
-$subject = "登録完了";
-$message_html = "<h1>NTT東日本です．</h1><p>会員登録完了しました．</p>";
-$message_plain = "NTT東日本です．会員登録完了しました";
+$subject = date('m月d日', strtotime($rsvdate)) .  '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($rsvdate))))] . ") " . date('H:i', strtotime($rsvtime)) . '〜' . date('H:i', strtotime($rsvtime . " +1 hours")) . "の予約がキャンセルされました";
+$message_html = "<h1>PRESE Web制作班です．</h1><p>以下の日程の予約がキャンセルされました．</p><p>日時：" . date('m月d日', strtotime($rsvdate)) .  '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($rsvdate))))] . ") " . date('H:i', strtotime($rsvtime)) . '〜' . date('H:i', strtotime($rsvtime . " +1 hours")) . "</p><p>詳しくは<a href='localhost/demo/src/employee/emplogin_form.php'>こちら</a>からご確認ください</p>";
+$message_plain = "Web制作班です．以下の日程の予約がキャンセルされました．日時：". date('m月d日', strtotime($rsvdate)) .  '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($rsvdate))))] . ") " . date('H:i', strtotime($rsvtime)) . '〜' . date('H:i', strtotime($rsvtime . " +1 hours"));
 $from = "taiga.kasukabe@gmail.com";
+$mail = $stuInfo['mail'];
 
 //mbstring の日本語設定
 mb_language("japanese");
@@ -47,9 +51,9 @@ try {
 
     //受信者設定
     //差出人アドレス, 差出人名
-    $gmail->setFrom($from, mb_encode_mimeheader('PRESE'));
+    $gmail->setFrom($from, mb_encode_mimeheader('PRESE Web制作班'));
     // 受信者アドレス, 受信者名（受信者名はオプション）
-    $gmail->addAddress($mail, mb_encode_mimeheader("登録者様"));
+    $gmail->addAddress($mail, mb_encode_mimeheader("内々定の方へ"));
     // 追加の受信者（受信者名は省略可能）
     // $gmail->addAddress('xxxxxx@example.com');
     //返信用アドレス（差出人以外に必要であれば）

@@ -60,7 +60,7 @@ if (empty($member)) {
 
 //メール送信
 // include("./send_mail.php");
-include("../../../kasukabe/prese_register/src/mail_send.php");
+include("../../../kasukabe/prese_register/src/mail_send_register.php");
 
 
 $msg = 'FINISH!';

@@ -19,8 +19,8 @@ $user_pass = 'mffjkyfejmlkdcdx';
 // メール情報読み込み
 // include('../conf/mail_conf.php');
 $subject = "登録完了";
-$message_html = "<h1>NTT東日本です．</h1><p>会員登録完了しました．</p>";
-$message_plain = "NTT東日本です．会員登録完了しました";
+$message_html = "<h1>NTT東日本です．</h1><p>会員登録完了しました．</p><p>登録ID：" . $id. "</p><p>ログインは<a href='localhost/demo/src/student/login_form.php'>こちら</a></p>";
+$message_plain = "NTT東日本です．会員登録完了しました．登録ID：" . $id;
 $from = "taiga.kasukabe@gmail.com";
 
 //mbstring の日本語設定
@@ -47,7 +47,7 @@ try {
 
     //受信者設定
     //差出人アドレス, 差出人名
-    $gmail->setFrom($from, mb_encode_mimeheader('PRESE'));
+    $gmail->setFrom($from, mb_encode_mimeheader('NTT東日本採用担当'));
     // 受信者アドレス, 受信者名（受信者名はオプション）
     $gmail->addAddress($mail, mb_encode_mimeheader("登録者様"));
     // 追加の受信者（受信者名は省略可能）
