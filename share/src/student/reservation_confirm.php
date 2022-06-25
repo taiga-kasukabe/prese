@@ -51,15 +51,51 @@ if (!empty($_SESSION['id'])) {
             <!-- 社員情報 -->
             <div class="profile">
                 <div class="emp_img">
-                <img src="../../images/<?php echo $employee['empimg_id']; ?>" alt="社員画像">
+                    <img src="../../images/<?php echo $employee['empimg_id']; ?>" alt="社員画像">
                 </div>
                 <div class="introduction">
                     <h2><?php echo $employee['empname']; ?></h2>
-                    <p>年次：<?php echo $employee['empyear']; ?>年目</p>
-                    <p>役職：<?php echo $employee['empjob']; ?></p>
-                    <p>職種：<?php echo $employee['empcareer']; ?></p>
-                    <p>趣味：<?php echo $employee['emphobby']; ?></p>
-                    <p>コメント：<?php echo $employee['empcomment']; ?></p><br>
+                    <p><i class="fa-solid fa-location-dot"></i><?php echo $employee['empplace']; ?>&emsp;&emsp;<i class="fa-solid fa-graduation-cap"></i><?php echo $employee['empuniv'] . "&nbsp;&nbsp;", $employee['empfac'] . "&nbsp;&nbsp;", $employee['empdept']; ?></p>
+                    <div class="data_line">
+                        <div class="data_tag">
+                            <p>ゼミ・研究内容</p>
+                        </div>
+                        <div class="data_text">
+                            <p><?php echo $employee['empresearch']; ?></p>
+                        </div>
+                    </div>
+                    <div class="data_line">
+                        <div class="data_tag">
+                            <p>見ていた業界</p>
+                        </div>
+                        <div class="data_text">
+                            <p><?php echo $employee['empindustry']; ?></p>
+                        </div>
+                    </div>
+                    <div class="data_line">
+                        <div class="data_tag">
+                            <p>就活サポートスキル</p>
+                        </div>
+                        <div class="data_text">
+                            <p><?php echo $employee['empskill']; ?></p>
+                        </div>
+                    </div>
+                    <div class="data_line">
+                        <div class="data_tag">
+                            <p>趣味</p>
+                        </div>
+                        <div class="data_text">
+                            <p><?php echo $employee['emphobby']; ?></p>
+                        </div>
+                    </div>
+                    <div class="data_line">
+                        <div class="data_tag">
+                            <p>アピールポイント</p>
+                        </div>
+                        <div class="data_text">
+                            <p><?php echo $employee['empapeal']; ?></p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -68,11 +104,16 @@ if (!empty($_SESSION['id'])) {
                 <div class="rsv_content">
                     <div class="rsv_text">
                         <!-- <p><span class="tag"><i class="fa-solid fa-user"></i>面談相手</span>&nbsp;&nbsp;<?php echo $employee['empname']; ?></p> -->
-                        <!-- <?php //$rsvtime = $stuid[$n]['rsvdate'] ?> -->
+                        <!-- <?php //$rsvtime = $stuid[$n]['rsvdate'] 
+                                ?> -->
                         <p><span class="tag"><i class="fa-solid fa-clock"></i>予約日時</span>&nbsp;&nbsp;<?php echo date('m/d', strtotime($reservation_date)) . '(' . $weekJa[$weekNum] . ')'; ?>&nbsp;&nbsp;&nbsp;<?php echo substr_replace($time, ':', 2, 0); ?></p>
                         <div class="comment">
                             <p class="comment_tag"><span class="tag"><i class="fa-solid fa-pen"></i>相談内容</span></p>
-                            <p class="comment_data"><?php if (!empty($comment)) { echo $comment; } else { echo "特になし"; } ?></p>
+                            <p class="comment_data"><?php if (!empty($comment)) {
+                                                        echo $comment;
+                                                    } else {
+                                                        echo "特になし";
+                                                    } ?></p>
                         </div>
                     </div>
                 </div>
@@ -95,14 +136,14 @@ if (!empty($_SESSION['id'])) {
                 </form>
             </div>
         <?php } else { ?>
-        <div class="container">
-            <p>セッションが切れました</p>
-            <p>ログインしてください</p>
-            <a href="./login_form.php" class="login">ログインページへ</a>
-        </div>
+            <div class="container">
+                <p>セッションが切れました</p>
+                <p>ログインしてください</p>
+                <a href="./login_form.php" class="login">ログインページへ</a>
+            </div>
         <?php } ?>
     </main>
-<!-- for jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="../../js/browserBack.js"></script>
+    <!-- for jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/browserBack.js"></script>
 </body>

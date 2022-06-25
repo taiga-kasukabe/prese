@@ -36,11 +36,11 @@ if (!empty($_SESSION['id'])) {
     $stmt->execute();
 
     // キャンセルした学生情報取得
-    $sql = "SELECT * FROM users_table WHERE id = :id";
+    $sql = "SELECT * FROM emp_table WHERE empid = :empid";
     $stmt = $dbh->prepare($sql);
-    $stmt->bindValue(':id', $id);
+    $stmt->bindValue(':empid', $empid);
     $stmt->execute();
-    $stuInfo = $stmt->fetch();
+    $empInfo = $stmt->fetch();
 
     // メール送信
     include('../../../kasukabe/prese_register/src/mail_send_cancel.php');
