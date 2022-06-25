@@ -25,7 +25,7 @@ $subject = date('m月d日', strtotime($rsvdate)) .  '(' . $weekJa[date('w', strt
 $message_html = "<h1>PRESE Web制作班です．</h1><p>以下の日程の予約がキャンセルされました．</p><p>日時：" . date('m月d日', strtotime($rsvdate)) .  '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($rsvdate))))] . ") " . date('H:i', strtotime($rsvtime)) . '〜' . date('H:i', strtotime($rsvtime . " +1 hours")) . "</p><p>詳しくは<a href='localhost/demo/src/employee/emplogin_form.php'>こちら</a>からご確認ください</p>";
 $message_plain = "Web制作班です．以下の日程の予約がキャンセルされました．日時：". date('m月d日', strtotime($rsvdate)) .  '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($rsvdate))))] . ") " . date('H:i', strtotime($rsvtime)) . '〜' . date('H:i', strtotime($rsvtime . " +1 hours"));
 $from = "taiga.kasukabe@gmail.com";
-$mail = $stuInfo['mail'];
+$mail = $empInfo['empmail'];
 
 //mbstring の日本語設定
 mb_language("japanese");

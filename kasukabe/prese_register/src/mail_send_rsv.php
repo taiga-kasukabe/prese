@@ -17,10 +17,19 @@ $user_pass = 'mffjkyfejmlkdcdx';
 
 // メール情報読み込み
 $subject = date('m月d日', strtotime($unrsvInfo['rsvdate'])) .  '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($unrsvInfo['rsvdate']))))] . ") " . date('H:i', strtotime($unrsvInfo['rsvtime'])) . '〜' . date('H:i', strtotime($unrsvInfo['rsvtime'] . " +1 hours")) . "に面談予約が入りました";
-$message_html = "<h1>PRESE Web制作班です．</h1><p>学生から面談予約が入りました．</p><p>日時：" . date('m月d日', strtotime($unrsvInfo['rsvdate'])) .  '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($unrsvInfo['rsvdate']))))] . ") " . date('H:i', strtotime($unrsvInfo['rsvtime'])) . '〜' . date('H:i', strtotime($unrsvInfo['rsvtime'] . " +1 hours")) . "</p><p>詳しくは<a href='localhost/demo/src/employee/emplogin_form.php'>こちら</a>から確認してください</p>";
-$message_plain = "PRESE Web制作班です．学生から面談予約が入りました．日時：". date('m月d日', strtotime($unrsvInfo['rsvdate'])) .  '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($unrsvInfo['rsvdate']))))] . ") " . date('H:i', strtotime($unrsvInfo['rsvtime'])) . '〜' . date('H:i', strtotime($unrsvInfo['rsvtime'] . " +1 hours"));
+$message_html =
+    "<h1>PRESE Web制作班です．</h1>
+<p>学生から面談予約が入りました．明日までに学生にメールを送ってください！</p>
+<p>日時：" . date('m月d日', strtotime($unrsvInfo['rsvdate'])) .  '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($unrsvInfo['rsvdate']))))] . ") " . date('H:i', strtotime($unrsvInfo['rsvtime'])) . '〜' . date('H:i', strtotime($unrsvInfo['rsvtime'] . " +1 hours")) . "</p>
+<h2>予約してくださった学生情報</h2>
+<p>名前：" . $stuInfo['username'] . "<br>
+メールアドレス：" . $stuInfo['mail'] . "</p>
+<p>↓↓メール文面のテンプレはこちら↓↓<br>
+＝＝＝＝<br>面談のご予約ありがとうございます．<br>NTT東日本SE内々定の◯◯です．<br>当日は[zoom, teams, google meets, etc.]で面談したいと思います！<br>リンクはこちら：<br>以上，よろしくお願いします！<br>＝＝＝＝</p>
+<p>詳しくは<a href='localhost/demo/src/employee/emplogin_form.php'>こちら</a>から確認してください</p>";
+$message_plain = "PRESE Web制作班です．学生から面談予約が入りました．日時：" . date('m月d日', strtotime($unrsvInfo['rsvdate'])) .  '(' . $weekJa[date('w', strtotime(date('Y-m-d', strtotime($unrsvInfo['rsvdate']))))] . ") " . date('H:i', strtotime($unrsvInfo['rsvtime'])) . '〜' . date('H:i', strtotime($unrsvInfo['rsvtime'] . " +1 hours"));
 $from = "taiga.kasukabe@gmail.com";
-$mail = $stuInfo['mail'];
+$mail = $empInfo['empmail'];
 
 //mbstring の日本語設定
 mb_language("japanese");

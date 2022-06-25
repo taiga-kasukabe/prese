@@ -59,6 +59,13 @@ if (!empty($_SESSION['id'])) {
         $stmt->execute();
         $stuInfo = $stmt->fetch();
 
+        // 予約された内々定者情報取得
+        $sql = "SELECT * FROM emp_table WHERE empid = :empid";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(':empid', $empid);
+        $stmt->execute();
+        $empInfo = $stmt->fetch();
+
         // メール送信
         include('../../../kasukabe/prese_register/src/mail_send_rsv.php');
     }

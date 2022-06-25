@@ -51,13 +51,20 @@ if (!empty($_SESSION['id'])) {
         $stmt->bindValue(':comment', $comment);
         $stmt->bindValue(':id', $unrsvInfo['id']);
         $stmt->execute();
-        
+
         // 予約者情報取得
         $sql = "SELECT * FROM users_table WHERE id = :id";
         $stmt = $dbh->prepare($sql);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
         $stuInfo = $stmt->fetch();
+
+        // 予約された内々定者情報取得
+        $sql = "SELECT * FROM emp_table WHERE empid = :empid";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(':empid', $empid);
+        $stmt->execute();
+        $empInfo = $stmt->fetch();
 
         // メール送信
         include('../../../kasukabe/prese_register/src/mail_send_rsv.php');
@@ -96,11 +103,11 @@ if (!empty($_SESSION['id'])) {
                     <button onclick="location.href='./home.php'">ホームへ</button>
                 </div>
             <?php } else { ?>
-            <div class="container">
-               <p>セッションが切れました</p>
-              <p>ログインしてください</p>
-               <a href="./login_form.php" class="login">ログインページへ</a>
-            </div>
+                <div class="container">
+                    <p>セッションが切れました</p>
+                    <p>ログインしてください</p>
+                    <a href="./login_form.php" class="login">ログインページへ</a>
+                </div>
             <?php } ?>
         </div>
     </main>
