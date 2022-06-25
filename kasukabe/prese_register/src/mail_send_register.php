@@ -19,7 +19,7 @@ $user_pass = 'mffjkyfejmlkdcdx';
 // メール情報読み込み
 // include('../conf/mail_conf.php');
 $subject = "登録完了";
-$message_html = "<h1>NTT東日本です．</h1><p>会員登録完了しました．</p><p>登録ID：" . $id. "</p><p>ログインは<a href='localhost/demo/src/student/login_form.php'>こちら</a></p>";
+$message_html = "<h1>NTT東日本です．</h1><p>会員登録完了しました．</p><p>登録ID：" . $id. "</p><p>ログインは<a href='localhost/share/src/student/login_form.php'>こちら</a></p>";
 $message_plain = "NTT東日本です．会員登録完了しました．登録ID：" . $id;
 $from = "taiga.kasukabe@gmail.com";
 
