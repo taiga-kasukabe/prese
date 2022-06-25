@@ -51,9 +51,17 @@ if (!empty($_SESSION['id'])) {
         $stmt->bindValue(':comment', $comment);
         $stmt->bindValue(':id', $unrsvInfo['id']);
         $stmt->execute();
-    }
 
-    include("../../../kasukabe/prese_register/src/mail_send_rsv.php");
+        // 予約者情報取得
+        $sql = "SELECT * FROM users_table WHERE id = :id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        $stuInfo = $stmt->fetch();
+
+        // メール送信
+        include('../../../kasukabe/prese_register/src/mail_send_rsv.php');
+    }
 } ?>
 
 <body>
