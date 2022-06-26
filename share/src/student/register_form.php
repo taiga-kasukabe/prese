@@ -128,8 +128,7 @@
                 <button type="submit" id="submit">確認</button>
 
                 <div class="terms">
-                    <a href="./terms/tos.php">利用規約</a>
-                    <a href="./terms/privacypolicy.php">プライバシー規約</a><br>
+                    <a href="./terms/tos.php" target="_blank" rel="noopener noreferrer">会員規約</a>
                 </div>
 
             </form>
