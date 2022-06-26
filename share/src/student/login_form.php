@@ -49,7 +49,7 @@ session_start();
 
             <button type="submit" id="login_btn">Login</button>
         </form>
-        <a href="./reset_email_form.php">パスワードを忘れた方はこちら ＞</a>
-        <a href="./terms/tos.php" id="mypage">会員規約</a>
+        <a href="./reset_email_form.php" class="pass_reset">パスワードを忘れた方はこちら ＞</a>
+        <a href="./terms/tos.php" id="tos">会員規約</a>
     </div>
 </body>

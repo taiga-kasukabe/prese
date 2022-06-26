@@ -122,17 +122,17 @@ button:hover {
     color: #ffffff;
     border: 1px solid #ffffff;
 }
-a {
+a.pass_reset {
     display: block;
     position: relative;
     width: fit-content;
-    margin: 10px auto;
+    margin: 6px auto;
     padding-bottom: 1px;
     text-decoration: none;
     color: #ffffff;
     font-size: 0.9em;
 }
-a::before {
+a.pass_reset::before {
     content: '';
     position: absolute;
     top: 0;
@@ -143,6 +143,12 @@ a::before {
     border-bottom: 1px solid #ffffff;
     transition: .25s;
 }
-a:hover::before {
+a.pass_reset:hover::before {
     width: 100%;
+}
+a#tos {
+    appearance: none;
+    outline: 0;
+    font-size: 0.8em;
+    color: #ffffff;
 }
