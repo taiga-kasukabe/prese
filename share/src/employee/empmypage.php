@@ -125,7 +125,7 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <p class="comment_tag"><span class="tag"><i class="fa-solid fa-pen"></i>相談内容</span></p>
                                             <p class="comment_data"><?php echo $rsvInfo[$i]['comment']; ?></p>
                                         </div>
-                                        <p><span class="tag"><i class="fa-solid fa-clock"></i>メールアドレス</span><span class="copy-text" data-mail="mail-<?php echo $i ?>" ><?php  echo $stuInfo[$num]['mail']; ?></span></p>
+                                        <p class="mail_tag"><span class="tag"><i class="fa-solid fa-clock"></i>メールアドレス</span><span class="copy-text" data-mail="mail-<?php echo $i ?>" ><?php  echo $stuInfo[$num]['mail']; ?></span></p>
                                     </div>
                                     <button class="copy-btn" data-mail-copy="mail-<?php echo $i ?>">メールアドレスをコピー</button>
                                 </div>

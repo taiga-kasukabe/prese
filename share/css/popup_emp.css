@@ -4,40 +4,30 @@
   }
 
   /* modal text*/
-  .title {
+.title {
     text-align: center;
-    font-size: 1.2em
-  }
-  .stuInfo {
-    margin: 20px auto;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.stuInfo {
+    margin: 20px auto 10px auto;
     width: fit-content;
     line-height: 2em;
-  }
-  .copy-btn {
-    display: block;
-    margin: 0 auto;
-    padding: 5px;
-    background-color: #ffffff;
-    color: #09bb7a;
-    border: 1px solid #09bb7a;
-    border-radius: 2.3px;
-    transition: .2s;
-  }
-  .copy-btn:hover {
-    background-color: #09bb7a;
-    color: #ffffff;
-  }
-  .tag {
+}
+.tag {
     font-weight: bold;
     color: #09bb7a;
     margin-right: 30px;
+}
+.mail_tag {
+    margin-top: 20px;
 }
 .comment {
     display: flex;
 }
 .comment_tag {
     display: block;
-    width: 130px;
+    width: 118px;
 }
 .comment_data {
     display: block;
@@ -47,6 +37,20 @@
     margin-top: 5px;
     padding: 4px 8px 6px 8px;
     border: 1px solid #b3b3b3;
+}
+.copy-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 5px;
+    background-color: #ffffff;
+    color: #09bb7a;
+    border: 1px solid #09bb7a;
+    border-radius: 2.3px;
+    transition: .2s;
+}
+.copy-btn:hover {
+    background-color: #09bb7a;
+    color: #ffffff;
 }
 
   /* ------works_modal css------ */
@@ -68,7 +72,7 @@
   .works_modal_window {
       width: 80vh;
       margin: auto;
-      padding: 40px 80px;
+      padding: 40px 60px;
       background: #fff;
       z-index: 1;
   }
