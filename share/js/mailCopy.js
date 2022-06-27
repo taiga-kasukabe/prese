@@ -6,10 +6,10 @@ const mailCopy = function(e) {
             let copyText = e.textContent;
             navigator.clipboard.writeText(copyText).then(() => {
                 // true
-                alert("コピーしました！ : ");
+                alert("コピーしました！");
                 }, () => {
                 // false
-                alert("コピーできていません : ");
+                alert("コピーできていません");
                 });
         }
     })
