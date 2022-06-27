@@ -41,25 +41,19 @@ if(!empty($_POST)) {
     $skill = $_POST['skill'];
     
     // 複数選択で配列で受け取った変数を文字列として結合
-    // 正規表現ver.1
-    // $academichistory_str = "'^(?=.*".implode(").*$|^(?=.*", $academichistory).").*$'";
-    // $industry_str = "'^(?=.*".implode(").*$|^(?=.*", $industry).").*$'";
-    // $skill_str = "'^(?=.*".implode(").*$|^(?=.*", $skill).").*$'";
-    
-    // 正規表現ver.2
     $academichistory_str = "'.*".implode(".*|.*", $academichistory).".*'";
     $industry_str = "'.*".implode(".*|.*", $industry).".*'";
     $skill_str = "'.*".implode(".*|.*", $skill).".*'";
 
 
     // users_tablaに診断で入力した情報を挿入
-    // $sql = "UPDATE users_table SET academichistory = :academichistory, industry = :industry, skill = :skill WHERE id=:id";
-    // $stmt = $dbh -> prepare($sql);
+    $sql = "UPDATE users_table SET academichistory = $academichistory_str, industry = $indutry_str, skill = $skill_str WHERE id=:id";
+    $stmt = $dbh -> prepare($sql);
     // $stmt -> bindValue(':academichistory', $academichistory_str);
     // $stmt -> bindValue(':industry', $industry_str);
     // $stmt -> bindValue(':skill', $skill_str);
-    // $stmt -> bindValue(':id', $id);
-    // $stmt -> execute();
+    $stmt -> bindValue(':id', $id);
+    $stmt -> execute();
 
     // データベース検索
     $sql_emp = "SELECT * FROM emp_table WHERE (empacademichistory REGEXP ($academichistory_str)) AND (empindustry REGEXP ($industry_str)) AND (empskill REGEXP ($skill_str))";

@@ -46,21 +46,22 @@ if (!empty($_SESSION['id'])) {
     $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // 前回の診断結果を取得，変数に代入
-    $academichistory = $member['academichistory'];
-    $industry = $member['industry'];
-    $skill = $member['skill'];    
+    $academichistory_str = $member['academichistory'];
+    $industry_str = $member['industry'];
+    $skill_str = $member['skill'];    
 
     // 社員情報（おすすめ）の取得
-    // if (!empty($gender)) {
-    //     // （1）emptag2かemptag3に選択されたjobが含まれている（2）emptag1の性別と一致（3）年次が選択された範囲内
-    //     $sql_emp = "SELECT * FROM emp_table WHERE ((emptag2 IN ($job_str)) OR (emptag3 IN ($job_str))) AND (emptag1 = :gender) AND (empyear >= :year_from AND empyear <= :year_to)";
-    //     $stmt = $dbh->prepare($sql_emp);
-    //     $stmt->bindValue(':gender', $gender);
-    //     $stmt->bindValue(':year_from', $year_from);
-    //     $stmt->bindValue(':year_to', $year_to);
-    //     $stmt->execute();
-    //     $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // }
+    if (!empty($academichistory)) {
+        // データベース検索
+        $sql_emp = "SELECT * FROM emp_table WHERE (empacademichistory REGEXP ($academichistory_str)) AND (empindustry REGEXP ($industry_str)) AND (empskill REGEXP ($skill_str))";
+        $stmt = $dbh->prepare($sql_emp);
+        // $stmt->bindValue(':academichistory', $academichistory_str);
+        // $stmt->bindValue(':industry', $industry_str);
+        // $stmt->bindValue(':skill', $skill_str);
+        var_dump($sql_emp);
+        $stmt->execute();
+        $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>
 
