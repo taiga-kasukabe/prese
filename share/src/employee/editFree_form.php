@@ -30,8 +30,8 @@ try {
     $msg = $e->getMessage();
 }
 
-if (!empty($_SESSION['eid'])) {
-    $empid = $_SESSION['eid'];
+if (!empty($_SESSION['empid'])) {
+    $empid = $_SESSION['empid'];
     // 社員リスト取得
     $sql = "SELECT * FROM emp_table WHERE empid = :empid";
     $stmt = $dbh->prepare($sql);
@@ -57,14 +57,23 @@ if (!empty($_SESSION['eid'])) {
 
 <body>
     <header>
-        <div class="bg">
-            <img src="../../images/ntt-east_white.png" id="logo">
+        <div class="header_container">
+            <div class="logo">
+                <img src="../../images/ntt-east_white.png" id="logo">
+            </div>
+            <div class="navbtn">
+                <nav>
+                    <ul class="header_nav">
+                        <li><a href="./empmypage.php">MY PAGE</a></li>
+                        <li><a href="./emplogout.php">LOGOUT</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        </script>
     </header>
 
     <main>
-        <?php if (!empty($_SESSION['eid'])) { ?>
+        <?php if (!empty($_SESSION['empid'])) { ?>
             <h1><?php echo $employee['empname']; ?> さん</h1>
             <div class="container">
                 <h2><i class="fa-regular fa-calendar-xmark"></i>空き日程の削除</h2>

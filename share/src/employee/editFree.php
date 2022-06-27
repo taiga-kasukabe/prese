@@ -65,10 +65,19 @@ if (!empty($_GET['editFree'])) {
 
 <body>
     <header>
-        <div class="bg">
-            <img src="../../images/ntt-east_white.png" id="logo">
+        <div class="header_container">
+            <div class="logo">
+                <img src="../../images/ntt-east_white.png" id="logo">
+            </div>
+            <div class="navbtn">
+                <nav>
+                    <ul class="header_nav">
+                        <li><a href="./empmypage.php">MY PAGE</a></li>
+                        <li><a href="./emplogout.php">LOGOUT</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        </script>
     </header>
 
     <main>
@@ -84,7 +93,7 @@ if (!empty($_GET['editFree'])) {
                     <form action="./empmypage.php" method="get">
                         <input type="hidden" name="week" value="0">
                         <input type="hidden" name="empid" value="<?php echo $empid[0]; ?>">
-                        <button id="backHome" onclick="location.href='./empmypage.php'">ホームへ戻る</button>
+                        <button id="backHome" onclick="location.href='./empmypage.php'">マイページへ戻る</button>
                     </form>
                 </div>
             </div>

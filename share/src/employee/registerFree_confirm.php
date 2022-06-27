@@ -26,10 +26,19 @@ if (!empty($_GET['free'])) {
 
 <body>
     <header>
-        <div class="bg">
-            <img src="../../images/ntt-east_white.png" id="logo">
+        <div class="header_container">
+            <div class="logo">
+                <img src="../../images/ntt-east_white.png" id="logo">
+            </div>
+            <div class="navbtn">
+                <nav>
+                    <ul class="header_nav">
+                        <li><a href="./empmypage.php">MY PAGE</a></li>
+                        <li><a href="./emplogout.php">LOGOUT</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        </script>
     </header>
 
     <main>
