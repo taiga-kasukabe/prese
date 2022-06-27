@@ -219,9 +219,19 @@ if (!empty($_SESSION['id'])) {
         </main>
     <?php } else { ?>
         <header class="blue_header">
-            <div class="bg">
-                <a href="./mypage.php" id="mypage">マイページ</a>
-                <img src="../../images/ntt-east_white.png" id="logo">
+            <div class="header_container">
+                <div class="logo">
+                    <img src="../../images/ntt-east_white.png" id="logo">
+                </div>
+                <div class="navbtn">
+                    <nav>
+                        <ul class="header_nav">
+                            <li><a href="./home.php">HOME</a></li>
+                            <li><a href="./mypage.php">MY PAGE</a></li>
+                            <li><a href="./logout.php">LOGOUT</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </header>
 
