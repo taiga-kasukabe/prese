@@ -149,7 +149,6 @@ if (!empty($_SESSION['id'])) {
                         <p>現在予約している面談はありません</p>
                     </div>
                 <?php } ?>
-                <a href="./logout.php">ログアウト</a>
             </div>
         <?php } else { ?>
             <div class="container">
