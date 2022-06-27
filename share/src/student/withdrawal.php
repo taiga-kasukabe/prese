@@ -17,11 +17,11 @@
 </head>
 <body>
     <header>
-        <div class="bg">
-            <img src="../../images/ntt-east_white.png" id="logo">
-            <a href="./home.php" id="home">ホーム</a>
+        <div class="header_container">
+            <div class="logo">
+                <img src="../../images/ntt-east_white.png" id="logo">
+            </div>
         </div>
-        </script>
     </header>
 
     <?php
