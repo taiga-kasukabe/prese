@@ -51,7 +51,7 @@ if (!empty($_SESSION['id'])) {
     $skill_str = $member['skill'];    
 
     // 社員情報（おすすめ）の取得
-    if (!empty($academichistory)) {
+    if (!empty($academichistory_str)) {
         // データベース検索
         $sql_emp = "SELECT * FROM emp_table WHERE (empacademichistory REGEXP ($academichistory_str)) AND (empindustry REGEXP ($industry_str)) AND (empskill REGEXP ($skill_str))";
         $stmt = $dbh->prepare($sql_emp);
