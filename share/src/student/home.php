@@ -116,7 +116,7 @@ if (!empty($_SESSION['id'])) {
                             <div class="arrow">→</div>
                             <div class="emp_data">
                                 <h2><?php echo $employee_rec[$num]['empname']; ?></h2>
-                                <p><?php echo $employee[$num]['empname_eng']; ?></p>
+                                <p><?php echo $employee_rec[$num]['empname_eng']; ?></p>
                             </div>
                         </div>
 
