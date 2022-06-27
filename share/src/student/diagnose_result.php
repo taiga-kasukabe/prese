@@ -32,7 +32,7 @@ try{
     $msg = $e -> getMessage();
 }
 
-// $id = $_SESSION['id'];
+$id = $_SESSION['id'];
 
 if(!empty($_POST)) {
     // 診断で入力した情報
@@ -47,7 +47,7 @@ if(!empty($_POST)) {
 
 
     // users_tablaに診断で入力した情報を挿入
-    $sql = "UPDATE users_table SET academichistory = $academichistory_str, industry = $indutry_str, skill = $skill_str WHERE id=:id";
+    $sql = "UPDATE users_table SET academichistory = $academichistory_str, industry = $industry_str, skill = $skill_str WHERE id=:id";
     $stmt = $dbh -> prepare($sql);
     // $stmt -> bindValue(':academichistory', $academichistory_str);
     // $stmt -> bindValue(':industry', $industry_str);
