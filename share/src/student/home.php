@@ -46,9 +46,9 @@ if (!empty($_SESSION['id'])) {
     $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // 前回の診断結果を取得，変数に代入
-    $academichistory_str = $member['academichistory'];
-    $industry_str = $member['industry'];
-    $skill_str = $member['skill'];    
+    $academichistory_str = " ' ".$member['academichistory']." ' ";
+    $industry_str = " ' ".$member['industry']." ' ";
+    $skill_str = " ' ".$member['skill']." ' ";    
 
     // 社員情報（おすすめ）の取得
     if (!empty($academichistory_str)) {
@@ -58,7 +58,6 @@ if (!empty($_SESSION['id'])) {
         // $stmt->bindValue(':academichistory', $academichistory_str);
         // $stmt->bindValue(':industry', $industry_str);
         // $stmt->bindValue(':skill', $skill_str);
-        var_dump($sql_emp);
         $stmt->execute();
         $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

@@ -61,7 +61,6 @@ if(!empty($_POST)) {
     // $stmt->bindValue(':academichistory', $academichistory_str);
     // $stmt->bindValue(':industry', $industry_str);
     // $stmt->bindValue(':skill', $skill_str);
-    var_dump($sql_emp);
     $stmt->execute();
     $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
