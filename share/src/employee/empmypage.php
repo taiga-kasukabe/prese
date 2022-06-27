@@ -44,7 +44,7 @@ if (!empty($_SESSION['empid'])) {
     $employee = $stmt->fetch();
 
     // 予約情報取得
-    $sql = "SELECT * FROM rsvdb WHERE (empid = :empid AND ((rsvdate >= :today) AND (flag = 1)) OR ((rsvdate >= :2daysAfter) AND (flag = 0))) ORDER BY rsvdate, rsvtime";
+    $sql = "SELECT * FROM rsvdb WHERE (empid = :empid AND ((rsvdate >= :today) AND (flag = 1)) OR (empid = :empid AND (rsvdate >= :2daysAfter) AND (flag = 0))) ORDER BY rsvdate, rsvtime";
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':empid', $empid);
     $stmt->bindValue(':today', date('Y-m-d'));
