@@ -46,15 +46,16 @@ if (!empty($_SESSION['id'])) {
     $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // 前回の診断結果を取得，変数に代入
-    $academichistory_str = " ' ".$member['academichistory']." ' ";
-    $industry_str = " ' ".$member['industry']." ' ";
-    $skill_str = " ' ".$member['skill']." ' ";    
+    $academichistory_str = "'".$member['academichistory']."'";
+    $industry_str = "'".$member['industry']."'";
+    $skill_str = "'".$member['skill']."'";    
 
     // 社員情報（おすすめ）の取得
     if (!empty($academichistory_str)) {
         // データベース検索
         $sql_emp = "SELECT * FROM emp_table WHERE (empacademichistory REGEXP ($academichistory_str)) AND (empindustry REGEXP ($industry_str)) AND (empskill REGEXP ($skill_str))";
         $stmt = $dbh->prepare($sql_emp);
+        var_dump($sql_emp);
         // $stmt->bindValue(':academichistory', $academichistory_str);
         // $stmt->bindValue(':industry', $industry_str);
         // $stmt->bindValue(':skill', $skill_str);
