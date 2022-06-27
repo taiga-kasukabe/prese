@@ -45,13 +45,13 @@ if (!empty($_SESSION['id'])) {
     $stmt->execute();
     $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // 前回の診断結果を取得，変数に代入
-    $academichistory_str = "'".$member['academichistory']."'";
-    $industry_str = "'".$member['industry']."'";
-    $skill_str = "'".$member['skill']."'";    
 
     // 社員情報（おすすめ）の取得
-    if (!empty($academichistory_str)) {
+    if (!empty($member['academichistory'])) {
+        // 前回の診断結果を取得，変数に代入
+        $academichistory_str = "'" . $member['academichistory'] . "'";
+        $industry_str = "'" . $member['industry'] . "'";
+        $skill_str = "'" . $member['skill'] . "'";
         // データベース検索
         $sql_emp = "SELECT * FROM emp_table WHERE (empacademichistory REGEXP ($academichistory_str)) AND (empindustry REGEXP ($industry_str)) AND (empskill REGEXP ($skill_str))";
         $stmt = $dbh->prepare($sql_emp);
@@ -100,7 +100,7 @@ if (!empty($_SESSION['id'])) {
             <!-- 簡易診断へのリンク -->
             <br>
             <a href="./diagnose.php" class="btn">
-                <span class="btn_text">おすすめの社員を診断する</span>
+                <span class="btn_text">おすすめの内々定者を診断する</span>
             </a>
 
             <!-- おすすめの社員の表示 -->
@@ -125,25 +125,31 @@ if (!empty($_SESSION['id'])) {
                             <div class="works_modal_mask"></div>
                             <div class="works_modal_window">
                                 <div class="works_modal_content">
-                                <div class="empimg_modal">
+                                    <div class="empimg_modal">
                                         <img src="../../images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
                                     </div>
                                     <div class="introduction">
                                         <h1><?php echo $employee_rec[$num]['empname']; ?></h1>
                                         <div class="data_line">
-                                            <div class="data_tag"><p>所属：</p></div>
+                                            <div class="data_tag">
+                                                <p>所属：</p>
+                                            </div>
                                             <div class="data_text">
-                                                <p><?php echo $employee_rec[$num]['empuniv'] . "&nbsp;&nbsp;", $employee_rec[$num]['empfac']. "&nbsp;&nbsp;", $employee_rec[$num]['empdept']; ?></p>
+                                                <p><?php echo $employee_rec[$num]['empuniv'] . "&nbsp;&nbsp;", $employee_rec[$num]['empfac'] . "&nbsp;&nbsp;", $employee_rec[$num]['empdept']; ?></p>
                                             </div>
                                         </div>
                                         <div class="data_line">
-                                            <div class="data_tag"><p>見ていた業界：</p></div>
+                                            <div class="data_tag">
+                                                <p>見ていた業界：</p>
+                                            </div>
                                             <div class="data_text">
                                                 <p><?php echo $employee_rec[$num]['empindustry']; ?></p>
                                             </div>
                                         </div>
                                         <div class="data_line">
-                                            <div class="data_tag"><p>趣味：</p></div>
+                                            <div class="data_tag">
+                                                <p>趣味：</p>
+                                            </div>
                                             <div class="data_text">
                                                 <p><?php echo $employee_rec[$num]['emphobby']; ?></p>
                                             </div>
@@ -187,19 +193,25 @@ if (!empty($_SESSION['id'])) {
                                     <div class="introduction">
                                         <h1><?php echo $employee[$num]['empname']; ?></h1>
                                         <div class="data_line">
-                                            <div class="data_tag"><p>所属：</p></div>
+                                            <div class="data_tag">
+                                                <p>所属：</p>
+                                            </div>
                                             <div class="data_text">
-                                                <p><?php echo $employee[$num]['empuniv'] . "&nbsp;&nbsp;", $employee[$num]['empfac']. "&nbsp;&nbsp;", $employee[$num]['empdept']; ?></p>
+                                                <p><?php echo $employee[$num]['empuniv'] . "&nbsp;&nbsp;", $employee[$num]['empfac'] . "&nbsp;&nbsp;", $employee[$num]['empdept']; ?></p>
                                             </div>
                                         </div>
                                         <div class="data_line">
-                                            <div class="data_tag"><p>見ていた業界：</p></div>
+                                            <div class="data_tag">
+                                                <p>見ていた業界：</p>
+                                            </div>
                                             <div class="data_text">
                                                 <p><?php echo $employee[$num]['empindustry']; ?></p>
                                             </div>
                                         </div>
                                         <div class="data_line">
-                                            <div class="data_tag"><p>趣味：</p></div>
+                                            <div class="data_tag">
+                                                <p>趣味：</p>
+                                            </div>
                                             <div class="data_text">
                                                 <p><?php echo $employee[$num]['emphobby']; ?></p>
                                             </div>
