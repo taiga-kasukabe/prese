@@ -55,7 +55,6 @@ if (!empty($_SESSION['id'])) {
         // データベース検索
         $sql_emp = "SELECT * FROM emp_table WHERE (empacademichistory REGEXP ($academichistory_str)) AND (empindustry REGEXP ($industry_str)) AND (empskill REGEXP ($skill_str))";
         $stmt = $dbh->prepare($sql_emp);
-        var_dump($sql_emp);
         // $stmt->bindValue(':academichistory', $academichistory_str);
         // $stmt->bindValue(':industry', $industry_str);
         // $stmt->bindValue(':skill', $skill_str);
