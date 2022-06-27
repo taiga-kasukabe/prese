@@ -36,7 +36,7 @@
         <?php session_start(); ?>
         <?php if (!empty($_SESSION['id'])) { ?>
             <h1>簡易診断</h1>
-            <p>面談相手におすすめの社員を診断します！</p>
+            <p>面談相手におすすめの内々定者を診断します！</p>
             <br>
             <div id="main">
                 <div id="question_area">
@@ -53,7 +53,7 @@
                         </div>
                         
                         <div id="q2" class="question">
-                            <div class="q_text">Q.見ていた業界は？</div>
+                            <div class="q_text">Q.どんな業界を見ていた内々定者？</div>
                                 <div class="q_content" id="industry">
                                     <input type="checkbox" name="industry[]" value="通信" data-q="q2" <?php if (isset($_POST['industry']) && in_array("通信", $_POST['industry'])) { echo 'checked'; } ?>>通信
                                     <input type="checkbox" name="industry[]" value="SIer" data-q="q2" <?php if (isset($_POST['industry']) && in_array("SIer", $_POST['industry'])) { echo 'checked'; } ?>>SIer
@@ -66,7 +66,7 @@
                         </div>
 
                         <div id="q3" class="question">
-                        <div class="q_text">Q.就活サポートスキルは？</div>
+                        <div class="q_text">Q.求める就活サポートスキルは？</div>
                                 <div class="q_content" id="skill">
                                     <input type="checkbox" name="skill[]" value="ES添削" data-q="q3" <?php if (isset($_POST['skill']) && in_array("ES添削", $_POST['skill'])) { echo 'checked'; } ?>>ES添削
                                     <input type="checkbox" name="skill[]" value="面接練習" data-q="q3" <?php if (isset($_POST['skill']) && in_array("面接練習", $_POST['skill'])) { echo 'checked'; } ?>>面接練習

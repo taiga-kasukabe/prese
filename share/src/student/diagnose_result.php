@@ -95,12 +95,12 @@ if(!empty($_POST)) {
     <main>
         <?php //if (!empty($_SESSION['id'])) { ?>
             <div id="result_area" class="result is_open">
-                <p class="text">あなたにおすすめの社員はこちら！</p>
+                <p class="text">あなたにおすすめの内々定者はこちら！</p>
 
                 <!-- ループで取得した社員情報を全て表示 -->
                 <?php if(!empty($_POST)) {
                     if(empty($employee_rec)) { 
-                        echo "該当する社員はいませんでした．";
+                        echo "該当する内々定者はいませんでした．";
                     } else { ?>
                 <p class="section_title">RECOMMEND</p>
                 <div class="list">
