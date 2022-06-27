@@ -41,10 +41,18 @@ if(!empty($_POST)) {
     $skill = $_POST['skill'];
     
     // 複数選択で配列で受け取った変数を文字列として結合
-    $academichistory_str = "'^(?=.*".implode(").*$|^(?=.*", $academichistory).").*$'";
-    $industry_str = "'^(?=.*".implode(").*$|^(?=.*", $industry).").*$'";
-    $skill_str = "'^(?=.*".implode(").*$|^(?=.*", $skill).").*$'";
+    // 正規表現ver.1
+    // $academichistory_str = "'^(?=.*".implode(").*$|^(?=.*", $academichistory).").*$'";
+    // $industry_str = "'^(?=.*".implode(").*$|^(?=.*", $industry).").*$'";
+    // $skill_str = "'^(?=.*".implode(").*$|^(?=.*", $skill).").*$'";
+    
+    // 正規表現ver.2
+    $academichistory_str = "'.*".implode(".*|.*", $academichistory).".*'";
+    $industry_str = "'.*".implode(".*|.*", $industry).".*'";
+    $skill_str = "'.*".implode(".*|.*", $skill).".*'";
 
+
+    // users_tablaに診断で入力した情報を挿入
     // $sql = "UPDATE users_table SET academichistory = :academichistory, industry = :industry, skill = :skill WHERE id=:id";
     // $stmt = $dbh -> prepare($sql);
     // $stmt -> bindValue(':academichistory', $academichistory_str);
@@ -54,7 +62,6 @@ if(!empty($_POST)) {
     // $stmt -> execute();
 
     // データベース検索
-    // （1）emptag2かemptag3に選択されたjobが含まれている（2）emptag1の性別と一致（3）年次が選択された範囲内
     $sql_emp = "SELECT * FROM emp_table WHERE (empacademichistory REGEXP ($academichistory_str)) AND (empindustry REGEXP ($industry_str)) AND (empskill REGEXP ($skill_str))";
     $stmt = $dbh->prepare($sql_emp);
     // $stmt->bindValue(':academichistory', $academichistory_str);
@@ -95,41 +102,56 @@ if(!empty($_POST)) {
                     if(empty($employee_rec)) { 
                         echo "該当する社員はいませんでした．";
                     } else { ?>
-                        <p class="section_title">RECOMMEND</p>
-                        <div class="list">
-                            <?php for ($num = 0; $num < count($employee_rec); $num++) { ?>
+                <p class="section_title">RECOMMEND</p>
+                <div class="list">
+                    <?php for ($num = 0; $num < count($employee_rec); $num++) { ?>
 
-                                <!-- リストをモーダル表示のボタンに -->
-                                <div class="works_modal_open" data-modal-open="rec-modal-<?php echo $num; ?>">
-                                    <div class="emp_img" style="background-image: url(../../images/<?php echo $employee_rec[$num]['empimg_id']; ?>);background-size:cover;">
-                                    </div>
-                                    <div class="arrow">→</div>
-                                    <div class="emp_data">
-                                        <h2><?php echo $employee_rec[$num]['empname']; ?></h2>
-                                        <p><span class="mgr_20">年次：<?php echo $employee_rec[$num]['empyear']; ?></span>職種：<?php echo $employee_rec[$num]['emptag2']; ?></p>
-                                    </div>
-                                </div>
+                        <!-- リストをモーダル表示のボタンに -->
+                        <div class="works_modal_open" data-modal-open="rec-modal-<?php echo $num; ?>">
+                            <div class="emp_img" style="background-image: url(../../images/<?php echo $employee_rec[$num]['empimg_id']; ?>);background-size:cover;">
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="emp_data">
+                                <h2><?php echo $employee_rec[$num]['empname']; ?></h2>
+                                <p><?php echo $employee_rec[$num]['empname_eng']; ?></p>
+                            </div>
+                        </div>
 
-                                <!-- モーダルウインドウここから -->
-                                <div class="works_modal_wrapper" data-modal="rec-modal-<?php echo $num; ?>">
-                                    <div class="works_modal_mask"></div>
-                                    <div class="works_modal_window">
-                                        <div class="works_modal_content">
-                                            <img src="../../images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
-                                            <div class="introduction">
-                                                <h1><?php echo $employee_rec[$num]['empname']; ?></h1>
-                                                <p>年次：<?php echo $employee_rec[$num]['empyear']; ?></p>
-                                                <p>職種：<?php echo $employee_rec[$num]['empjob']; ?></p>
-                                                <p>経歴：<?php echo $employee_rec[$num]['empcareer']; ?></p>
-                                                <p>趣味：<?php echo $employee_rec[$num]['emphobby']; ?></p>
-                                                <p>コメント：<?php echo $employee_rec[$num]['empcomment']; ?></p>
+                        <!-- モーダルウインドウここから -->
+                        <div class="works_modal_wrapper" data-modal="rec-modal-<?php echo $num; ?>">
+                            <div class="works_modal_mask"></div>
+                            <div class="works_modal_window">
+                                <div class="works_modal_content">
+                                <div class="empimg_modal">
+                                        <img src="../../images/<?php echo $employee_rec[$num]['empimg_id']; ?>">
+                                    </div>
+                                    <div class="introduction">
+                                        <h1><?php echo $employee_rec[$num]['empname']; ?></h1>
+                                        <div class="data_line">
+                                            <div class="data_tag"><p>所属：</p></div>
+                                            <div class="data_text">
+                                                <p><?php echo $employee_rec[$num]['empuniv'] . "&nbsp;&nbsp;", $employee_rec[$num]['empfac']. "&nbsp;&nbsp;", $employee_rec[$num]['empdept']; ?></p>
                                             </div>
-                                            <a href="./reservation_form.php?empid=<?= $employee_rec[$num]['empid'] ?>week=0"><span class="resv_txt">面談予約はこちら</span></a>
                                         </div>
-                                        <div class="works_modal_close">✖</div>
+                                        <div class="data_line">
+                                            <div class="data_tag"><p>見ていた業界：</p></div>
+                                            <div class="data_text">
+                                                <p><?php echo $employee_rec[$num]['empindustry']; ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="data_line">
+                                            <div class="data_tag"><p>趣味：</p></div>
+                                            <div class="data_text">
+                                                <p><?php echo $employee_rec[$num]['emphobby']; ?></p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- モーダルウインドウここまで -->
+                                <a href="./reservation_form.php?empid=<?= $employee_rec[$num]['empid'] ?>&week=0"><span class="resv_txt">面談予約はこちら</span></a>
+                                <div class="works_modal_close">✖</div>
+                            </div>
+                        </div>
+                        <!-- モーダルウインドウここまで -->
                             <?php } ?>
                         </div>
                     <?php } ?>
