@@ -126,6 +126,38 @@ input[type='checkbox']:checked+label {
     font-size: 20px;
     padding-bottom: 20px;
 }
+.question input[type='button'] {
+    padding: 5px 10px;
+    background-color: #ffffff;
+    color: #005CAF;
+    border: 1px solid #005CAF;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.question input[type='button']:disabled {
+    padding: 5px 10px;
+    background-color: #f3f2f2;
+    color: #6d6d6d;
+    border: 1px solid #6d6d6d;
+    border-radius: 3px;
+}
+.question input[type='submit'] {
+    padding: 5px 10px;
+    background-color: #ffffff;
+    color: #005CAF;
+    border: 1px solid #005CAF;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.question input[type='submit']:disabled {
+    padding: 5px 10px;
+    background-color: #f3f2f2;
+    color: #6d6d6d;
+    border: 1px solid #6d6d6d;
+    border-radius: 3px;
+}
 
 /* 表示・非表示の切り替え */
 .question, .result {
