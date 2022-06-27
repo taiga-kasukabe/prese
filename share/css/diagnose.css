@@ -66,26 +66,64 @@ main {
     margin: 0 ;
     padding: 100px 30px 100px 30px;
 }
+.top {
+    border-bottom: 1px solid #6d6d6d;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+.top h1 {
+    width: fit-content;
+    font-size: 1.3em;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+.top p {
+    width: fit-content;
+    font-size: 0.9em;
+    margin-left: 30px;
+}
+
+/* 質問CSS */
+input[type='checkbox'] {
+    opacity: 0;
+    appearance: none;
+    position: absolute;
+}
+input[type='checkbox']+label {
+    display: inline-block;
+    margin: 10px;
+    padding: 20px 40px;
+    background-color: #ffffff;
+    color: #005CAF;
+    font-weight: bold;
+    border: 2px solid #005CAF;
+    border-radius: 5px;
+    cursor: pointer;
+}
+input[type='checkbox']:checked+label {
+    background-color: #005CAF;
+    color: #ffffff;
+}
 
 
-/* 質問用 */
+/* JS用 */
 #q1, #q2, #q3{
     border-radius: 15px;
-    width: 600px;
+    width: 70vw;
     padding: 30px;
-    background-color: rgb(193, 225, 255);
     margin: 0 auto;
     text-align: center;
 }
 
 .q_content{
-    text-align: left;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .q_text {
     font-size: 20px;
-    font-weight: bold;
     padding-bottom: 20px;
 }
 
