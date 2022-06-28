@@ -65,12 +65,40 @@ main {
     height: 100%;
     padding: 100px 30px 100px 30px;
 }
+.top {
+    display: flex;
+    border-bottom: 1px solid #6d6d6d;
+    margin-bottom: 30px;
+    justify-content: space-between;
+}
+.link {
+    margin-top: 8px;
+}
+.link_top {
+    position: relative;
+    text-decoration: none;
+    color: #7e7e7e;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.link_top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 0%;
+    border-bottom: 1px solid #888888;
+    transition: .25s;
+}
+.link_top:hover::before {
+    width: 100%;
+}
 h1 {
     font-size: 1.2em;
     font-weight: normal;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #6d6d6d;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 h2 {
     width: fit-content;

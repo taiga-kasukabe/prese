@@ -79,7 +79,13 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <?php if (!empty($_SESSION['empid'])) { ?>
         <main>
-            <h1><?php echo $employee['empname']; ?> さん</h1>
+            <div class="top">
+                <h1><?php echo $employee['empname']; ?> さん</h1>
+                <div class="link">
+                    <a href="./reset_pass_form.php" class="link_top">パスワード再設定</a>
+                </div>
+            </div>
+
             <h2><i class="fa-solid fa-clipboard-list"></i>予約可能日程一覧</h2>
             <?php if (!empty($rsvInfo)) { ?>
                 <table>
