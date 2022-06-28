@@ -110,7 +110,7 @@ input[type='checkbox']:checked+label {
 /* JS用 */
 #q1, #q2, #q3{
     border-radius: 15px;
-    width: 70vw;
+    width: 900px;
     padding: 30px;
     margin: 0 auto;
     text-align: center;
