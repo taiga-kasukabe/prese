@@ -74,22 +74,33 @@
     margin-top: 0;
     font-weight: normal;
     margin-bottom: 20px;
+    color: #005CAF;
   }
-
+  .introduction i {
+    color: #005CAF;
+    margin-right: 5px;
+  }
+  .introduction p {
+    font-size: 0.9em;
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
   .data_line {
     display: flex;
-    line-height: 2em;
-  }
-
-  .data_tag {
-    width: fit-content;
+    font-size: 1em;
+    border-bottom: 1px solid #bebebe;
+    padding-bottom: 2px;
+    margin-bottom: 10px;
+    }
+    .data_tag {
+    width: 200px;
     min-width: 50px;
-  }
-
-  .data_text {
-    width: fit-content;
-  }
-  
+    font-weight: bold;
+    color: #005CAF;
+    }
+    .data_text {
+    width: 300px;
+    }
   /* ------works_modal css------ */
   .works_modal_wrapper {
       position: fixed;
@@ -107,8 +118,7 @@
       z-index: -1;
   }
   .works_modal_window {
-      width: 90vw;
-      max-width: 900px;
+      width: 900px;
       margin: auto;
       padding: 40px 80px;
       background: #fff;

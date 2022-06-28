@@ -120,20 +120,23 @@ if(!empty($_POST)) {
                                     </div>
                                     <div class="introduction">
                                         <h1><?php echo $employee_rec[$num]['empname']; ?></h1>
+                                        <p><i class="fa-solid fa-location-dot"></i><?php echo $employee_rec[$num]['empplace']; ?>&emsp;&emsp;<i class="fa-solid fa-graduation-cap"></i><?php echo $employee_rec[$num]['empuniv'] . "&nbsp;&nbsp;",$employee_rec[$num]['empfac'] . "&nbsp;&nbsp;",$employee_rec[$num]['empdept']; ?></p>
                                         <div class="data_line">
-                                            <div class="data_tag"><p>所属：</p></div>
-                                            <div class="data_text">
-                                                <p><?php echo $employee_rec[$num]['empuniv'] . "&nbsp;&nbsp;", $employee_rec[$num]['empfac']. "&nbsp;&nbsp;", $employee_rec[$num]['empdept']; ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="data_line">
-                                            <div class="data_tag"><p>見ていた業界：</p></div>
+                                            <div class="data_tag"><p>見ていた業界</p></div>
                                             <div class="data_text">
                                                 <p><?php echo $employee_rec[$num]['empindustry']; ?></p>
                                             </div>
                                         </div>
                                         <div class="data_line">
-                                            <div class="data_tag"><p>趣味：</p></div>
+                                            <div class="data_tag">
+                                                <p>就活サポートスキル</p>
+                                            </div>
+                                            <div class="data_text">
+                                                <p><?php echo $employee_rec[$num]['empskill']; ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="data_line">
+                                            <div class="data_tag"><p>趣味</p></div>
                                             <div class="data_text">
                                                 <p><?php echo $employee_rec[$num]['emphobby']; ?></p>
                                             </div>

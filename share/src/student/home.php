@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
     <link rel="stylesheet" href="../../css/popup.css">
     <link rel="stylesheet" href="../../css/home.css">
+    <script src="https://kit.fontawesome.com/2d726a91d3.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
 </head>
 
@@ -130,17 +131,10 @@ if (!empty($_SESSION['id'])) {
                                     </div>
                                     <div class="introduction">
                                         <h1><?php echo $employee_rec[$num]['empname']; ?></h1>
+                                        <p><i class="fa-solid fa-location-dot"></i><?php echo $employee_rec[$num]['empplace']; ?>&emsp;&emsp;<i class="fa-solid fa-graduation-cap"></i><?php echo $employee_rec[$num]['empuniv'] . "&nbsp;&nbsp;",$employee_rec[$num]['empfac'] . "&nbsp;&nbsp;",$employee_rec[$num]['empdept']; ?></p>
                                         <div class="data_line">
                                             <div class="data_tag">
-                                                <p>所属：</p>
-                                            </div>
-                                            <div class="data_text">
-                                                <p><?php echo $employee_rec[$num]['empuniv'] . "&nbsp;&nbsp;", $employee_rec[$num]['empfac'] . "&nbsp;&nbsp;", $employee_rec[$num]['empdept']; ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="data_line">
-                                            <div class="data_tag">
-                                                <p>見ていた業界：</p>
+                                                <p>見ていた業界</p>
                                             </div>
                                             <div class="data_text">
                                                 <p><?php echo $employee_rec[$num]['empindustry']; ?></p>
@@ -148,7 +142,15 @@ if (!empty($_SESSION['id'])) {
                                         </div>
                                         <div class="data_line">
                                             <div class="data_tag">
-                                                <p>趣味：</p>
+                                                <p>就活サポートスキル</p>
+                                            </div>
+                                            <div class="data_text">
+                                                <p><?php echo $employee[$num]['empskill']; ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="data_line">
+                                            <div class="data_tag">
+                                                <p>趣味</p>
                                             </div>
                                             <div class="data_text">
                                                 <p><?php echo $employee_rec[$num]['emphobby']; ?></p>
@@ -192,17 +194,10 @@ if (!empty($_SESSION['id'])) {
                                     </div>
                                     <div class="introduction">
                                         <h1><?php echo $employee[$num]['empname']; ?></h1>
+                                        <p><i class="fa-solid fa-location-dot"></i><?php echo $employee[$num]['empplace']; ?>&emsp;&emsp;<i class="fa-solid fa-graduation-cap"></i><?php echo $employee[$num]['empuniv'] . "&nbsp;&nbsp;",$employee[$num]['empfac'] . "&nbsp;&nbsp;",$employee[$num]['empdept']; ?></p>
                                         <div class="data_line">
                                             <div class="data_tag">
-                                                <p>所属：</p>
-                                            </div>
-                                            <div class="data_text">
-                                                <p><?php echo $employee[$num]['empuniv'] . "&nbsp;&nbsp;", $employee[$num]['empfac'] . "&nbsp;&nbsp;", $employee[$num]['empdept']; ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="data_line">
-                                            <div class="data_tag">
-                                                <p>見ていた業界：</p>
+                                                <p>見ていた業界</p>
                                             </div>
                                             <div class="data_text">
                                                 <p><?php echo $employee[$num]['empindustry']; ?></p>
@@ -210,7 +205,15 @@ if (!empty($_SESSION['id'])) {
                                         </div>
                                         <div class="data_line">
                                             <div class="data_tag">
-                                                <p>趣味：</p>
+                                                <p>就活サポートスキル</p>
+                                            </div>
+                                            <div class="data_text">
+                                                <p><?php echo $employee[$num]['empskill']; ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="data_line">
+                                            <div class="data_tag">
+                                                <p>趣味</p>
                                             </div>
                                             <div class="data_text">
                                                 <p><?php echo $employee[$num]['emphobby']; ?></p>
