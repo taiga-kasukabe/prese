@@ -47,6 +47,7 @@ session_start();
 
                 <button type="submit" id="login_btn">Login</button>
             </form>
+            <a href="./reset_email_form.php" class="pass_reset">パスワードを忘れた方はこちら ＞</a>
         </div>
     </main>
 </body>
