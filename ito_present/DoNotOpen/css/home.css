@@ -109,7 +109,7 @@ main {
 
 .btn {
     position: relative;
-    width: 300px;
+    width: 350px;
     height: 80px;
     margin: 60px 50%;
     transform: translateX(-50%);
@@ -170,6 +170,10 @@ main {
     font-family: 'Archivo Black', sans-serif;
     /* font-family: 'Renner*'; */
     font-style: italic;
+}
+
+.emp_data p {
+    color: #6d6d6d;
 }
 
 .mgr_20 {
