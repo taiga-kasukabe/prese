@@ -137,16 +137,27 @@ width: 500px;
 }
 .message_box {
     display: flex;
-    width: fit-content;
+    width: 570px;
     margin: 0 auto;
 }
 .message {
     border: 1px solid #000000;
     margin: 0 20px;
+    width: 150px;
+    height: 140px;
+}
+.img_box {
+    width: 150px;
+    height: 105px;
 }
 .message img {
     width: 150px;
     object-fit: cover;
+    transition: .2s;
+}
+.message img:hover {
+    width: 155px;
+    overflow: hidden;
 }
 .message h2 {
     font-size: 1.3em;
