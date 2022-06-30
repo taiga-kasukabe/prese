@@ -8,6 +8,16 @@
       border: 1px solid #005CAF;
       overflow: hidden;
   }
+
+  .message {
+    border: none;
+    width: fit-content;
+    height: fit-content;
+    color: #000000;
+  }
+  .message h2{
+    text-align: center;
+  }
   
   .works_modal_open:hover .emp_img{
     transform: scale(1.05,1.05);
@@ -21,7 +31,7 @@
     transition: .3s;
   }
   
-  .emp_img {
+  .works_modal_open .emp_img {
     position: absolute;
     top: 0;
     left: 0;
@@ -31,7 +41,7 @@
     background-color: #ffffff;
   }
   
-  .emp_data {
+  .works_modal_open .emp_data {
     position: absolute;
     top: 300px;
     left: 0px;
@@ -41,17 +51,17 @@
     background-color: #ffffff;
   }
   
-  .emp_data p,h2 {
+  .works_modal_open .emp_data p,h2 {
     margin: 0;
     padding: 3px;
     font-weight: normal;
   }
 
-  .mgr_20 {
+  .works_modal_open .mgr_20 {
     margin-right: 20px;
   }
   
-  .arrow {
+  .works_modal_open .arrow {
     position: absolute;
     right: -1px;
     bottom: 98px;
@@ -62,41 +72,41 @@
     /* border: 1px solid #345de4; */
   }
   
-  .introduction {
+  .works_modal_content .introduction {
     text-align: left;
     overflow-x: hidden;
     margin-left: 250px;
     margin-right: 10px;
   }
   
-  .introduction h1 {
+  .works_modal_content .introduction h1 {
     margin-top: 0;
     font-weight: normal;
     color: #005CAF;
   }
-  .introduction i {
+  .works_modal_content .introduction i {
     color: #005CAF;
     margin-right: 5px;
   }
-  .introduction p {
+  .works_modal_content .introduction p {
     font-size: 0.9em;
     margin-top: 10px;
     margin-bottom: 8px;
 }
-  .data_line {
+.works_modal_content .data_line {
     display: flex;
     font-size: 1em;
     border-bottom: 1px solid #bebebe;
     padding-bottom: 2px;
     margin-bottom: 10px;
     }
-    .data_tag {
+    .works_modal_content .data_tag {
     width: 100px;
     min-width: 50px;
     font-weight: bold;
     color: #005CAF;
     }
-    .data_text {
+    .works_modal_content  .data_text {
     width: 450px;
     }
   

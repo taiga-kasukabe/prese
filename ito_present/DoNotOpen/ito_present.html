@@ -6,8 +6,8 @@
     <title>面談予約</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
-    <link rel="stylesheet" href="./css/reservation_form.css">
-    <link rel="stylesheet" href="./css/table_student.css">
+    <link rel="stylesheet" href="./css/ito_present.css">
+    <link rel="stylesheet" href="./css/popup.css">
     <script src="https://kit.fontawesome.com/2d726a91d3.js" crossorigin="anonymous"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap"
@@ -63,39 +63,65 @@
         </div>
 
         <div class="container">
-            <h1>感謝・激励</h1>
+            <h1>MESSAGE</h1>
             <div class="message_box">
-                <div class="message">
+                <div class="message works_modal_open" data-modal-open="modal-1">
                     <img src="./images/g0550.png">
                     <h2>
                         春日部大雅
                     </h2>
-                    <p>
-                        hoge
-                    </p>
                 </div>
-                <div class="message">
+                <!-- モーダルウインドウここから -->
+                <div class="works_modal_wrapper" data-modal="modal-1">
+                    <div class="works_modal_mask"></div>
+                    <div class="works_modal_window">
+                        <div class="works_modal_content">
+                            <p>ここにメッセージ書いてね</p>
+                        </div>
+                        <div class="works_modal_close">✖</div>
+                    </div>
+                </div>
+                <!-- モーダルウインドウここまで -->
+                    
+                <div class="message works_modal_open" data-modal-open="modal-2">
                     <img src="./images/b0550.png">
                     <h2>
                         佐川琢郎
                     </h2>
-                    <p>
-                        huga
-                    </p>
                 </div>
-                <div class="message">
+                <!-- モーダルウインドウここから -->
+                <div class="works_modal_wrapper" data-modal="modal-2">
+                    <div class="works_modal_mask"></div>
+                    <div class="works_modal_window">
+                        <div class="works_modal_content">
+                            <p>ここにメッセージ書いてね</p>
+                        </div>
+                        <div class="works_modal_close">✖</div>
+                    </div>
+                </div>
+                <!-- モーダルウインドウここまで -->
+
+                <div class="message works_modal_open" data-modal-open="modal-3">
                     <img src="./images/y0550.png">
                     <h2>
                         佐藤ゆう
                     </h2>
-                    <p>
-                        piyo
-                    </p>
                 </div>
+                <!-- モーダルウインドウここから -->
+                <div class="works_modal_wrapper" data-modal="modal-3">
+                    <div class="works_modal_mask"></div>
+                    <div class="works_modal_window">
+                        <div class="works_modal_content">
+                            <p>ここにメッセージ書いてね</p>
+                        </div>
+                        <div class="works_modal_close">✖</div>
+                    </div>
+                </div>
+                <!-- モーダルウインドウここまで -->
             </div>
         </div>
     </main>
     <!-- for jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./js/schedule_disabled.js"></script>
+    <script src="./js/modal.js"></script>
 </body>
