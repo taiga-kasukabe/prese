@@ -151,3 +151,10 @@ width: 500px;
 .message h2 {
     font-size: 1.3em;
 }
+.text {
+    text-align: left;
+}
+.name {
+    text-align: right;
+    margin-bottom: 30px;
+}
