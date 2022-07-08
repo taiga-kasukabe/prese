@@ -1,0 +1,185 @@
+@charset "UTF-8";
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: #09bb7a;
+    z-index: 10;
+    transition: .5s;
+}
+.header_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo img {
+    width: 200px;
+    padding-left: 15px;
+}
+.header_nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    list-style: none;
+}
+.header_nav li a {
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 25px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    border-bottom: 1px solid transparent;
+    transition: .2s;
+}
+.header_nav li a:hover {
+    border-bottom: 1px solid #ffffff;
+
+}
+
+/* body */
+body {
+    position: relative;
+    width: 100%;
+    background-color: #ffffff;
+}
+main {
+    width: 100%;
+    height: 100%;
+    padding: 100px 30px 100px 30px;
+}
+.top {
+    display: flex;
+    border-bottom: 1px solid #6d6d6d;
+    margin-bottom: 30px;
+    justify-content: space-between;
+}
+.link {
+    margin-top: 8px;
+}
+.link_top {
+    position: relative;
+    text-decoration: none;
+    color: #7e7e7e;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.link_top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 0%;
+    border-bottom: 1px solid #888888;
+    transition: .25s;
+}
+.link_top:hover::before {
+    width: 100%;
+}
+h1 {
+    font-size: 1.2em;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+h2 {
+    width: fit-content;
+    margin: 0 auto 25px auto;
+    color: #474747;
+    padding-bottom: 5px;
+}
+table {
+    width: fit-content;
+    margin: 0 auto;
+}
+.noRsvComment{
+    width: fit-content;
+    margin: 10px auto;
+    padding: 10px;
+}
+.btn_list {
+    width: fit-content;
+    margin: 20px auto;
+}
+form {
+    display: inline-block;
+}
+button {
+    display: inline-block;
+    appearance: none;
+    cursor: pointer;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+button.schedule {
+    margin: 10px 5px;
+    font-size: 1em;
+    padding: 8px 15px;
+    transition: 0.25s;
+    background-color: #ffffff;
+    border: 1px solid #09bb7a;
+    border-radius: 5px;
+    color: #09bb7a;
+}
+button.schedule:hover {
+    background-color: #09bb7a;
+    color: #ffffff;
+}
+button.rsv_check {
+    font-size: 1em;
+    padding: 4px 12px;
+    transition: 0.25s;
+    background-color: #09bb7a;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    color: #ffffff;
+}
+button.rsv_check:hover {
+    background-color: #25da97;
+
+}
+
+/* セッション切れ */
+.container {
+    width: fit-content;
+    margin: 0 auto;
+}
+a.login {
+    display: block;
+    text-align: center;
+    width: 180px;
+    margin: 10px auto;
+    padding: 8px;
+    text-decoration: none;
+    font-size: 1em;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: lighter;
+    cursor: pointer;
+    transition: 0.25s;
+
+    background-color: #09bb7a;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    color: #ffffff;
+}
+a.login:hover {
+    background-color: #25da97;
+}
