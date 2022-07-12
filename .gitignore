@@ -5,3 +5,4 @@ README.pdf
 /kasukabe/prese_register/src/mail_send_cancel.php
 /kasukabe/prese_register/src/mail_send_rsv.php
 /kasukabe/prese_register/src/mail_send_register.php
+/kasukabe/mail_conf.php
