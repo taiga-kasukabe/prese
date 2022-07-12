@@ -45,7 +45,7 @@ if (!empty($_SESSION['id'])) {
     // 予約動作
     if ($unrsvInfo['flag'] != 1 || !empty($_SESSION['id'])) {
         $id = $_SESSION['id'];
-        $sql = "UPDATE rsvdb SET stuid = :stuid, comment = :comment, flag = 1 WHERE rsvDB. id=:id";
+        $sql = "UPDATE rsvdb SET stuid = :stuid, comment = :comment, flag = 1 WHERE rsvDB.id=:id";
         $stmt = $dbh->prepare($sql);
         $stmt->bindValue(':stuid', $id);
         $stmt->bindValue(':comment', $comment);
