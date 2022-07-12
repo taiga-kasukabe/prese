@@ -1,0 +1,176 @@
+@charset "UTF-8";
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #ffffff;
+    background-color: #09bb7a;
+    z-index: 10;
+    transition: .5s;
+}
+.bg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+#logo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 5px;
+    width: 200px;
+}
+
+/* body */
+body {
+    position: relative;
+    width: 100%;
+    background-color: #ffffff;
+}
+main {
+    width: 100%;
+    height: 100%;
+    padding: 100px 30px 100px 30px;
+}
+h1 {
+    font-size: 1.2em;
+    font-weight: normal;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #6d6d6d;
+    margin-bottom: 50px;
+}
+.container {
+    width: fit-content;
+    margin: 0 auto;
+}
+h2 {
+    margin-bottom: 30px;
+}
+i {
+    margin-right: 8px;
+}
+a:link, a:visited, a:active {
+    color: #333333;
+}
+.table {
+    width: fit-content;
+}
+.move_btn {
+    display: flex;
+    justify-content: space-between;
+}
+.prev {
+    margin-left: 72.25px;
+}
+.disabled_link {
+    color: #c7c7c7;
+}
+.prev::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f137";
+    margin-right: 5px;
+    color: #09bb7a;
+}
+.disabled_link::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f137";
+    margin-right: 5px;
+    color: #c7c7c7;
+}
+.next::after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f138";
+    margin-left: 5px;
+    color: #09bb7a;
+}
+p.usage_guide {
+    font-size: 0.85em;
+    text-align: right;
+}
+button {
+    display: block;
+    appearance: none;
+    cursor: pointer;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+button.register {
+    margin: 10px auto;
+    font-size: 1em;
+    padding: 8px 15px;
+    transition: 0.25s;
+    background-color: #09bb7a;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    color: #ffffff;
+}
+button.register:hover {
+    background-color: #25da97;
+}
+button.register:disabled {
+    background-color: #c7c7c7;
+    cursor: default;
+}
+button.backHome {
+    position: relative;
+    margin: 30px auto;
+    padding-bottom: 1px;
+    border: none;
+    background-color: #ffffff;
+    color: #09bb7a;
+}
+button.backHome::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 0%;
+    border-bottom: 1px solid #09bb7a;
+    transition: .25s;
+}
+button.backHome:hover::before {
+    width: 100%;
+}
+
+/* セッション切れ */
+a.login {
+    display: block;
+    text-align: center;
+    width: 180px;
+    margin: 10px auto;
+    padding: 8px;
+    text-decoration: none;
+    font-size: 1em;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: lighter;
+    cursor: pointer;
+    transition: 0.25s;
+
+    background-color: #09bb7a;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    color: #ffffff;
+}
+a.login:hover {
+    background-color: #25da97;
+}
