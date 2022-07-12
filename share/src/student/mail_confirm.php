@@ -59,8 +59,7 @@ if (empty($member)) {
 }
 
 //メール送信
-// include("./send_mail.php");
-include("../../../kasukabe/prese_register/src/mail_send_register.php");
+include("./mail_send_register.php");
 
 $msg = 'FINISH!';
 $link = '<a href="./login_form.php">　ログイン　＞</a>';

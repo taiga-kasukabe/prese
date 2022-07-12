@@ -1,6 +1,4 @@
 <?php
-
-$user_name = 'yu.sato.fortest@gmail.com';
-$user_pass = 'prese_ysato';
-
+$mail_address = 'ntteast_prese@ntteast.sakura.ne.jp';
+$mail_pass = 'Webeast2022';
 ?>
