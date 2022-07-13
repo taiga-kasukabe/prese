@@ -31,8 +31,8 @@ try {
     // $password = 'Webeast2022';
 
     //差出人
-    // $from = $mail_address;
-    $from = 'ntteast_prese@ntteast.sakura.ne.jp';
+    $from = $mail_address;
+    // $from = 'ntteast_prese@ntteast.sakura.ne.jp';
     $from_name = 'NTT東日本採用担当';
 
     //宛先
@@ -44,7 +44,7 @@ try {
     //件名
     $subject = '登録完了';
     //本文
-    $body = '<html><h1>NTT東日本採用担当です．</h1><p>会員登録完了しました．</p></html>';
+    $body = '<h1>NTT東日本採用担当です．</h1><p>会員登録完了しました．</p>';
     //諸々設定
     //$mail->SMTPDebug = 2; //デバッグ用
     $mail->isSMTP();
