@@ -4,8 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-include ('../../../vendor/autoload.php');
-include ('../../conf/mail_pass.php');
+require '../../../vendor/autoload.php';
 
 $mail = new PHPMailer(true);
 
@@ -59,4 +58,3 @@ try {
 } catch (Exception $e) {
     echo '失敗: ', $mail->ErrorInfo;
 }
-?>
