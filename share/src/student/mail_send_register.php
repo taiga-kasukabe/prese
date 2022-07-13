@@ -4,6 +4,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+include('../../conf/mail_pass.php');
+include('../../../vendor/autoload.php');
+
 $mail = new PHPMailer(true);
 
 try {
