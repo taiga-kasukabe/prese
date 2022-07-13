@@ -39,6 +39,7 @@ $stmt = $dbh->prepare($sql_id);
 $stmt->bindValue(':id', $id);
 $stmt->execute();
 $member = $stmt->fetch();
+var_dump($member);
 
 if (empty($member)) {
     // insert実行(被りがなければ)
@@ -61,7 +62,6 @@ if (empty($member)) {
 
 //メール送信
 include("./mail_send_register.php");
-var_dump("test");
 
 $msg = 'FINISH!';
 $link = '<a href="./login_form.php">　ログイン　＞</a>';
