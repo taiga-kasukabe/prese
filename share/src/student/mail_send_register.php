@@ -44,7 +44,7 @@ try {
     //件名
     $subject = '登録完了';
     //本文
-    $body = '<h1>NTT東日本採用担当です．</h1><p>会員登録完了しました．</p>';
+    $body = '<html><h1>NTT東日本採用担当です．</h1><p>会員登録完了しました．</p></html>';
     //諸々設定
     //$mail->SMTPDebug = 2; //デバッグ用
     $mail->isSMTP();
@@ -67,7 +67,7 @@ try {
     $mail->addAddress($to, $to_name);
     $mail->Subject = $subject;
     // $mail->Body = $body;
-    $mail->Body = mb_convert_encoding($body, "JIS", "UTF-8");
+    $mail->Body = $body;
     //メール送信
     $mail->send();
 } catch (Exception $e) {
