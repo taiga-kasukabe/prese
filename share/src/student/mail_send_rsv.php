@@ -22,7 +22,7 @@ try {
     $from_name = 'NTT東日本採用担当';
 
     //宛先
-    $to = $empInfo['mail'];
+    $to = $empInfo['empmail'];
     $to_name = $username;
 
     //件名
