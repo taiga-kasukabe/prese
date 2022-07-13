@@ -69,17 +69,17 @@ if (!empty($_SESSION['id'])) {
         $empInfo = $stmt->fetch();
 
         // メール送信
-        // include('../../../kasukabe/prese_register/src/mail_send_rsv.php');
+        include('./mail_send_register.php');
     }
 } ?>
 
 <body>
-<div id="loading">
-<div class="spinner"></div>
-</div>
-<?php
+    <div id="loading">
+        <div class="spinner"></div>
+    </div>
+    <?php
     include('./sleep.php');
-?>
+    ?>
     <header>
         <div class="header_container">
             <div class="logo">

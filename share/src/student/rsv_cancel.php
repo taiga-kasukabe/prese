@@ -43,7 +43,7 @@ if (!empty($_SESSION['id'])) {
     $empInfo = $stmt->fetch();
 
     // メール送信
-    include('../../../kasukabe/prese_register/src/mail_send_cancel.php');
+    // include('');
 }
 ?>
 
