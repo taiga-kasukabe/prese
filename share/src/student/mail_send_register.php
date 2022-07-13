@@ -63,10 +63,10 @@ try {
     $mail->Port = 587;
     $mail->CharSet = "utf-8";
     $mail->Encoding = "base64";
+    $mail->isHTML(true);
     $mail->setFrom($from, $from_name);
     $mail->addAddress($to, $to_name);
     $mail->Subject = $subject;
-    // $mail->Body = $body;
     $mail->Body = $body;
     //メール送信
     $mail->send();
