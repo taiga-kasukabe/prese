@@ -45,7 +45,7 @@ try {
         リンクはこちら：<br>
         以上，よろしくお願いします！<br>
         ＝＝＝＝</p>
-        <p>詳しくは<a href='localhost/share/src/employee/emplogin_form.php'>こちら</a>から確認してください</p>";
+        <p>詳しくは<a href='https://ntteast.sakura.ne.jp/prese/share/src/employee/emplogin_form.php'>こちら</a>から確認してください</p>";
 
     //諸々設定
     //$mail->SMTPDebug = 2; //デバッグ用
