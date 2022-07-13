@@ -22,7 +22,7 @@ $mail = new PHPMailer(true);
 try {
     //ホスト（さくらのレンタルサーバの初期ドメイン）
     // $host = $mail_address;
-    $host = 'ntteast_prese@ntteast.sakura.ne.jp';
+    $host = 'ntteast.sakura.ne.jp';
 
     //メールアカウントの情報（さくらのレンタルサーバで作成したメールアカウント）
     // $user = $mail_address;
