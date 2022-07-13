@@ -66,7 +66,8 @@ try {
     $mail->setFrom($from, $from_name);
     $mail->addAddress($to, $to_name);
     $mail->Subject = $subject;
-    $mail->Body = $body;
+    // $mail->Body = $body;
+    $mail->Body = mb_convert_encoding($body, "JIS", "UTF-8");
     //メール送信
     $mail->send();
 } catch (Exception $e) {
