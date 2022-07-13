@@ -4,6 +4,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+include('../../conf/mail_pass.php');
+include('../../../vendor/autoload.php');
+
 $mail = new PHPMailer(true);
 
 try {
@@ -21,8 +24,6 @@ try {
     //宛先
     $to = $stuInfo['mail'];
     $to_name = $username;
-    // $to = 'taiga.kasukabe@gmail.com';
-    // $to_name = 'Taiga Kasukabe';
 
     //件名
     $subject = '登録完了';

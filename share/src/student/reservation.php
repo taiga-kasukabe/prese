@@ -20,8 +20,6 @@ if (!empty($_SESSION['id'])) {
 
     // include
     include('../../conf/config.php');
-    include('../../conf/mail_pass.php');
-    include('../../../vendor/autoload.php');
 
     // 変数定義
     $empid = $_GET['empid'];
