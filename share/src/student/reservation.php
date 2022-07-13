@@ -71,8 +71,6 @@ if (!empty($_SESSION['id'])) {
         $stmt->execute();
         $empInfo = $stmt->fetch();
 
-        // メール送信
-        include('./mail_send_register.php');
     }
 } ?>
 
@@ -81,7 +79,8 @@ if (!empty($_SESSION['id'])) {
         <div class="spinner"></div>
     </div>
     <?php
-    include('./sleep.php');
+    // メール送信
+    include('./mail_send_register.php');
     ?>
     <header>
         <div class="header_container">
