@@ -19,15 +19,17 @@ try {
     $from_name = 'NTT東日本採用担当';
 
     //宛先
-    $to = $mail;
+    $to = $stuInfo['mail'];
     $to_name = $username;
     // $to = 'taiga.kasukabe@gmail.com';
     // $to_name = 'Taiga Kasukabe';
 
     //件名
     $subject = '登録完了';
+
     //本文
     $body = '<h1>NTT東日本採用担当です．</h1><p>会員登録完了しました．</p>';
+
     //諸々設定
     //$mail->SMTPDebug = 2; //デバッグ用
     $mail->isSMTP();
