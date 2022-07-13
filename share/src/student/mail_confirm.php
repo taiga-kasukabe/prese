@@ -39,7 +39,6 @@ $stmt = $dbh->prepare($sql_id);
 $stmt->bindValue(':id', $id);
 $stmt->execute();
 $member = $stmt->fetch();
-var_dump($member);
 
 if (empty($member)) {
     // insert実行(被りがなければ)
