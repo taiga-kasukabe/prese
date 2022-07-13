@@ -66,6 +66,9 @@ if (!empty($_SESSION['id'])) {
 ?>
 
 <body>
+    <div id="loading">
+    <div class="spinner"></div>
+    </div>
     <?php if (!empty($_SESSION['id'])) { ?>
         <header>
             <div class="header_container">
@@ -258,6 +261,7 @@ if (!empty($_SESSION['id'])) {
             </div>
         </main>
     <?php } ?>
+<script type="text/javascript" src="../../js/loading.js"></script>  
 </body>
 
 </html>
