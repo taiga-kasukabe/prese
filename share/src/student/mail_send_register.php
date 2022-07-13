@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>メール送信</title>
-</head>
-
 <?php
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -70,9 +60,3 @@ try {
     echo '失敗: ', $mail->ErrorInfo;
 }
 ?>
-
-<body>
-    <h1>送信完了</h1>
-</body>
-
-</html>
