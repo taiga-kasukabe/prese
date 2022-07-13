@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
     <link rel="stylesheet" href="../../css/reservation.css">
+    <link rel="stylesheet" href="../../css/loading.css">
     <script src="https://kit.fontawesome.com/2d726a91d3.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
 </head>
@@ -73,6 +74,9 @@ if (!empty($_SESSION['id'])) {
 } ?>
 
 <body>
+<div id="loading">
+<div class="spinner"></div>
+</div>
     <header>
         <div class="header_container">
             <div class="logo">
@@ -122,6 +126,7 @@ if (!empty($_SESSION['id'])) {
         </div>
     </main>
     <script type="text/javascript" src="../../js/browserBack.js"></script>
+    <script type="text/javascript" src="../../js/loading.js"></script>
 </body>
 
 </html>
