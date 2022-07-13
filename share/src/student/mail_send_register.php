@@ -32,10 +32,10 @@ try {
     $from_name = 'NTT東日本採用担当';
 
     //宛先
-    // $to = $mail;
-    // $to_name = $username;
-    $to = 'taiga.kasukabe@gmail.com';
-    $to_name = 'Taiga Kasukabe';
+    $to = $mail;
+    $to_name = $username;
+    // $to = 'taiga.kasukabe@gmail.com';
+    // $to_name = 'Taiga Kasukabe';
 
     //件名
     $subject = '登録完了';
