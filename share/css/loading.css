@@ -29,6 +29,15 @@
   
   /* Hide Loading Block */
   .loaded {
-    opacity: 0;
     visibility: hidden;
+    animation: opacity 2.0s;
   }
+
+/* Loading Animation */
+@keyframes opacity {
+    0% {
+        opacity: 1;
+    } 100% {
+        opacity: 0;
+    }
+    }
