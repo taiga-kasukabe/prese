@@ -18,10 +18,12 @@ session_start();
 
 if (!empty($_SESSION['id'])) {
 
-    // 変数定義
+    // include
     include('../../conf/config.php');
     include('../../conf/mail_pass.php');
+    include('../../../vendor/autoload.php');
 
+    // 変数定義
     $empid = $_GET['empid'];
     $time =  substr_replace($_GET['time'], ':', 2, 0) . ':00';
     $reservation_date =  $_GET['date'];
@@ -35,7 +37,6 @@ if (!empty($_SESSION['id'])) {
     } catch (PDOException $e) {
         $msg = $e->getMessage();
     }
-
 
     // 該当予約情報取得
     $sql = "SELECT * FROM rsvdb WHERE empid = :empid AND rsvdate = :rsvdate AND rsvtime = :rsvtime";
