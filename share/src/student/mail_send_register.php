@@ -21,8 +21,6 @@ try {
     //宛先
     $to = $stuInfo['mail'];
     $to_name = $username;
-    // $to = 'taiga.kasukabe@gmail.com';
-    // $to_name = 'Taiga Kasukabe';
 
     //件名
     $subject = '登録完了';
