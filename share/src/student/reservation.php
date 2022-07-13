@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../css/loading.css">
     <script src="https://kit.fontawesome.com/2d726a91d3.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="../../js/loading.js"></script>
 </head>
 
 <?php
@@ -128,7 +129,6 @@ if (!empty($_SESSION['id'])) {
         </div>
     </main>
     <script type="text/javascript" src="../../js/browserBack.js"></script>
-    <script type="text/javascript" src="../../js/loading.js"></script>
 </body>
 
 </html>
