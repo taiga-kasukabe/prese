@@ -73,9 +73,12 @@ if (!empty($_SESSION['id'])) {
 } ?>
 
 <body>
-<div id="loading">
-<div class="spinner"></div>
-</div>
+    <div id="loading">
+        <div class="spinner"></div>
+    </div>
+    <?php
+    include('./sleep.php');
+    ?>
     <header>
         <div class="header_container">
             <div class="logo">
