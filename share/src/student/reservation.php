@@ -78,7 +78,7 @@ if (!empty($_SESSION['id'])) {
     </div>
     <?php
     // メール送信
-    include('./mail_send_register.php');
+    include('./mail_send_rsv.php');
     ?>
     <header>
         <div class="header_container">

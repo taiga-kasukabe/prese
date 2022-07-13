@@ -28,7 +28,7 @@
 
     // DBにEmailが重複していないか確認
     $sql_mail = "SELECT * FROM users_table WHERE mail = :mail";
-    $stmt = $dbh->prepare($sql_mail); // spl文を準備
+    $stmt = $dbh->prepare($sql_mail); // sql文を準備
     $stmt->bindValue(':mail', $mail); // :mailに$mailを代入
     $stmt->execute(); // sql文実行
     $member = $stmt->fetch(); // sql文の結果をfetch
