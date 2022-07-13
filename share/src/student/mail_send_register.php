@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メール送信</title>
+</head>
+
 <?php
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -11,16 +21,26 @@ $mail = new PHPMailer(true);
 
 try {
     //ホスト（さくらのレンタルサーバの初期ドメイン）
-    $host = $mail_address;
+    // $host = $mail_address;
+    $host = 'ntteast_prese@ntteast.sakura.ne.jp';
+
     //メールアカウントの情報（さくらのレンタルサーバで作成したメールアカウント）
-    $user = $mail_address;
-    $password = $mail_pass;
+    // $user = $mail_address;
+    // $password = $mail_pass;
+    $user = 'ntteast_prese@ntteast.sakura.ne.jp';
+    $password = 'Webeast2022';
+
     //差出人
-    $from = $mail_address;
+    // $from = $mail_address;
+    $from = 'ntteast_prese@ntteast.sakura.ne.jp';
     $from_name = 'NTT東日本採用担当';
+
     //宛先
-    $to = $mail;
-    $to_name = $username;
+    // $to = $mail;
+    // $to_name = $username;
+    $to = 'taiga.kasukabe@gmail.com';
+    $to_name = 'Taiga Kasukabe';
+
     //件名
     $subject = '登録完了';
     //本文
@@ -46,3 +66,9 @@ try {
     echo '失敗: ', $mail->ErrorInfo;
 }
 ?>
+
+<body>
+    <h1>送信完了</h1>
+</body>
+
+</html>
