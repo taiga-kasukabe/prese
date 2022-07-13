@@ -68,6 +68,7 @@ if (!empty($_SESSION['id'])) {
 
         // メール送信
         // include('../../../kasukabe/prese_register/src/mail_send_rsv.php');
+        include('./sleep.php');
     }
 } ?>
 
@@ -122,3 +123,5 @@ if (!empty($_SESSION['id'])) {
     </main>
     <script type="text/javascript" src="../../js/browserBack.js"></script>
 </body>
+
+</html>
