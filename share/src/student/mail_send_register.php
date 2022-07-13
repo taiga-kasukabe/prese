@@ -53,6 +53,13 @@ try {
     $mail->Username = $user;
     $mail->Password = $password;
     $mail->SMTPSecure = 'tls';
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        )
+    );
     $mail->Port = 587;
     $mail->CharSet = "utf-8";
     $mail->Encoding = "base64";
