@@ -32,6 +32,7 @@ try {
     $msg = $e->getMessage();
 }
 
+
 // insert(id)被り確認
 $sql_id = "SELECT * FROM users_table WHERE id = :id";
 $stmt = $dbh->prepare($sql_id);
@@ -60,6 +61,7 @@ if (empty($member)) {
 
 //メール送信
 include("./mail_send_register.php");
+var_dump("test");
 
 $msg = 'FINISH!';
 $link = '<a href="./login_form.php">　ログイン　＞</a>';
