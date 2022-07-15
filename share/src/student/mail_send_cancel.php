@@ -6,6 +6,7 @@ use PHPMailer\PHPMailer\Exception;
 
 include('../../conf/mail_pass.php');
 include('../../../vendor/autoload.php');
+$weekJa = array("日", "月", "火", "水", "木", "金", "土");
 
 $mail = new PHPMailer(true);
 
