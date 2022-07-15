@@ -43,7 +43,7 @@ if (!empty($_SESSION['id'])) {
     $empInfo = $stmt->fetch();
 
     // メール送信
-    // include('');
+    include('./mail_send_cancel.php');
 }
 ?>
 
