@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
     <link rel="stylesheet" href="../../css/popup.css">
     <link rel="stylesheet" href="../../css/home.css">
+    <link rel="stylesheet" href="../../css/loading.css">
     <script src="https://kit.fontawesome.com/2d726a91d3.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
 </head>
