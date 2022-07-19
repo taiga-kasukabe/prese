@@ -49,9 +49,13 @@ if (!empty($_SESSION['empid'])) {
     $stmt->bindValue(':today', date('Y-m-d'));
     $stmt->execute();
     $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
 
-var_dump($rsvInfo);
+    // 予約回数計算
+    for ($j = 0; $j < count($rsvInfo); $j++) {
+        $empAll += array('cnt' => 0);
+    }
+}
+var_dump($empAll);
 ?>
 
 <body>
@@ -91,7 +95,10 @@ var_dump($rsvInfo);
                     </td>
                 </tr>
                 <?php for ($i = 0; $i < count($empAll); $i++) {
-                    echo '<tr><td>' . $empAll[$i]['empname'] . 'さん</td><td></td></tr>';
+                    echo '<tr>
+                            <td>' . $empAll[$i]['empname'] . 'さん</td>
+                            <td></td>
+                        </tr>';
                 } ?>
             </table>
 
