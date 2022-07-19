@@ -50,10 +50,12 @@ if (!empty($_SESSION['empid'])) {
     $stmt->execute();
     $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // 予約回数計算
+    // ーー予約回数計算ーー
+    // 配列用意
     for ($j = 0; $j < count($empAll); $j++) {
         $empAll[$j] += array('cnt' => 0);
     }
+    // 予約回数計算
     for ($j = 0; $j < count($rsvInfo); $j++) {
         for ($k = 0; $k < count($empAll); $k++) {
             if ($rsvInfo[$j]['empid'] == $empAll[$k]['empid']) {
@@ -61,7 +63,15 @@ if (!empty($_SESSION['empid'])) {
             }
         }
     }
+    // 最大面談予約回数計算
+    $max = 0;
+    for ($i = 0; $i < count($empAll); $i++) {
+        if ($empAll[$i]['cnt'] > $max) {
+            $max = $empAll[$i]['cnt'];
+        }
+    }
 }
+var_dump($empAll);
 ?>
 
 <body>
@@ -101,8 +111,13 @@ if (!empty($_SESSION['empid'])) {
                     </td>
                 </tr>
                 <?php for ($i = 0; $i < count($empAll); $i++) {
-                    if ($_SESSION['empid'] == $empAll[$i]['empid']) {
+                    if ($_SESSION['empid'] == $empAll[$i]['empid']) { //自分を緑色
                         echo '<tr style="color:#009f8c">
+                            <td>' . $empAll[$i]['empname'] . 'さん</td>
+                            <td>' . $empAll[$i]['cnt'] . '</td>
+                        </tr>';
+                    } elseif ($max == $empAll[$i]['cnt']) { //最大回数を赤色
+                        echo '<tr style="color:#c7243a">
                             <td>' . $empAll[$i]['empname'] . 'さん</td>
                             <td>' . $empAll[$i]['cnt'] . '</td>
                         </tr>';
