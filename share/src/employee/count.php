@@ -52,7 +52,7 @@ if (!empty($_SESSION['empid'])) {
 
     // 予約回数計算
     for ($j = 0; $j < count($rsvInfo); $j++) {
-        $empAll += array('cnt' => 0);
+        $empAll[$j] += array('cnt' => 0);
     }
 }
 var_dump($empAll);
