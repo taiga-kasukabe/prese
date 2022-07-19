@@ -120,7 +120,7 @@ if (!empty($_SESSION['empid'])) {
                             <td><img src="../../images/crown.png" style="width: 30px;">' . $empAll[$i]['empname'] . 'さん</td>
                             <td>' . $empAll[$i]['cnt'] . '</td>
                         </tr>';
-                    } else {
+                    } else { //それ以外は通常表示
                         echo '<tr>
                             <td>' . $empAll[$i]['empname'] . 'さん</td>
                             <td>' . $empAll[$i]['cnt'] . '</td>
