@@ -69,7 +69,7 @@ if (!empty($_SESSION['empid'])) {
         if ($empAll[$i]['cnt'] > $max) {
             $max = $empAll[$i]['cnt'];
         }
-    }
+    } // ーーーーーーーーーー
 }
 ?>
 
@@ -117,7 +117,7 @@ if (!empty($_SESSION['empid'])) {
                         </tr>';
                     } elseif ($max == $empAll[$i]['cnt']) { //最大回数を赤色
                         echo '<tr style="color:#c7243a">
-                            <td><img src="../../images/crown.png" style="width: 30px;">' . $empAll[$i]['empname'] . 'さん</td>
+                            <td style="vertical-align:middle"><img src="../../images/crown.png" style="width: 30px;">' . $empAll[$i]['empname'] . 'さん</td>
                             <td>' . $empAll[$i]['cnt'] . '</td>
                         </tr>';
                     } else { //それ以外は通常表示
