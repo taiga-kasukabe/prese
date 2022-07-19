@@ -28,7 +28,7 @@ $stmt->execute();
 $employee = $stmt->fetch();
 
 // 旧パスワードの一致を確認
-if (!password_verify($old_password, $employee['emppassword'])) {
+if (!($old_password === $employee['emppassword'])) {
     $err_msg['old_pass_confirm'] = '・旧パスワードが一致しません';
 }
 
