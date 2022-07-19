@@ -80,6 +80,26 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
 
+            <h2>面談履歴</h2>
+            <table>
+                <tr>
+                    <td>
+                        社員名
+                    </td>
+                    <td>
+                        面談回数
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        hogeさん
+                    </td>
+                    <td>
+                        xx回
+                    </td>
+                </tr>
+            </table>
+
         </main>
     <?php } else { ?>
         <main>
