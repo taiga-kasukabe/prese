@@ -70,7 +70,7 @@
       z-index: -1;
   }
   .works_modal_window {
-      width: 80vh;
+      width: fit-content;
       margin: auto;
       padding: 40px 60px;
       background: #fff;
