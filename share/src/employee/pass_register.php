@@ -33,7 +33,7 @@
 
         $password = $_SESSION['emp']['password'];
         $password_confirm = $_SESSION['emp']['password_confirm'];
-        $id = $_SESSION['emp']['empid'];
+        $empid = $_SESSION['emp']['empid'];
 
 
         //データベースへ接続、テーブルがない場合は作成
