@@ -102,12 +102,12 @@ if (!empty($_SESSION['empid'])) {
             <h2>各社員累計面談回数</h2>
             <table>
                 <tr>
-                    <td>
+                    <th>
                         社員名
-                    </td>
-                    <td>
+                    </th>
+                    <th>
                         累計面談回数
-                    </td>
+                    </th>
                 </tr>
                 <?php for ($i = 0; $i < count($empAll); $i++) {
                     if ($_SESSION['empid'] == $empAll[$i]['empid']) { //自分を緑色
