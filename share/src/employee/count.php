@@ -110,14 +110,14 @@ if (!empty($_SESSION['empid'])) {
                     </th>
                 </tr>
                 <?php for ($i = 0; $i < count($empAll); $i++) {
-                    if ($_SESSION['empid'] == $empAll[$i]['empid']) { //自分を緑色
+                    if ($max == $empAll[$i]['cnt']) { //最大回数を赤色
+                        echo '<tr style="color:#c7243a">
+                        <td style="vertical-align:middle"><img src="../../images/crown.png" style="width: 30px;">' . $empAll[$i]['empname'] . 'さん</td>
+                        <td>' . $empAll[$i]['cnt'] . '</td>
+                        </tr>';
+                    } elseif ($_SESSION['empid'] == $empAll[$i]['empid']) { //自分を緑色
                         echo '<tr style="color:#009f8c">
                             <td>' . $empAll[$i]['empname'] . 'さん</td>
-                            <td>' . $empAll[$i]['cnt'] . '</td>
-                        </tr>';
-                    } elseif ($max == $empAll[$i]['cnt']) { //最大回数を赤色
-                        echo '<tr style="color:#c7243a">
-                            <td style="vertical-align:middle"><img src="../../images/crown.png" style="width: 30px;">' . $empAll[$i]['empname'] . 'さん</td>
                             <td>' . $empAll[$i]['cnt'] . '</td>
                         </tr>';
                     } else { //それ以外は通常表示
