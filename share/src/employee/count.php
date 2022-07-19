@@ -91,7 +91,7 @@ var_dump($rsvInfo);
                     </td>
                 </tr>
                 <?php for ($i = 0; $i < count($empAll); $i++) {
-                    echo '<td>' . $empAll[$i]['empname'] . 'さん</td><td></td>';
+                    echo '<tr><td>' . $empAll[$i]['empname'] . 'さん</td><td></td></tr>';
                 } ?>
             </table>
 
