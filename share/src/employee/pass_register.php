@@ -45,7 +45,7 @@
 
         $sql =  "UPDATE emp_table SET emppassword = :emppassword WHERE empid=:empid";
         $stmt = $dbh->prepare($sql);
-        $stmt->bindValue(':password', $password);
+        $stmt->bindValue(':emppassword', $password);
         $stmt->bindValue(':empid', $empid);
         $stmt->execute();
 
