@@ -71,7 +71,6 @@ if (!empty($_SESSION['empid'])) {
         }
     }
 }
-var_dump($empAll);
 ?>
 
 <body>
