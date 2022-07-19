@@ -91,20 +91,20 @@ var_dump($empAll);
                 </div>
             </div>
 
-            <h2>面談履歴</h2>
+            <h2>各社員累計面談回数</h2>
             <table>
                 <tr>
                     <td>
                         社員名
                     </td>
                     <td>
-                        面談回数
+                        累計面談回数
                     </td>
                 </tr>
                 <?php for ($i = 0; $i < count($empAll); $i++) {
                     echo '<tr>
                             <td>' . $empAll[$i]['empname'] . 'さん</td>
-                            <td></td>
+                            <td>' . $empAll[$i]['cnt'] . '</td>
                         </tr>';
                 } ?>
             </table>
