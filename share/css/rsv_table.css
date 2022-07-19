@@ -3,6 +3,7 @@ tr,
 td,
 th {
     border-collapse: collapse;
+    vertical-align: middle;
 }
 td,
 th {

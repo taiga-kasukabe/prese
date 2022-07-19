@@ -117,7 +117,7 @@ if (!empty($_SESSION['empid'])) {
                         </tr>';
                     } elseif ($max == $empAll[$i]['cnt']) { //最大回数を赤色
                         echo '<tr style="color:#c7243a">
-                            <td>' . $empAll[$i]['empname'] . 'さん<img src="../../images/crown.png" style="width: 50px;"></td>
+                            <td><img src="../../images/crown.png" style="width: 30px;">' . $empAll[$i]['empname'] . 'さん</td>
                             <td>' . $empAll[$i]['cnt'] . '</td>
                         </tr>';
                     } else {
