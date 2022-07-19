@@ -30,12 +30,18 @@ try {
 // SESSIONが切れてないか確認
 if (!empty($_SESSION['empid'])) {
     $empid = $_SESSION['empid'];
-    // 社員リスト取得
+    // 当該社員リスト取得
     $sql = "SELECT * FROM emp_table WHERE empid = :empid";
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':empid', $empid);
     $stmt->execute();
     $employee = $stmt->fetch();
+
+    // 全社員リスト取得
+    $sql = "SELECT empid, empname FROM emp_table";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $empAll = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // 予約情報取得
     $sql = "SELECT * FROM rsvdb WHERE ((rsvdate < :today) AND (flag = 1)) ";
@@ -84,14 +90,9 @@ var_dump($rsvInfo);
                         面談回数
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        hogeさん
-                    </td>
-                    <td>
-                        xx回
-                    </td>
-                </tr>
+                <?php for ($i = 0; $i < count($empAll); $i++) {
+                    echo '<td>' . $empAll[$i]['empname'] . 'さん</td><td></td>';
+                } ?>
             </table>
 
         </main>
