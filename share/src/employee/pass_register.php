@@ -43,7 +43,7 @@
             $msg = $e->getMessage();
         }
 
-        $sql =  "UPDATE emp_table SET emppassword = :emppassword ,password_confirm = :password_confirm WHERE empid=:empid";
+        $sql =  "UPDATE emp_table SET emppassword = :emppassword WHERE empid=:empid";
         $stmt = $dbh->prepare($sql);
         $stmt->bindValue(':password', $password);
         $stmt->bindValue(':empid', $empid);
