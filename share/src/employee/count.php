@@ -38,20 +38,14 @@ if (!empty($_SESSION['empid'])) {
     $employee = $stmt->fetch();
 
     // 予約情報取得
-    $sql = "SELECT * FROM rsvdb WHERE (empid = :empid AND ((rsvdate >= :today) AND (flag = 1)) OR (empid = :empid AND (rsvdate >= :2daysAfter) AND (flag = 0))) ORDER BY rsvdate, rsvtime";
+    $sql = "SELECT * FROM rsvdb WHERE ((rsvdate < :today) AND (flag = 1)) ";
     $stmt = $dbh->prepare($sql);
-    $stmt->bindValue(':empid', $empid);
     $stmt->bindValue(':today', date('Y-m-d'));
-    $stmt->bindValue(':2daysAfter', date('Y-m-d', strtotime('+2day')));
     $stmt->execute();
     $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-// 学生情報取得
-$sql = "SELECT * FROM users_table";
-$stmt = $dbh->prepare($sql);
-$stmt->execute();
-$stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+var_dump($rsvInfo);
 ?>
 
 <body>
