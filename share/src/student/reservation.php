@@ -76,10 +76,14 @@ if (!empty($_SESSION['id'])) {
     <div id="loading">
         <div class="spinner"></div>
     </div>
+
     <?php
+    if ($unrsvInfo['flag'] != 1 || !empty($_SESSION['id'])) {
     // メール送信
     include('./mail_send_rsv.php');
+    }
     ?>
+    
     <header>
         <div class="header_container">
             <div class="logo">

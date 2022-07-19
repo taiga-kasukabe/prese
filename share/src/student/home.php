@@ -17,59 +17,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
 </head>
 
-<?php
-session_start();
-
-//データベース情報の読み込み
-include('../../conf/config.php');
-
-
-//データベース接続
-try {
-    $dbh = new PDO($dsn, $db_username, $db_password);
-} catch (PDOException $e) {
-    $msg = $e->getMessage();
-}
-
-if (!empty($_SESSION['id'])) {
-    $id = $_SESSION['id'];
-
-    //ユーザー情報の取得
-    $sql_user = "SELECT * FROM users_table WHERE id = :id";
-    $stmt = $dbh->prepare($sql_user);
-    $stmt->bindValue(':id', $id);
-    $stmt->execute();
-    $member = $stmt->fetch();
-
-    //社員情報（全体）の取得
-    $sql_emp = "SELECT * FROM emp_table";
-    $stmt = $dbh->prepare($sql_emp);
-    $stmt->execute();
-    $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
-    // 社員情報（おすすめ）の取得
-    if (!empty($member['academichistory'])) {
-        // 前回の診断結果を取得，変数に代入
-        $academichistory_str = "'" . $member['academichistory'] . "'";
-        $industry_str = "'" . $member['industry'] . "'";
-        $skill_str = "'" . $member['skill'] . "'";
-        // データベース検索
-        $sql_emp = "SELECT * FROM emp_table WHERE (empacademichistory REGEXP ($academichistory_str)) AND (empindustry REGEXP ($industry_str)) AND (empskill REGEXP ($skill_str))";
-        $stmt = $dbh->prepare($sql_emp);
-        // $stmt->bindValue(':academichistory', $academichistory_str);
-        // $stmt->bindValue(':industry', $industry_str);
-        // $stmt->bindValue(':skill', $skill_str);
-        $stmt->execute();
-        $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-}
-?>
 
 <body>
     <div id="loading">
     <div class="spinner"></div>
     </div>
+
+    <?php
+    session_start();
+
+    //データベース情報の読み込み
+    include('../../conf/config.php');
+
+
+    //データベース接続
+    try {
+        $dbh = new PDO($dsn, $db_username, $db_password);
+    } catch (PDOException $e) {
+        $msg = $e->getMessage();
+    }
+
+    if (!empty($_SESSION['id'])) {
+        $id = $_SESSION['id'];
+
+        //ユーザー情報の取得
+        $sql_user = "SELECT * FROM users_table WHERE id = :id";
+        $stmt = $dbh->prepare($sql_user);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        $member = $stmt->fetch();
+
+        //社員情報（全体）の取得
+        $sql_emp = "SELECT * FROM emp_table";
+        $stmt = $dbh->prepare($sql_emp);
+        $stmt->execute();
+        $employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+        // 社員情報（おすすめ）の取得
+        if (!empty($member['academichistory'])) {
+            // 前回の診断結果を取得，変数に代入
+            $academichistory_str = "'" . $member['academichistory'] . "'";
+            $industry_str = "'" . $member['industry'] . "'";
+            $skill_str = "'" . $member['skill'] . "'";
+            // データベース検索
+            $sql_emp = "SELECT * FROM emp_table WHERE (empacademichistory REGEXP ($academichistory_str)) AND (empindustry REGEXP ($industry_str)) AND (empskill REGEXP ($skill_str))";
+            $stmt = $dbh->prepare($sql_emp);
+            // $stmt->bindValue(':academichistory', $academichistory_str);
+            // $stmt->bindValue(':industry', $industry_str);
+            // $stmt->bindValue(':skill', $skill_str);
+            $stmt->execute();
+            $employee_rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
+    ?>
+
     <?php if (!empty($_SESSION['id'])) { ?>
         <header>
             <div class="header_container">
