@@ -102,7 +102,7 @@ if (!empty($_SESSION['empid'])) {
                 </tr>
                 <?php for ($i = 0; $i < count($empAll); $i++) {
                     if ($_SESSION['empid'] == $empAll[$i]['empid']) {
-                        echo '<tr style="text-color= #009f8c">
+                        echo '<tr style="color:#009f8c">
                             <td>' . $empAll[$i]['empname'] . 'さん</td>
                             <td>' . $empAll[$i]['cnt'] . '</td>
                         </tr>';
