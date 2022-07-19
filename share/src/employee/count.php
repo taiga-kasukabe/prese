@@ -51,10 +51,16 @@ if (!empty($_SESSION['empid'])) {
     $rsvInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // 予約回数計算
-    for ($j = 0; $j < count($rsvInfo); $j++) {
+    for ($j = 0; $j < count($empAll); $j++) {
         $empAll[$j] += array('cnt' => 0);
     }
-
+    for ($j = 0; $j < count($rsvInfo); $j++) {
+        for ($k = 0; $k < count($empAll); $k++) {
+            if ($rsvInfo[$j]['empid'] == $empAll[$k]['empid']) {
+                $empAll[$k]['cnt']++;
+            }
+        }
+    }
 }
 var_dump($empAll);
 ?>
