@@ -70,6 +70,7 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <nav>
                     <ul class="header_nav">
                         <li><a href="./empmypage.php">MY PAGE</a></li>
+                        <li><a href="./count.php">RANKING</a></li>
                         <li><a href="./emplogout.php">LOGOUT</a></li>
                     </ul>
                 </nav>
