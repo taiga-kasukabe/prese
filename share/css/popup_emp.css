@@ -78,7 +78,7 @@
   }
   .works_modal_content {
       margin-top: 0;
-      width: 100%;
+      width: fit-content;
       height: 80%;
   }
   .works_modal_mask {
