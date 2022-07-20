@@ -20,10 +20,7 @@
 session_start();
 
 //データベース情報の読み込み
-// include('../../conf/config.php');
-$dsn = "mysql:charset=UTF8;dbname=preempdb;host=localhost";
-$db_username = "root";
-$db_password = "root";
+include('../../conf/config.php');
 
 //データベース接続
 try{
@@ -86,7 +83,7 @@ if(!empty($_POST)) {
     </header>
 
     <main>
-        <?php //if (!empty($_SESSION['id'])) { ?>
+        <?php if (!empty($_SESSION['id'])) { ?>
             <div id="result_area" class="result is_open">
                 <p class="text">あなたにおすすめの内々定者はこちら！</p>
 
@@ -157,14 +154,14 @@ if(!empty($_POST)) {
                 <a href="./diagnose.php" class="white">もう一度診断する</a>
                 <a href="./home.php" class="blue">ホームへ戻る</a>
             </div>
-        <?php //} else { ?>
-            <!-- <div class="container">
+        <?php } else { ?>
+            <div class="container">
                 <p>セッションが切れました</p>
                 <p>ログインしてください</p>
                 <a href="./login_form.php" class="login">ログインページへ</a>
-            </div> -->
-        <?php //} ?>
+            </div>
+        <?php } ?>
     </main>
 <script src="../../js/modal.js"></script>
 </body>
-<html>
+</html>
