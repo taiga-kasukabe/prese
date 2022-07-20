@@ -19,7 +19,7 @@ header {
     width: 100%;
     height: 70px;
     border-bottom: 1px solid #ffffff;
-    background-color: #005CAF;
+    background-color: #09bb7a;
     z-index: 10;
     transition: .5s;
 }
@@ -81,14 +81,14 @@ h2 {
 }
 label {
     display: block;
-    color: #005CAF;
+    color: #09bb7a;
     padding-left: 5px;
 }
 input {
     display: block;
     appearance: none;
     outline: 0;
-    border: 1px solid #005CAF;
+    border: 1px solid #09bb7a;
     border-radius: 4px;
 
     width: 300px;
@@ -98,7 +98,7 @@ input {
 button {
     appearance: none;
     outline: 0;
-    background-color: #005CAF;
+    background-color: #09bb7a;
     border: 1px solid #ffffff;
     border-radius: 3px;
     color: #ffffff;
@@ -112,7 +112,7 @@ button {
     z-index: -1;
 }
 button:hover {
-    background-color: #1f72bb;
+    background-color: #25ce90;
 }
 .err_msg {
     width: 150%;
