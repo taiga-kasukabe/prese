@@ -63,14 +63,14 @@
         $stmt->bindValue(':password', $password);
         $stmt->bindValue(':password_confirm', $password_confirm);
         $stmt->execute();
+
+        //メール送信
+        include("./mail_send_register.php");
+
+        $msg = 'FINISH!';
+        $link = '<a href="./login_form.php">　ログイン　＞</a>';
     }
-
-    //メール送信
-    include("./mail_send_register.php");
-
-    $msg = 'FINISH!';
-    $link = '<a href="./login_form.php">　ログイン　＞</a>';
-
+    
     ?>
 
     <header>
