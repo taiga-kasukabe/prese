@@ -22,7 +22,7 @@ $stmt->bindValue(':empmail', $_POST['mail']);
 $stmt->execute();
 $mail_emp = $stmt->fetch();
 
-if (!empty($mail_mem)) {
+if (!empty($mail_emp)) {
   $_SESSION['empid'] = $mail_emp['empid'];
   header('Location: ./reset_email.php');
 } else {
