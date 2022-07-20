@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>会員規約|東日本電信電話株式会社</title>
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
-    <link rel="stylesheet" href="../../../css/tos.css">
+    <link rel="stylesheet" href="../../../css/student/tos.css">
 </head>
 
 <body>

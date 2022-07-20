@@ -6,7 +6,7 @@
     <title>予約確認</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
-    <link rel="stylesheet" href="../../css/reservation_confirm.css">
+    <link rel="stylesheet" href="../../css/student/reservation_confirm.css">
     <script src="https://kit.fontawesome.com/2d726a91d3.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
 </head>
