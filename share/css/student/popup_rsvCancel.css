@@ -37,6 +37,11 @@
       width: fit-content;
       height: 80%;
   }
+  .works_modal_content .message {
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+  }
   .rsv_content_modal {
     margin: 20px auto 30px auto;
     padding: 15px 35px;
