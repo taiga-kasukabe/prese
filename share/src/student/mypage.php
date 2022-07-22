@@ -162,4 +162,6 @@ if (!empty($_SESSION['id'])) {
             </div>
         <?php } ?>
     </main>
+<script type="text/javascript" src="../../js/loading.js"></script>  
 </body>
+</html>
