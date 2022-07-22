@@ -8,10 +8,14 @@ const mailCopy = function(e) {
                 // true
                 const btn = document.querySelector('[data-mail-copy="'+dataMailCopy+'"]');
                 btn.textContent = 'コピーしました';
+                btn.classList.toggle('clicked');
+
                 setTimeout(() => {
                    btn.textContent = 'メールアドレスをコピー' ;
+                   btn.classList.toggle('clicked');
                 }, 2000);
                 console.log(btn);
+                
                 }, () => {
                 // false
                 alert("コピーできていません");

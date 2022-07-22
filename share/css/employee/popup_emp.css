@@ -53,6 +53,17 @@
     background-color: #09bb7a;
     color: #ffffff;
 }
+.clicked {
+    display: block;
+    margin: 0 auto;
+    padding: 5px;
+    width: 160px;
+    border: 1px solid #09bb7a;
+    border-radius: 2.3px;
+    transition: .2s;
+    background-color: #09bb7a;
+    color: #ffffff;
+}
 
   /* ------works_modal css------ */
   .works_modal_wrapper {
