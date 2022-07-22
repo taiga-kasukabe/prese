@@ -170,7 +170,8 @@ $stuInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </main>
     <?php } ?>
     <script src="../../js/modal.js"></script>
-    <script src="../../js/mailCopy.js"></script>
+    <script src="../../js/mailCopy1.js"></script>
+    <script src="../../js/mailCopy2.js"></script>
 </body>
 
 </html>
