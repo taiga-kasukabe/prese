@@ -34,10 +34,9 @@
   }
   .works_modal_content {
       text-align: center;
-      margin:0 auto 30px auto;
+      margin:0 auto 0px auto;
       width: fit-content;
       height: 80%;
-      display: flex;
   }
 
   .works_modal_window a {
