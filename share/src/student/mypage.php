@@ -133,7 +133,7 @@ if (!empty($_SESSION['id'])) {
                                     <div class="works_modal_window">
                                         <div class="works_modal_content">
                                             <p>この面談予約をキャンセルしますか？</p>
-                                            <div class="rsv_content">
+                                            <div class="rsv_content_modal">
                                                 <div class="rsv_text">
                                                     <?php for ($i = 0; $i < count($ename); $i++) {
                                                         if ($stuid[$n]['empid'] == $ename[$i]['empid']) { ?>

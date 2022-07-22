@@ -33,31 +33,19 @@
       z-index: 1;
   }
   .works_modal_content {
-      text-align: center;
       margin:0 auto 0px auto;
       width: fit-content;
       height: 80%;
   }
-
-  .works_modal_window a {
-    display: flex;
-    width: 200px;
-    height: 50px;
-    margin: 0 50%;
-    transform: translateX(-50%);
-    text-decoration: none;
-    line-height: 50px;
-  }
-  .resv_txt {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background-color: #ffffff;
-    color: #005CAF;
+  .rsv_content_modal {
+    margin: 20px auto 30px auto;
+    padding: 15px 35px;
+    width: fit-content;
     border: 1px solid #005CAF;
-    z-index: 1;
+    border-radius: 8px;
+    /* display: flex; */
   }
-  .works_modal_mask {
+.works_modal_mask {
       position: absolute;
       top: 0;
       left: 0;
