@@ -1,0 +1,102 @@
+.works_modal_open {
+    position: relative;
+      cursor: pointer;
+      width: 250px;
+      height: 400px;
+      margin: 20px;
+      color: #005CAF;
+      border: 1px solid #005CAF;
+      overflow: hidden;
+  }
+
+  /* ------works_modal css------ */
+  .works_modal_wrapper {
+      position: fixed;
+      display: flex;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      border: none;
+      opacity: 0;
+      z-index: -1;
+  }
+  .works_modal_window {
+      width: 900px;
+      margin: auto;
+      padding: 40px 80px;
+      background: #fff;
+      z-index: 1;
+  }
+  .works_modal_content {
+      text-align: center;
+      margin:0 auto 30px auto;
+      width: fit-content;
+      height: 80%;
+      display: flex;
+  }
+
+  .works_modal_window a {
+    display: flex;
+    width: 200px;
+    height: 50px;
+    margin: 0 50%;
+    transform: translateX(-50%);
+    text-decoration: none;
+    line-height: 50px;
+  }
+  .resv_txt {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: #ffffff;
+    color: #005CAF;
+    border: 1px solid #005CAF;
+    z-index: 1;
+  }
+  .works_modal_mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+  }
+  .works_modal_close {
+      z-index: 300;
+      position: absolute;
+      top: 0;
+      right: 10px;
+      color: #808080;
+      font-size: 1.5rem;
+      cursor: pointer;
+  }
+  .works_modal_close:hover {
+      color: #000;
+      transition: all .5s;
+  }
+  html.is_open, body.is_open {
+      overflow: hidden;
+  }
+  .works_modal_wrapper.is_open {
+      opacity: 1;
+      z-index: 300;
+  }
+  .works_modal_wrapper.is_open .works_modal_window {
+      opacity: 1;
+      transform: translateY(0);
+  }
+  .works_modal_wrapper.is_close {
+      z-index: 300;
+      opacity: 1;
+  }
+  .works_modal_wrapper.is_close .works_modal_window {
+      transform: translateY(-30px);
+      opacity: 0;
+  }

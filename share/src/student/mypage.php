@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://necolas.github.io/normalize.css">
     <link rel="stylesheet" href="../../css/student/mypage.css">
+    <link rel="stylesheet" href="../../css/student/popup_rsvCancel.css">
     <script src="https://kit.fontawesome.com/2d726a91d3.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
 </head>
@@ -122,28 +123,31 @@ if (!empty($_SESSION['id'])) {
                                     <p>これ以降は直接連絡をお取りください。</p>
                                 </div>
                             <?php else : ?>
-                                <div class="delete_btn">
-                                    <form action="./rsv_cancel.php" method="post" onSubmit="return check()">
-                                        <input type="hidden" name="empid" value="<?= $stuid[$n]['empid'] ?>">
-                                        <input type="hidden" name="rsvdate" value="<?= $stuid[$n]['rsvdate'] ?>">
-                                        <input type="hidden" name="rsvtime" value="<?= $stuid[$n]['rsvtime'] ?>">
-                                        <button type="submit" class="delete">取消</button>
-                                    </form>
+                                <div class="delete_btn works_modal_open" data-modal-open="rsv-cancel-<?php echo $n; ?>">
+                                    <button type="submit" class="delete">取消</button>
                                 </div>
+
+                                <!-- モーダルウインドウここから -->
+                                <div class="works_modal_wrapper" data-modal="rsv-cancel-<?php echo $n; ?>">
+                                    <div class="works_modal_mask"></div>
+                                    <div class="works_modal_window">
+                                        <div class="works_modal_content">
+                                            <p>中身</p>
+                                            <form action="./rsv_cancel.php" method="post" onSubmit="return check()">
+                                                <input type="hidden" name="empid" value="<?= $stuid[$n]['empid'] ?>">
+                                                <input type="hidden" name="rsvdate" value="<?= $stuid[$n]['rsvdate'] ?>">
+                                                <input type="hidden" name="rsvtime" value="<?= $stuid[$n]['rsvtime'] ?>">
+                                                <button type="submit" class="delete">取消</button>
+                                            </form>
+                                        </div>
+                                        <div class="works_modal_close">✖</div>
+                                    </div>
+                                </div>
+                                <!-- モーダルウインドウここまで -->
+
                             <?php endif; ?>
                         </div>
                     <?php } ?>
-                    <script type="text/javascript">
-                        function check() {
-                            let result = window.confirm('予約を取り消しますか？');
-                            if (result) {
-                                return ture;
-                            } else {
-                                alert("キャンセルしました");
-                                return false;
-                            }
-                        };
-                    </script>
                 <?php } else { ?>
                     <div class="rsv_content">
                         <p>現在予約している面談はありません</p>
