@@ -8,6 +8,7 @@ const mailCopy = function(e) {
                 // true
                 const btn = document.querySelector('[data-mail-copy="'+dataMailCopy+'"]');
                 btn.textContent = 'コピーしました';
+                console.log(btn);
                 }, () => {
                 // false
                 alert("コピーできていません");
