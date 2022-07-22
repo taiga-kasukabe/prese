@@ -1,4 +1,4 @@
-.works_modal_open {
+/* .works_modal_open {
     position: relative;
       cursor: pointer;
       width: 250px;
@@ -7,7 +7,7 @@
       color: #005CAF;
       border: 1px solid #005CAF;
       overflow: hidden;
-  }
+  } */
 
   /* ------works_modal css------ */
   .works_modal_wrapper {
