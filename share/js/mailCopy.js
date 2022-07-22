@@ -11,8 +11,8 @@ const mailCopy = function(e) {
                 btn.classList.toggle('clicked');
 
                 setTimeout(() => {
-                   btn.textContent = 'メールアドレスをコピー' ;
                    btn.classList.toggle('clicked');
+                   btn.textContent = 'メールアドレスをコピー' ;
                 }, 2000);
                 console.log(btn);
                 
