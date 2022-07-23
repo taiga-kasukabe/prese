@@ -169,7 +169,7 @@ if (!empty($_SESSION['id'])) {
                         </div>
                         <div class="topic">
                             <label>相談内容</label>
-                            <textarea name="comment" placeholder="こんなこと書いてね的な文章"></textarea>
+                            <textarea name="comment" placeholder="ここに相談内容を記入してください"></textarea>
                         </div>
                     </form>
                     <div class="btn">
