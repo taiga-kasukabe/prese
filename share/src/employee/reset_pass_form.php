@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <title>パスワード再設定</title>
@@ -16,12 +17,13 @@ session_start();
 include('../../conf/config.php');
 
 //データベース接続
-try{
+try {
     $dbh = new PDO($dsn, $db_username, $db_password);
 } catch (PDOException $e) {
-    $msg = $e -> getMessage();
+    $msg = $e->getMessage();
 }
 ?>
+
 <body>
     <header>
         <div class="header_container">
@@ -32,6 +34,7 @@ try{
                 <nav>
                     <ul class="header_nav">
                         <li><a href="./empmypage.php">MY PAGE</a></li>
+                        <li><a href="./count.php">RANKING</a></li>
                         <li><a href="./emplogout.php">LOGOUT</a></li>
                     </ul>
                 </nav>
@@ -41,38 +44,38 @@ try{
 
     <?php // SESSIONが切れてないか確認
     if (!empty($_SESSION['empid'])) { ?>
-    <main>
-        <div class="top">
-            <h1>パスワード再設定</h1>
-        </div>
-        <div class="container">
-            <form action="./reset_vali_pass.php" method="post" class="form_log"> 
-                <div class="err_msg">
-                    <?php
-                    // エラーメッセージが空じゃないの時（バリデーションチェックが問題なかった時）以下の処理を行う
-                    if (!empty($_SESSION['err'])) {
-                        foreach ($_SESSION['err'] as $value) {
-                            echo $value . "<br>"; //hタグ内の改行はbr
+        <main>
+            <div class="top">
+                <h1>パスワード再設定</h1>
+            </div>
+            <div class="container">
+                <form action="./reset_vali_pass.php" method="post" class="form_log">
+                    <div class="err_msg">
+                        <?php
+                        // エラーメッセージが空じゃないの時（バリデーションチェックが問題なかった時）以下の処理を行う
+                        if (!empty($_SESSION['err'])) {
+                            foreach ($_SESSION['err'] as $value) {
+                                echo $value . "<br>"; //hタグ内の改行はbr
+                            }
                         }
-                    }
-                    ?>
-                </div>
-                <div>
-                    <label>旧パスワード</label>
-                    <input type="password" name="old_password" required>
-                </div>
-                <div>
-                    <label>新しいパスワード</label>
-                    <input type="password" name="password" placeholder="半角英数字8文字以上" required>
-                </div>
-                <div>
-                    <label>新しいパスワード（再入力）</label>
-                    <input type="password" name="password_confirm" placeholder="半角英数字8文字以上" required>
-                </div>
-                <button type="submit">登録</button>
-            </form>
-        </div>
-    </main>
+                        ?>
+                    </div>
+                    <div>
+                        <label>旧パスワード</label>
+                        <input type="password" name="old_password" required>
+                    </div>
+                    <div>
+                        <label>新しいパスワード</label>
+                        <input type="password" name="password" placeholder="半角英数字8文字以上" required>
+                    </div>
+                    <div>
+                        <label>新しいパスワード（再入力）</label>
+                        <input type="password" name="password_confirm" placeholder="半角英数字8文字以上" required>
+                    </div>
+                    <button type="submit">登録</button>
+                </form>
+            </div>
+        </main>
     <?php } else { ?>
         <main>
             <div class="container">

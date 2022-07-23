@@ -34,6 +34,7 @@ if (!empty($_GET['editFree'])) {
                 <nav>
                     <ul class="header_nav">
                         <li><a href="./empmypage.php">MY PAGE</a></li>
+                        <li><a href="./count.php">RANKING</a></li>
                         <li><a href="./emplogout.php">LOGOUT</a></li>
                     </ul>
                 </nav>
